@@ -1,22 +1,17 @@
 {
-    "portalID": "sampo",
+    "portalID": "coco",
     "rootUrl": "",
     "perspectives": {
         "searchPerspectives": [
-            "perspective1",
-            "perspective2",
-            "perspective3",
-            "perspective4",
+            "letters",
+            "actors",
+            "places",
             "fullTextSearch"
         ],
         "onlyInstancePages": [
-            "manuscripts",
-            "collections",
-            "works",
-            "expressions",
-            "events",
-            "actors",
-            "places"
+            "ties",
+            "sources",
+            "metrics"
         ]
     },
     "localeConfig": {
@@ -26,21 +21,16 @@
             {
                 "id": "en",
                 "label": "English",
-                "filename": "localeEN.json"
-            },
-            {
-                "id": "fi",
-                "label": "English",
-                "filename": "localeFI.json"
+                "filename": "localeEN",
+                "format": "js"
             }
         ]
     },
     "sitemapConfig": {
-        "baseUrl": "https://sampo-ui.demo.seco.cs.aalto.fi",
+        "baseUrl": "",
         "langPrimary": "en",
-        "langSecondary": "fi",
         "outputDir": "./src/server/sitemap_generator",
-        "sitemapUrl": "https://sampo-ui.demo.seco.cs.aalto.fi/sitemap",
+        "sitemapUrl": "",
         "sitemapInstancePageQuery": "sitemapInstancePageQuery"
     },
     "knowledgeGraphMetadataConfig": {
@@ -62,27 +52,20 @@
         "paginationToolbarHeight": 37,
         "tableFontSize": "0.8rem",
         "topBar": {
-            "logoImage": "logos/logo.png",
             "logoTextTransform": "none",
-            "hideLogoTextOnMobile": true,
-            "showLanguageButton": true,
+            "showLanguageButton": false,
             "feedbackLink": "https://link.webropolsurveys.com/...",
-            "externalInstructions": false,
-            "externalAboutPage": false,
-            "reducedHeight": 48,
+            "externalInstructions": true,
+            "externalAboutPage": true,
+            "reducedHeight": 44,
             "defaultHeight": 64,
             "mobileMenuBreakpoint": 1360,
             "infoDropdown": [
                 {
-                    "id": "about",
-                    "translatedText": "aboutThePortal",
-                    "internalLink": "/about"
-                },
-                {
-                    "id": "blog",
+                    "id": "aboutTheProject",
                     "externalLink": true,
-                    "translatedUrl": "blogUrl",
-                    "translatedText": "blog"
+                    "translatedUrl": "aboutTheProjectUrl",
+                    "translatedText": "aboutTheProject"
                 }
             ]
         },
@@ -91,8 +74,7 @@
             "bannerBackround": "linear-gradient( rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45) ), url(<BANNER_IMAGE_URL)",
             "bannerMobileHeight": 150,
             "bannerReducedHeight": 220,
-            "bannerDefaultHeight": 300,
-            "wrapSubheading": true
+            "bannerDefaultHeight": 300
         },
         "infoHeader": {
             "default": {
@@ -121,7 +103,7 @@
         "yasguiParams": {
             "contentTypeConstruct": "text/turtle",
             "contentTypeSelect": "application/sparql-results+json",
-            "endpoint": "https://ldf.fi/mmm/sparql",
+            "endpoint": "https://ldf.fi/coco/sparql",
             "requestMethod": "POST",
             "tabTitle": "Exported query"
         }

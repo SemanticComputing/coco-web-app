@@ -1,0 +1,60 @@
+{
+  "id": "metrics",
+  "endpoint": {
+    "url": "https://ldf.fi/coco/sparql",
+    "useAuth": true,
+    "prefixesFile": "SparqlQueriesPrefixes.js"
+  },
+  "sparqlQueriesFile": "SparqlQueriesMetrics.js",
+  "baseURI": "http://ldf.fi/schema/lssc",
+  "URITemplate": "<BASE_URI>/<LOCAL_ID>",
+  "resultClasses": {
+    "metrics": {
+      "instanceConfig": {
+        "propertiesQueryBlock": "metricPropertiesInstancePage",
+        "instancePageResultClasses": {
+          "instancePageTable": {
+            "tabID": 0,
+            "component": "InstancePageTable",
+            "tabPath": "table",
+            "tabIcon": "CalendarViewDay"
+          },
+          "instancePageExport": {
+            "tabID": 1,
+            "component": "Export",
+            "tabPath": "export",
+            "tabIcon": "CloudDownload",
+            "pageType": "instancePage"
+          }
+        }
+      }
+    }
+  },
+  "properties": [
+    {
+      "id": "prefLabel",
+      "valueType": "object",
+      "makeLink": true,
+      "externalLink": false,
+      "sortValues": true,
+      "numberedList": false
+    },
+    {
+      "id": "highest",
+      "valueType": "object",
+      "makeLink": true,
+      "externalLink": false,
+      "sortValues": false,
+      "numberedList": true,
+      "expandedOnInstancePage": true
+    },
+    {
+      "id": "related",
+      "valueType": "object",
+      "makeLink": true,
+      "externalLink": false,
+      "sortValues": false,
+      "numberedList": true
+    }
+  ]
+}

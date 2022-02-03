@@ -1,0 +1,59 @@
+{
+  "id": "sources",
+  "endpoint": {
+    "url": "https://ldf.fi/coco/sparql",
+    "useAuth": true,
+    "prefixesFile": "SparqlQueriesPrefixes.js"
+  },
+  "sparqlQueriesFile": "SparqlQueriesSources.js",
+  "baseURI": "http://ldf.fi/ckcc",
+  "URITemplate": "<BASE_URI>/sources/<LOCAL_ID>",
+  "resultClasses": {
+    "sources": {
+      "instanceConfig": {
+        "propertiesQueryBlock": "sourcePropertiesInstancePage",
+        "instancePageResultClasses": {
+          "instancePageTable": {
+            "tabID": 0,
+            "component": "InstancePageTable",
+            "tabPath": "table",
+            "tabIcon": "CalendarViewDay"
+          },
+          "instancePageExport": {
+            "tabID": 1,
+            "component": "Export",
+            "tabPath": "export",
+            "tabIcon": "CloudDownload",
+            "pageType": "instancePage"
+          }
+        }
+      }
+    }
+  },
+  "properties": [
+    {
+      "id": "prefLabel",
+      "valueType": "object",
+      "makeLink": true,
+      "externalLink": false,
+      "sortValues": true,
+      "numberedList": false
+    },
+    {
+      "id": "numLetters",
+      "valueType": "string",
+      "makeLink": false,
+      "externalLink": false,
+      "sortValues": true,
+      "numberedList": true
+    },
+    {
+      "id": "letter",
+      "valueType": "object",
+      "makeLink": true,
+      "externalLink": false,
+      "sortValues": true,
+      "numberedList": true
+    }
+  ]
+}

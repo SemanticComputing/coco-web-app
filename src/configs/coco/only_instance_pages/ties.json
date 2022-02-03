@@ -1,0 +1,224 @@
+{
+  "id": "ties",
+  "endpoint": {
+    "url": "https://ldf.fi/coco/sparql",
+    "useAuth": true,
+    "prefixesFile": "SparqlQueriesPrefixes.js"
+  },
+  "sparqlQueriesFile": "SparqlQueriesTies.js",
+  "baseURI": "http://ldf.fi/lssc",
+  "URITemplate": "<BASE_URI>/ties/<LOCAL_ID>",
+  "resultClasses": {
+    "ties": {
+      "instanceConfig": {
+        "propertiesQueryBlock": "tiePropertiesInstancePage",
+        "instancePageResultClasses": {
+          "instancePageTable": {
+            "tabID": 0,
+            "component": "InstancePageTable",
+            "tabPath": "table",
+            "tabIcon": "CalendarViewDay"
+          },
+          "tieInstancePageTimeline": {
+            "tabID": 1,
+            "component": "ApexChartsDouble",
+            "pageType": "instancePage",
+            "tabPath": "letters-by-year",
+            "tabIcon": "Tune",
+            "upperResultClass": "tieTimelineUpper",
+            "lowerResultClass": "tieTimelineLower",
+            "resultClasses": {
+                "tieTimelineUpper": {
+                    "title": "Letter details",
+                    "pageType": "instancePage",
+                    "height": "50%",
+                    "sparqlQuery": "tieTimelineQuery",
+                    "filterTarget": "instance",
+                    "resultMapper": "createCorrespondenceChartData",
+                    "resultMapperConfig": {
+                        "types": ["sender1", "sender2"],
+                        "numberTopResults": 3,
+                        "lastLabel": false
+                    },
+                    "createChartData": "createTopTimelineChartData",
+                    "tooltip": { "x": { "format": "d MMM yyyy" } },
+                    "fill": { "opacity": [0.7, 0.5] },
+                    "legend": { "show": false },
+                    "grid": {
+                        "row": {
+                          "colors": ["#d5d5d5", "transparent"], "opacity": 0.5
+                        },
+                        "column": { "colors": ["#a8a8a8", "transparent"] },
+                        "xaxis": { "lines": { "show": true } },
+                        "yaxis": { "lines": { "show": true } }
+                    }
+                },
+                "tieTimelineLower": {
+                    "pageType": "instancePage",
+                    "height": "50%",
+                    "filterTarget": "instance",
+                    "sparqlQuery": "tieTimelineYearsQuery",
+                    "resultMapper": "createCorrespondenceChartDataLower",
+                    "resultMapperConfig": {
+                        "fillEmptyValues": true
+                    },
+                    "createChartData": "createTopTimelineChartData2",
+                    "title": { "text": "Letters by year", "align": "left" },
+                    "xaxis": {
+                        "type": "datetime",
+                        "tooltip": { "enabled": true }
+                    },
+                    "yaxis": {
+                        "labels": { "minWidth": 150, "maxWidth": 300 }
+                    },
+                    "grid": {
+                        "column": { "colors": ["#a8a8a8", "transparent"] },
+                        "xaxis": { "lines": { "show": true } },
+                        "yaxis": { "lines": { "show": true } }
+                    },
+                    "tooltip": { "x": { "format": "yyyy" } },
+                    "stroke": { "curve": "stepline", "width": 1 },
+                    "fill": {
+                        "type": "gradient",
+                        "gradient": {
+                            "shadeIntensity": 1,
+                            "opacityFrom": 0.3,
+                            "opacityTo": 0.6
+                        }
+                    }
+                }
+            }
+          },
+          "tieInstancePageLetterNetwork": {
+            "tabID": 2,
+            "component": "Network",
+            "tabPath": "letter-network",
+            "tabIcon": "BubbleChart",
+            "pageType": "instancePage",
+            "sparqlQuery": "tieLinksQuery",
+            "sparqlQueryNodes": "tieNodesQuery",
+            "useNetworkAPI": true,
+            "limit": 32,
+            "optimize": 1.5,
+            "preprocess": "preprocessTie",
+            "style": [
+              {
+                "selector": "node",
+                "style": {
+                  "shape": "ellipse",
+                  "font-size": 10,
+                  "background-color": "data(color)",
+                  "label": "data(prefLabel)",
+                  "height": "data(size)",
+                  "width": "data(size)"
+                }
+              },
+              {
+                "selector": "edge",
+                "style": {
+                  "width": "data(weight)",
+                  "line-color": "data(color)",
+                  "curve-style": "bezier",
+                  "content": "data(prefLabel)",
+                  "color": "hsl(30, 64%, 35%)",
+                  "target-arrow-shape": "triangle",
+                  "target-arrow-color": "data(color)",
+                  "font-size": "8",
+                  "text-valign": "center",
+                  "edge-text-rotation": "autorotate",
+                  "text-background-opacity": 1,
+                  "text-background-color": "white",
+                  "text-background-shape": "roundrectangle"
+                }
+              }
+            ],
+            "layout": {
+              "name": "cose",
+              "idealEdgeLength": 100,
+              "nodeOverlap": 20,
+              "refresh": 20,
+              "fit": true,
+              "padding": 30,
+              "randomize": false,
+              "componentSpacing": 100,
+              "nodeRepulsion": 400000,
+              "edgeElasticity": 100,
+              "nestingFactor": 5,
+              "gravity": 80,
+              "numIter": 1347,
+              "initialTemp": 200,
+              "coolingFactor": 0.95,
+              "minTemp": 1
+            }
+          },
+          "instancePageExport": {
+            "tabID": 3,
+            "component": "Export",
+            "tabPath": "export",
+            "tabIcon": "CloudDownload",
+            "pageType": "instancePage"
+          }
+        }
+      }
+    }
+  },
+  "properties": [
+    {
+      "id": "prefLabel1",
+      "valueType": "object",
+      "makeLink": true,
+      "externalLink": false,
+      "sortValues": true,
+      "numberedList": false
+    },
+    {
+      "id": "prefLabel2",
+      "valueType": "object",
+      "makeLink": true,
+      "externalLink": false,
+      "sortValues": true,
+      "numberedList": false
+    },
+    {
+      "id": "numLetters",
+      "valueType": "string",
+      "makeLink": false,
+      "externalLink": false,
+      "sortValues": false,
+      "numberedList": false
+    },
+    {
+      "id": "letter",
+      "valueType": "object",
+      "makeLink": true,
+      "externalLink": false,
+      "sortValues": false,
+      "numberedList": true,
+      "expandedOnInstancePage": true
+    },
+    {
+      "id": "other",
+      "valueType": "object",
+      "makeLink": true,
+      "externalLink": false,
+      "sortValues": false,
+      "numberedList": true
+    },
+    {
+      "id": "ego",
+      "valueType": "object",
+      "makeLink": true,
+      "externalLink": true,
+      "sortValues": true,
+      "numberedList": false
+    },
+    {
+      "id": "alter",
+      "valueType": "object",
+      "makeLink": true,
+      "externalLink": true,
+      "sortValues": true,
+      "numberedList": false
+    }
+  ]
+}
