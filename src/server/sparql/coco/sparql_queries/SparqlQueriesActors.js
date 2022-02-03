@@ -477,17 +477,17 @@ WHERE
 {
     VALUES ?id { <ID> }
   {
-    ?id ckccs:created ?letter .
-    ?letter a ckccs:Letter ;
-      ckccs:was_addressed_to ?target .
+    ?id lssc:created ?letter .
+    ?letter a lssc:Letter ;
+      lssc:was_addressed_to ?target .
     ?target skos:prefLabel ?_target__label .
     BIND ("to" AS ?type)
   
     BIND(?id AS ?source)
   } UNION {
-    ?letter ckccs:was_addressed_to ?id ;
-      a ckccs:Letter .
-    ?source ckccs:created ?letter ;
+    ?letter lssc:was_addressed_to ?id ;
+      a lssc:Letter .
+    ?source lssc:created ?letter ;
       skos:prefLabel ?_source__label . 
 
     BIND(?id AS ?target)

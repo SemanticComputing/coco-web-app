@@ -8,7 +8,7 @@
     "sparqlQueriesFile": "SparqlQueriesLetters.js",
     "baseURI": "http://ldf.fi/coco",
     "URITemplate": "<BASE_URI>/letters/<LOCAL_ID>",
-    "facetClass": "ckccs:Letter",
+    "facetClass": "lssc:Letter",
     "frontPageImage": "main_page/works-452x262.jpg",
     "searchMode": "faceted-search",
     "defaultActiveFacets": [
@@ -249,10 +249,10 @@
             "containerClass": "ten",
             "facetType": "list",
             "filterType": "uriFilter",
-            "predicate": "^ckccs:created",
+            "predicate": "^lssc:created",
             "searchField": true,
             "sortBy": "instanceCount",
-            "sortByPredicate": "^ckccs:created/skos:prefLabel",
+            "sortByPredicate": "^lssc:created/skos:prefLabel",
             "sortDirection": "desc",
             "sortButton": true
         },
@@ -260,10 +260,10 @@
             "containerClass": "ten",
             "facetType": "list",
             "filterType": "uriFilter",
-            "predicate": "ckccs:was_addressed_to",
+            "predicate": "lssc:was_addressed_to",
             "searchField": true,
             "sortBy": "instanceCount",
-            "sortByPredicate": "ckccs:was_addressed_to/skos:prefLabel",
+            "sortByPredicate": "lssc:was_addressed_to/skos:prefLabel",
             "sortDirection": "desc",
             "sortButton": true
         },
@@ -271,10 +271,10 @@
             "containerClass": "seven",
             "facetType": "list",
             "filterType": "uriFilter",
-            "predicate": "ckccs:was_sent_from",
+            "predicate": "lssc:was_sent_from",
             "searchField": true,
             "sortBy": "instanceCount",
-            "sortByPredicate": "ckccs:was_sent_from/skos:prefLabel",
+            "sortByPredicate": "lssc:was_sent_from/skos:prefLabel",
             "sortDirection": "desc",
             "sortButton": true
         },
@@ -282,10 +282,10 @@
             "containerClass": "seven",
             "facetType": "list",
             "filterType": "uriFilter",
-            "predicate": "ckccs:was_sent_to",
+            "predicate": "lssc:was_sent_to",
             "searchField": true,
             "sortBy": "instanceCount",
-            "sortByPredicate": "ckccs:was_sent_to/skos:prefLabel",
+            "sortByPredicate": "lssc:was_sent_to/skos:prefLabel",
             "sortDirection": "desc",
             "sortButton": true
         },
@@ -317,12 +317,12 @@
             "containerClass": "ten",
             "facetType": "list",
             "filterType": "uriFilter",
-            "predicate": "ckccs:source",
+            "predicate": "lssc:source",
             "searchField": false,
             "sortBy": "instanceCount",
             "sortDirection": "desc",
             "sortButton": true,
-            "sortByPredicate": "ckccs:source/skos:prefLabel"
+            "sortByPredicate": "lssc:source/skos:prefLabel"
         }
     }
 }
