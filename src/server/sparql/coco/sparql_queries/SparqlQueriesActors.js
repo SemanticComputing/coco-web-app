@@ -90,6 +90,62 @@ export const actorPropertiesFacetResults = `
   }
 `
 
+export const topCorrespondenceFacetPageQuery = `
+SELECT ?id (?source__label AS ?from__label) (?target__label AS ?to__label)  (xsd:date(?_date) AS ?date) ?type (year(?_date) AS ?year)
+WHERE 
+{
+    <FILTER>
+  {
+    ?id lssc:created ?letter .
+    ?letter a lssc:Letter ;
+      lssc:was_addressed_to ?target .
+    ?target skos:prefLabel ?_target__label .
+    BIND ("from" AS ?type)
+  
+    BIND(?id AS ?source)
+  } UNION {
+    ?letter lssc:was_addressed_to ?id ;
+      a lssc:Letter .
+    ?source lssc:created ?letter ;
+      skos:prefLabel ?_source__label .
+
+    BIND(?id AS ?target)
+    BIND ("to" AS ?type)
+
+  }
+  ?target skos:prefLabel ?target__label .
+  ?source skos:prefLabel ?source__label .
+  ?letter crm:P4_has_time-span/crm:P82a_begin_of_the_begin ?_date .
+} 
+`
+
+export const sentReceivedFacetPageQuery = `
+  SELECT DISTINCT (STR(?year) as ?category)
+    (count(distinct ?sent_letter) AS ?letterCount)
+  WHERE {  
+    <FILTER>
+    
+    ?id lssc:created ?sent_letter .
+    ?sent_letter a lssc:Letter ;
+                  crm:P4_has_time-span/crm:P82a_begin_of_the_begin ?time_0 .
+    BIND (year(?time_0) AS ?year)
+    
+    OPTIONAL {
+      ?id lssc:birthDate/crm:P82b_end_of_the_end ?birth_end .
+    BIND(year(?birth_end) AS ?birth)
+    }
+    FILTER ((bound(?birth) && ?birth<?year) || !bound(?birth))
+
+    OPTIONAL {
+        ?id lssc:deathDate/crm:P82b_end_of_the_end ?death_end .
+      BIND(year(?death_start) AS ?death)
+    }
+    FILTER ((bound(?death) && ?year<=?death) || !bound(?death))
+  } 
+  GROUP BY ?year
+  ORDER BY ?year
+`
+
 export const actorPropertiesInstancePage = `
   BIND(?id as ?uri__id)
   BIND(?id as ?uri__prefLabel)
@@ -471,7 +527,7 @@ export const networkNodesFacetQuery = `
   }
 `
 
-export const topCorrespondenceQuery = `
+export const topCorrespondenceInstancePageQuery = `
 SELECT ?id (?source__label AS ?from__label) (?target__label AS ?to__label)  (xsd:date(?_date) AS ?date) ?type (year(?_date) AS ?year)
 WHERE 
 {
@@ -500,8 +556,8 @@ WHERE
 } 
 `
 
-//  https://api.triplydb.com/s/O9tYz4CRO
-export const sentReceivedQuery = `
+//  https://api.triplydb.com/s/N98jJ1hhJ
+export const sentReceivedInstancePageQuery = `
   SELECT DISTINCT (STR(?year) as ?category) 
     (count(distinct ?sent_letter) AS ?sentCount) 
     (count(distinct ?received_letter) AS ?receivedCount) 

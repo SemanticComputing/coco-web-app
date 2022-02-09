@@ -21,6 +21,7 @@ export const runSelectQuery = async ({
   if (useAuth) {
     headers.Authorization = `Basic ${process.env.SPARQL_ENDPOINT_BASIC_AUTH}`
   }
+  console.log(query)
   const q = querystring.stringify({ query })
   try {
     const response = await axios({
