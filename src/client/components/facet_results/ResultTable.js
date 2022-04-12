@@ -189,8 +189,8 @@ class ResultTable extends React.Component {
     let renderExpandButton
     const dataCells = this.props.data.properties.map(column => {
       const {
-        id, valueType, makeLink, externalLink, sortValues, sortBy, numberedList, minWidth,
-        height, linkAsButton, collapsedMaxWords, sourceExternalLink, renderAsHTML, HTMLParserTask
+        id, valueType, makeLink, externalLink, sortValues, sortBy, sortByConvertDataTypeTo, numberedList, minWidth,
+        height, linkAsButton, collapsedMaxWords, showExtraCollapseButton, sourceExternalLink, renderAsHTML, HTMLParserTask
       } = column
       let { previewImageHeight } = column
       if (screenSize === 'xs' || screenSize === 'sm') {
@@ -234,6 +234,7 @@ class ResultTable extends React.Component {
           externalLink={externalLink}
           sortValues={sortValues}
           sortBy={sortBy}
+          sortByConvertDataTypeTo={sortByConvertDataTypeTo}
           numberedList={numberedList}
           height={height}
           minWidth={minWidth}
@@ -243,6 +244,7 @@ class ResultTable extends React.Component {
           onExpandClick={this.handleExpandRowFromChildComponent}
           linkAsButton={linkAsButton}
           collapsedMaxWords={collapsedMaxWords}
+          showExtraCollapseButton={showExtraCollapseButton}
           shortenLabel={shortenLabel}
           showSource={false}
           sourceExternalLink={sourceExternalLink}
@@ -333,6 +335,7 @@ class ResultTable extends React.Component {
             : (
               <Table size='small'>
                 <ResultTableHead
+                  perspectiveConfig={this.props.perspectiveConfig}
                   resultClass={this.props.resultClass}
                   columns={this.props.data.properties}
                   onSortBy={this.handleSortBy}

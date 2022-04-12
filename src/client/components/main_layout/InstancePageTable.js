@@ -95,7 +95,11 @@ class InstancePageTable extends React.Component {
     }
   }
 
-  handleExpandRow = rowId => () => {
+  handleExpandRow = rowId => event => this.updateExpanedRows(rowId)
+
+  handleExpandRowFromChildComponent = rowId => this.updateExpanedRows(rowId)
+
+  updateExpanedRows = rowId => {
     const expandedRows = this.state.expandedRows
     if (expandedRows.has(rowId)) {
       expandedRows.delete(rowId)
@@ -135,7 +139,7 @@ class InstancePageTable extends React.Component {
                 const label = intl.get(`perspectives.${perspectiveID}.properties.${row.id}.label`)
                 const description = intl.get(`perspectives.${perspectiveID}.properties.${row.id}.description`)
                 const {
-                  id, valueType, makeLink, externalLink, sortValues, sortBy, numberedList, minWidth,
+                  id, valueType, makeLink, externalLink, sortValues, sortBy, sortByConvertDataTypeTo, numberedList, minWidth,
                   linkAsButton, collapsedMaxWords, showSource, sourceExternalLink, renderAsHTML, HTMLParserTask
                 } = row
                 let { previewImageHeight } = row
@@ -173,6 +177,7 @@ class InstancePageTable extends React.Component {
                     </TableCell>
                     <ResultTableCell
                       key={id}
+                      rowId={row.id}
                       columnId={id}
                       data={data[id]}
                       valueType={valueType}
@@ -180,11 +185,13 @@ class InstancePageTable extends React.Component {
                       externalLink={externalLink}
                       sortValues={sortValues}
                       sortBy={sortBy}
+                      sortByConvertDataTypeTo={sortByConvertDataTypeTo}
                       numberedList={numberedList}
                       minWidth={minWidth}
                       previewImageHeight={previewImageHeight}
                       container='cell'
                       expanded={expanded}
+                      onExpandClick={this.handleExpandRowFromChildComponent}
                       shortenLabel={false}
                       linkAsButton={linkAsButton}
                       collapsedMaxWords={collapsedMaxWords}

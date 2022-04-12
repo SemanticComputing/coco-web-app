@@ -8,13 +8,15 @@ import ImageGallerySRL from '../main_layout/ImageGallerySRL'
 
 const ResultTableCell = props => {
   const {
-    data, tableData, valueType, makeLink, externalLink, sortValues, sortBy, numberedList, minWidth,
-    height, container, columnId, expanded, linkAsButton, collapsedMaxWords, showSource,
+    data, tableData, valueType, makeLink, externalLink, sortValues, sortBy, sortByConvertDataTypeTo,
+    numberedList, minWidth, height, container, columnId, expanded, linkAsButton, collapsedMaxWords, showSource,
     sourceExternalLink, renderAsHTML, HTMLParserTask, referencedTerm, previewImageHeight,
-    onExpandClick, rowId, shortenLabel = false
+    onExpandClick, showExtraCollapseButton, rowId, shortenLabel = false
   } = props
   let cellContent = null
   const cellStyle = {
+    paddingTop: 3,
+    paddingBottom: 3,
     ...(height && { height }),
     ...(minWidth && { minWidth })
   }
@@ -28,6 +30,7 @@ const ResultTableCell = props => {
           externalLink={externalLink}
           sortValues={sortValues}
           sortBy={sortBy}
+          sortByConvertDataTypeTo={sortByConvertDataTypeTo}
           numberedList={numberedList}
           rowId={rowId}
           columnId={columnId}
@@ -50,6 +53,7 @@ const ResultTableCell = props => {
           onExpandClick={onExpandClick}
           rowId={rowId}
           collapsedMaxWords={collapsedMaxWords}
+          showExtraCollapseButton={showExtraCollapseButton}
           shortenLabel={shortenLabel}
           renderAsHTML={renderAsHTML}
           HTMLParserTask={HTMLParserTask}
