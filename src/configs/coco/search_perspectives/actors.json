@@ -706,8 +706,19 @@
             "sortByDescPredicate": "lssc:deathDate/crm:P82b_end_of_the_end",
             "startProperty": "crm:P82a_begin_of_the_begin"
         },
+        "datasource": {
+            "containerClass": "five",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "predicate": "dct:source",
+            "searchField": false,
+            "sortBy": "instanceCount",
+            "sortDirection": "desc",
+            "sortButton": true,
+            "sortByPredicate": "dct:source/skos:prefLabel"
+        },
         "external": {
-            "containerClass": "six",
+            "containerClass": "seven",
             "facetType": "list",
             "predicate": "lssc:is_related_to/a",
             "filterType": "uriFilter",

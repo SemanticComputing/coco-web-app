@@ -314,7 +314,7 @@
             "sortByPredicate": "dct:language/skos:prefLabel"
         },
         "datasource": {
-            "containerClass": "ten",
+            "containerClass": "five",
             "facetType": "list",
             "filterType": "uriFilter",
             "predicate": "dct:source",
