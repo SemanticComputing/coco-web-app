@@ -317,12 +317,12 @@
             "containerClass": "ten",
             "facetType": "list",
             "filterType": "uriFilter",
-            "predicate": "lssc:source",
+            "predicate": "dct:source",
             "searchField": false,
             "sortBy": "instanceCount",
             "sortDirection": "desc",
             "sortButton": true,
-            "sortByPredicate": "lssc:source/skos:prefLabel"
+            "sortByPredicate": "dct:source/skos:prefLabel"
         }
     }
 }

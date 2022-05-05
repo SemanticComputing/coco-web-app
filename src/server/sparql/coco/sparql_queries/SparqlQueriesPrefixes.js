@@ -14,7 +14,7 @@ PREFIX wgs84: <http://www.w3.org/2003/01/geo/wgs84_pos#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
 PREFIX actors: <http://ldf.fi/coco/actors/>
-PREFIX letters: <http://ldf.fi/coco/letters/> 
-PREFIX places: <http://ldf.fi/coco/places/>
 PREFIX lssc: <http://ldf.fi/schema/lssc/>
+PREFIX letters: <http://ldf.fi/coco/letters/>
+PREFIX places: <http://ldf.fi/coco/places/>
 `
