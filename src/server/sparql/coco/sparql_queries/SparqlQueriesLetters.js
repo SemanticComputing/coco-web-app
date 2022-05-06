@@ -117,7 +117,7 @@ UNION
 }
 UNION
 { 
-  ?id lssc:source ?datasource__id .
+  ?id dct:source ?datasource__id .
   ?datasource__id skos:prefLabel ?datasource__prefLabel .
   BIND(CONCAT("/sources/page/", REPLACE(STR(?datasource__id), "^.*\\\\/(.+)", "$1")) AS ?datasource__dataProviderUrl)
 }

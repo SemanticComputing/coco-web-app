@@ -329,9 +329,15 @@ export default {
           `
         },
         altLabel: {
-          label: 'Alternative names or vocations',
+          label: 'Alternative names',
           description: `
-            Alternative names or vocations of the actor.
+            Alternative names of the actor.
+          `
+        },
+        occupation: {
+          label: 'Occupation',
+          description: `
+          Occupation of the actor.
           `
         },
         external: {

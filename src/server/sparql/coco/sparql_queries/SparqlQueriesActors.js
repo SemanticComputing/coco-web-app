@@ -18,12 +18,7 @@ export const actorPropertiesFacetResults = `
   }
   UNION
   {
-    VALUES ?_bprop {
-      lssc:birthDate
-      lssc:approximateBirthDate
-      lssc:possibleBirthDate
-    }
-    ?id ?_bprop ?birthDateTimespan__id .
+    ?id lssc:birthDate ?birthDateTimespan__id .
     ?birthDateTimespan__id skos:prefLabel ?birthDateTimespan__prefLabel .
     OPTIONAL { ?birthDateTimespan__id crm:P82a_begin_of_the_begin ?birthDateTimespan__start }
     OPTIONAL { ?birthDateTimespan__id crm:P82b_end_of_the_end ?birthDateTimespan__end }
@@ -36,13 +31,7 @@ export const actorPropertiesFacetResults = `
   }
   UNION
   { 
-    VALUES ?_dprop { 
-      lssc:deathDate
-      lssc:inferredDeathDate
-      lssc:approximateDeathDate
-      lssc:possibleDeathDate 
-    }
-    ?id ?_dprop ?deathDateTimespan__id .
+    ?id lssc:deathDate ?deathDateTimespan__id .
     ?deathDateTimespan__id skos:prefLabel ?deathDateTimespan__prefLabel .
     OPTIONAL { ?deathDateTimespan__id crm:P82a_begin_of_the_begin ?deathDateTimespan__start }
     OPTIONAL { ?deathDateTimespan__id crm:P82b_end_of_the_end ?deathDateTimespan__end }
@@ -169,6 +158,8 @@ export const actorPropertiesInstancePage = `
   UNION 
   { ?id skos:altLabel ?altLabel }
   UNION
+  { ?id lssc:occupation_text ?occupation }
+  UNION
   { ?id lssc:is_related_to ?external__id . 
     OPTIONAL { ?external__id a/skos:prefLabel ?external__classlabel }
     OPTIONAL { ?external__id skos:prefLabel ?external__label }
@@ -229,27 +220,6 @@ export const actorPropertiesInstancePage = `
   UNION
   {
     VALUES (?rel__prop ?rel__label) {
-      (lssc:sibling_of "Sibling of")
-      (lssc:spouse_of "Spouse of")
-      (lssc:parent_of "Parent of")
-      (lssc:acquaintance_of "Acquaintance of")
-      (lssc:collaborated_with "Collaborated with")
-      (lssc:employed "Employed")
-      (lssc:member_of "Member of")
-      (lssc:relative_of "Relative of")
-      (lssc:unspecified_relationship_with "Unspecified relationship with")
-      (lssc:friend_of "Friend of")
-      (lssc:colleague_of "Colleague of")
-      (lssc:was_patron_of "Was patron of")
-    }
-    ?id ?rel__prop ?rel__id .
-    ?rel__id skos:prefLabel ?rel__label2
-    BIND (CONCAT(?rel__label, ' ',?rel__label2) AS ?rel__prefLabel)
-    BIND(CONCAT("/actors/page/", REPLACE(STR(?rel__id), "^.*\\\\/(.+)", "$1")) AS ?rel__dataProviderUrl)  
-  }
-  UNION
-  {
-    VALUES (?rel__prop ?rel__label) {
       (lssc:member_of "Member:")
     }
     ?rel__id ?rel__prop ?id ;
@@ -274,7 +244,7 @@ export const actorPropertiesInstancePage = `
   }
   UNION
   {
-    ?id lssc:source/skos:prefLabel ?datasource
+    ?id dct:source/skos:prefLabel ?datasource
   }
 `
 

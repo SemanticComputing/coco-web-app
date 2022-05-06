@@ -557,6 +557,15 @@
             "onlyOnInstancePage": true
         },
         {
+            "id": "occupation",
+            "valueType": "string",
+            "makeLink": true,
+            "externalLink": false,
+            "sortValues": false,
+            "numberedList": false,
+            "onlyOnInstancePage": true
+        },
+        {
             "id": "numSent",
             "valueType": "string",
             "makeLink": false,
@@ -705,6 +714,18 @@
             "sortByAscPredicate": "lssc:deathDate/crm:P82a_begin_of_the_begin",
             "sortByDescPredicate": "lssc:deathDate/crm:P82b_end_of_the_end",
             "startProperty": "crm:P82a_begin_of_the_begin"
+        },
+        "occupation": {
+            "containerClass": "five",
+            "facetType": "text",
+            "filterType": "uriFilter",
+            "predicate": "lssc:occupation_text",
+            "searchField": true,
+            "literal": true,
+            "sortBy": "instanceCount",
+            "sortDirection": "desc",
+            "sortButton": true,
+            "sortByPredicate": "lssc:occupation_text"
         },
         "datasource": {
             "containerClass": "five",
