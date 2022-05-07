@@ -254,6 +254,7 @@
             "sortBy": "instanceCount",
             "sortByPredicate": "^lssc:created/skos:prefLabel",
             "sortDirection": "desc",
+            "pieChartButton": true,
             "sortButton": true
         },
         "target": {
@@ -265,6 +266,7 @@
             "sortBy": "instanceCount",
             "sortByPredicate": "lssc:was_addressed_to/skos:prefLabel",
             "sortDirection": "desc",
+            "pieChartButton": true,
             "sortButton": true
         },
         "from": {
@@ -276,6 +278,7 @@
             "sortBy": "instanceCount",
             "sortByPredicate": "lssc:was_sent_from/skos:prefLabel",
             "sortDirection": "desc",
+            "pieChartButton": true,
             "sortButton": true
         },
         "to": {
@@ -287,6 +290,7 @@
             "sortBy": "instanceCount",
             "sortByPredicate": "lssc:was_sent_to/skos:prefLabel",
             "sortDirection": "desc",
+            "pieChartButton": true,
             "sortButton": true
         },
         "productionTimespan": {
