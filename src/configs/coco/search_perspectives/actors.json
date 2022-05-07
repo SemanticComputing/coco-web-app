@@ -717,15 +717,14 @@
         },
         "occupation": {
             "containerClass": "five",
-            "facetType": "text",
+            "facetType": "list",
             "filterType": "uriFilter",
-            "predicate": "lssc:occupation_text",
+            "predicate": "lssc:occupation",
             "searchField": true,
-            "literal": true,
             "sortBy": "instanceCount",
             "sortDirection": "desc",
             "sortButton": true,
-            "sortByPredicate": "lssc:occupation_text"
+            "sortByPredicate": "lssc:occupation/skos:prefLabel"
         },
         "datasource": {
             "containerClass": "five",

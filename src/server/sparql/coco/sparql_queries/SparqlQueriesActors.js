@@ -158,7 +158,7 @@ export const actorPropertiesInstancePage = `
   UNION 
   { ?id skos:altLabel ?altLabel }
   UNION
-  { ?id lssc:occupation_text ?occupation }
+  { ?id lssc:occupation/skos:prefLabel ?occupation }
   UNION
   { ?id lssc:is_related_to ?external__id . 
     OPTIONAL { ?external__id a/skos:prefLabel ?external__classlabel }
