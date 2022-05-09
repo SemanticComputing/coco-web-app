@@ -111,12 +111,6 @@ UNION
 }
 UNION
 { 
-  ?id lssc:mentions ?mentions__id .
-  ?mentions__id skos:prefLabel ?mentions__prefLabel .
-  BIND(CONCAT("/actors/page/", REPLACE(STR(?mentions__id), "^.*\\\\/(.+)", "$1")) AS ?mentions__dataProviderUrl)
-}
-UNION
-{ 
   ?id dct:source ?datasource__id .
   ?datasource__id skos:prefLabel ?datasource__prefLabel .
   BIND(CONCAT("/sources/page/", REPLACE(STR(?datasource__id), "^.*\\\\/(.+)", "$1")) AS ?datasource__dataProviderUrl)
@@ -133,12 +127,11 @@ UNION
   ?to__id skos:prefLabel ?to__prefLabel .
   BIND(CONCAT("/places/page/", REPLACE(STR(?to__id), "^.*\\\\/(.+)", "$1")) AS ?to__dataProviderUrl)
 }
-UNIOn
+UNION
 { 
-  ?id lssc:is_related_to ?related__id . 
-  OPTIONAL { ?related__id skos:prefLabel ?related__label }
-  BIND(COALESCE(?related__label, ?related__id) AS ?related__prefLabel)
-  BIND(?related__id AS ?related__dataProviderUrl)
+  ?id lssc:webpage ?related__id . 
+  BIND(?related__id AS ?related__prefLabel)
+  BIND(URI(?related__id) AS ?related__dataProviderUrl)
 }
 UNION
 {
