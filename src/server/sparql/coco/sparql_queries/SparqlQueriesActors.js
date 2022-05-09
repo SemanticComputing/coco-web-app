@@ -388,9 +388,10 @@ export const peopleRelatedTo = `
 `
 
 export const placePropertiesInfoWindow = `
-    ?id skos:prefLabel ?prefLabel__id .
-    BIND(?prefLabel__id AS ?prefLabel__prefLabel)
-    BIND(CONCAT("/places/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
+  OPTIONAL { ?id skos:prefLabel ?_label }
+  BIND(COALESCE(?_label, "<place>") AS ?prefLabel__id)
+  BIND(?prefLabel__id AS ?prefLabel__prefLabel)
+  BIND(CONCAT("/places/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
 `
 
 //  TODO: add href to tie
