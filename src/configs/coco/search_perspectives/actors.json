@@ -512,15 +512,14 @@
             "onlyOnInstancePage": true
         },
         {
-            "id": "floruit",
-            "valueType": "string",
+            "id": "floruitTimespan",
+            "valueType": "object",
             "makeLink": false,
             "externalLink": false,
-            "sortValues": false,
+            "sortValues": true,
             "numberedList": false,
             "minWidth": 70,
-            "priority": 5,
-            "onlyOnInstancePage": true
+            "priority": 5
         },
         {
             "id": "deathDateTimespan",
@@ -690,7 +689,7 @@
             "sortByDescPredicate": "lssc:birthDate/crm:P82b_end_of_the_end",
             "startProperty": "crm:P82a_begin_of_the_begin"
         },
-        "floruit": {
+        "floruitTimespan": {
             "containerClass": "four",
             "endProperty": "crm:P82b_end_of_the_end",
             "facetType": "timespan",

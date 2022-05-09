@@ -310,7 +310,7 @@ export default {
           Place of Birth
           `
         },
-        floruit: {
+        floruitTimespan: {
           label: 'Floruit',
           description: `
           Floruit, e.g. time of flourishing, time of activity.

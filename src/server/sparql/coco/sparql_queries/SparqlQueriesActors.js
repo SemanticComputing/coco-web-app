@@ -24,12 +24,6 @@ export const actorPropertiesFacetResults = `
     OPTIONAL { ?birthDateTimespan__id crm:P82b_end_of_the_end ?birthDateTimespan__end }
   }
   UNION
-  {
-    ?id lssc:was_born_in_location ?birthPlace__id .
-    ?birthPlace__id skos:prefLabel ?birthPlace__prefLabel .
-    BIND(CONCAT("/places/page/", REPLACE(STR(?birthPlace__id), "^.*\\\\/(.+)", "$1")) AS ?birthPlace__dataProviderUrl)
-  }
-  UNION
   { 
     ?id lssc:deathDate ?deathDateTimespan__id .
     ?deathDateTimespan__id skos:prefLabel ?deathDateTimespan__prefLabel .
@@ -37,17 +31,11 @@ export const actorPropertiesFacetResults = `
     OPTIONAL { ?deathDateTimespan__id crm:P82b_end_of_the_end ?deathDateTimespan__end }
   }
   UNION
-  {
-    ?id lssc:died_at_location ?deathPlace__id .
-    ?deathPlace__id skos:prefLabel ?deathPlace__prefLabel .
-    BIND(CONCAT("/places/page/", REPLACE(STR(?deathPlace__id), "^.*\\\\/(.+)", "$1")) AS ?deathPlace__dataProviderUrl)
-  }
-  UNION
   { 
-    ?id lssc:flourished ?floruit__id .
-    ?floruit__id skos:prefLabel ?floruit__prefLabel ;
-      crm:P82a_begin_of_the_begin ?floruit__start; 
-      crm:P82b_end_of_the_end ?floruit__end 
+    ?id lssc:flourished ?floruitTimespan__id .
+    ?floruitTimespan__id skos:prefLabel ?floruitTimespan__prefLabel .
+    OPTIONAL { ?floruitTimespan__id crm:P82a_begin_of_the_begin ?floruitTimespan__start }
+    OPTIONAL { ?floruitTimespan__id crm:P82b_end_of_the_end ?floruitTimespan__end }
   }
   UNION
   { ?id lssc:is_related_to ?external__id . 
@@ -168,12 +156,7 @@ export const actorPropertiesInstancePage = `
   }
   UNION
   {
-    VALUES ?_bprop {
-      lssc:birthDate
-      lssc:approximateBirthDate
-      lssc:possibleBirthDate
-    }
-    ?id ?_bprop ?birthDateTimespan__id .
+    ?id lssc:birthDate ?birthDateTimespan__id .
     ?birthDateTimespan__id skos:prefLabel ?birthDateTimespan__prefLabel .
     OPTIONAL { ?birthDateTimespan__id crm:P82a_begin_of_the_begin ?birthDateTimespan__start }
     OPTIONAL { ?birthDateTimespan__id crm:P82b_end_of_the_end ?birthDateTimespan__end }
@@ -186,13 +169,7 @@ export const actorPropertiesInstancePage = `
   }
   UNION
   {
-    VALUES ?_dprop { 
-      lssc:deathDate
-      lssc:inferredDeathDate
-      lssc:approximateDeathDate
-      lssc:possibleDeathDate 
-    }
-    ?id ?_dprop ?deathDateTimespan__id .
+    ?id lssc:deathDate ?deathDateTimespan__id .
     ?deathDateTimespan__id skos:prefLabel ?deathDateTimespan__prefLabel .
     OPTIONAL { ?deathDateTimespan__id crm:P82a_begin_of_the_begin ?deathDateTimespan__start }
     OPTIONAL { ?deathDateTimespan__id crm:P82b_end_of_the_end ?deathDateTimespan__end }
@@ -204,8 +181,11 @@ export const actorPropertiesInstancePage = `
     BIND(CONCAT("/places/page/", REPLACE(STR(?deathPlace__id), "^.*\\\\/(.+)", "$1")) AS ?deathPlace__dataProviderUrl)
   }
   UNION
-  {
-    ?id lssc:flourished/skos:prefLabel ?floruit
+  { 
+    ?id lssc:flourished ?floruitTimespan__id .
+    ?floruitTimespan__id skos:prefLabel ?floruitTimespan__prefLabel .
+    OPTIONAL { ?floruitTimespan__id crm:P82a_begin_of_the_begin ?floruitTimespan__start }
+    OPTIONAL { ?floruitTimespan__id crm:P82b_end_of_the_end ?floruitTimespan__end }
   }
   UNION
   {
