@@ -194,3 +194,17 @@ WHERE {
 GROUP BY ?category 
 ORDER BY ?category
 `
+
+export const sendingPlacesHeatmapQuery = `
+  SELECT DISTINCT ?id ?lat ?long
+  (1 as ?instanceCount) # for heatmap
+  WHERE {
+    <FILTER>
+      #?id lssc:created ?letter .
+      #?letter lssc:was_addressed_to ?target .
+      ?id lssc:was_sent_from ?sending_place .
+      ?sending_place skos:prefLabel ?locationLabel ;
+        geo:lat ?lat ;
+        geo:long ?long .
+  }
+  `

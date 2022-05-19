@@ -23,6 +23,13 @@
                 10.37
             ],
             "zoom": 2
+        },
+        "sendingPlacesHeatmap": {
+            "center": [
+                65.184809,
+                27.314050
+            ],
+            "zoom": 4
         }
     },
     "resultClasses": {
@@ -80,6 +87,17 @@
         "lettersMigrationsDialog": {
             "sparqlQuery": "lettersMigrationsDialogQuery",
             "filterTarget": "id"
+        },
+        "sendingPlacesHeatmap": {
+            "tabID": 4,
+            "tabPath": "heatmap",
+            "tabIcon": "AddLocation",
+            "component": "Deck",
+            "layerType": "heatmapLayer",
+            "sparqlQuery": "sendingPlacesHeatmapQuery",
+            "facetClass": "letters",
+            "filterTarget": "id",
+            "resultMapper": "mapPlaces"
         },
         "lettersByYear": {
             "tabID": 2,
