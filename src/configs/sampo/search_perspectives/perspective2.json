@@ -118,6 +118,7 @@
             "instanceConfig": {
                 "propertiesQueryBlock": "placePropertiesInfoWindow",
                 "relatedInstances": "manuscriptsProducedAt",
+                "filterTarget": "related__id",
                 "createPopUpContent": "createPopUpContentMMM"
             }
         },
@@ -130,7 +131,10 @@
             "facetClass": "perspective2",
             "filterTarget": "manuscripts",
             "resultMapper": "mapPlaces",
-            "layerType": "heatmapLayer"
+            "layerType": "heatmapLayer",
+            "heatmapRadiusPixels": 40,
+            "heatmapThreshold": 0.025,
+            "heatmapIntensity": 1
         },
         "lastKnownLocations": {
             "tabID": 5,
