@@ -43,13 +43,15 @@ OPTIONAL
 
 OPTIONAL
 {
-  SELECT DISTINCT ?id ?letter__id ?letter__prefLabel ?letter__dataProviderUrl  WHERE {
+  SELECT DISTINCT ?id ?letter__id ?letter__prefLabel # ?letter__dataProviderUrl  
+    (CONCAT("/letters/page/", REPLACE(STR(?letter__id), "^.*\\\\/(.+)", "$1")) AS ?letter__dataProviderUrl)
+    WHERE {
+      
     ?letter__id lssc:in_tie ?id ;
-                skos:prefLabel ?letter__prefLabel . 
+     skos:prefLabel ?letter__prefLabel . 
 
-    BIND(CONCAT("/letters/page/", REPLACE(STR(?letter__id), "^.*\\\\/(.+)", "$1")) AS ?letter__dataProviderUrl)
-
-    OPTIONAL { ?letter__id (crm:P4_has_time-span|lssc:inferredDate|lssc:approximateDate|lssc:possibleDate)/crm:P82a_begin_of_the_begin ?letter__timespan }
+    OPTIONAL { ?letter__id crm:P4_has_time-span/crm:P82a_begin_of_the_begin ?letter__timespan }
+    
   } 
   ORDER BY COALESCE(STR(?letter__timespan), CONCAT("9999", ?letter__prefLabel))
 }
@@ -110,7 +112,7 @@ SELECT DISTINCT ?source ?target
   ?weight (STR(?weight) AS ?prefLabel)
 WHERE {
   { VALUES ?id { <ID> }
-    VALUES ?class { crm:E21_Person crm:E39_Actor crm:E74_Group }
+    VALUES ?class { crm:E21_Person crm:E39_Actor crm:E74_Group  lssc:Family }
     ?id a ?class .
   } UNION { 
     VALUES ?_tie { <ID> }
@@ -143,7 +145,7 @@ WHERE {
 export const tieNodesQuery = `
   SELECT DISTINCT ?id ?prefLabel ?class ?href
   WHERE {
-    VALUES ?class { crm:E21_Person crm:E39_Actor crm:E74_Group }
+    VALUES ?class { crm:E21_Person crm:E39_Actor crm:E74_Group  lssc:Family }
     VALUES ?id { <ID_SET> }
     ?id a ?class ;
      skos:prefLabel ?_label .

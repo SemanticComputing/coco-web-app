@@ -14,7 +14,7 @@ export const actorPropertiesFacetResults = `
   {
   ?id skos:prefLabel ?prefLabel__id .
   BIND (?prefLabel__id as ?prefLabel__prefLabel)
-  BIND(CONCAT("/${perspectiveID}/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
+  BIND (CONCAT("/${perspectiveID}/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
   }
   UNION
   {
@@ -450,7 +450,7 @@ export const networkNodesQuery = `
   SELECT DISTINCT ?id ?prefLabel ?class ?href
     (COALESCE(?_out, 0)+COALESCE(?_in, 0) AS ?numLetters)
   WHERE {
-    VALUES ?class { crm:E21_Person crm:E39_Actor crm:E74_Group }
+    VALUES ?class { crm:E21_Person crm:E39_Actor crm:E74_Group lssc:Family }
     VALUES ?id { <ID_SET> }
     ?id a ?class ;
       skos:prefLabel ?_label .
@@ -466,7 +466,7 @@ export const networkNodesFacetQuery = `
  SELECT DISTINCT ?id ?prefLabel ?class ?href
  (COALESCE(?_out, 0)+COALESCE(?_in, 0) AS ?numLetters)
  WHERE {
-   VALUES ?class { crm:E21_Person crm:E39_Actor crm:E74_Group }
+   VALUES ?class { crm:E21_Person crm:E39_Actor crm:E74_Group  lssc:Family }
     VALUES ?id { <ID_SET> }
     ?id a ?class ;
     skos:prefLabel ?_label .
