@@ -657,6 +657,16 @@
             "sortByPredicate": "skos:prefLabel",
             "textQueryProperty": "skos:prefLabel"
         },
+        "type": {
+            "containerClass": "four",
+            "facetType": "list",
+            "predicate": "a",
+            "filterType": "uriFilter",
+            "sortBy": "instanceCount",
+            "sortDirection": "desc",
+            "pieChartButton": true,
+            "sortByPredicate": "a/skos:prefLabel"
+        },
         "gender": {
             "containerClass": "three",
             "facetType": "list",
@@ -666,15 +676,6 @@
             "sortDirection": "desc",
             "pieChartButton": true,
             "sortByPredicate": "foaf:gender/skos:prefLabel"
-        },
-        "type": {
-            "containerClass": "four",
-            "facetType": "list",
-            "predicate": "a",
-            "filterType": "uriFilter",
-            "sortBy": "instanceCount",
-            "sortDirection": "desc",
-            "sortByPredicate": "a/skos:prefLabel"
         },
         "birthDateTimespan": {
             "containerClass": "four",
@@ -736,6 +737,7 @@
             "sortBy": "instanceCount",
             "sortDirection": "desc",
             "sortButton": true,
+            "pieChartButton": true,
             "sortByPredicate": "dct:source/skos:prefLabel"
         },
         "external": {
