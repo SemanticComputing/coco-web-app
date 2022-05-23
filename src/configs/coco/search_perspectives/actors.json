@@ -470,9 +470,9 @@
             "minWidth": 200
         },
         {
-            "id": "gender",
+            "id": "type",
             "valueType": "object",
-            "makeLink": false,
+            "makeLink": true,
             "externalLink": false,
             "sortValues": true,
             "numberedList": false,
@@ -480,9 +480,9 @@
             "priority": 5
         },
         {
-            "id": "type",
+            "id": "gender",
             "valueType": "object",
-            "makeLink": true,
+            "makeLink": false,
             "externalLink": false,
             "sortValues": true,
             "numberedList": false,
