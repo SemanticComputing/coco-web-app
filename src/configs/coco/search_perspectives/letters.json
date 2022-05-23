@@ -333,6 +333,7 @@
             "sortBy": "instanceCount",
             "sortDirection": "desc",
             "sortButton": true,
+            "pieChartButton": true,
             "sortByPredicate": "dct:language/skos:prefLabel"
         },
         "datasource": {
@@ -344,6 +345,7 @@
             "sortBy": "instanceCount",
             "sortDirection": "desc",
             "sortButton": true,
+            "pieChartButton": true,
             "sortByPredicate": "dct:source/skos:prefLabel"
         }
     }
