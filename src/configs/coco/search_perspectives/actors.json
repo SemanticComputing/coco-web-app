@@ -308,77 +308,8 @@
                 "createPopUpContent": "createPopUpContentLetterSampo"
             }
         },
-        "actorTops": {
-            "tabID": 2,
-            "component": "ApexChartsDouble",
-            "tabPath": "top-correspondences",
-            "tabIcon": "Tune",
-            "upperResultClass": "actorFacetPageDoubleUpper",
-            "lowerResultClass": "actorFacetPageDoubleLower",
-            "resultClasses": {
-                "actorFacetPageDoubleUpper": {
-                    "title": "Top {} Correspondences",
-                    "height": "60%",
-                    "facetClass": "actors",
-                    "filterTarget": "id",
-                    "sparqlQuery": "topCorrespondenceFacetPageQuery",
-                    "resultMapper": "createCorrespondenceChartData",
-                    "resultMapperConfig": {
-                        "types": ["to", "from"],
-                        "numberTopResults": 10,
-                        "lastLabel": "Other"
-                    },
-                    "createChartData": "createTopTimelineChartData",
-                    "tooltip": { "x": { "format": "d MMM yyyy" } },
-                    "fill": { "opacity": [0.7, 0.5] },
-                    "legend": { "position": "bottom" },
-                    "grid": {
-                        "row": {
-                            "colors": ["#d5d5d5", "transparent"], "opacity": 0.5
-                        },
-                        "column": { "colors": ["#a8a8a8", "transparent"] },
-                        "xaxis": { "lines": { "show": true } },
-                        "yaxis": { "lines": { "show": true } }
-                    }
-                },
-                "actorFacetPageDoubleLower": {
-                    "height": "40%",
-                    "facetClass": "actors",
-                    "filterTarget": "id",
-                    "sparqlQuery": "sentReceivedFacetPageQuery",
-                    "resultMapper": "createCorrespondenceChartDataLower",
-                    "resultMapperConfig": {
-                        "fillEmptyValues": true
-                    },
-                    "createChartData": "createTopTimelineChartData2",
-                    "title": { "text": "Letters by Year", "align": "left" },
-                    "xaxis": {
-                        "type": "datetime",
-                        "tooltip": { "enabled": true }
-                    },
-                    "yaxis": {
-                        "labels": { "minWidth": 150, "maxWidth": 300 }
-                    },
-                    "grid": {
-                        "column": { "colors": ["#a8a8a8", "transparent"] },
-                        "xaxis": { "lines": { "show": true } },
-                        "yaxis": { "lines": { "show": true } }
-                    },
-                    "tooltip": { "x": { "format": "yyyy" } },
-                    "stroke": { "curve": "stepline", "width": 1 },
-                    "fill": {
-                        "type": "gradient",
-                        "gradient": {
-                            "shadeIntensity": 1,
-                            "opacityFrom": 0.3,
-                            "opacityTo": 0.6
-                        }
-                    }
-                }
-            }
-        },
         "actorNetwork": {
-            "tabID": 3,
+            "tabID": 2,
             "component": "Network",
             "tabPath": "network",
             "tabIcon": "BubbleChart",
@@ -441,7 +372,7 @@
             }
         },
         "export": {
-            "tabID": 4,
+            "tabID": 3,
             "component": "Export",
             "tabPath": "export",
             "tabIcon": "CloudDownload",

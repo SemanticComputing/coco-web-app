@@ -84,6 +84,7 @@ export default {
     'letter-network': 'network of letters',
     'social-signatures': 'social signatures',
     'top-correspondences': 'top correspondences',
+    'top-correspondents': 'top correspondents',
     sentReceivedByPlace: 'timeline of letters',
     correspondenceTimeline: 'Letter Timeline',
     sentReceivedByTie: 'Timeline',
@@ -256,10 +257,6 @@ export default {
             <li>
               <strong>LETTERS</strong> show the available information about letters sent or received by this person.
               NB some people may not have any letter information available.
-            </li>
-            <li>
-              <strong>TOP CORRESPONDENCES</STRONG> view shows a timeline of letters and most important correspondences of this person. The upper chart of the timeline shows the activities using a precision of one day, the lower one the yearly amounts of sent and received letters.
-              NB. Letters having more approximate temporal information, e.g. 'sent 1860-1865' show up on the first day of that time period, e.g. '1 Jan. 1860'.
             </li>
             <li>
               <strong>NETWORK OF LETTERS</strong> shows this actors's relations to other actors connected by the correspondences.
@@ -452,6 +449,10 @@ export default {
       </li>
       <li>
         <strong>BY YEAR</strong> includes a chart showing the yearly distribution of letters in the database.
+      </li>
+      <li>
+        <strong>TOP CORRESPONDENTS</STRONG> view shows a timeline of letters and most important correspondents. The upper chart of the timeline shows the activities using a precision of one day, the lower one the yearly amounts of sent and received letters.
+        NB. Letters having more approximate temporal information, e.g. 'sent 1860-1865' show up on the first day of that time period, e.g. '1 Jan. 1860'.
       </li>
       <li>
         <strong>SPARQL-QUERY</strong> the SPARQL query used to generate the result

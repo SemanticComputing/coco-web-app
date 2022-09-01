@@ -180,6 +180,21 @@ export const lettersMigrationsDialogQuery = `
   }
 `
 
+export const topCorrespondenceFacetPageQuery = `
+SELECT DISTINCT ?from__label ?to__label (xsd:date(?_date) AS ?date) ?type (year(?_date) AS ?year)
+WHERE {
+  ?id a lssc:Letter .
+
+  <FILTER>
+
+  ?id lssc:was_addressed_to/skos:prefLabel ?to__label ;
+  crm:P4_has_time-span/crm:P82a_begin_of_the_begin ?_date ;
+  ^lssc:created/skos:prefLabel ?from__label .
+
+  VALUES ?type { "to" "from" }
+}
+`
+
 //  https://api.triplydb.com/s/JJ8pW_uH3
 export const lettersByYearQuery = `
 SELECT DISTINCT ?category (COUNT(DISTINCT ?letter) AS ?count)
@@ -191,8 +206,20 @@ WHERE {
   BIND (STR(year(?time_0)) AS ?category)
   FILTER (BOUND(?category))
 } 
-GROUP BY ?category 
-ORDER BY ?category
+GROUP BY ?category ORDER BY ?category
+`
+
+export const yearlyLettersFacetPageQuery = `
+SELECT DISTINCT (STR(?year) as ?category) (count(distinct ?id) AS ?letterCount)
+WHERE {
+  <FILTER>
+  
+  ?id a lssc:Letter ;
+      crm:P4_has_time-span/crm:P82a_begin_of_the_begin ?time_0 .
+  BIND (year(?time_0) AS ?year)
+} 
+GROUP BY ?year
+ORDER BY ?year
 `
 
 export const sendingPlacesHeatmapQuery = `
@@ -207,4 +234,4 @@ export const sendingPlacesHeatmapQuery = `
         geo:lat ?lat ;
         geo:long ?long .
   }
-  `
+`
