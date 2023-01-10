@@ -6,7 +6,7 @@
     "prefixesFile": "SparqlQueriesPrefixes.js"
   },
   "sparqlQueriesFile": "SparqlQueriesMetrics.js",
-  "baseURI": "http://ldf.fi/schema/lssc",
+  "baseURI": "http://ldf.fi/schema/coco",
   "URITemplate": "<BASE_URI>/<LOCAL_ID>",
   "resultClasses": {
     "metrics": {
