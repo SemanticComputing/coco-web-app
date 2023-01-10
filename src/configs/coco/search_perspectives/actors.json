@@ -8,7 +8,7 @@
     "sparqlQueriesFile": "SparqlQueriesActors.js",
     "baseURI": "http://ldf.fi/coco",
     "URITemplate": "<BASE_URI>/actors/<LOCAL_ID>",
-    "facetClass": "crm:E21_Person crm:E39_Actor crm:E74_Group lssc:Family",
+    "facetClass": "crm:E21_Person crm:E39_Actor crm:E74_Group cocos:Family cocos:Company  cocos:Unknown",
     "frontPageImage": "main_page/people2-452x262.jpg",
     "searchMode": "faceted-search",
     "defaultActiveFacets": [
@@ -434,6 +434,7 @@
         {
             "id": "birthPlace",
             "valueType": "object",
+            "facetLabelFilter": "FILTER(LANG(?prefLabel_) = 'fi')",
             "makeLink": true,
             "externalLink": false,
             "sortValues": false,
@@ -573,10 +574,10 @@
     ],
     "facets": {
         "numSent": {
-            "sortByPattern": "{ SELECT ?id (COALESCE(?_orderBy,0) AS ?orderBy) WHERE { VALUES ?facetClass { <FACET_CLASS> } ?id a ?facetClass . OPTIONAL { ?id lssc:out_degree ?_orderBy }} }"
+            "sortByPattern": "{ SELECT ?id (COALESCE(?_orderBy,0) AS ?orderBy) WHERE { VALUES ?facetClass { <FACET_CLASS> } ?id a ?facetClass . OPTIONAL { ?id cocos:out_degree ?_orderBy }} }"
         },
         "numReceived": {
-            "sortByPattern": "{ SELECT ?id (COALESCE(?_orderBy,0) AS ?orderBy) WHERE { VALUES ?facetClass { <FACET_CLASS> } ?id a ?facetClass . OPTIONAL { ?id lssc:in_degree ?_orderBy }} }"
+            "sortByPattern": "{ SELECT ?id (COALESCE(?_orderBy,0) AS ?orderBy) WHERE { VALUES ?facetClass { <FACET_CLASS> } ?id a ?facetClass . OPTIONAL { ?id cocos:in_degree ?_orderBy }} }"
         },
         "image": {
             "sortByPattern": "{ SELECT ?id (COALESCE(?_orderBy,'z') AS ?orderBy) WHERE { VALUES ?facetClass { <FACET_CLASS> } ?id a ?facetClass . OPTIONAL { ?id sch:image ?_orderBy }} }"
@@ -616,9 +617,9 @@
             "dataType": "xsd:dateTime",
             "max": null,
             "min": null,
-            "predicate": "lssc:birthDate",
-            "sortByAscPredicate": "lssc:birthDate/crm:P82a_begin_of_the_begin",
-            "sortByDescPredicate": "lssc:birthDate/crm:P82b_end_of_the_end",
+            "predicate": "cocos:birthDate",
+            "sortByAscPredicate": "cocos:birthDate/crm:P82a_begin_of_the_begin",
+            "sortByDescPredicate": "cocos:birthDate/crm:P82b_end_of_the_end",
             "startProperty": "crm:P82a_begin_of_the_begin"
         },
         "floruitTimespan": {
@@ -629,9 +630,9 @@
             "dataType": "xsd:dateTime",
             "max": null,
             "min": null,
-            "predicate": "lssc:flourished",
-            "sortByAscPredicate": "lssc:flourished/crm:P82a_begin_of_the_begin",
-            "sortByDescPredicate": "lssc:flourished/crm:P82b_end_of_the_end",
+            "predicate": "cocos:flourished",
+            "sortByAscPredicate": "cocos:flourished/crm:P82a_begin_of_the_begin",
+            "sortByDescPredicate": "cocos:flourished/crm:P82b_end_of_the_end",
             "startProperty": "crm:P82a_begin_of_the_begin"
         },
         "deathDateTimespan": {
@@ -642,22 +643,22 @@
             "dataType": "xsd:dateTime",
             "max": null,
             "min": null,
-            "predicate": "lssc:deathDate",
-            "sortByAscPredicate": "lssc:deathDate/crm:P82a_begin_of_the_begin",
-            "sortByDescPredicate": "lssc:deathDate/crm:P82b_end_of_the_end",
+            "predicate": "cocos:deathDate",
+            "sortByAscPredicate": "cocos:deathDate/crm:P82a_begin_of_the_begin",
+            "sortByDescPredicate": "cocos:deathDate/crm:P82b_end_of_the_end",
             "startProperty": "crm:P82a_begin_of_the_begin"
         },
         "occupation": {
             "containerClass": "seven",
             "facetType": "list",
             "filterType": "uriFilter",
-            "predicate": "lssc:occupation",
+            "predicate": "cocos:occupation",
             "searchField": true,
             "sortBy": "instanceCount",
             "sortDirection": "desc",
             "sortButton": true,
             "pieChartButton": true,
-            "sortByPredicate": "lssc:occupation/skos:prefLabel"
+            "sortByPredicate": "cocos:occupation/skos:prefLabel"
         },
         "datasource": {
             "containerClass": "five",
@@ -674,11 +675,11 @@
         "external": {
             "containerClass": "seven",
             "facetType": "list",
-            "predicate": "lssc:is_related_to/a",
+            "predicate": "cocos:is_related_to/a",
             "filterType": "uriFilter",
             "sortBy": "instanceCount",
             "sortDirection": "desc",
-            "sortByPredicate": "lssc:is_related_to/a/skos:prefLabel"
+            "sortByPredicate": "cocos:is_related_to/a/skos:prefLabel"
         }
     }
 }

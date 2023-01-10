@@ -9,9 +9,9 @@ export const metricPropertiesInstancePage = `
   UNION
   {
     SELECT ?id ?highest__id ?highest__prefLabel ?highest__dataProviderUrl {
-      ?highest__id lssc:has_statistic [
+      ?highest__id cocos:has_statistic [
         a ?id ;
-        lssc:value ?_value 
+        cocos:value ?_value 
         ] ;
           skos:prefLabel ?_label .
       BIND(CONCAT("/actors/page/", REPLACE(STR(?highest__id), "^.*\\\\/(.+)", "$1")) AS ?highest__dataProviderUrl)

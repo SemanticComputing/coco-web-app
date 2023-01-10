@@ -6,7 +6,7 @@
     "prefixesFile": "SparqlQueriesPrefixes.js"
   },
   "sparqlQueriesFile": "SparqlQueriesTies.js",
-  "baseURI": "http://ldf.fi/lssc",
+  "baseURI": "http://ldf.fi/coco",
   "URITemplate": "<BASE_URI>/ties/<LOCAL_ID>",
   "resultClasses": {
     "ties": {

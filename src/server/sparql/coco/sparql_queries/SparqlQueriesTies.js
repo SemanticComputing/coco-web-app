@@ -6,9 +6,9 @@ export const sahaModel = '"&model=ckcc"'
 //  TODO: add suitable letter properties, e.g. subject etc.
 //  TODO: fix node links, e.g. copy and change url in networkNodesQuery
 export const tiePropertiesInstancePage = `
-?id lssc:actor1 ?ego__id ;
-  lssc:actor2 ?alter__id ;
-  lssc:num_letters ?numLetters ;
+?id cocos:actor1 ?ego__id ;
+  cocos:actor2 ?alter__id ;
+  cocos:num_letters ?numLetters ;
   skos:prefLabel ?prefLabel .
 
 BIND(?ego__id as ?ego__prefLabel)
@@ -33,8 +33,8 @@ OPTIONAL
 
 OPTIONAL
 {
-  [] lssc:actor1|lssc:actor2 ?ego__id ; lssc:actor1|lssc:actor2 ?other__id .
-  [] lssc:actor1|lssc:actor2 ?alter__id ; lssc:actor1|lssc:actor2 ?other__id .
+  [] cocos:actor1|cocos:actor2 ?ego__id ; cocos:actor1|cocos:actor2 ?other__id .
+  [] cocos:actor1|cocos:actor2 ?alter__id ; cocos:actor1|cocos:actor2 ?other__id .
   FILTER (?other__id!=?ego__id && ?other__id!=?alter__id)
 
   ?other__id skos:prefLabel ?other__prefLabel .
@@ -47,7 +47,7 @@ OPTIONAL
     (CONCAT("/letters/page/", REPLACE(STR(?letter__id), "^.*\\\\/(.+)", "$1")) AS ?letter__dataProviderUrl)
     WHERE {
       
-    ?letter__id lssc:in_tie ?id ;
+    ?letter__id cocos:in_tie ?id ;
      skos:prefLabel ?letter__prefLabel . 
 
     OPTIONAL { ?letter__id crm:P4_has_time-span/crm:P82a_begin_of_the_begin ?letter__timespan }
@@ -63,16 +63,16 @@ SELECT DISTINCT ?id ?sender1__label ?sender2__label (xsd:date(?_date) AS ?date) 
   
   BIND(<ID> as ?id)
   
-  ?letter lssc:in_tie ?id ;
+  ?letter cocos:in_tie ?id ;
           crm:P4_has_time-span/crm:P82a_begin_of_the_begin ?_date .
   
   {
-    ?id lssc:actor1 [ lssc:created ?letter ; skos:prefLabel ?sender1__label ]
+    ?id cocos:actor1 [ ^cocos:was_authored_by ?letter ; skos:prefLabel ?sender1__label ]
     BIND ("sender1" AS ?type)
   }
   UNION
   {
-    ?id lssc:actor2 [ lssc:created ?letter ; skos:prefLabel ?sender2__label ]
+    ?id cocos:actor2 [ ^cocos:was_authored_by ?letter ; skos:prefLabel ?sender2__label ]
     BIND ("sender2" AS ?type)
   }
 }
@@ -88,18 +88,18 @@ SELECT DISTINCT (STR(?year) as ?category)
   
   BIND(<ID> as ?id)
   
-  ?letter lssc:in_tie ?id ;
+  ?letter cocos:in_tie ?id ;
           crm:P4_has_time-span/crm:P82a_begin_of_the_begin ?time_0 .
   BIND (year(?time_0) AS ?year)
   FILTER (BOUND(?year))
   
   {
-    ?id lssc:actor1/lssc:created ?letter .
+    ?id cocos:actor1/^cocos:was_authored_by ?letter .
     BIND (?letter AS ?sent_letter)
   }
   UNION
   {
-    ?id lssc:actor2/lssc:created ?letter .
+    ?id cocos:actor2/^cocos:was_authored_by?letter .
     BIND (?letter AS ?received_letter)
   }
   } 
@@ -112,25 +112,25 @@ SELECT DISTINCT ?source ?target
   ?weight (STR(?weight) AS ?prefLabel)
 WHERE {
   { VALUES ?id { <ID> }
-    VALUES ?class { crm:E21_Person crm:E39_Actor crm:E74_Group  lssc:Family }
+    VALUES ?class { crm:E21_Person crm:E39_Actor crm:E74_Group  cocos:Family }
     ?id a ?class .
   } UNION { 
     VALUES ?_tie { <ID> }
-    ?_tie lssc:actor1|lssc:actor2 ?id 
+    ?_tie cocos:actor1|cocos:actor2 ?id 
   } 
       
   FILTER (BOUND(?id))
   
   {
-    ?tie lssc:actor1 ?id ;
-      lssc:actor2 ?target
+    ?tie cocos:actor1 ?id ;
+      cocos:actor2 ?target
     BIND(?id AS ?source)
   } UNION {
-    ?tie lssc:actor1 ?source ; 
-    lssc:actor2 ?id
+    ?tie cocos:actor1 ?source ; 
+    cocos:actor2 ?id
     BIND(?id AS ?target)
   }
-  ?tie lssc:num_letters ?weight .
+  ?tie cocos:num_letters ?weight .
 
   # filter 'unknown' etc entries
   ?source skos:prefLabel ?source__label . 
@@ -145,7 +145,7 @@ WHERE {
 export const tieNodesQuery = `
   SELECT DISTINCT ?id ?prefLabel ?class ?href
   WHERE {
-    VALUES ?class { crm:E21_Person crm:E39_Actor crm:E74_Group  lssc:Family }
+    VALUES ?class { crm:E21_Person crm:E39_Actor crm:E74_Group  cocos:Family }
     VALUES ?id { <ID_SET> }
     ?id a ?class ;
      skos:prefLabel ?_label .

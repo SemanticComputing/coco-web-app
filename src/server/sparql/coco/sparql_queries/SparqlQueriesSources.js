@@ -9,12 +9,12 @@ export const sourcePropertiesInstancePage = `
   UNION
   {
     SELECT ?id (COUNT(DISTINCT ?ltr) AS ?numLetters) {
-      ?ltr lssc:source ?id
+      ?ltr cocos:source ?id
     } GROUP BY ?id
   }
   UNION
   { 
-    ?letter__id lssc:source ?id .
+    ?letter__id cocos:source ?id .
     ?letter__id skos:prefLabel ?letter__prefLabel .
     BIND(CONCAT("/letters/page/", REPLACE(STR(?letter__id), "^.*\\\\/(.+)", "$1")) AS ?letter__dataProviderUrl)
   }

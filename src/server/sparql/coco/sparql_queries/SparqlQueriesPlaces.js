@@ -10,8 +10,8 @@ export const placePropertiesFacetResults = `
   {
     VALUES (?type__id ?type__prefLabel) { 
       (crm:E53_Place "Place")
-      (lssc:City "City")
-      (lssc:Country "Country")
+      (cocos:City "City")
+      (cocos:Country "Country")
     }
     ?id a ?type__id .
     BIND (?type__id as ?type_dataProviderUrl)
@@ -23,7 +23,7 @@ export const placePropertiesFacetResults = `
     ?broader__id skos:prefLabel ?broader__prefLabel .
     BIND(CONCAT("/${perspectiveID}/page/", REPLACE(STR(?broader__id), "^.*\\\\/(.+)", "$1")) AS ?broader__dataProviderUrl)
     OPTIONAL {
-      ?broader__id a lssc:Country .
+      ?broader__id a cocos:Country .
       BIND (?broader__id AS ?country__id)
       ?broader__id skos:prefLabel ?country__prefLabel .
       BIND(CONCAT("/${perspectiveID}/page/", REPLACE(STR(?broader__id), "^.*\\\\/(.+)", "$1")) AS ?country__dataProviderUrl)
@@ -58,8 +58,8 @@ export const placePropertiesInstancePage = `
   {
     VALUES (?type__id ?type__prefLabel) {
       (crm:E53_Place "Place")
-      (lssc:City "City")
-      (lssc:Country "Country")
+      (cocos:City "City")
+      (cocos:Country "Country")
     }
     ?id a ?type__id .
     BIND (?type__id as ?type_dataProviderUrl)
@@ -71,7 +71,7 @@ export const placePropertiesInstancePage = `
     ?broader__id skos:prefLabel ?broader__prefLabel .
     BIND(CONCAT("/${perspectiveID}/page/", REPLACE(STR(?broader__id), "^.*\\\\/(.+)", "$1")) AS ?broader__dataProviderUrl)
     OPTIONAL {
-      ?broader__id a lssc:Country .
+      ?broader__id a cocos:Country .
       BIND (?broader__id AS ?country__id)
       ?broader__id skos:prefLabel ?country__prefLabel .
       BIND(CONCAT("/${perspectiveID}/page/", REPLACE(STR(?broader__id), "^.*\\\\/(.+)", "$1")) AS ?country__dataProviderUrl)
@@ -84,7 +84,7 @@ export const placePropertiesInstancePage = `
     BIND(CONCAT("/${perspectiveID}/page/", REPLACE(STR(?narrower__id), "^.*\\\\/(.+)", "$1")) AS ?narrower__dataProviderUrl)
   }
   UNIoN
-  { ?id lssc:is_related_to ?external__id .
+  { ?id cocos:is_related_to ?external__id .
     OPTIONAL { ?external__id a/skos:prefLabel ?external__classlabel }
     OPTIONAL { ?external__id skos:prefLabel ?external__label }
     BIND(COALESCE(?external__label, ?external__classlabel, ?external__id) AS ?external__prefLabel)
@@ -121,24 +121,24 @@ WHERE {
   BIND (?prefLabel__id as ?prefLabel__prefLabel)
 
   {
-    ?id ^lssc:was_sent_from ?from__id .
+    ?id ^cocos:was_sent_from ?from__id .
     ?from__id skos:prefLabel ?from__prefLabel .
     BIND(CONCAT("/letters/page/", REPLACE(STR(?from__id), "^.*\\\\/(.+)", "$1")) AS ?from__dataProviderUrl)
   } 
   UNION
   {
-    ?id ^lssc:was_sent_to ?to__id .
+    ?id ^cocos:was_sent_to ?to__id .
     ?to__id skos:prefLabel ?to__prefLabel .
     BIND(CONCAT("/letters/page/", REPLACE(STR(?to__id), "^.*\\\\/(.+)", "$1")) AS ?to__dataProviderUrl)
   }
   UNION 
   {
     {
-      ?id ^lssc:was_sent_from/^lssc:created ?related__id 
+      ?id ^cocos:was_sent_from/cocos:was_authored_by ?related__id 
     } 
     UNION 
     {
-      ?id ^lssc:was_sent_from/lssc:was_addressed_to ?related__id 
+      ?id ^cocos:was_sent_from/cocos:letter/cocos:was_addressed_to ?related__id 
     }
     FILTER (BOUND(?related__id))
     ?related__id skos:prefLabel ?related__prefLabel .
@@ -146,12 +146,12 @@ WHERE {
   }
   UNION
   {
-    ?born__id lssc:was_born_in_location ?id ;
+    ?born__id cocos:was_born_in_location ?id ;
       skos:prefLabel ?born__prefLabel .
     BIND(CONCAT("/actors/page/", REPLACE(STR(?born__id), "^.*\\\\/(.+)", "$1")) AS ?born__dataProviderUrl)
   }
   UNION{
-    ?deceased__id lssc:died_at_location ?id ;
+    ?deceased__id cocos:died_at_location ?id ;
       skos:prefLabel ?deceased__prefLabel .
     BIND(CONCAT("/actors/page/", REPLACE(STR(?deceased__id), "^.*\\\\/(.+)", "$1")) AS ?deceased__dataProviderUrl)
   }
@@ -180,19 +180,20 @@ export const sentReceivedByPlaceQuery = `
   WHERE {
     BIND(<ID> as ?id)
     ?sub crm:P89_falls_within* ?id .
-    {
-      ?sent_letter lssc:was_sent_from ?sub ;
-        a lssc:Letter ;
+
+    #{
+      ?sent_letter cocos:was_sent_from ?sub ;
+        a cocos:Production ;
         crm:P4_has_time-span/crm:P82a_begin_of_the_begin ?time .
-    BIND (STR(year(?time)) AS ?year)
-    } 
-    UNION 
-    {
-      ?received_letter lssc:was_sent_to ?sub ;
-                      a lssc:Letter ;
-                      crm:P4_has_time-span/crm:P82a_begin_of_the_begin ?time .
-    BIND (STR(year(?time)) AS ?year)
-    }
+      BIND (STR(year(?time)) AS ?year)
+    #} 
+    #UNION 
+    #{
+    #  ?received_letter cocos:was_sent_to ?sub ;
+    #                  a cocos:Production ;
+    #                  crm:P4_has_time-span/crm:P82a_begin_of_the_begin ?time .
+    #  BIND (STR(year(?time)) AS ?year)
+    #}
     FILTER (BOUND(?year))
   } GROUP BY ?year ORDER BY ?year 
 `
@@ -205,22 +206,22 @@ WHERE {
   ?sub crm:P89_falls_within* ?id .
   
   {
-    ?letter lssc:was_sent_from ?sub ;
-      a lssc:Letter ;
-      crm:P4_has_time-span/crm:P82a_begin_of_the_begin ?_date .
-    OPTIONAL { 
-        ?letter lssc:was_sent_to/skos:prefLabel ?_to .
-    }
+    ?letter cocos:was_sent_from ?sub ;
+        a cocos:Production ;
+        crm:P4_has_time-span/crm:P82a_begin_of_the_begin ?_date .
+    # OPTIONAL { 
+    #  ?letter cocos:was_sent_to/skos:prefLabel ?_to .
+    #}
     BIND ("from" AS ?type)
     BIND (COALESCE(?_to, '<Info missing>') AS ?from__label)
   }
   UNION
   {
-    ?letter lssc:was_sent_to ?sub ;
-                    a lssc:Letter ;
-                    crm:P4_has_time-span/crm:P82a_begin_of_the_begin ?_date .
+    ?letter cocos:was_sent_to ?sub ;
+        a cocos:Production ;
+        crm:P4_has_time-span/crm:P82a_begin_of_the_begin ?_date .
     OPTIONAL { 
-        ?letter lssc:was_sent_from/skos:prefLabel ?_from .
+        ?letter cocos:was_sent_from/skos:prefLabel ?_from .
     }
     BIND ("to" AS ?type)
     BIND (COALESCE(?_from, '<Info missing>') AS ?to__label)

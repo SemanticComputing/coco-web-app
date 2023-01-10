@@ -7,8 +7,8 @@
     },
     "sparqlQueriesFile": "SparqlQueriesLetters.js",
     "baseURI": "http://ldf.fi/coco",
-    "URITemplate": "<BASE_URI>/letters/<LOCAL_ID>",
-    "facetClass": "lssc:Letter",
+    "URITemplate": "<BASE_URI>/events/<LOCAL_ID>",
+    "facetClass": "cocos:Production",
     "frontPageImage": "main_page/works-452x262.jpg",
     "searchMode": "faceted-search",
     "defaultActiveFacets": [
@@ -260,15 +260,6 @@
             "minWidth": 200
         },
         {
-            "id": "to",
-            "valueType": "object",
-            "makeLink": true,
-            "externalLink": false,
-            "sortValues": true,
-            "numberedList": false,
-            "minWidth": 200
-        },
-        {
             "id": "mentions",
             "valueType": "object",
             "makeLink": true,
@@ -336,10 +327,10 @@
             "containerClass": "ten",
             "facetType": "list",
             "filterType": "uriFilter",
-            "predicate": "^lssc:created",
+            "predicate": "cocos:was_authored_by",
             "searchField": true,
             "sortBy": "instanceCount",
-            "sortByPredicate": "^lssc:created/skos:prefLabel",
+            "sortByPredicate": "cocos:was_authored_by/skos:prefLabel",
             "sortDirection": "desc",
             "pieChartButton": true,
             "sortButton": true
@@ -348,10 +339,10 @@
             "containerClass": "ten",
             "facetType": "list",
             "filterType": "uriFilter",
-            "predicate": "lssc:was_addressed_to",
+            "predicate": "cocos:letter/cocos:was_addressed_to",
             "searchField": true,
             "sortBy": "instanceCount",
-            "sortByPredicate": "lssc:was_addressed_to/skos:prefLabel",
+            "sortByPredicate": "cocos:letter/cocos:was_addressed_to/skos:prefLabel",
             "sortDirection": "desc",
             "pieChartButton": true,
             "sortButton": true
@@ -360,22 +351,10 @@
             "containerClass": "seven",
             "facetType": "list",
             "filterType": "uriFilter",
-            "predicate": "lssc:was_sent_from",
+            "predicate": "cocos:was_sent_from",
             "searchField": true,
             "sortBy": "instanceCount",
-            "sortByPredicate": "lssc:was_sent_from/skos:prefLabel",
-            "sortDirection": "desc",
-            "pieChartButton": true,
-            "sortButton": true
-        },
-        "to": {
-            "containerClass": "seven",
-            "facetType": "list",
-            "filterType": "uriFilter",
-            "predicate": "lssc:was_sent_to",
-            "searchField": true,
-            "sortBy": "instanceCount",
-            "sortByPredicate": "lssc:was_sent_to/skos:prefLabel",
+            "sortByPredicate": "cocos:was_sent_from/skos:prefLabel",
             "sortDirection": "desc",
             "pieChartButton": true,
             "sortButton": true
@@ -397,25 +376,25 @@
             "containerClass": "four",
             "facetType": "list",
             "filterType": "uriFilter",
-            "predicate": "dct:language",
+            "predicate": "cocos:letter/dct:language",
             "searchField": false,
             "sortBy": "instanceCount",
             "sortDirection": "desc",
             "sortButton": true,
             "pieChartButton": true,
-            "sortByPredicate": "dct:language/skos:prefLabel"
+            "sortByPredicate": "cocos:letter/dct:language/skos:prefLabel"
         },
         "datasource": {
             "containerClass": "five",
             "facetType": "list",
             "filterType": "uriFilter",
-            "predicate": "dct:source",
+            "predicate": "cocos:letter/cocos:metadata/dct:source",
             "searchField": false,
             "sortBy": "instanceCount",
             "sortDirection": "desc",
             "sortButton": true,
             "pieChartButton": true,
-            "sortByPredicate": "dct:source/skos:prefLabel"
+            "sortByPredicate": "cocos:letter/cocos:metadata/dct:source/skos:prefLabel"
         }
     }
 }
