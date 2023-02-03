@@ -54,7 +54,7 @@ export const actorPropertiesFacetResults = `
   }
   UNION
   {
-    ?id foaf:gender ?gender__id . 
+    ?id bioc:has_gender ?gender__id . 
     ?gender__id skos:prefLabel ?gender__prefLabel .
     BIND(?gender__id as ?gender__dataProviderUrl)
   }
@@ -83,7 +83,7 @@ export const actorPropertiesInstancePage = `
   }
   UNION
   {
-    ?id foaf:gender ?gender . 
+    ?id bioc:has_gender ?gender . 
     ?gender skos:prefLabel ?gender__prefLabel .
     BIND(?gender as ?gender__dataProviderUrl)
   }

@@ -602,12 +602,12 @@
         "gender": {
             "containerClass": "three",
             "facetType": "list",
-            "predicate": "foaf:gender",
+            "predicate": "bioc:has_gender",
             "filterType": "uriFilter",
             "sortBy": "instanceCount",
             "sortDirection": "desc",
             "pieChartButton": true,
-            "sortByPredicate": "foaf:gender/skos:prefLabel"
+            "sortByPredicate": "bioc:has_gender/skos:prefLabel"
         },
         "birthDateTimespan": {
             "containerClass": "four",
