@@ -145,16 +145,6 @@ export const actorPropertiesInstancePage = `
   }
   UNION
   {
-    VALUES (?rel__prop ?rel__label) {
-      (cocos:member_of "Member:")
-    }
-    ?rel__id ?rel__prop ?id ;
-      skos:prefLabel ?rel__label2
-    BIND (CONCAT(?rel__label, ' ',?rel__label2) AS ?rel__prefLabel)
-    BIND(CONCAT("/actors/page/", REPLACE(STR(?rel__id), "^.*\\\\/(.+)", "$1")) AS ?rel__dataProviderUrl)  
-  }
-  UNION
-  {
     ?id cocos:out_degree ?numSent 
   }
   UNION

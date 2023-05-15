@@ -208,7 +208,7 @@
                         "sparqlQueryNodes": "networkNodesQuery",
                         "useNetworkAPI": true,
                         "limit": 100,
-                        "optimize": 3.0,
+                        "optimize": 2.0,
                         "preprocess": "preprocessEgo",
                         "style": [
                             {
@@ -519,28 +519,6 @@
             "minWidth": 70
         },
         {
-            "id": "external",
-            "valueType": "object",
-            "makeLink": true,
-            "externalLink": true,
-            "sortValues": true,
-            "numberedList": false,
-            "minWidth": 250,
-            "priority": 8,
-            "onlyOnInstancePage": false,
-            "expandedOnInstancePage": true
-        },
-        {
-            "id": "rel",
-            "valueType": "object",
-            "makeLink": true,
-            "externalLink": false,
-            "sortValues": false,
-            "numberedList": true,
-            "minWidth": 220,
-            "onlyOnInstancePage": true
-        },
-        {
             "id": "knownLocation",
             "valueType": "object",
             "makeLink": true,
@@ -561,6 +539,18 @@
             "minWidth": 70,
             "priority": 5,
             "onlyOnInstancePage": true
+        },
+        {
+            "id": "external",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": true,
+            "sortValues": true,
+            "numberedList": false,
+            "minWidth": 250,
+            "priority": 8,
+            "onlyOnInstancePage": false,
+            "expandedOnInstancePage": true
         },
         {
             "id": "uri",
