@@ -208,7 +208,7 @@
                         "sparqlQueryNodes": "networkNodesQuery",
                         "useNetworkAPI": true,
                         "limit": 100,
-                        "optimize": 2.0,
+                        "optimize": 3.0,
                         "preprocess": "preprocessEgo",
                         "style": [
                             {
@@ -661,7 +661,7 @@
             "sortByPredicate": "cocos:occupation/skos:prefLabel"
         },
         "datasource": {
-            "containerClass": "five",
+            "containerClass": "ten",
             "facetType": "list",
             "filterType": "uriFilter",
             "predicate": "dct:source",
