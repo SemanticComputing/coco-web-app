@@ -341,14 +341,12 @@ VALUES ?node { <ID> }
   ?letter a cocos:Production ;
     cocos:was_addressed_to ?target .
   ?target skos:prefLabel ?_target__label . 
-  # FILTER (!REGEX(?_target__label, '(unknown|no_recipient_given)', 'i'))
   BIND(?node AS ?source)
 } UNION {
   ?letter cocos:letter/cocos:was_addressed_to ?node ;
     a cocos:Production .
   ?source ^cocos:was_authored_by ?letter ;
     skos:prefLabel ?_source__label . 
-  # FILTER (!REGEX(?_source__label, '(unknown|no_recipient_given)', 'i'))
   BIND(?node AS ?target)
 }
 ?target skos:prefLabel ?target__label .
@@ -359,27 +357,22 @@ BIND(year(?date) AS ?year)
 `
 
 export const socialSignatureQuery = `
-SELECT (?source AS ?id) (?source__label as ?id__label) 
+SELECT (?source AS ?id) (?source__label as ?id__label)
   ?target ?target__label
   ?time_0
 WHERE 
 {
   VALUES ?node { <ID> }
   {
-    ?node ^cocos:was_authored_by ?letter .
-    ?letter a cocos:Production ;
-      cocos:was_addressed_to ?target .
-    ?target skos:prefLabel ?_target__label . 
-    FILTER (!REGEX(?_target__label, '(unknown|no_recipient_given)', 'i'))
+    ?letter cocos:was_authored_by ?node ;
+      a cocos:Production ;
+      cocos:letter/cocos:was_addressed_to ?target .
   
     BIND(?node AS ?source)
   } UNION {
     ?letter cocos:letter/cocos:was_addressed_to ?node ;
-      a cocos:Production .
-    ?source ^cocos:was_authored_by ?letter ;
-      skos:prefLabel ?_source__label . 
-    FILTER (!REGEX(?_source__label, '(unknown|no_recipient_given)', 'i'))
-
+      a cocos:Production ;
+      cocos:was_authored_by ?source .
     BIND(?node AS ?target)
   }
   ?target skos:prefLabel ?target__label .

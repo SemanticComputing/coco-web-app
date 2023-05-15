@@ -134,9 +134,7 @@ WHERE {
 
   # filter 'unknown' etc entries
   ?source skos:prefLabel ?source__label . 
-  FILTER (!REGEX(?source__label, '(unknown|no_recipient_given)', 'i'))
   ?target skos:prefLabel ?target__label . 
-  FILTER (!REGEX(?target__label, '(unknown|no_recipient_given)', 'i'))
 
   FILTER (?source!=?target) 
 }
