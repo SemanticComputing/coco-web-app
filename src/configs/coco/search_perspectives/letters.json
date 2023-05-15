@@ -63,33 +63,8 @@
                 }
             }
         },
-        "lettersMigrations": {
-            "tabID": 1,
-            "component": "Deck",
-            "tabPath": "migrations",
-            "tabIcon": "Redo",
-            "sparqlQuery": "lettersMigrationsQuery",
-            "facetClass": "letters",
-            "filterTarget": "letter",
-            "layerType": "arcLayer",
-            "arcWidthVariable": "instanceCountScaled",
-            "instanceVariable": "letter",
-            "showTooltips": true,
-            "postprocess": {
-                "func": "linearScale",
-                "config": {
-                    "variable": "instanceCount",
-                    "minAllowed": 3,
-                    "maxAllowed": 30
-                }
-            }
-        },
-        "lettersMigrationsDialog": {
-            "sparqlQuery": "lettersMigrationsDialogQuery",
-            "filterTarget": "id"
-        },
         "lettersByYear": {
-            "tabID": 2,
+            "tabID": 1,
             "component": "ApexCharts",
             "tabPath": "by-year",
             "tabIcon": "ShowChart",
@@ -113,7 +88,7 @@
             }
         },
         "sendingPlacesHeatmap": {
-            "tabID": 3,
+            "tabID": 2,
             "tabPath": "heatmap",
             "tabIcon": "AddLocation",
             "component": "Deck",
@@ -124,7 +99,7 @@
             "resultMapper": "mapPlaces"
         },
         "actorTops": {
-            "tabID": 4,
+            "tabID": 3,
             "component": "ApexChartsDouble",
             "tabPath": "top-correspondents",
             "tabIcon": "Tune",
@@ -193,7 +168,7 @@
             }
         },
         "export": {
-            "tabID": 5,
+            "tabID": 4,
             "component": "Export",
             "tabPath": "export",
             "tabIcon": "CloudDownload",

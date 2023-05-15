@@ -129,45 +129,6 @@ UNION
 }
 `
 
-// # https://github.com/uber/deck.gl/blob/master/docs/layers/arc-layer.md
-//  in yasgui: https://api.triplydb.com/s/rcZVxZsHf
-export const lettersMigrationsQuery = `
-  SELECT DISTINCT ?id 
-  ?from__id ?from__prefLabel ?from__lat ?from__long ?from__dataProviderUrl
-  ?to__id ?to__prefLabel ?to__lat ?to__long ?to__dataProviderUrl
-  (COUNT(DISTINCT ?letter) as ?instanceCount)
-    WHERE {
-      <FILTER>
-      ?letter cocos:was_sent_from ?from__id ;
-              cocos:was_sent_to ?to__id ;
-              a cocos:Production .   
-      ?from__id skos:prefLabel ?from__prefLabel ; 
-                geo:lat ?from__lat ;
-                geo:long ?from__long .
-      BIND(CONCAT("/places/page/", REPLACE(STR(?from__id), "^.*\\\\/(.+)", "$1")) AS ?from__dataProviderUrl)
-      ?to__id skos:prefLabel ?to__prefLabel ;
-              geo:lat ?to__lat ;
-              geo:long ?to__long .
-      BIND(CONCAT("/places/page/", REPLACE(STR(?to__id), "^.*\\\\/(.+)", "$1")) AS ?to__dataProviderUrl)
-      BIND(IRI(CONCAT(STR(?from__id), "-", REPLACE(STR(?to__id), "^.*\\\\/(.+)", "$1") )) as ?id)
-      FILTER(?from__id != ?to__id)
-    }
-    GROUP BY ?id 
-    ?from__id ?from__prefLabel ?from__lat ?from__long ?from__dataProviderUrl
-    ?to__id ?to__prefLabel ?to__lat ?to__long ?to__dataProviderUrl
-    ORDER BY desc(?instanceCount)
-`
-
-export const lettersMigrationsDialogQuery = `
-  SELECT * {
-    <FILTER>
-    ?id cocos:was_sent_from <FROM_ID> ;
-        cocos:was_sent_to <TO_ID> ;
-        skos:prefLabel ?prefLabel .
-    BIND(CONCAT("/letters/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?dataProviderUrl)
-  }
-`
-
 export const topCorrespondenceFacetPageQuery = `
 SELECT DISTINCT ?from__label ?to__label (xsd:date(?_date) AS ?date) ?type (year(?_date) AS ?year)
 WHERE {
