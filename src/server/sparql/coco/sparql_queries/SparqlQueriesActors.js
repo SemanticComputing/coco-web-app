@@ -65,6 +65,11 @@ export const actorPropertiesFacetResults = `
       skos:prefLabel ?image__title .
     BIND(URI(CONCAT(REPLACE(STR(?image__id), "^https*:", ""), "?width=600")) as ?image__url)
   }
+  UNION
+  {
+    ?id dct:source/skos:prefLabel ?datasource
+  }
+
 `
 
 export const actorPropertiesInstancePage = `
@@ -257,6 +262,7 @@ WHERE {
     BIND(?id AS ?target)
   }
   ?tie cocos:num_letters ?weight .
+  FILTER(?weight>9)
 
   # filter 'unknown' etc entries
   ?source skos:prefLabel ?source__label . 
