@@ -207,15 +207,6 @@
             "hideHeader": false
         },
         {
-            "id": "type",
-            "valueType": "object",
-            "makeLink": false,
-            "externalLink": false,
-            "sortValues": true,
-            "numberedList": false,
-            "minWidth": 110
-        },
-        {
             "id": "altLabel",
             "valueType": "string",
             "renderAsHTML": false,
@@ -228,7 +219,7 @@
         },
         {
             "id": "location",
-            "valueType": "object",
+            "valueType": "string",
             "makeLink": false,
             "externalLink": false,
             "sortValues": false,
@@ -287,37 +278,27 @@
             "sortByPredicate": "skos:prefLabel",
             "textQueryProperty": "skos:prefLabel"
         },
-        "type": {
-            "containerClass": "three",
-            "facetType": "list",
-            "filterType": "uriFilter",
-            "predicate": "a",
-            "sortBy": "prefLabel",
-            "sortByPredicate": "a/(skos:prefLabel|rdfs:label)",
-            "sortDirection": "asc"
-        },
         "country": {
             "containerClass": "ten",
             "facetType": "list",
             "filterType": "uriFilter",
-            "facetValueFilter": "FILTER EXISTS { ?id a cocos:Country }",
-            "predicate": "crm:P89_falls_within+",
+            "predicate": "cocos:country",
             "sortBy": "instanceCount",
             "sortDirection": "desc",
             "searchField": true,
             "sortButton": true,
-            "sortByPredicate": "crm:P89_falls_within/skos:prefLabel"
+            "sortByPredicate": "cocos:country/skos:prefLabel"
         },
         "broader": {
             "containerClass": "ten",
             "facetType": "list",
             "filterType": "uriFilter",
-            "predicate": "crm:P89_falls_within",
+            "predicate": "skos:broader",
             "sortBy": "instanceCount",
             "sortDirection": "desc",
             "searchField": true,
             "sortButton": true,
-            "sortByPredicate": "crm:P89_falls_within/skos:prefLabel"
+            "sortByPredicate": "skos:broader/skos:prefLabel"
         }
     }
 }

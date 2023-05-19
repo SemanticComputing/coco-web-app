@@ -7,34 +7,25 @@ export const placePropertiesFacetResults = `
   ?id skos:prefLabel ?prefLabel__id .
   BIND (?prefLabel__id as ?prefLabel__prefLabel)
   BIND(CONCAT("/${perspectiveID}/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
+
   {
-    VALUES (?type__id ?type__prefLabel) { 
-      (crm:E53_Place "Place")
-      (cocos:City "City")
-      (cocos:Country "Country")
-    }
-    ?id a ?type__id .
-    BIND (?type__id as ?type_dataProviderUrl)
-  }
-  UNION
-  {
-    ?id crm:P89_falls_within ?broader__id .
+    ?id skos:broader ?broader__id .
     FILTER (?broader__id != ?id)
     ?broader__id skos:prefLabel ?broader__prefLabel .
     BIND(CONCAT("/${perspectiveID}/page/", REPLACE(STR(?broader__id), "^.*\\\\/(.+)", "$1")) AS ?broader__dataProviderUrl)
-    OPTIONAL {
-      ?broader__id a cocos:Country .
-      BIND (?broader__id AS ?country__id)
-      ?broader__id skos:prefLabel ?country__prefLabel .
-      BIND(CONCAT("/${perspectiveID}/page/", REPLACE(STR(?broader__id), "^.*\\\\/(.+)", "$1")) AS ?country__dataProviderUrl)
-    }
   }
   UNION
   {
-    ?narrower__id crm:P89_falls_within ?id ;
+    ?narrower__id skos:broader ?id ;
       skos:prefLabel ?narrower__prefLabel .
     FILTER (?narrower__id != ?id)
     BIND(CONCAT("/${perspectiveID}/page/", REPLACE(STR(?narrower__id), "^.*\\\\/(.+)", "$1")) AS ?narrower__dataProviderUrl)
+  }
+  UNION
+  {
+    ?id cocos:country ?country__id .
+    ?country__id skos:prefLabel ?country__prefLabel .
+    BIND(CONCAT("/places/page/", REPLACE(STR(?country__id), "^.*\\\\/(.+)", "$1")) AS ?country__dataProviderUrl)
   }
   UNION
   {
@@ -56,29 +47,25 @@ export const placePropertiesInstancePage = `
   }
   UNION
   {
-    VALUES (?type__id ?type__prefLabel) {
-      (crm:E53_Place "Place")
-      (cocos:City "City")
-      (cocos:Country "Country")
-    }
     ?id a ?type__id .
+    ?type__id skos:prefLabel ?type__prefLabel .
     BIND (?type__id as ?type_dataProviderUrl)
   }
   UNION
   {
-    ?id crm:P89_falls_within ?broader__id .
+    ?id skos:broader ?broader__id .
     FILTER (?broader__id != ?id)
     ?broader__id skos:prefLabel ?broader__prefLabel .
     BIND(CONCAT("/${perspectiveID}/page/", REPLACE(STR(?broader__id), "^.*\\\\/(.+)", "$1")) AS ?broader__dataProviderUrl)
-    OPTIONAL {
-      ?broader__id a cocos:Country .
-      BIND (?broader__id AS ?country__id)
-      ?broader__id skos:prefLabel ?country__prefLabel .
-      BIND(CONCAT("/${perspectiveID}/page/", REPLACE(STR(?broader__id), "^.*\\\\/(.+)", "$1")) AS ?country__dataProviderUrl)
-    }
   }
   UNION
-  { ?narrower__id crm:P89_falls_within ?id ;
+  {
+      ?id cocos:country ?country__id .
+      ?country__id skos:prefLabel ?country__prefLabel .
+      BIND(CONCAT("/places/page/", REPLACE(STR(?country__id), "^.*\\\\/(.+)", "$1")) AS ?country__dataProviderUrl)
+  }
+  UNION
+  { ?narrower__id skos:broader ?id ;
       skos:prefLabel ?narrower__prefLabel .
     FILTER (?narrower__id != ?id)
     BIND(CONCAT("/${perspectiveID}/page/", REPLACE(STR(?narrower__id), "^.*\\\\/(.+)", "$1")) AS ?narrower__dataProviderUrl)
@@ -97,8 +84,7 @@ export const placePropertiesInstancePage = `
   UNION
   {
     ?id geo:lat ?lat ; geo:long ?long .
-    BIND (CONCAT('lat ', STR(?lat), ', long ',STR(?long)) as ?location__prefLabel)
-    BIND (?location__prefLabel AS ?location__id)
+    BIND (CONCAT('lat ', STR(xsd:decimal(?lat)), ', long ',STR(xsd:decimal(?long))) as ?location)
   }
   UNION
   {
@@ -179,7 +165,7 @@ export const sentReceivedByPlaceQuery = `
     ((?sentCount + ?receivedCount) as ?allCount)
   WHERE {
     BIND(<ID> as ?id)
-    ?sub crm:P89_falls_within* ?id .
+    ?sub skos:broader* ?id .
 
     #{
       ?sent_letter cocos:was_sent_from ?sub ;
@@ -203,7 +189,7 @@ SELECT DISTINCT ?id ?to__label ?from__label (xsd:date(?_date) AS ?date) (year(?_
 WHERE {
   
   BIND( <ID> as ?id)
-  ?sub crm:P89_falls_within* ?id .
+  ?sub skos:broader* ?id .
   
   {
     ?letter cocos:was_sent_from ?sub ;
