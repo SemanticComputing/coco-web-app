@@ -586,6 +586,16 @@ export const createCorrespondenceChartData = ({ sparqlBindings, config }) => {
   topN = topTies.length
   if (lastLabel) { topTies.push(lastLabel) }
 
+  //  map arrays in 'datas' to unique date values as in
+  //  https://stackoverflow.com/questions/43772320/map-set-to-maintain-unique-array-of-arrays-javascript
+  for (var key in datas) {
+    if (datas.hasOwnProperty(key)) {
+      datas[key] = Array.from(
+        new Map(datas[key].map((p) => [p.join(), p])).values()
+      );
+    }
+  }
+  
   return {
     series: types.map(type => { return { name: type, data: datas[type] } }),
     topTies: topTies,
