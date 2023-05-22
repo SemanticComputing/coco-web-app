@@ -587,6 +587,12 @@ export default {
           The receiving place of the letter.
           `
         },
+        record_value: {
+          label: 'Metadata record values',
+          description: `
+            Textual values in the letter metadata record.
+          `
+        },
         related: {
           label: 'External links',
           description: `

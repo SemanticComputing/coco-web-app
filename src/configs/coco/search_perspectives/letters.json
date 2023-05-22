@@ -263,18 +263,9 @@
             "onlyOnInstancePage": true
         },
         {
-            "id": "comment",
-            "valueType": "string",
-            "makeLink": false,
-            "externalLink": false,
-            "sortValues": true,
-            "numberedList": false,
-            "onlyOnInstancePage": true
-        },
-        {
             "id": "datasource",
             "valueType": "object",
-            "makeLink": true,
+            "makeLink": false,
             "externalLink": false,
             "sortValues": true,
             "numberedList": false,
@@ -288,6 +279,16 @@
             "sortValues": true,
             "numberedList": false,
             "onlyOnInstancePage": true
+        },
+        {
+            "id": "record_value",
+            "valueType": "string",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": false,
+            "onlyOnInstancePage": true,
+            "expandedOnInstancePage": true
         }
     ],
     "facets": {

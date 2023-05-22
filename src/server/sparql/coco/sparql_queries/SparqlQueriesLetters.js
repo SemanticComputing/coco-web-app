@@ -71,10 +71,6 @@ export const letterPropertiesInstancePage = `
 }
 UNION
 {
-  ?id cocos:letter/cocos:metadata/rdfs:comment ?comment .
-}
-UNION
-{
   ?id cocos:was_authored_by ?source__id . 
   ?source__id skos:prefLabel ?source__prefLabel . 
   # FILTER (!REGEX(STR(?source__prefLabel), 'unknown', 'i'))
@@ -126,6 +122,20 @@ UNION
   ?id cocos:in_tie ?tie__id .
   ?tie__id skos:prefLabel ?tie__prefLabel .
   BIND(CONCAT("/ties/page/", REPLACE(STR(?tie__id), "^.*\\\\/(.+)", "$1")) AS ?tie__dataProviderUrl)
+}
+UNION
+{
+    VALUES (?prop ?prop_label) {
+      (rdfs:comment 'Comment') 
+      (cocos:archival_organization 'Archival organization')
+      (cocos:archival_location 'Archival location') 
+      (cocos:fonds 'Fonds')
+      (cocos:note 'Note')
+      (cocos:summary 'Summary')
+      (cocos:type 'Type')
+    }
+    ?id cocos:letter/cocos:metadata [ ?prop ?v ] .
+    BIND(CONCAT(?prop_label, ': ', ?v) AS ?record_value ) 
 }
 `
 
