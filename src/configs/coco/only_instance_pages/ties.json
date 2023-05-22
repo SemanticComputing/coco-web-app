@@ -98,7 +98,7 @@
             "sparqlQuery": "tieLinksQuery",
             "sparqlQueryNodes": "tieNodesQuery",
             "useNetworkAPI": true,
-            "limit": 32,
+            "limit": 100,
             "optimize": 1.5,
             "preprocess": "preprocessTie",
             "style": [
