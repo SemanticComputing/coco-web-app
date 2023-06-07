@@ -65,6 +65,14 @@
                                 "numberedList": false
                             },
                             {
+                                "id": "receiving_time",
+                                "valueType": "string",
+                                "makeLink": false,
+                                "externalLink": false,
+                                "sortValues": false,
+                                "numberedList": false
+                            },
+                            {
                                 "id": "numCorrespondences",
                                 "valueType": "string",
                                 "makeLink": false,
@@ -641,13 +649,13 @@
             "containerClass": "seven",
             "facetType": "list",
             "filterType": "uriFilter",
-            "predicate": "cocos:occupation",
+            "predicate": "bioc:has_occupation",
             "searchField": true,
             "sortBy": "instanceCount",
             "sortDirection": "desc",
             "sortButton": true,
             "pieChartButton": true,
-            "sortByPredicate": "cocos:occupation/skos:prefLabel"
+            "sortByPredicate": "bioc:has_occupation/skos:prefLabel"
         },
         "datasource": {
             "containerClass": "ten",

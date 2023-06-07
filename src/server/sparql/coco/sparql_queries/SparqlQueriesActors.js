@@ -95,7 +95,7 @@ export const actorPropertiesInstancePage = `
   UNION 
   { ?id skos:altLabel ?altLabel }
   UNION
-  { ?id cocos:occupation/skos:prefLabel ?occupation }
+  { ?id bioc:has_occupation/skos:prefLabel ?occupation }
   UNION
   { ?id cocos:is_related_to ?external__id . 
     OPTIONAL { ?external__id a/skos:prefLabel ?external__classlabel }
@@ -216,10 +216,14 @@ export const actorLettersInstancePageQuery = `
     UNION
     {
       ?id cocos:num_correspondences ?numCorrespondences
-    }
+    }  
     UNION
     {
       ?id cocos:flourished/skos:prefLabel ?floruit
+    }
+    UNION
+    {
+      ?id cocos:receiving_time/skos:prefLabel ?receiving_time
     }
     UNION
     { SELECT DISTINCT ?id ?sentletter__id ?sentletter__prefLabel ?sentletter__dataProviderUrl
