@@ -167,6 +167,12 @@ export const actorPropertiesInstancePage = `
   {
     ?id dct:source/skos:prefLabel ?datasource
   }
+  UNION
+  {
+    ?id bioc:has_family_relation [ bioc:inheres_in ?relative__id ; skos:prefLabel ?relative__prefLabel ]
+    FILTER(LANG(?relative__prefLabel)='en')
+    BIND(CONCAT("/actors/page/", REPLACE(STR(?relative__id), "^.*\\\\/(.+)", "$1")) AS ?relative__dataProviderUrl)
+  }
 `
 
 export const actorLettersInstancePageQuery = `

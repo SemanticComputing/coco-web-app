@@ -355,10 +355,10 @@ export default {
             Links to External databases.
           `
         },
-        event: {
-          label: 'Event',
+        relative: {
+          label: 'Relatives',
           description: `
-            Events related to the manuscript.
+            Family relatives of this actor
           `
         },
         owner: {

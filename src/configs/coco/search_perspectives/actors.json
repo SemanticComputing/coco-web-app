@@ -494,7 +494,8 @@
             "numberedList": false,
             "minWidth": 150,
             "collapsedMaxWords": 12,
-            "onlyOnInstancePage": true
+            "onlyOnInstancePage": true,
+            "expandedOnInstancePage": true
         },
         {
             "id": "occupation",
@@ -503,7 +504,8 @@
             "externalLink": false,
             "sortValues": false,
             "numberedList": false,
-            "onlyOnInstancePage": true
+            "onlyOnInstancePage": true,
+            "expandedOnInstancePage": true
         },
         {
             "id": "numSent",
@@ -529,6 +531,17 @@
         },
         {
             "id": "knownLocation",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": false,
+            "minWidth": 220,
+            "onlyOnInstancePage": true,
+            "expandedOnInstancePage": true
+        },
+        {
+            "id": "relative",
             "valueType": "object",
             "makeLink": true,
             "externalLink": false,
