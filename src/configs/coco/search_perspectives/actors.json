@@ -215,8 +215,9 @@
                         "sparqlQuery": "letterLinksQuery",
                         "sparqlQueryNodes": "networkNodesQuery",
                         "useNetworkAPI": true,
-                        "limit": 100,
-                        "optimize": 2.0,
+                        "queryType": "query_ego",
+                        "limit": 50,
+                        "optimize": 100.0,
                         "preprocess": "preprocessEgo",
                         "style": [
                             {

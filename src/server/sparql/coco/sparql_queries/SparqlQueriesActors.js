@@ -255,27 +255,24 @@ SELECT DISTINCT ?source ?target
   ?weight 
   (STR(?weight) AS ?prefLabel)
 WHERE {
-  VALUES ?id { <ID> }
-  {
-    ?tie cocos:actor1 ?id ;
-      cocos:actor2 ?target
-    BIND(?id AS ?source)
-  } UNION {
-    ?tie cocos:actor1 ?source ; 
-    cocos:actor2 ?id
-    BIND(?id AS ?target)
+     { SELECT DISTINCT ?actor WHERE 
+    { 
+      { SELECT DISTINCT ?id2 WHERE { 
+      VALUES ?id { <ID> }
+      [] cocos:actor1|cocos:actor2 ?id ; cocos:actor1|cocos:actor2 ?id2 
+    }
+    }
+	  [] cocos:actor1|cocos:actor2 ?id2 ; cocos:actor1|cocos:actor2 ?actor 
+    }
   }
-  ?tie cocos:num_letters ?weight .
-  FILTER(?weight>9)
-
-  # filter 'unknown' etc entries
-  ?source skos:prefLabel ?source__label . 
-  # FILTER (!REGEX(?source__label, 'unknown', 'i'))
-  ?target skos:prefLabel ?target__label . 
-  # FILTER (!REGEX(?target__label, 'unknown', 'i'))
-
+    
+    ?tie (cocos:actor1|cocos:actor2) ?actor ;
+        cocos:actor1 ?source ;
+        cocos:actor2 ?target ;
+        cocos:num_letters ?weight .
+  
   # no self links
-  FILTER (?source!=?target)
+  FILTER (?source!=?target && ?weight>0)
 } 
 `
 
