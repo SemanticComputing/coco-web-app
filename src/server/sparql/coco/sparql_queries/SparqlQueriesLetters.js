@@ -64,9 +64,11 @@ export const letterPropertiesInstancePage = `
 {
   ?id skos:prefLabel ?prefLabel__id .
   BIND (?prefLabel__id as ?prefLabel__prefLabel)
-
-  BIND(?id as ?uri__id)
-  BIND(STR(?id) as ?uri__prefLabel)
+}
+UNION
+{
+  ?id cocos:letter ?uri__id .
+  BIND(STR(?uri__id) as ?uri__prefLabel)
   BIND(?id as ?uri__dataProviderUrl)
 }
 UNION
