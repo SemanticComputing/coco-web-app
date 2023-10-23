@@ -203,22 +203,6 @@
       "externalLink": false,
       "sortValues": false,
       "numberedList": true
-    },
-    {
-      "id": "ego",
-      "valueType": "object",
-      "makeLink": true,
-      "externalLink": true,
-      "sortValues": true,
-      "numberedList": false
-    },
-    {
-      "id": "alter",
-      "valueType": "object",
-      "makeLink": true,
-      "externalLink": true,
-      "sortValues": true,
-      "numberedList": false
     }
   ]
 }
