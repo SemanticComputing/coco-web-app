@@ -235,13 +235,14 @@
             "minWidth": 200
         },
         {
-            "id": "mentions",
+            "id": "mention",
             "valueType": "object",
             "makeLink": true,
             "externalLink": false,
-            "sortValues": true,
+            "sortValues": false,
             "numberedList": true,
-            "onlyOnInstancePage": true
+            "onlyOnInstancePage": true,
+            "expandedOnInstancePage": true
         },
         {
             "id": "language",
@@ -263,22 +264,29 @@
             "onlyOnInstancePage": true
         },
         {
-            "id": "datasource",
-            "valueType": "object",
-            "makeLink": false,
-            "externalLink": false,
-            "sortValues": true,
-            "numberedList": false,
-            "minWidth": 150
-        },
-        {
-            "id": "uri",
+            "id": "archival_organization",
             "valueType": "object",
             "makeLink": true,
-            "externalLink": true,
-            "sortValues": true,
+            "externalLink": false,
+            "sortValues": false,
             "numberedList": false,
             "onlyOnInstancePage": true
+        },
+        {
+            "id": "fonds",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": false,
+            "sortValues": false,
+            "numberedList": false
+        },
+        {
+            "id": "series",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": false,
+            "sortValues": false,
+            "numberedList": false
         },
         {
             "id": "record_value",
@@ -289,6 +297,24 @@
             "numberedList": false,
             "onlyOnInstancePage": true,
             "expandedOnInstancePage": true
+        },
+        { 
+            "id": "original_record",
+            "valueType": "string",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": false,
+            "numberedList": false,
+            "onlyOnInstancePage": true
+        },
+        {
+            "id": "uri",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": true,
+            "sortValues": true,
+            "numberedList": false,
+            "onlyOnInstancePage": true
         }
     ],
     "facets": {
@@ -361,7 +387,7 @@
             "sortByPredicate": "cocos:letter/dct:language/skos:prefLabel"
         },
         "datasource": {
-            "containerClass": "five",
+            "containerClass": "ten",
             "facetType": "list",
             "filterType": "uriFilter",
             "predicate": "cocos:letter/cocos:metadata/dct:source",
@@ -371,6 +397,18 @@
             "sortButton": true,
             "pieChartButton": true,
             "sortByPredicate": "cocos:letter/cocos:metadata/dct:source/skos:prefLabel"
+        },
+        "fonds": {
+            "containerClass": "ten",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "predicate": "cocos:letter/cocos:metadata/cocos:fonds",
+            "searchField": true,
+            "sortBy": "instanceCount",
+            "sortDirection": "desc",
+            "sortButton": true,
+            "pieChartButton": true,
+            "sortByPredicate": "cocos:letter/cocos:metadata/cocos:fonds/skos:prefLabel"
         }
     }
 }

@@ -551,10 +551,28 @@ export default {
             or when the precise date is uncertain.
           `
         },
-        collection: {
-          label: 'Collection',
+        archival_organization: {
+          label: 'Archival organization',
           description: `
-            The specific collection(s) of manuscripts in which a Work can be found.
+            Archival organization (Not fully implemented yet).
+          `
+        },
+        original_record: {
+          label: 'Original record',
+          description: `
+          Original record.
+          `
+        },
+        fonds: {
+          label: 'Fonds',
+          description: `
+            Fonds (Not fully implemented yet).
+          `
+        },
+        series: {
+          label: 'Series',
+          description: `
+            Series (Not fully implemented yet).
           `
         },
         source: {
@@ -569,10 +587,10 @@ export default {
           Recipient of the letter.
           `
         },
-        mentions: {
-          label: 'Mentions',
+        mention: {
+          label: 'Mention',
           description: `
-          An actor mentioned in the letter.
+          Actors and places mentioned in the letter.
           `
         },
         store: {
