@@ -113,9 +113,10 @@ WHERE {
   } 
   UNION
   {
-    ?id ^cocos:was_sent_to ?to__id .
-    ?to__id skos:prefLabel ?to__prefLabel .
-    BIND(CONCAT("/letters/page/", REPLACE(STR(?to__id), "^.*\\\\/(.+)", "$1")) AS ?to__dataProviderUrl)
+    ?id (^cocos:referenced_place)/(^cocos:letter) ?mentioningletter__id .
+          ?mentioningletter__id a cocos:Production ;
+            skos:prefLabel ?mentioningletter__prefLabel .
+        BIND(CONCAT("/letters/page/", REPLACE(STR(?mentioningletter__id), "^.*\\\\/(.+)", "$1")) AS ?mentioningletter__dataProviderUrl)
   }
   UNION 
   {

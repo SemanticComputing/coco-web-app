@@ -421,7 +421,7 @@ export default {
         mentioningletter: {
           label: 'Mentioned in letters',
           description: `
-            List of letters where this actor is mentioned.
+          List of letters which mention this actor.
           `
         },
         datasource: {
@@ -770,10 +770,10 @@ export default {
           Letters sent from this place.
           `
         },
-        to: {
-          label: 'Received letters',
+        mentioningletter: {
+          label: 'Mentioned in letters',
           description: `
-          Letters sent to this place.
+            List of letters which mention this place.
           `
         },
         image: {

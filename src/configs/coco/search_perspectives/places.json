@@ -58,7 +58,7 @@
                                 "expandedOnInstancePage": true
                             },
                             {
-                                "id": "to",
+                                "id": "mentioningletter",
                                 "valueType": "object",
                                 "makeLink": true,
                                 "externalLink": false,
