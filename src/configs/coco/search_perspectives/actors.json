@@ -559,7 +559,8 @@
             "sortValues": false,
             "numberedList": false,
             "minWidth": 70,
-            "priority": 5
+            "priority": 5,
+            "expandedOnInstancePage": true
         },
         {
             "id": "external",
