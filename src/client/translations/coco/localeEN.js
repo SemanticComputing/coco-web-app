@@ -418,6 +418,12 @@ export default {
             List of received letters.
           `
         },
+        mentioningletter: {
+          label: 'Mentioned in letters',
+          description: `
+            List of letters where this actor is mentioned.
+          `
+        },
         datasource: {
           label: 'Data source',
           description: `

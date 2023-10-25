@@ -241,6 +241,16 @@ export const actorLettersInstancePageQuery = `
         OPTIONAL { ?sentletter__id crm:P4_has_time-span/crm:P82a_begin_of_the_begin ?time }
       } ORDER BY COALESCE(STR(?time), CONCAT("9999", ?sentletter__prefLabel))
     }
+    UNION
+    { SELECT DISTINCT ?id ?mentioningletter__id ?mentioningletter__prefLabel ?mentioningletter__dataProviderUrl
+      WHERE {
+        ?id (^cocos:referenced_actor)/(^cocos:letter) ?mentioningletter__id .
+          ?mentioningletter__id a cocos:Production ;
+            skos:prefLabel ?mentioningletter__prefLabel .
+        BIND(CONCAT("/letters/page/", REPLACE(STR(?mentioningletter__id), "^.*\\\\/(.+)", "$1")) AS ?mentioningletter__dataProviderUrl)
+        OPTIONAL { ?mentioningletter__id crm:P4_has_time-span/crm:P82a_begin_of_the_begin ?time }
+      } ORDER BY COALESCE(STR(?time), CONCAT("9999", ?mentioningletter__prefLabel))
+    }
     UNION 
     { SELECT DISTINCT ?id ?receivedletter__id ?receivedletter__prefLabel ?receivedletter__dataProviderUrl
       WHERE {

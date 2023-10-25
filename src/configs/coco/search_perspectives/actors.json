@@ -124,6 +124,15 @@
                                 "expandedOnInstancePage": true
                             },
                             {
+                                "id": "mentioningletter",
+                                "valueType": "object",
+                                "makeLink": true,
+                                "externalLink": false,
+                                "sortValues": false,
+                                "numberedList": true,
+                                "expandedOnInstancePage": true
+                            },
+                            {
                                 "id": "metrics",
                                 "valueType": "object",
                                 "makeLink": true,
