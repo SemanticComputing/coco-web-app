@@ -318,13 +318,6 @@
         }
     ],
     "facets": {
-        "prefLabel": {
-            "containerClass": "one",
-            "facetType": "text",
-            "filterType": "textFilter",
-            "sortByPredicate": "skos:prefLabel",
-            "textQueryProperty": "skos:prefLabel"
-        },
         "source": {
             "containerClass": "ten",
             "facetType": "list",

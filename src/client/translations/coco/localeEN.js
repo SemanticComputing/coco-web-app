@@ -496,8 +496,8 @@ export default {
           description: 'Uniform Resource Identifier'
         },
         prefLabel: {
-          label: 'Title',
-          description: 'The name or title of the Work.'
+          label: 'Label',
+          description: 'The label of the Letter'
         },
         language: {
           label: 'Language',
