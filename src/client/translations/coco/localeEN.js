@@ -25,7 +25,7 @@ export default {
     searchBarPlaceHolder: 'Search all content',
     searchBarPlaceHolderShort: 'Search',
     instructions: 'instructions',
-    instructionsUrl: 'https://seco.cs.aalto.fi/projects/rrl/'
+    instructionsUrl: 'https://seco.cs.aalto.fi/projects/coco/coco-sampo-instructions.pdf'
 
   },
   facetBar: {
