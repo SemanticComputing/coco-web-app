@@ -593,10 +593,16 @@ export default {
           Recipient of the letter.
           `
         },
-        mention: {
-          label: 'Mention',
+        mentioned_person: {
+          label: 'Mentioned actor',
           description: `
-          Actors and places mentioned in the letter.
+          Actors mentioned in the letter.
+          `
+        },
+        mentioned_place: {
+          label: 'Mentioned place',
+          description: `
+          Places mentioned in the letter.
           `
         },
         store: {
@@ -620,19 +626,19 @@ export default {
         to: {
           label: 'Place of receiving',
           description: `
-          The receiving place of the letter.
+          The receiving place of the letter
           `
         },
         record_value: {
           label: 'Metadata record values',
           description: `
-            Textual values in the letter metadata record.
+            Textual values in the letter metadata record
           `
         },
         related: {
           label: 'External links',
           description: `
-            External links.
+            External links providing more information about this letter
           `
         }
       }

@@ -235,7 +235,17 @@
             "minWidth": 200
         },
         {
-            "id": "mention",
+            "id": "mentioned_person",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": false,
+            "sortValues": false,
+            "numberedList": true,
+            "onlyOnInstancePage": true,
+            "expandedOnInstancePage": true
+        },
+        {
+            "id": "mentioned_place",
             "valueType": "object",
             "makeLink": true,
             "externalLink": false,
@@ -251,7 +261,8 @@
             "externalLink": false,
             "sortValues": true,
             "numberedList": false,
-            "minWidth": 150
+            "minWidth": 150,
+            "expandedOnInstancePage": true
         },
         {
             "id": "related",
@@ -261,7 +272,8 @@
             "sortValues": true,
             "numberedList": false,
             "minWidth": 250,
-            "onlyOnInstancePage": true
+            "onlyOnInstancePage": true,
+            "expandedOnInstancePage": true
         },
         {
             "id": "archival_organization",

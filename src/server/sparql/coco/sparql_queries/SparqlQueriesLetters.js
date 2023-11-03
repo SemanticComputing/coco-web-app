@@ -101,15 +101,15 @@ UNION
 }
 UNION 
 {
-  ?id cocos:letter/cocos:referenced_actor ?mention__id . 
-  ?mention__id skos:prefLabel ?mention__prefLabel . 
-  BIND(CONCAT("/actors/page/", REPLACE(STR(?mention__id), "^.*\\\\/(.+)", "$1")) AS ?mention__dataProviderUrl)
+  ?id cocos:letter/cocos:referenced_actor ?mentioned_person__id . 
+  ?mentioned_person__id skos:prefLabel ?mentioned_person__prefLabel . 
+  BIND(CONCAT("/actors/page/", REPLACE(STR(?mentioned_person__id), "^.*\\\\/(.+)", "$1")) AS ?mentioned_person__dataProviderUrl)
 }
 UNION 
 {
-  ?id cocos:letter/cocos:referenced_place ?mention__id . 
-  ?mention__id skos:prefLabel ?mention__prefLabel . 
-  BIND(CONCAT("/places/page/", REPLACE(STR(?mention__id), "^.*\\\\/(.+)", "$1")) AS ?mention__dataProviderUrl)
+  ?id cocos:letter/cocos:referenced_place ?mentioned_place__id . 
+  ?mentioned_place__id skos:prefLabel ?mentioned_place__prefLabel . 
+  BIND(CONCAT("/places/page/", REPLACE(STR(?mentioned_place__id), "^.*\\\\/(.+)", "$1")) AS ?mentioned_place__dataProviderUrl)
 }
 UNION
 {
