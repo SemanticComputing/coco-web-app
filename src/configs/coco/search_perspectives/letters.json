@@ -342,18 +342,6 @@
             "pieChartButton": true,
             "sortButton": true
         },
-        "from": {
-            "containerClass": "seven",
-            "facetType": "list",
-            "filterType": "uriFilter",
-            "predicate": "cocos:was_sent_from",
-            "searchField": true,
-            "sortBy": "instanceCount",
-            "sortByPredicate": "cocos:was_sent_from/skos:prefLabel",
-            "sortDirection": "desc",
-            "pieChartButton": true,
-            "sortButton": true
-        },
         "productionTimespan": {
             "containerClass": "four",
             "endProperty": "crm:P82b_end_of_the_end",
@@ -366,6 +354,18 @@
             "sortByAscPredicate": "crm:P4_has_time-span/crm:P82a_begin_of_the_begin",
             "sortByDescPredicate": "crm:P4_has_time-span/crm:P82b_end_of_the_end",
             "startProperty": "crm:P82a_begin_of_the_begin"
+        },
+        "from": {
+            "containerClass": "seven",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "predicate": "cocos:was_sent_from",
+            "searchField": true,
+            "sortBy": "instanceCount",
+            "sortByPredicate": "cocos:was_sent_from/skos:prefLabel",
+            "sortDirection": "desc",
+            "pieChartButton": true,
+            "sortButton": true
         },
         "language": {
             "containerClass": "four",

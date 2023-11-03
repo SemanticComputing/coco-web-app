@@ -170,6 +170,12 @@ UNION
     ?_metadata cocos:original_record ?original_record 
   }
   UNION
+  { 
+    ?_metadata foaf:homepage ?related__id . 
+    BIND(?related__id AS ?related__prefLabel)
+    BIND(?related__id AS ?related__dataProviderUrl)
+  }
+  UNION
   {
       VALUES (?prop ?prop_label) {
         # (cocos:recipient_as_interpreted 'recipient as interpreted')
