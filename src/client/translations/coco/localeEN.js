@@ -134,7 +134,7 @@ export default {
       <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
         This landing page provides a human-readable summary of the data points that link
         to this {entity}. The data included in this summary reflect only those data points
-        used in the LetterSampo Portal. Click the Open in Linked Data Browser on button on the
+        used in the CoCo Portal. Click the Open in Linked Data Browser on button on the
         Export tab to view the complete set of classes and properties linked to this record.
       </p>
       <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
@@ -224,7 +224,7 @@ export default {
         <ul class="MuiTypography-root MuiTypography-body1">
           <li>
             <strong>TABLE</STRONG> view includes all actors in
-            the LetterSampo data. One table row is equivalent to one actors.
+            the CoCo data. One table row is equivalent to one actors.
             Wikidata/Wikimedia Commons is used as the image source.
             NB. Clicking on the person name leads to a actor instance page providing more information about the actor, while clicking on the image opens the image in a larger scale.
           </li>
@@ -292,8 +292,8 @@ export default {
           `
         },
         type: {
-          label: 'Type',
-          description: 'Person or Group'
+          label: 'Actor type',
+          description: 'Type of the actor: person, group, family, or unknown'
         },
         birthDateTimespan: {
           label: 'Birth time',
@@ -459,7 +459,7 @@ export default {
       <ul class="MuiTypography-root MuiTypography-body1">
       <li>
         <strong>TABLE</STRONG> view includes all letter in
-        the LetterSampo data. One table row is equivalent to one letter.
+        the CoCo data. One table row is equivalent to one letter.
       </li>
       <li>
         <strong>MIGRATIONS</strong> is a map visualization showing the known routes of the letters.
@@ -650,7 +650,7 @@ export default {
       longDescription: `
       <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
       Use this perspective to access the place data related to the actors and letters in the dataset.
-      Places in the LetterSampo data consists of countries, counties, towns, villages, and town neighborhoods,
+      Places in the CoCo data consists of countries, counties, towns, villages, and town neighborhoods,
       as well as individual buildings, e.g. schools, churches, hospitals etc.
       The data (labels, coordinates, hierarchy) is converted from various data sources:
       Geonames, GND places, and Wikidata.
@@ -662,7 +662,7 @@ export default {
     <ul class="MuiTypography-root MuiTypography-body1">
       <li>
         <strong>TABLE</STRONG> view includes all places in
-        the LetterSampo data. One table row is equivalent to one place.
+        the CoCo data. One table row is equivalent to one place.
         Clicking on the place name opens a instance page providing more information about the chosen place. 
         Clicking on the place image opens a larger version of it.
       </li>
