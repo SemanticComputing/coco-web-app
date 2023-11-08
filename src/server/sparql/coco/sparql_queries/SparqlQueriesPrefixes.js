@@ -16,5 +16,5 @@ PREFIx xsd: <http://www.w3.org/2001/XMLSchema#>
 PReFiX actors: <http://ldf.fi/coco/actors/> 
 PrEFIX letters: <http://ldf.fi/coco/letters/> 
 PREFIx places: <http://ldf.fi/coco/places/> 
-PREFIX cocos: <http://ldf.fi/schema/coco/> 
+PREFIX : <http://ldf.fi/schema/coco/> 
 `
