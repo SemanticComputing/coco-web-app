@@ -110,6 +110,7 @@ UNION
 }
 UNION
 {
+
   ?id :letter ?uri__id .
   BIND(STR(?uri__id) as ?uri__prefLabel)
   BIND(?uri__id as ?uri__dataProviderUrl)
@@ -140,19 +141,19 @@ UNION
   UNION
   {
     ?uri__id :fonds ?fonds__id .
-    ?fonds__id skos:prefLabel ?fonds__prefLabel .
+    ?fonds__id a [] ; skos:prefLabel ?fonds__prefLabel .
     BIND(CONCAT("/fonds/page/", REPLACE(STR(?fonds__id), "^.*\\\\/(.+)", "$1")) AS ?fonds__dataProviderUrl)
   }
   UNION
   {
     ?uri__id :series ?series__id .
-    ?series__id skos:prefLabel ?series__prefLabel .
+    ?series__id a [] ; skos:prefLabel ?series__prefLabel .
     BIND(CONCAT("/series/page/", REPLACE(STR(?series__id), "^.*\\\\/(.+)", "$1")) AS ?series__dataProviderUrl)
   }    
   UNION
   {
     ?uri__id :archival_organization ?archival_organization__id .
-    ?archival_organization__id skos:prefLabel ?archival_organization__prefLabel .
+    ?archival_organization__id a [] ; skos:prefLabel ?archival_organization__prefLabel .
     BIND(CONCAT("/fonds/page/", REPLACE(STR(?archival_organization__id), "^.*\\\\/(.+)", "$1")) AS ?archival_organization__dataProviderUrl)
   }
   UNION
