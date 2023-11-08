@@ -429,6 +429,39 @@
             "priority": 5
         },
         {
+            "id": "numSent",
+            "valueType": "string",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": false,
+            "numberedList": false,
+            "showSource": false,
+            "sourceExternalLink": false,
+            "minWidth": 70
+        },
+        {
+            "id": "numReceived",
+            "valueType": "string",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": false,
+            "numberedList": false,
+            "showSource": false,
+            "sourceExternalLink": false,
+            "minWidth": 70
+        },
+        {
+            "id": "knownLocation",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": false,
+            "minWidth": 220,
+            "onlyOnInstancePage": true,
+            "expandedOnInstancePage": true
+        },
+        {
             "id": "gender",
             "valueType": "object",
             "makeLink": false,
@@ -513,39 +546,6 @@
             "externalLink": false,
             "sortValues": false,
             "numberedList": false,
-            "onlyOnInstancePage": true,
-            "expandedOnInstancePage": true
-        },
-        {
-            "id": "numSent",
-            "valueType": "string",
-            "makeLink": false,
-            "externalLink": false,
-            "sortValues": false,
-            "numberedList": false,
-            "showSource": false,
-            "sourceExternalLink": false,
-            "minWidth": 70
-        },
-        {
-            "id": "numReceived",
-            "valueType": "string",
-            "makeLink": false,
-            "externalLink": false,
-            "sortValues": false,
-            "numberedList": false,
-            "showSource": false,
-            "sourceExternalLink": false,
-            "minWidth": 70
-        },
-        {
-            "id": "knownLocation",
-            "valueType": "object",
-            "makeLink": true,
-            "externalLink": false,
-            "sortValues": true,
-            "numberedList": false,
-            "minWidth": 220,
             "onlyOnInstancePage": true,
             "expandedOnInstancePage": true
         },
