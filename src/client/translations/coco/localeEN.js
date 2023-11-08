@@ -682,6 +682,7 @@ export default {
           label: 'Places within',
           description: `
             Smaller places, e.g. towns and villages contained within the place.
+            The optional number in parenthesis is the number of activities. 
           `
         },
         place: {
@@ -710,7 +711,10 @@ export default {
         },
         number_of_events: {
           label: 'Number of events',
-          description: `Number of letter sendings and references related to this place.`
+          description: `
+          Number of letter sendings and references related to this place. 
+          A detailed list about the letters can be seen on the tab "LETTERS AND ACTORS"
+          `
         },
         born: {
           label: 'People born',
