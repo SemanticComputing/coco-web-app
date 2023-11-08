@@ -283,10 +283,10 @@ export default {
         },
         gender: {
           label: 'Gender',
-          description: 'The gender of a person.'
+          description: 'The gender of a person. Notice that the other types of actors do not have this value.'
         },
         image: {
-          label: 'Image',
+          label: 'Image of a person',
           description: `
             Image source: Wikimedia Commons.
           `
@@ -297,15 +297,11 @@ export default {
         },
         birthDateTimespan: {
           label: 'Birth time',
-          description: `
-          Birth time of a person
-          `
+          description: `Birth time of a person. Notice that the other types of actors do not have this value.`
         },
         birthPlace: {
           label: 'Place of Birth',
-          description: `
-          Place of Birth
-          `
+          description: `Place of Birth. Notice that the other types of actors do not have this value.`
         },
         floruitTimespan: {
           label: 'Floruit',
@@ -327,27 +323,19 @@ export default {
         },
         deathDateTimespan: {
           label: 'Death time',
-          description: `
-          Death time of a person
-          `
+          description: `Death time of a person. Notice that the other types of actors do not have this value.`
         },
         deathPlace: {
           label: 'Place of Death',
-          description: `
-          Place of Death
-          `
+          description: `Place of Death. Notice that the other types of actors do not have this value.`
         },
         altLabel: {
           label: 'Alternative names',
-          description: `
-            Alternative names of the actor.
-          `
+          description: `Alternative names of the actor.`
         },
         occupation: {
           label: 'Occupation',
-          description: `
-          Occupation of the actor.
-          `
+          description: `Occupation of a person. . Notice that the other types of actors do not have this value.`
         },
         external: {
           label: 'External databases',
@@ -357,15 +345,7 @@ export default {
         },
         relative: {
           label: 'Relatives',
-          description: `
-            Family relatives of this actor
-          `
-        },
-        owner: {
-          label: 'Owner',
-          description: `
-            Former or current owners (individual or institutional).
-          `
+          description: `Family relatives of a person. Notice that this data has been extracted from external databased like BiographySampo, AcademySampo and Wikidatam, and there might be errors.`
         },
         rel: {
           label: 'Related actors',
@@ -434,12 +414,6 @@ export default {
           label: 'Known locations',
           description: `
             Known locations by letter correspondence.
-          `
-        },
-        material: {
-          label: 'Material',
-          description: `
-            The physical material on which the text is written.
           `
         }
       }
@@ -524,22 +498,10 @@ export default {
             The data source of the letter.
           `
         },
-        excipit: {
-          label: 'Excipit',
-          description: `
-          An excipit of the letter.
-          `
-        },
         description: {
           label: 'Description',
           description: `
           The description of the letter content.
-          `
-        },
-        manuscript: {
-          label: 'Manuscript',
-          description: `
-          The specific manuscript(s) in which the Work can be found.
           `
         },
         comment: {
@@ -621,12 +583,6 @@ export default {
           label: 'Place of sending',
           description: `
           Place from where the letter was sent.
-          `
-        },
-        to: {
-          label: 'Place of receiving',
-          description: `
-          The receiving place of the letter
           `
         },
         record_value: {
@@ -751,6 +707,10 @@ export default {
           description: `
           Related actors, e.g. people or groups that have sent or received letters at this place.
           `
+        },
+        number_of_events: {
+          label: 'Number of events',
+          description: `Number of letter sendings and references related to this place.`
         },
         born: {
           label: 'People born',
