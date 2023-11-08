@@ -9,7 +9,7 @@
     "baseURI": "http://ldf.fi/coco",
     "URITemplate": "<BASE_URI>/places/<LOCAL_ID>",
     "facetClass": "crm:E53_Place",
-    "defaultConstraint": "FILTER EXISTS { <SUBJECT> cocos:number_of_events [] }",
+    "defaultConstraint": "FILTER EXISTS { <SUBJECT> :number_of_events [] }",
     "frontPageImage": "main_page/places2-452x262.jpg",
     "searchMode": "faceted-search",
     "defaultActiveFacets": [
@@ -256,7 +256,7 @@
             "valueType": "object",
             "makeLink": true,
             "externalLink": false,
-            "sortValues": true,
+            "sortValues": false,
             "numberedList": false,
             "onlyOnInstancePage": true,
             "expandedOnInstancePage": true
@@ -293,12 +293,12 @@
             "containerClass": "ten",
             "facetType": "list",
             "filterType": "uriFilter",
-            "predicate": "cocos:country",
+            "predicate": ":country",
             "sortBy": "instanceCount",
             "sortDirection": "desc",
             "searchField": true,
             "sortButton": true,
-            "sortByPredicate": "cocos:country/skos:prefLabel"
+            "sortByPredicate": ":country/skos:prefLabel"
         },
         "broader": {
             "containerClass": "ten",
@@ -312,7 +312,7 @@
             "sortByPredicate": "skos:broader/skos:prefLabel"
         },
         "number_of_events": {
-            "sortByPattern": "{ SELECT ?id ?orderBy WHERE { VALUES ?facetClass { <FACET_CLASS> } ?id a ?facetClass . OPTIONAL { ?id cocos:number_of_events ?num } BIND (COALESCE(?num, 0) AS ?orderBy) }}"
+            "sortByPattern": "{ SELECT ?id ?orderBy WHERE { VALUES ?facetClass { <FACET_CLASS> } ?id a ?facetClass . OPTIONAL { ?id :number_of_events ?num } BIND (COALESCE(?num, 0) AS ?orderBy) }}"
         }
     }
 }

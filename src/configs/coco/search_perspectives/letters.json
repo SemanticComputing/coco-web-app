@@ -8,7 +8,7 @@
     "sparqlQueriesFile": "SparqlQueriesLetters.js",
     "baseURI": "http://ldf.fi/coco",
     "URITemplate": "<BASE_URI>/events/<LOCAL_ID>",
-    "facetClass": "cocos:Production",
+    "facetClass": ":Production",
     "frontPageImage": "main_page/works-452x262.jpg",
     "searchMode": "faceted-search",
     "defaultActiveFacets": [
@@ -334,10 +334,10 @@
             "containerClass": "ten",
             "facetType": "list",
             "filterType": "uriFilter",
-            "predicate": "cocos:was_authored_by",
+            "predicate": ":was_authored_by",
             "searchField": true,
             "sortBy": "instanceCount",
-            "sortByPredicate": "cocos:was_authored_by/skos:prefLabel",
+            "sortByPredicate": ":was_authored_by/skos:prefLabel",
             "sortDirection": "desc",
             "pieChartButton": true,
             "sortButton": true
@@ -346,10 +346,10 @@
             "containerClass": "ten",
             "facetType": "list",
             "filterType": "uriFilter",
-            "predicate": "cocos:letter/cocos:was_addressed_to",
+            "predicate": ":letter/:was_addressed_to",
             "searchField": true,
             "sortBy": "instanceCount",
-            "sortByPredicate": "cocos:letter/cocos:was_addressed_to/skos:prefLabel",
+            "sortByPredicate": ":letter/:was_addressed_to/skos:prefLabel",
             "sortDirection": "desc",
             "pieChartButton": true,
             "sortButton": true
@@ -371,10 +371,10 @@
             "containerClass": "seven",
             "facetType": "list",
             "filterType": "uriFilter",
-            "predicate": "cocos:was_sent_from",
+            "predicate": ":was_sent_from",
             "searchField": true,
             "sortBy": "instanceCount",
-            "sortByPredicate": "cocos:was_sent_from/skos:prefLabel",
+            "sortByPredicate": ":was_sent_from/skos:prefLabel",
             "sortDirection": "desc",
             "pieChartButton": true,
             "sortButton": true
@@ -383,37 +383,35 @@
             "containerClass": "four",
             "facetType": "list",
             "filterType": "uriFilter",
-            "predicate": "cocos:letter/dct:language",
+            "predicate": ":letter/dct:language",
             "searchField": false,
             "sortBy": "instanceCount",
             "sortDirection": "desc",
             "sortButton": true,
             "pieChartButton": true,
-            "sortByPredicate": "cocos:letter/dct:language/skos:prefLabel"
+            "sortByPredicate": ":letter/dct:language/skos:prefLabel"
         },
         "datasource": {
             "containerClass": "ten",
             "facetType": "list",
             "filterType": "uriFilter",
-            "predicate": "cocos:letter/cocos:metadata/dct:source",
+            "predicate": ":letter/:metadata/dct:source",
             "searchField": false,
             "sortBy": "instanceCount",
             "sortDirection": "desc",
             "sortButton": true,
             "pieChartButton": true,
-            "sortByPredicate": "cocos:letter/cocos:metadata/dct:source/skos:prefLabel"
+            "sortByPredicate": ":letter/:metadata/dct:source/skos:prefLabel"
         },
         "fonds": {
             "containerClass": "ten",
-            "facetType": "list",
+            "facetType": "hierarchical",
             "filterType": "uriFilter",
-            "predicate": "cocos:letter/cocos:fonds",
+            "parentProperty": ":archival_organization",
+            "predicate": ":letter/:fonds",
             "searchField": true,
-            "sortBy": "instanceCount",
-            "sortDirection": "desc",
-            "sortButton": true,
-            "pieChartButton": true,
-            "sortByPredicate": "cocos:letter/cocos:fonds/skos:prefLabel"
+            "sortButton": false,
+            "sortByPredicate": ":letter/:fonds/skos:prefLabel"
         }
     }
 }
