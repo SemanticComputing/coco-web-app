@@ -9,6 +9,7 @@
     "baseURI": "http://ldf.fi/coco",
     "URITemplate": "<BASE_URI>/places/<LOCAL_ID>",
     "facetClass": "crm:E53_Place",
+    "defaultConstraint": "FILTER EXISTS { <SUBJECT> cocos:number_of_events [] }",
     "frontPageImage": "main_page/places2-452x262.jpg",
     "searchMode": "faceted-search",
     "defaultActiveFacets": [
@@ -24,11 +25,11 @@
                 "tabPath": "table",
                 "tabIcon": "CalendarViewDay",
                 "propertiesQueryBlock": "placePropertiesFacetResults",
-                "pagesize": 10,
+                "pagesize": 30,
                 "paginatedResultsAlwaysExpandRows": true,
                 "paginatedResultsRowContentMaxHeight": 150,
-                "sortBy": null,
-                "sortDirection": null
+                "sortBy": "number_of_events",
+                "sortDirection": "desc"
             },
             "instanceConfig": {
                 "propertiesQueryBlock": "placePropertiesInstancePage",
@@ -243,12 +244,22 @@
             "numberedList": false
         },
         {
+            "id": "number_of_events",
+            "valueType": "string",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": false,
+            "numberedList": false
+        },
+        {
             "id": "narrower",
             "valueType": "object",
             "makeLink": true,
             "externalLink": false,
             "sortValues": true,
-            "numberedList": false
+            "numberedList": false,
+            "onlyOnInstancePage": true,
+            "expandedOnInstancePage": true
         },
         {
             "id": "external",
@@ -299,6 +310,9 @@
             "searchField": true,
             "sortButton": true,
             "sortByPredicate": "skos:broader/skos:prefLabel"
+        },
+        "number_of_events": {
+            "sortByPattern": "{ SELECT ?id ?orderBy WHERE { VALUES ?facetClass { <FACET_CLASS> } ?id a ?facetClass . OPTIONAL { ?id cocos:number_of_events ?num } BIND (COALESCE(?num, 0) AS ?orderBy) }}"
         }
     }
 }

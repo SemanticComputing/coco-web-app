@@ -16,16 +16,13 @@ export const placePropertiesFacetResults = `
   }
   UNION
   {
-    ?narrower__id skos:broader ?id ;
-      skos:prefLabel ?narrower__prefLabel .
-    FILTER (?narrower__id != ?id)
-    BIND(CONCAT("/${perspectiveID}/page/", REPLACE(STR(?narrower__id), "^.*\\\\/(.+)", "$1")) AS ?narrower__dataProviderUrl)
-  }
-  UNION
-  {
     ?id cocos:country ?country__id .
     ?country__id skos:prefLabel ?country__prefLabel .
     BIND(CONCAT("/places/page/", REPLACE(STR(?country__id), "^.*\\\\/(.+)", "$1")) AS ?country__dataProviderUrl)
+  }
+  UNION
+  {
+    ?id cocos:number_of_events ?number_of_events
   }
   UNION
   {
@@ -36,7 +33,6 @@ export const placePropertiesFacetResults = `
   }
 `
 
-// TODO add migrations from the place
 export const placePropertiesInstancePage = `
   BIND(?id as ?uri__id)
   BIND(?id as ?uri__prefLabel)
@@ -65,7 +61,8 @@ export const placePropertiesInstancePage = `
       BIND(CONCAT("/places/page/", REPLACE(STR(?country__id), "^.*\\\\/(.+)", "$1")) AS ?country__dataProviderUrl)
   }
   UNION
-  { ?narrower__id skos:broader ?id ;
+  { 
+    ?narrower__id skos:broader ?id ;
       skos:prefLabel ?narrower__prefLabel .
     FILTER (?narrower__id != ?id)
     BIND(CONCAT("/${perspectiveID}/page/", REPLACE(STR(?narrower__id), "^.*\\\\/(.+)", "$1")) AS ?narrower__dataProviderUrl)
@@ -85,6 +82,10 @@ export const placePropertiesInstancePage = `
   {
     ?id geo:lat ?lat ; geo:long ?long .
     BIND (CONCAT('lat ', STR(xsd:decimal(?lat)), ', long ',STR(xsd:decimal(?long))) as ?location)
+  }
+  UNION
+  {
+    ?id cocos:number_of_events ?number_of_events
   }
   UNION
   {
