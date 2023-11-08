@@ -335,7 +335,7 @@ export default {
         },
         occupation: {
           label: 'Occupation',
-          description: `Occupation of a person. . Notice that the other types of actors do not have this value.`
+          description: `Occupation of a person. Notice that the other types of actors do not have this value.`
         },
         external: {
           label: 'External databases',
@@ -345,7 +345,9 @@ export default {
         },
         relative: {
           label: 'Relatives',
-          description: `Family relatives of a person. Notice that this data has been extracted from external databased like BiographySampo, AcademySampo and Wikidatam, and there might be errors.`
+          description: `Family relatives of a person. 
+          Notice that this data has been extracted from external databased like BiographySampo, AcademySampo and Wikidata. 
+          Only relations between people in the CoCo data are shown, so there might be missing relations or errors.`
         },
         rel: {
           label: 'Related actors',
@@ -605,11 +607,13 @@ export default {
       shortDescription: 'Related towns, cities, or countries',
       longDescription: `
       <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-      Use this perspective to access the place data related to the actors and letters in the dataset.
+      Use this perspective to access the place ontology related to the letters and actors in the dataset.
       Places in the CoCo data consists of countries, counties, towns, villages, and town neighborhoods,
       as well as individual buildings, e.g. schools, churches, hospitals etc.
-      The data (labels, coordinates, hierarchy) is converted from various data sources:
-      Geonames, GND places, and Wikidata.
+      The data (labels, coordinates, hierarchy) is converted from data sources like Wikidata and YSO.
+      </br>
+      Notice that this perspective view only the places with sent letters or referenced in the letter contents.
+      In addition to that there are places required to, e.g., built the geographical hiearchy.
     </p>
     <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
       See <a href="/instructions">instructions</a> for using the
