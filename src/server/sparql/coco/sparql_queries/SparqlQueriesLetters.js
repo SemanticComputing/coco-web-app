@@ -22,19 +22,11 @@ UNION
 }
 UNION
 {
-  { ?id crm:P4_has_time-span ?productionTimespan__id }
-  UNION
-  { ?id cocos:inferredDate ?productionTimespan__id }
-
+  ?id crm:P4_has_time-span ?productionTimespan__id .
+  
   OPTIONAL { ?productionTimespan__id skos:prefLabel ?productionTimespan__prefLabel }
   OPTIONAL { ?productionTimespan__id crm:P82a_begin_of_the_begin ?productionTimespan__start }
   OPTIONAL { ?productionTimespan__id crm:P82b_end_of_the_end ?productionTimespan__end }
-}
-UNION
-{ 
-  ?id cocos:letter/dct:language ?language__id . 
-    ?language__id skos:prefLabel ?language__prefLabel ; a [] .
-  BIND (?language__id AS ?language__dataProviderUrl)
 }
 UNION
 {
@@ -51,25 +43,30 @@ UNION
 UNION 
 { 
   ?id cocos:letter ?uri__id .
+  {
+    ?uri__id cocos:fonds ?fonds__id .
+    ?fonds__id skos:prefLabel ?fonds__prefLabel ; a [] .
+    BIND(CONCAT("/fonds/page/", REPLACE(STR(?fonds__id), "^.*\\\\/(.+)", "$1")) AS ?fonds__dataProviderUrl)
+  }
+  UNION
+  { 
+    ?uri__id dct:language ?language__id . 
+      ?language__id skos:prefLabel ?language__prefLabel ; a [] .
+    BIND (?language__id AS ?language__dataProviderUrl)
+  }
+  UNION
+  {
+    ?uri__id cocos:series ?series__id .
+    ?series__id skos:prefLabel ?series__prefLabel ; a [] .
+    BIND(CONCAT("/series/page/", REPLACE(STR(?series__id), "^.*\\\\/(.+)", "$1")) AS ?series__dataProviderUrl)
+  }
+  UNION
   { # Metadata values
     ?uri__id cocos:metadata ?_metadata .
-    { 
-      ?_metadata dct:source ?datasource__id .
-      ?datasource__id skos:prefLabel ?datasource__prefLabel .
-      BIND(CONCAT("/sources/page/", REPLACE(STR(?datasource__id), "^.*\\\\/(.+)", "$1")) AS ?datasource__dataProviderUrl)
-    }
-    UNION
-    {
-      ?uri__id cocos:fonds ?fonds__id .
-      ?fonds__id skos:prefLabel ?fonds__prefLabel ; a [] .
-      BIND(CONCAT("/fonds/page/", REPLACE(STR(?fonds__id), "^.*\\\\/(.+)", "$1")) AS ?fonds__dataProviderUrl)
-    }
-    UNION
-    {
-      ?uri__id cocos:series ?series__id .
-      ?series__id skos:prefLabel ?series__prefLabel ; a [] .
-      BIND(CONCAT("/series/page/", REPLACE(STR(?series__id), "^.*\\\\/(.+)", "$1")) AS ?series__dataProviderUrl)
-    }
+
+    ?_metadata dct:source ?datasource__id .
+    ?datasource__id skos:prefLabel ?datasource__prefLabel .
+    BIND(CONCAT("/sources/page/", REPLACE(STR(?datasource__id), "^.*\\\\/(.+)", "$1")) AS ?datasource__dataProviderUrl)
   }
 }
 `
@@ -141,26 +138,26 @@ UNION
     BIND (?language__id AS ?language__dataProviderUrl)
   }
   UNION
+  {
+    ?uri__id cocos:fonds ?fonds__id .
+    ?fonds__id skos:prefLabel ?fonds__prefLabel .
+    BIND(CONCAT("/fonds/page/", REPLACE(STR(?fonds__id), "^.*\\\\/(.+)", "$1")) AS ?fonds__dataProviderUrl)
+  }
+  UNION
+  {
+    ?uri__id cocos:series ?series__id .
+    ?series__id skos:prefLabel ?series__prefLabel .
+    BIND(CONCAT("/series/page/", REPLACE(STR(?series__id), "^.*\\\\/(.+)", "$1")) AS ?series__dataProviderUrl)
+  }    
+  UNION
+  {
+    ?uri__id cocos:archival_organization ?archival_organization__id .
+    ?archival_organization__id skos:prefLabel ?archival_organization__prefLabel .
+    BIND(CONCAT("/fonds/page/", REPLACE(STR(?archival_organization__id), "^.*\\\\/(.+)", "$1")) AS ?archival_organization__dataProviderUrl)
+  }
+  UNION
   { # Metadata values
     ?uri__id cocos:metadata ?_metadata .
-    {
-      ?_metadata cocos:archival_organization ?archival_organization__id .
-      ?archival_organization__id skos:prefLabel ?archival_organization__prefLabel .
-      BIND(CONCAT("/fonds/page/", REPLACE(STR(?archival_organization__id), "^.*\\\\/(.+)", "$1")) AS ?archival_organization__dataProviderUrl)
-    }
-    UNION
-    {
-      ?_metadata cocos:fonds ?fonds__id .
-      ?fonds__id skos:prefLabel ?fonds__prefLabel .
-      BIND(CONCAT("/fonds/page/", REPLACE(STR(?fonds__id), "^.*\\\\/(.+)", "$1")) AS ?fonds__dataProviderUrl)
-    }
-    UNION
-    {
-      ?_metadata cocos:series ?series__id .
-      ?series__id skos:prefLabel ?series__prefLabel .
-      BIND(CONCAT("/series/page/", REPLACE(STR(?series__id), "^.*\\\\/(.+)", "$1")) AS ?series__dataProviderUrl)
-    }
-    UNION
     {
       ?_metadata cocos:original_record ?original_record 
     }
