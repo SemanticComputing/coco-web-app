@@ -294,9 +294,7 @@ SELECT DISTINCT ?id ?lat ?long
 (COUNT(DISTINCT ?person) AS ?instanceCount)
 WHERE {
   <FILTER>
-  { ?person ^:was_authored_by/:was_sent_from ?id } 
-  UNION 
-  { ?person ^(:letter/:was_addressed_to)/:was_sent_to ?id } 
+  { ?person ^:was_authored_by/:was_sent_from ?id }
   UNION
   { ?person :was_born_in_location ?id }
   UNION
@@ -311,8 +309,6 @@ export const peopleRelatedTo = `
   OPTIONAL {
     <FILTER>
     { ?related__id ^:was_authored_by/:was_sent_from ?id }
-    # UNION
-    # { ?related__id ^(:letter/:was_addressed_to)/:was_sent_to ?id }
     UNION
     { ?related__id :was_born_in_location ?id }
     UNION
