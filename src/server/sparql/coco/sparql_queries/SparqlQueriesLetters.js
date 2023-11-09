@@ -228,8 +228,7 @@ export const lettersByYearQuery = `
 SELECT DISTINCT ?category (COUNT(DISTINCT ?letter) AS ?count)
 WHERE {
   <FILTER>
-  ?letter :was_authored_by ?id ;
-    :letter/:was_addressed_to ?target ;
+  ?letter a :Production ;
     crm:P4_has_time-span/crm:P82a_begin_of_the_begin ?time_0 .
   BIND (STR(year(?time_0)) AS ?category)
   FILTER (BOUND(?category))
