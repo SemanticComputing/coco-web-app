@@ -1,0 +1,190 @@
+{
+    "id": "fonds",
+    "endpoint": {
+        "url": "https://ldf.fi/coco/sparql",
+        "useAuth": true,
+        "prefixesFile": "SparqlQueriesPrefixes.js"
+    },
+    "sparqlQueriesFile": "SparqlQueriesFonds.js",
+    "baseURI": "http://ldf.fi/coco",
+    "URITemplate": "<BASE_URI>/fonds/<LOCAL_ID>",
+    "facetClass": ":Fonds",
+    "frontPageImage": "main_page/manuscripts-452x262.jpg",
+    "searchMode": "faceted-search",
+    "defaultActiveFacets": [
+        "prefLabel", "archival_organization"
+    ],
+    "defaultTab": "table",
+    "defaultInstancePageTab": "table",
+    "maps": {
+        "placesArchive": {
+            "center": [
+                22.43,
+                10.37
+            ],
+            "zoom": 2
+        }
+    },
+    "resultClasses": {
+        "fonds": {
+            "paginatedResultsConfig": {
+                "tabID": 0,
+                "component": "ResultTable",
+                "tabPath": "table",
+                "tabIcon": "CalendarViewDay",
+                "propertiesQueryBlock": "fondsPropertiesFacetResults",
+                "pagesize": 30,
+                "paginatedResultsAlwaysExpandRows": true,
+                "paginatedResultsRowContentMaxHeight": 150,
+                "sortDirection": "desc"
+            },
+            "instanceConfig": {
+                "propertiesQueryBlock": "fondsPropertiesInstancePage",
+                "instancePageResultClasses": {
+                    "actorInstancePageTable": {
+                        "tabID": 0,
+                        "component": "InstancePageTable",
+                        "tabPath": "table",
+                        "tabIcon": "CalendarViewDay"
+                    },
+                    "instancePageExport": {
+                        "tabID": 1,
+                        "component": "Export",
+                        "tabPath": "export",
+                        "tabIcon": "CloudDownload",
+                        "pageType": "instancePage"
+                    }
+                }
+            }
+        },
+        "placesArchive": {
+            "tabID": 1,
+            "component": "LeafletMap",
+            "tabPath": "map",
+            "tabIcon": "AddLocation",
+            "sparqlQuery": "archivePlacesQuery",
+            "facetClass": "fonds",
+            "filterTarget": "fonds",
+            "resultMapper": "mapPlaces",
+            "instanceConfig": {
+                "propertiesQueryBlock": "placePropertiesInfoWindow",
+                "relatedInstances": "peopleRelatedTo",
+                "createPopUpContent": "createPopUpContentLetterSampo"
+            }
+        },
+        "lettersByYear": {
+            "tabID": 2,
+            "component": "ApexCharts",
+            "tabPath": "by-year",
+            "tabIcon": "ShowChart",
+            "sparqlQuery": "archiveByYearQuery",
+            "facetClass": "fonds",
+            "filterTarget": "fonds",
+            "resultMapper": "mapLineChart",
+            "resultMapperConfig": {
+                "fillEmptyValues": false
+            },
+            "createChartData": "createSingleLineChartData",
+            "title": "Letters by year",
+            "xaxisTitle": "Year",
+            "xaxisType": "category",
+            "xaxisTickAmount": 20,
+            "yaxisTitle": "Number of letters",
+            "seriesTitle": "Number of letters",
+            "stroke": {
+                "curve": "straight",
+                "width": 2
+            }
+        },
+        "export": {
+            "tabID": 3,
+            "component": "Export",
+            "tabPath": "export",
+            "tabIcon": "CloudDownload",
+            "resultClass": "perspective1",
+            "facetClass": "perspective1"
+        }
+    },
+    "properties": [
+        {
+            "id": "archival_organization",
+            "valueType": "object",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": false,
+            "minWidth": 120
+        },
+        {
+            "id": "prefLabel",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": false,
+            "minWidth": 100
+        },
+        {
+            "id": "number_of_letters",
+            "valueType": "string",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": false,
+            "numberedList": false,
+            "minWidth": 70,
+            "priority": 5,
+            "expandedOnInstancePage": false
+        },
+        {
+            "id": "letter",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": false,
+            "sortValues": false,
+            "numberedList": true,
+            "minWidth": 120,
+            "priority": 5,
+            "onlyOnInstancePage": true,
+            "expandedOnInstancePage": true
+        },
+        {
+            "id": "series",
+            "valueType": "object",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": false,
+            "minWidth": 70,
+            "priority": 5,
+            "expandedOnInstancePage": true
+        },
+        {
+            "id": "uri",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": true,
+            "sortValues": true,
+            "numberedList": false,
+            "onlyOnInstancePage": true
+        }
+    ],
+    "facets": {
+        "archival_organization": {
+            "containerClass": "five",
+            "facetType": "list",
+            "predicate": ":archival_organization",
+            "filterType": "uriFilter",
+            "sortBy": "instanceCount",
+            "sortDirection": "desc",
+            "pieChartButton": true,
+            "sortByPredicate": ":archival_organization/skos:prefLabel"
+        },
+        "prefLabel": {
+            "containerClass": "one",
+            "facetType": "text",
+            "filterType": "textFilter",
+            "sortByPredicate": "skos:prefLabel",
+            "textQueryProperty": "skos:prefLabel"
+        }
+    }
+}

@@ -5,6 +5,7 @@
         "searchPerspectives": [
             "letters",
             "actors",
+            "fonds",
             "places",
             "fullTextSearch"
         ],

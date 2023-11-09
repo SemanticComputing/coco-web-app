@@ -601,6 +601,139 @@ export default {
         }
       }
     },
+    fonds: {
+      label: 'Archive',
+      facetResultsType: 'fonds',
+      shortDescription: 'Information about the Archival Organizations, Fonds, and Series',
+      longDescription: `
+      <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
+        Use this perspective to access the archival organizations, fonds, and series in the dataset.
+      </p>
+      <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
+        See <a href="/instructions">instructions</a> for using the
+        filters. The result view can be selected using the tabs:
+      </p>
+      <ul class="MuiTypography-root MuiTypography-body1">
+      <li>
+        <strong>TABLE</STRONG> view includes all archival organizations in
+        the CoCo data. One table row is equivalent to one organization.
+      </li>
+      <li>
+        <strong>MIGRATIONS</strong> is a map visualization showing the known routes of the letters.
+        NB. Some letters may not have information including both the places of sending and receiving, and does not therefore appear on the map application.
+      </li>
+      <li>
+        <strong>BY YEAR</strong> includes a chart showing the yearly distribution of letters in the database.
+      </li>
+      <li>
+        <strong>TOP CORRESPONDENTS</STRONG> view shows a timeline of letters and most important correspondents. The upper chart of the timeline shows the activities using a precision of one day, the lower one the yearly amounts of sent and received letters.
+        NB. Letters having more approximate temporal information, e.g. 'sent 1860-1865' show up on the first day of that time period, e.g. '1 Jan. 1860'.
+      </li>
+      <li>
+        <strong>SPARQL-QUERY</strong> the SPARQL query used to generate the result
+        table view into YASGUI query editor.
+      </li>
+    </ul>
+      `,
+      instancePage: {
+        label: 'Fonds',
+        description: `
+          <h6 class="MuiTypography-root MuiTypography-h6">
+            Page tabs
+          </h6>
+          <ul class="MuiTypography-root MuiTypography-body1">
+            <li>
+              <strong>TABLE</strong> show the available information about the archival organization in the database.
+            </li>
+            <li>
+              <strong>EXPORT</strong> the SPARQL query used to generate the result
+              table view into YASGUI query editor.
+            </li>
+          </ul>
+          <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph"></p>
+        `
+      },
+      properties: {
+        uri: {
+          label: 'URI',
+          description: 'Uniform Resource Identifier'
+        },
+        prefLabel: {
+          label: 'Fonds',
+          description: 'The label of the Fonds'
+        },
+        language: {
+          label: 'Language',
+          description: `
+            The language in which a Work is written in the manuscript
+            (i.e., an “Expression” of a Work). One manuscript may contain multiple languages.
+          `
+        },
+        subject: {
+          label: 'Subject',
+          description: `
+            The subject of the letter.
+          `
+        },
+        datasource: {
+          label: 'Data source',
+          description: `
+            The data source of the letter.
+          `
+        },
+        description: {
+          label: 'Description',
+          description: `
+          The description of the letter content.
+          `
+        },
+        comment: {
+          label: 'Comment',
+          description: `
+          Comments marked with the letter.
+          `
+        },
+        productionTimespan: {
+          label: 'Date',
+          description: `
+            The date(s) when the manuscript(s) in which the Work can be found were written.
+            Multiple production dates may appear for a single manuscript,
+            when there are discrepancies between the contributing data source
+            or when the precise date is uncertain.
+          `
+        },
+        archival_organization: {
+          label: 'Archival organization',
+          description: `
+            Archival organization (Not fully implemented yet).
+          `
+        },
+        fondsLabel: {
+          label: 'Fonds',
+          description: `
+            Fonds (Not fully implemented yet).
+          `
+        },
+        number_of_letters: {
+          label: 'Number of Letters',
+          description: `
+            Number of letters in this fonds.
+          `
+        },
+        series: {
+          label: 'Series',
+          description: `
+            Series
+          `
+        },
+        letter: {
+          label: 'Letters',
+          description: `
+          Letters in this fonds.
+          `
+        }
+      }
+    },
     places: {
       label: 'Places',
       facetResultsType: 'Places',

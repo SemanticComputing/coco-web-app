@@ -75,6 +75,12 @@ export const createPopUpContentLetterSampo = ({ data, resultClass }) => {
     container.appendChild(p)
     container.appendChild(createInstanceListing(data.related))
   }
+  else if (resultClass === 'placesArchive') {
+    const p = document.createElement('p')
+    p.textContent = 'Actors (with number of letters):'
+    container.appendChild(p)
+    container.appendChild(createInstanceListing(data.person))
+  }
   return container
 }
 
