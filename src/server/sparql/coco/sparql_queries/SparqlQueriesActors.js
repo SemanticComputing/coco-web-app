@@ -228,7 +228,28 @@ export const actorLettersInstancePageQuery = `
       ?id :receiving_time/skos:prefLabel ?receiving_time
     }
     UNION
-    { SELECT DISTINCT ?id ?sentletter__id ?sentletter__prefLabel ?sentletter__dataProviderUrl
+    {
+      ?id (^:was_authored_by)/:letter/:fonds ?fonds__id .
+      ?fonds__id skos:prefLabel ?fonds__prefLabel ; a [] .
+      BIND(CONCAT("/fonds/page/", REPLACE(STR(?fonds__id), "^.*\\\\/(.+)", "$1")) AS ?fonds__dataProviderUrl)
+    }
+    UNION
+    {
+      ?id (^:was_addressed_to)/:fonds ?fonds__id .
+      ?fonds__id skos:prefLabel ?fonds__prefLabel ; a [] .
+      BIND(CONCAT("/fonds/page/", REPLACE(STR(?fonds__id), "^.*\\\\/(.+)", "$1")) AS ?fonds__dataProviderUrl)
+    }
+    UNION
+    {
+      ?id (^:was_authored_by)/:letter/:archival_organization [ a [] ; skos:prefLabel ?archival_organization ]
+    }
+    UNION
+    {
+      ?id (^:was_addressed_to)/:archival_organization [ a [] ; skos:prefLabel ?archival_organization ]
+    }
+    UNION
+    { 
+      SELECT DISTINCT ?id ?sentletter__id ?sentletter__prefLabel ?sentletter__dataProviderUrl
       WHERE {
         ?id ^:was_authored_by ?sentletter__id .
           ?sentletter__id a :Production ;

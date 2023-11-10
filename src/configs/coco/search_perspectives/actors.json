@@ -98,6 +98,24 @@
                                 "numberedList": false
                             },
                             {
+                                "id": "archival_organization",
+                                "valueType": "string",
+                                "makeLink": false,
+                                "externalLink": false,
+                                "sortValues": false,
+                                "numberedList": true,
+                                "expandedOnInstancePage": true
+                            },
+                            {
+                                "id": "fonds",
+                                "valueType": "object",
+                                "makeLink": true,
+                                "externalLink": false,
+                                "sortValues": false,
+                                "numberedList": true,
+                                "expandedOnInstancePage": true
+                            },
+                            {
                                 "id": "sentletter",
                                 "valueType": "object",
                                 "makeLink": true,

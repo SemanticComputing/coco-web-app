@@ -406,6 +406,18 @@ export default {
           List of letters which mention this actor.
           `
         },
+        archival_organization: {
+          label: 'Archival Organization',
+          description: `
+            Archival Organizations having letter srelating to this actor.
+          `
+        },
+        fonds: {
+          label: 'Fonds',
+          description: `
+            Fonds containing letters relating to this actor.
+          `
+        },
         datasource: {
           label: 'Data source',
           description: `
@@ -524,7 +536,7 @@ export default {
         archival_organization: {
           label: 'Archival organization',
           description: `
-            Archival organization (Not fully implemented yet).
+            Archival organization
           `
         },
         original_record: {
@@ -536,13 +548,13 @@ export default {
         fonds: {
           label: 'Fonds',
           description: `
-            Fonds (Not fully implemented yet).
+            Fonds
           `
         },
         series: {
           label: 'Series',
           description: `
-            Series (Not fully implemented yet).
+            Series
           `
         },
         source: {
@@ -705,13 +717,13 @@ export default {
         archival_organization: {
           label: 'Archival organization',
           description: `
-            Archival organization (Not fully implemented yet).
+            Archival organization
           `
         },
         fondsLabel: {
           label: 'Fonds',
           description: `
-            Fonds (Not fully implemented yet).
+            Fonds
           `
         },
         number_of_letters: {
@@ -723,7 +735,7 @@ export default {
         series: {
           label: 'Series',
           description: `
-            Series
+            Archival series
           `
         },
         letter: {
