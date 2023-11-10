@@ -294,8 +294,8 @@
         },
         {
             "id": "series",
-            "valueType": "object",
-            "makeLink": true,
+            "valueType": "string",
+            "makeLink": false,
             "externalLink": false,
             "sortValues": false,
             "numberedList": false
