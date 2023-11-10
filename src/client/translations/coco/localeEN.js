@@ -705,13 +705,10 @@ export default {
           Comments marked with the letter.
           `
         },
-        productionTimespan: {
-          label: 'Date',
+        fonds: {
+          label: 'Fonds',
           description: `
-            The date(s) when the manuscript(s) in which the Work can be found were written.
-            Multiple production dates may appear for a single manuscript,
-            when there are discrepancies between the contributing data source
-            or when the precise date is uncertain.
+            Fonds
           `
         },
         archival_organization: {

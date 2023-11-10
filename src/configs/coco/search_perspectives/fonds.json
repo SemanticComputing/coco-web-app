@@ -12,7 +12,7 @@
     "frontPageImage": "main_page/manuscripts-452x262.jpg",
     "searchMode": "faceted-search",
     "defaultActiveFacets": [
-        "prefLabel", "archival_organization"
+        "fonds", "archival_organization"
     ],
     "defaultTab": "table",
     "defaultInstancePageTab": "table",
@@ -36,6 +36,7 @@
                 "pagesize": 30,
                 "paginatedResultsAlwaysExpandRows": true,
                 "paginatedResultsRowContentMaxHeight": 150,
+                "sortBy": "number_of_letters",
                 "sortDirection": "desc"
             },
             "instanceConfig": {
@@ -177,14 +178,23 @@
             "sortBy": "instanceCount",
             "sortDirection": "desc",
             "pieChartButton": true,
+            "sortButton": true,
             "sortByPredicate": ":archival_organization/skos:prefLabel"
         },
-        "prefLabel": {
-            "containerClass": "one",
-            "facetType": "text",
-            "filterType": "textFilter",
-            "sortByPredicate": "skos:prefLabel",
-            "textQueryProperty": "skos:prefLabel"
+        "fonds": {
+            "containerClass": "ten",
+            "facetType": "list",
+            "predicate": ":self_link",
+            "filterType": "uriFilter",
+            "sortBy": "instanceCount",
+            "sortDirection": "desc",
+            "pieChartButton": true,
+            "searchField": true,
+            "sortButton": true,
+            "sortByPredicate": "skos:prefLabel"
+        },
+        "number_of_letters": {
+            "sortByPattern": "{ SELECT ?id ?orderBy WHERE { VALUES ?facetClass { <FACET_CLASS> } ?id a ?facetClass . OPTIONAL { ?id :number_of_letters ?num } BIND (COALESCE(?num, 0) AS ?orderBy) }}"
         }
     }
 }

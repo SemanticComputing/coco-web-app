@@ -10,6 +10,10 @@ export const fondsPropertiesFacetResults = `
   BIND (CONCAT("/${perspectiveID}/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
 
   {
+    ?id :number_of_letters ?number_of_letters
+  }
+  UNION
+  {
     ?id :archival_organization ?archival_organization__id .
     ?archival_organization__id a :Organization ; skos:prefLabel ?archival_organization__prefLabel .
     BIND(CONCAT("/fonds/page/", REPLACE(STR(?archival_organization__id), "^.*\\\\/(.+)", "$1")) AS ?archival_organization__dataProviderUrl)
@@ -31,8 +35,10 @@ export const fondsPropertiesInstancePage = `
   BIND (?prefLabel__id as ?prefLabel__prefLabel)
   BIND(CONCAT("/${perspectiveID}/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
 
-  BIND('TBA' AS ?number_of_letters)
-
+  {
+    ?id :number_of_letters ?number_of_letters
+  }
+  UNION
   {
     ?id :archival_organization ?archival_organization__id .
     ?archival_organization__id a :Organization ; skos:prefLabel ?archival_organization__prefLabel .
