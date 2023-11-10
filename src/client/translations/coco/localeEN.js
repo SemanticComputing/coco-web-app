@@ -20,7 +20,7 @@ export default {
     info: {
       info: 'Info',
       aboutTheProject: 'About the project',
-      aboutTheProjectUrl: 'https://seco.cs.aalto.fi/projects/rrl/'
+      aboutTheProjectUrl: 'https://seco.cs.aalto.fi/projects/coco/'
     },
     searchBarPlaceHolder: 'Search all content',
     searchBarPlaceHolderShort: 'Search',
@@ -214,7 +214,7 @@ export default {
           Use this perspective to access data related to the people and groups in the dataset.
         </p>
         <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-          General information about the project is available at the <a href="https://seco.cs.aalto.fi/projects/rrl/"  target="_blank" rel="noopener noreferrer">project blog</a>.
+          General information about the project is available at the <a href="https://seco.cs.aalto.fi/projects/coco/"  target="_blank" rel="noopener noreferrer">project blog</a>.
         </p>
         <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
           Use this perspective to access data related to the actors in the dataset.
