@@ -196,6 +196,7 @@ UNION
           (:recipient_firstname 'recipient firstname')
           (:sender_familyname_prev 'sender familyname prev')
           (:note 'note')
+          (rdfs:comment 'comment')
           (:archival_organization_as_recorded 'archival organization as recorded')
           (:series_as_recorded 'series as recorded')
           (:referenced_actor_as_recorded 'referenced actor as recorded')
