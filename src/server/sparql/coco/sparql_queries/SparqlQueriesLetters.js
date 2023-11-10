@@ -56,9 +56,7 @@ UNION
   }
   UNION
   {
-    ?uri__id :series ?series__id .
-    ?series__id skos:prefLabel ?series__prefLabel ; a [] .
-    BIND(CONCAT("/series/page/", REPLACE(STR(?series__id), "^.*\\\\/(.+)", "$1")) AS ?series__dataProviderUrl)
+    ?uri__id :series ?series
   }
   UNION
   { # Metadata values
@@ -146,9 +144,7 @@ UNION
   }
   UNION
   {
-    ?uri__id :series ?series__id .
-    ?series__id a [] ; skos:prefLabel ?series__prefLabel .
-    BIND(CONCAT("/series/page/", REPLACE(STR(?series__id), "^.*\\\\/(.+)", "$1")) AS ?series__dataProviderUrl)
+    ?uri__id :series [ a [] ; skos:prefLabel ?series ]
   }    
   UNION
   {
