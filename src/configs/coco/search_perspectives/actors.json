@@ -243,7 +243,7 @@
                         "sparqlQueryNodes": "networkNodesQuery",
                         "useNetworkAPI": true,
                         "queryType": "query_ego",
-                        "limit": 50,
+                        "limit": 60,
                         "optimize": 100.0,
                         "preprocess": "preprocessEgo",
                         "style": [
@@ -268,7 +268,7 @@
                                     "color": "hsl(30, 64%, 35%)",
                                     "target-arrow-shape": "triangle",
                                     "target-arrow-color": "data(color)",
-                                    "font-size": "8",
+                                    "font-size": "6",
                                     "text-valign": "center",
                                     "edge-text-rotation": "autorotate",
                                     "text-background-opacity": 1,
