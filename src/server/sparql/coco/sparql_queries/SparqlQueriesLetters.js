@@ -96,12 +96,6 @@ UNION
 }
 UNION
 {
-  ?id :webpage ?related__id . 
-  BIND(?related__id AS ?related__prefLabel)
-  BIND(URI(?related__id) AS ?related__dataProviderUrl)
-}
-UNION
-{
   ?id :in_tie ?tie__id .
   ?tie__id skos:prefLabel ?tie__prefLabel .
   BIND(CONCAT("/ties/page/", REPLACE(STR(?tie__id), "^.*\\\\/(.+)", "$1")) AS ?tie__dataProviderUrl)
@@ -160,7 +154,7 @@ UNION
     }
     UNION
     { 
-      ?_metadata foaf:homepage ?related__id . 
+      ?_metadata foaf:page|:source_url|:source_api_url ?related__id . 
       BIND(?related__id AS ?related__prefLabel)
       BIND(?related__id AS ?related__dataProviderUrl)
     }
