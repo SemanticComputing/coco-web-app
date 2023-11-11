@@ -51,6 +51,30 @@ export const fondsPropertiesInstancePage = `
     BIND(CONCAT("/series/page/", REPLACE(STR(?series__id), "^.*\\\\/(.+)", "$1")) AS ?series__dataProviderUrl)
   }
   UNION
+  {
+    SELECT DISTINCT ?id ?sender__id  
+	    (CONCAT(?_label, ' (', STR(COUNT(DISTINCT ?_evt)), ')') AS ?sender__prefLabel)
+    	(CONCAT("/actors/page/", REPLACE(STR(?sender__id), "^.*\\\\/(.+)", "$1")) AS ?sender__dataProviderUrl)
+    WHERE {
+      ?_evt :letter/:fonds ?id ; :was_authored_by ?sender__id .
+      ?sender__id skos:prefLabel ?_label ; a [] .
+  	}
+    GROUPBY ?id ?sender__id ?_label
+    ORDERBY DESC(COUNT(DISTINCT ?_evt))
+  }
+  UNION
+  {
+    SELECT DISTINCT ?id ?recipient__id  
+	    (CONCAT(?_label, ' (', STR(COUNT(DISTINCT ?_evt)), ')') AS ?recipient__prefLabel)
+    	(CONCAT("/actors/page/", REPLACE(STR(?recipient__id), "^.*\\\\/(.+)", "$1")) AS ?recipient__dataProviderUrl)
+    WHERE {
+      ?_evt :letter [ :fonds ?id ; :was_addressed_to ?recipient__id ;  ] .  
+      ?recipient__id skos:prefLabel ?_label ; a [] .
+  	}
+    GROUPBY ?id ?recipient__id ?_label
+    ORDERBY DESC(COUNT(DISTINCT ?_evt))
+  }  
+  UNION
   { 
     SELECT DISTINCT ?id ?letter__id ?letter__prefLabel 
       (CONCAT("/letters/page/", REPLACE(STR(?letter__id), "^.*\\\\/(.+)", "$1")) AS ?letter__dataProviderUrl)
