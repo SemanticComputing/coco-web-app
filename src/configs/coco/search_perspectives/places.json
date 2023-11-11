@@ -100,73 +100,28 @@
                             }
                         ]
                     },
-                    "placeInstancePageTimeline": {
+                    "lettersByYear": {
                         "tabID": 2,
-                        "component": "ApexChartsDouble",
-                        "pageType": "instancePage",
+                        "component": "ApexCharts",
                         "tabPath": "letters-by-year",
-                        "tabIcon": "Tune",
-                        "upperResultClass": "placeTimelineUpper",
-                        "lowerResultClass": "placeTimelineLower",
-                        "resultClasses": {
-                            "placeTimelineUpper": {
-                                "title": "Place details",
-                                "pageType": "instancePage",
-                                "height": "60%",
-                                "sparqlQuery": "placeTimeLineQuery",
-                                "filterTarget": "instance",
-                                "resultMapper": "createCorrespondenceChartData",
-                                "resultMapperConfig": {
-                                    "types": ["from", "to"],
-                                    "numberTopResults": 10,
-                                    "lastLabel": "other"
-                                },
-                                "createChartData": "createTopTimelineChartData",
-                                "tooltip": { "x": { "format": "d MMM yyyy" } },
-                                "fill": { "opacity": [0.7, 0.5] },
-                                "grid": {
-                                    "row": {
-                                        "colors": ["#d5d5d5", "transparent"], "opacity": 0.5
-                                    },
-                                    "column": { "colors": ["#a8a8a8", "transparent"] },
-                                    "xaxis": { "lines": { "show": true } },
-                                    "yaxis": { "lines": { "show": true } }
-                                }
-                            },
-                            "placeTimelineLower": {
-                                "pageType": "instancePage",
-                                "height": "40%",
-                                "filterTarget": "instance",
-                                "sparqlQuery": "sentReceivedByPlaceQuery",
-                                "resultMapper": "createCorrespondenceChartDataLower",
-                                "resultMapperConfig": {
-                                    "fillEmptyValues": true
-                                },
-                                "createChartData": "createTopTimelineChartData2",
-                                "title": { "text": "Letters by year", "align": "left" },
-                                "xaxis": {
-                                    "type": "datetime",
-                                    "tooltip": { "enabled": true }
-                                },
-                                "yaxis": {
-                                    "labels": { "minWidth": 150, "maxWidth": 300 }
-                                },
-                                "grid": {
-                                    "column": { "colors": ["#a8a8a8", "transparent"] },
-                                    "xaxis": { "lines": { "show": true } },
-                                    "yaxis": { "lines": { "show": true } }
-                                },
-                                "tooltip": { "x": { "format": "yyyy" } },
-                                "stroke": { "curve": "stepline", "width": 1 },
-                                "fill": {
-                                    "type": "gradient",
-                                    "gradient": {
-                                        "shadeIntensity": 1,
-                                        "opacityFrom": 0.3,
-                                        "opacityTo": 0.6
-                                    }
-                                }
-                            }
+                        "tabIcon": "ShowChart",
+                        "sparqlQuery": "sentReceivedByPlaceQuery",
+                        "facetClass": "places",
+                        "filterTarget": "instance",
+                        "resultMapper": "mapLineChart",
+                        "resultMapperConfig": {
+                            "fillEmptyValues": false
+                        },
+                        "createChartData": "createSingleLineChartData",
+                        "title": "Letters by year",
+                        "xaxisTitle": "Year",
+                        "xaxisType": "category",
+                        "xaxisTickAmount": 20,
+                        "yaxisTitle": "Number of letters",
+                        "seriesTitle": "Number of letters",
+                        "stroke": {
+                            "curve": "straight",
+                            "width": 2
                         }
                     },
                     "instancePageExport": {

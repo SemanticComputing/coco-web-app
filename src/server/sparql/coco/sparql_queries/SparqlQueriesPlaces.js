@@ -114,9 +114,13 @@ WHERE {
   BIND (?prefLabel__id as ?prefLabel__prefLabel)
 
   {
-    ?id ^:was_sent_from ?from__id .
-    ?from__id skos:prefLabel ?from__prefLabel .
-    BIND(CONCAT("/letters/page/", REPLACE(STR(?from__id), "^.*\\\\/(.+)", "$1")) AS ?from__dataProviderUrl)
+    SELECT ?id ?from__id ?from__prefLabel 
+    	(CONCAT("/letters/page/", REPLACE(STR(?from__id), "^.*\\\\/(.+)", "$1")) AS ?from__dataProviderUrl)
+    WHERE {
+	    ?id ^:was_sent_from ?from__id .
+    	?from__id skos:prefLabel ?from__prefLabel .
+      OPTIONAL { ?from__id crm:P4_has_time-span/crm:P82a_begin_of_the_begin ?_time }
+    } ORDERBY COALESCE(year(?_time), 9999)
   } 
   UNION
   {
@@ -168,58 +172,13 @@ export const eventPlacesQuery = `
 // https://api.triplydb.com/s/gYYySP446
 export const sentReceivedByPlaceQuery = `
   SELECT DISTINCT (STR(?year) as ?category)
-    (count(distinct ?sent_letter) AS ?sentCount)
-    (count(distinct ?received_letter) AS ?receivedCount)
-    ((?sentCount + ?receivedCount) as ?allCount)
+      (count(distinct ?evt) AS ?count)
   WHERE {
-    BIND(<ID> as ?id)
-    ?sub skos:broader* ?id .
-
-    #{
-      ?sent_letter :was_sent_from ?sub ;
+      BIND(<ID> as ?id)
+      ?sub skos:broader* ?id .
+      ?evt :was_sent_from ?sub ;
         a :Production ;
         crm:P4_has_time-span/crm:P82a_begin_of_the_begin ?time .
       BIND (STR(year(?time)) AS ?year)
-    #} 
-    #UNION 
-    #{
-    #  ?received_letter :was_sent_to ?sub ;
-    #                  a :Production ;
-    #                  crm:P4_has_time-span/crm:P82a_begin_of_the_begin ?time .
-    #  BIND (STR(year(?time)) AS ?year)
-    #}
-    FILTER (BOUND(?year))
   } GROUP BY ?year ORDER BY ?year 
-`
-
-export const placeTimeLineQuery = `
-SELECT DISTINCT ?id ?to__label ?from__label (xsd:date(?_date) AS ?date) (year(?_date) AS ?year) ?type
-WHERE {
-  
-  BIND( <ID> as ?id)
-  ?sub skos:broader* ?id .
-  
-  {
-    ?letter :was_sent_from ?sub ;
-        a :Production ;
-        crm:P4_has_time-span/crm:P82a_begin_of_the_begin ?_date .
-    # OPTIONAL { 
-    #  ?letter :was_sent_to/skos:prefLabel ?_to .
-    #}
-    BIND ("from" AS ?type)
-    BIND (COALESCE(?_to, '<Info missing>') AS ?from__label)
-  }
-  UNION
-  {
-    ?letter :was_sent_to ?sub ;
-        a :Production ;
-        crm:P4_has_time-span/crm:P82a_begin_of_the_begin ?_date .
-    OPTIONAL { 
-        ?letter :was_sent_from/skos:prefLabel ?_from .
-    }
-    BIND ("to" AS ?type)
-    BIND (COALESCE(?_from, '<Info missing>') AS ?to__label)
-  }
-  FILTER (BOUND(?_date))
-}
 `
