@@ -208,17 +208,17 @@ export default {
     actors: {
       label: 'Actors',
       facetResultsType: 'actors',
-      shortDescription: 'People or groups of people in the collection', // altogether 19716
+      shortDescription: 'People or groups of people in the collection',
       longDescription: `
         <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-          Use this perspective to access data related to the people and groups in the dataset.
+          Use this perspective to access data related to the actors, e.g., people, groups, families, and unknowns, in the dataset.
         </p>
         <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
           General information about the project is available at the <a href="https://seco.cs.aalto.fi/projects/coco/"  target="_blank" rel="noopener noreferrer">project blog</a>.
         </p>
         <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
           Use this perspective to access data related to the actors in the dataset.
-          See <a href="/instructions">instructions</a> for using the
+          See <a target="_" href="https://seco.cs.aalto.fi/projects/coco/coco-sampo-instructions.pdf">instructions</a> for using the
           filters. The result view can be selected using the tabs:
         </p>
         <ul class="MuiTypography-root MuiTypography-body1">
@@ -236,11 +236,10 @@ export default {
             <strong>NETWORK</strong> is a social network visualization showing the Sender-Recipient relationships.
               Notice that the amount of people shown in the network is limited for performance reason.
               The Sender-Recipient relationships are not available for all, so some facet setting may not show the network at all.
-              More network visualizations focusing on a particular person can be viewed at person instance pages.
+              Clicking on an actor node leads to the actor's ego-centric network on an instance page.
           </li>
           <li>
-            <strong>SPARQL-QUERY</strong> the SPARQL query used to generate the result
-            table view into YASGUI query editor.
+            <strong>EXPORT</strong> the SPARQL query used to generate the result table view into YASGUI query editor.
           </li>
         </ul>
       `,
@@ -417,10 +416,17 @@ export default {
             Archival Organizations having letter srelating to this actor.
           `
         },
+        in_fonds: {
+          label: 'Fonds',
+          description: `
+            Fonds containing letters related to this actor. 
+            The number of sent+received letters is shown in parenthesis.
+          `
+        },
         fonds: {
           label: 'Fonds',
           description: `
-            Fonds containing letters relating to this actor.
+            Fonds containing letters sent by this actor.
           `
         },
         datasource: {
@@ -432,7 +438,7 @@ export default {
         knownLocation: {
           label: 'Known locations',
           description: `
-            Known locations by letter correspondence.
+            List of known locations. The number in parenthesis is the number of sent letters.
           `
         }
       }
@@ -446,7 +452,7 @@ export default {
         Use this perspective to access the letter data in the dataset.
       </p>
       <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-        See <a href="/instructions">instructions</a> for using the
+        See <a target="_" href="https://seco.cs.aalto.fi/projects/coco/coco-sampo-instructions.pdf">instructions</a> for using the
         filters. The result view can be selected using the tabs:
       </p>
       <ul class="MuiTypography-root MuiTypography-body1">
@@ -455,18 +461,17 @@ export default {
         the CoCo data. One table row is equivalent to one letter.
       </li>
       <li>
-        <strong>MIGRATIONS</strong> is a map visualization showing the known routes of the letters.
-        NB. Some letters may not have information including both the places of sending and receiving, and does not therefore appear on the map application.
+        <strong>BY YEAR</strong> includes a chart showing the yearly distribution of letters in the database.
       </li>
       <li>
-        <strong>BY YEAR</strong> includes a chart showing the yearly distribution of letters in the database.
+        <strong>HEATMAP</strong> includes a map showing the locations of letters activities.
       </li>
       <li>
         <strong>TOP CORRESPONDENTS</STRONG> view shows a timeline of letters and most important correspondents. The upper chart of the timeline shows the activities using a precision of one day, the lower one the yearly amounts of sent and received letters.
         NB. Letters having more approximate temporal information, e.g. 'sent 1860-1865' show up on the first day of that time period, e.g. '1 Jan. 1860'.
       </li>
       <li>
-        <strong>SPARQL-QUERY</strong> the SPARQL query used to generate the result
+        <strong>EXPORT</strong> the SPARQL query used to generate the result
         table view into YASGUI query editor.
       </li>
     </ul>
@@ -627,27 +632,22 @@ export default {
         Use this perspective to access the archival organizations, fonds, and series in the dataset.
       </p>
       <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-        See <a href="/instructions">instructions</a> for using the
+        See <a target="_" href="https://seco.cs.aalto.fi/projects/coco/coco-sampo-instructions.pdf">instructions</a> for using the
         filters. The result view can be selected using the tabs:
       </p>
       <ul class="MuiTypography-root MuiTypography-body1">
       <li>
-        <strong>TABLE</STRONG> view includes all archival organizations in
-        the CoCo data. One table row is equivalent to one organization.
+        <strong>TABLE</STRONG> view includes all archival organizations, fonds, and series in the CoCo data. 
+        One table row is equivalent to one organization.
       </li>
       <li>
-        <strong>MIGRATIONS</strong> is a map visualization showing the known routes of the letters.
-        NB. Some letters may not have information including both the places of sending and receiving, and does not therefore appear on the map application.
+        <strong>MAP</strong> is a map visualization showing the known locations of sending letters.
       </li>
       <li>
         <strong>BY YEAR</strong> includes a chart showing the yearly distribution of letters in the database.
       </li>
       <li>
-        <strong>TOP CORRESPONDENTS</STRONG> view shows a timeline of letters and most important correspondents. The upper chart of the timeline shows the activities using a precision of one day, the lower one the yearly amounts of sent and received letters.
-        NB. Letters having more approximate temporal information, e.g. 'sent 1860-1865' show up on the first day of that time period, e.g. '1 Jan. 1860'.
-      </li>
-      <li>
-        <strong>SPARQL-QUERY</strong> the SPARQL query used to generate the result
+        <strong>EXPORT</strong> the SPARQL query used to generate the result
         table view into YASGUI query editor.
       </li>
     </ul>
@@ -740,6 +740,18 @@ export default {
             Archival series
           `
         },
+        sender: {
+          label: 'Senders',
+          description: `
+          List of letter senders in this fonds. The number in parenthesis is the number of letters.
+          `
+        },
+        recipient: {
+          label: 'Recipients',
+          description: `
+          List of letter recipients in this fonds. The number in parenthesis is the number of letters.
+          `
+        },
         letter: {
           label: 'Letters',
           description: `
@@ -760,10 +772,10 @@ export default {
       The data (labels, coordinates, hierarchy) is converted from data sources like Wikidata and YSO.
       </br>
       Notice that this perspective view only the places with sent letters or referenced in the letter contents.
-      In addition to that there are places required to, e.g., built the geographical hiearchy.
+      In addition to that there are places required to, e.g., build the geographical hiearchy.
     </p>
     <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-      See <a href="/instructions">instructions</a> for using the
+      See <a target="_" href="https://seco.cs.aalto.fi/projects/coco/coco-sampo-instructions.pdf">instructions</a> for using the
       filters. The result view can be selected using the tabs:
     </p>
     <ul class="MuiTypography-root MuiTypography-body1">
@@ -774,7 +786,7 @@ export default {
         Clicking on the place image opens a larger version of it.
       </li>
       <li>
-        <strong>SPARQL-QUERY</strong> the SPARQL query used to generate the result
+        <strong>EXPORT</strong> the SPARQL query used to generate the result
         table view into YASGUI query editor.
       </li>
     </ul>

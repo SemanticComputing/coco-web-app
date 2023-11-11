@@ -298,7 +298,8 @@
             "makeLink": false,
             "externalLink": false,
             "sortValues": false,
-            "numberedList": false
+            "numberedList": false,
+            "onlyOnInstancePage": true
         },
         {
             "id": "record_value",
@@ -412,6 +413,9 @@
             "searchField": true,
             "sortButton": false,
             "sortByPredicate": ":letter/:fonds/skos:prefLabel"
+        },
+        "prefLabel": {
+            "sortByPattern": "{ SELECT ?id ?orderBy WHERE { VALUES ?facetClass { <FACET_CLASS> } ?id a ?facetClass ; skos:prefLabel ?orderBy }}"
         }
     }
 }

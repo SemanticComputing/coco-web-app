@@ -107,7 +107,7 @@
                                 "expandedOnInstancePage": true
                             },
                             {
-                                "id": "fonds",
+                                "id": "in_fonds",
                                 "valueType": "object",
                                 "makeLink": true,
                                 "externalLink": false,
@@ -710,6 +710,18 @@
             "sortButton": true,
             "pieChartButton": true,
             "sortByPredicate": "dct:source/skos:prefLabel"
+        },
+        "fonds": {
+            "containerClass": "ten",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "predicate": "(^:was_authored_by)/:letter/:fonds",
+            "searchField": false,
+            "sortBy": "instanceCount",
+            "sortDirection": "desc",
+            "sortButton": true,
+            "pieChartButton": true,
+            "sortByPredicate": "(^:was_authored_by)/:letter/:fonds/skos:prefLabel"
         },
         "external": {
             "containerClass": "seven",

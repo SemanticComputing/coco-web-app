@@ -137,6 +137,30 @@
             "expandedOnInstancePage": false
         },
         {
+            "id": "sender",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": false,
+            "sortValues": false,
+            "numberedList": true,
+            "minWidth": 120,
+            "priority": 5,
+            "onlyOnInstancePage": true,
+            "expandedOnInstancePage": true
+        },
+        {
+            "id": "recipient",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": false,
+            "sortValues": false,
+            "numberedList": true,
+            "minWidth": 120,
+            "priority": 5,
+            "onlyOnInstancePage": true,
+            "expandedOnInstancePage": true
+        },
+        {
             "id": "letter",
             "valueType": "object",
             "makeLink": true,
