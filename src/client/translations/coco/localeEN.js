@@ -252,14 +252,19 @@ export default {
           </h6>
           <ul class="MuiTypography-root MuiTypography-body1">
             <li>
-              <strong>TABLE</STRONG> view includes detailed data about this person or group.
+              <strong>TABLE</STRONG> view provides detailed data about this actor.
             </li>
             <li>
               <strong>LETTERS</strong> show the available information about letters sent or received by this person.
               NB some people may not have any letter information available.
             </li>
             <li>
-              <strong>NETWORK OF LETTERS</strong> shows this actors's relations to other actors connected by the correspondences.
+              <strong>TOP CORRESPONDENCES</strong> show a time series of the actor's correspondences with 10 ten other people.
+              Howering or clicking on the bullets 'to', 'from', 'Sent', 'Received', or 'All' allows to focus e.g. on only the sent or received letters.
+              When looking at the time series notice that some data source have letters with a precision of a day, some other have only the year.
+            </li>
+            <li>
+              <strong>NETWORK OF LETTERS</strong> shows this actors's relations to other actors connected by the correspondences. The network shown a maximum of 60 neighbors nodes within a distance of 3 degress from the network ego.
             </li>
             <li>
               <strong>SOCIAL SIGNATURES</strong> view has a chart showing how much the actor has been in correspondence with the most, the second most, etc, important other actor during the different periods along the total time of activity.
