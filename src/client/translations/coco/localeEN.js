@@ -802,8 +802,8 @@ export default {
             <strong>LETTERS AND ACTORS</strong> contains lists of letters and actors related to this place.
           </li>
           <li>
-            <strong>TIMELINE OF LETTERS</strong> contains a timeline showing the letters related to this place.
-            The two timeline charts on this tab show the activities with precision of a single day or by years.
+            <strong>TIMELINE OF LETTERS</strong> shows a time series with yearly amounts of letters.
+            Notice that also the hiearchy is considered, e.g., on the page of a country all the letters sent from places within are also included. 
           </li>
           <li>
             <strong>EXPORT</strong> the SPARQL query used to generate the result
