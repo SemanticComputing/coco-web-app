@@ -235,15 +235,21 @@ export const actorLettersInstancePageQuery = `
     }
     UNION
     {
-      ?id (^:was_authored_by)/:letter/:fonds ?fonds__id .
-      ?fonds__id skos:prefLabel ?fonds__prefLabel ; a [] .
-      BIND(CONCAT("/fonds/page/", REPLACE(STR(?fonds__id), "^.*\\\\/(.+)", "$1")) AS ?fonds__dataProviderUrl)
-    }
-    UNION
-    {
-      ?id (^:was_addressed_to)/:fonds ?fonds__id .
-      ?fonds__id skos:prefLabel ?fonds__prefLabel ; a [] .
-      BIND(CONCAT("/fonds/page/", REPLACE(STR(?fonds__id), "^.*\\\\/(.+)", "$1")) AS ?fonds__dataProviderUrl)
+      SELECT DISTINCT ?id ?in_fonds__id  
+        (CONCAT(?_label, ' (', STR(COUNT(DISTINCT ?_evt)), '+', STR(COUNT(DISTINCT ?_evt2)), ')') AS ?in_fonds__prefLabel)
+        (CONCAT("/fonds/page/", REPLACE(STR(?in_fonds__id), "^.*\\\\/(.+)", "$1")) AS ?in_fonds__dataProviderUrl)
+      WHERE {
+        {
+          ?_evt :was_authored_by ?id ; :letter/:fonds ?in_fonds__id 
+        }
+        UNION
+        {
+          ?_evt2 :letter [ :was_addressed_to ?id ; :fonds ?in_fonds__id ]
+        }
+        ?in_fonds__id skos:prefLabel ?_label ; a [] .
+      }
+      GROUPBY ?id ?_label ?in_fonds__id 
+      ORDERBY DESC(COUNT(DISTINCT ?_evt))
     }
     UNION
     {
