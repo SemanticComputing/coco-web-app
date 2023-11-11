@@ -140,9 +140,15 @@ export const actorPropertiesInstancePage = `
   }
   UNION
   {
-    ?id ^:was_authored_by/:was_sent_from ?knownLocation__id .
-    ?knownLocation__id a [] ; skos:prefLabel ?knownLocation__prefLabel .
-    BIND(CONCAT("/places/page/", REPLACE(STR(?knownLocation__id), "^.*\\\\/(.+)", "$1")) AS ?knownLocation__dataProviderUrl)
+    SELECT ?id ?knownLocation__id 
+	    (CONCAT(?_label, ' (', STR(COUNT(DISTINCT ?_evt)), ')') AS ?knownLocation__prefLabel)
+    	(CONCAT("/places/page/", REPLACE(STR(?knownLocation__id), "^.*\\\\/(.+)", "$1")) AS ?knownLocation__dataProviderUrl) 
+    WHERE {
+    	?_evt :was_authored_by ?id ; :was_sent_from ?knownLocation__id . 
+    	?knownLocation__id a [] ; skos:prefLabel ?_label . 
+    } 
+    GROUPBY ?id ?_label ?knownLocation__id 
+    ORDERBY DESC(COUNT(DISTINCT ?_evt))
   }
   UNION
   {
