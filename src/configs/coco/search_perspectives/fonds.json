@@ -58,23 +58,8 @@
                 }
             }
         },
-        "placesArchive": {
-            "tabID": 1,
-            "component": "LeafletMap",
-            "tabPath": "map",
-            "tabIcon": "AddLocation",
-            "sparqlQuery": "archivePlacesQuery",
-            "facetClass": "fonds",
-            "filterTarget": "fonds",
-            "resultMapper": "mapPlaces",
-            "instanceConfig": {
-                "propertiesQueryBlock": "placePropertiesInfoWindow",
-                "relatedInstances": "peopleRelatedTo",
-                "createPopUpContent": "createPopUpContentLetterSampo"
-            }
-        },
         "lettersByYear": {
-            "tabID": 2,
+            "tabID": 1,
             "component": "ApexCharts",
             "tabPath": "by-year",
             "tabIcon": "ShowChart",
@@ -95,6 +80,21 @@
             "stroke": {
                 "curve": "straight",
                 "width": 2
+            }
+        },
+        "placesArchive": {
+            "tabID": 2,
+            "component": "LeafletMap",
+            "tabPath": "map",
+            "tabIcon": "AddLocation",
+            "sparqlQuery": "archivePlacesQuery",
+            "facetClass": "fonds",
+            "filterTarget": "fonds",
+            "resultMapper": "mapPlaces",
+            "instanceConfig": {
+                "propertiesQueryBlock": "placePropertiesInfoWindow",
+                "relatedInstances": "peopleRelatedTo",
+                "createPopUpContent": "createPopUpContentLetterSampo"
             }
         },
         "export": {
