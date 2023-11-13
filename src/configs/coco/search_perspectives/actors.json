@@ -421,7 +421,7 @@
             "id": "image",
             "valueType": "image",
             "previewImageHeight": 160,
-            "makeLink": true,
+            "makeLink": false,
             "externalLink": true,
             "sortValues": true,
             "numberedList": false,
