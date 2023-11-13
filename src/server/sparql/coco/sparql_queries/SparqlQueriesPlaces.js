@@ -110,9 +110,11 @@ WHERE {
   BIND(?id as ?uri__prefLabel)
   BIND(?id as ?uri__dataProviderUrl)
 
-  ?id skos:prefLabel ?prefLabel__id .
-  BIND (?prefLabel__id as ?prefLabel__prefLabel)
-
+  {
+    ?id skos:prefLabel ?prefLabel__id .
+    BIND (?prefLabel__id as ?prefLabel__prefLabel)
+  }
+  UNION
   {
     SELECT ?id ?from__id ?from__prefLabel 
     	(CONCAT("/letters/page/", REPLACE(STR(?from__id), "^.*\\\\/(.+)", "$1")) AS ?from__dataProviderUrl)
@@ -129,18 +131,19 @@ WHERE {
             skos:prefLabel ?mentioningletter__prefLabel .
         BIND(CONCAT("/letters/page/", REPLACE(STR(?mentioningletter__id), "^.*\\\\/(.+)", "$1")) AS ?mentioningletter__dataProviderUrl)
   }
-  UNION 
+  UNION
   {
-    {
-      ?id ^:was_sent_from/:was_authored_by ?related__id 
-    } 
-    UNION 
-    {
-      ?id ^:was_sent_from/:letter/:was_addressed_to ?related__id 
+    SELECT DISTINCT ?id ?related__id
+    (CONCAT(?_label, ' (', STR(COUNT(DISTINCT ?_sent)), ')') AS ?related__prefLabel)
+    (CONCAT("/actors/page/", REPLACE(STR(?related__id), "^.*\\\\/(.+)", "$1")) AS ?related__dataProviderUrl)
+    WHERE {
+
+      ?id ^:was_sent_from ?_sent . ?_sent :was_authored_by ?related__id .
+      ?related__id skos:prefLabel ?_label .
     }
-    FILTER (BOUND(?related__id))
-    ?related__id skos:prefLabel ?related__prefLabel .
-    BIND(CONCAT("/actors/page/", REPLACE(STR(?related__id), "^.*\\\\/(.+)", "$1")) AS ?related__dataProviderUrl)
+    
+    GROUPBY ?id ?related__id ?_label
+    ORDER BY DESC(COUNT(DISTINCT ?_sent)) ?_label
   }
   UNION
   {

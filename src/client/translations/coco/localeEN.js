@@ -869,7 +869,7 @@ export default {
         related: {
           label: 'Related actors',
           description: `
-          Related actors, e.g. people or groups that have sent or received letters at this place.
+          Related actors, e.g. people or groups that have sent letters from this place.
           `
         },
         number_of_events: {
