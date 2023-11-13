@@ -191,6 +191,7 @@ UNION
           (:series_as_recorded 'series as recorded')
           (:referenced_actor_as_recorded 'referenced actor as recorded')
           (:referenced_place_as_recorded 'referenced place as recorded')
+          (dct:language 'language')
         }
         ?_metadata ?prop ?v .
         BIND(CONCAT(?prop_label, ': ', STR(?v)) AS ?record_value ) 
@@ -199,8 +200,15 @@ UNION
 }
 `
 
+/**
+ * Notice some optimization, both TOP CORRESPONDENCES queries
+ * use only the precision of one year
+ * 
+ * Also the number of results is limited to 100000
+ */
 export const topCorrespondenceFacetPageQuery = `
-SELECT DISTINCT ?from__label ?to__label (xsd:date(?_date) AS ?date) ?type (year(?_date) AS ?year)
+SELECT DISTINCT ?from__label ?to__label # (xsd:date(?_date) AS ?date) 
+	?type (year(?_date) AS ?year) (xsd:date(CONCAT(STR(?year),'-01-01')) AS ?date)
 WHERE {
   ?id a :Production .
 
@@ -211,10 +219,9 @@ WHERE {
     :was_authored_by/skos:prefLabel ?from__label .
 
   VALUES ?type { "to" "from" }
-}
+} LIMIT 100000
 `
 
-//  https://api.triplydb.com/s/JJ8pW_uH3
 export const lettersByYearQuery = `
 SELECT DISTINCT ?category (COUNT(DISTINCT ?letter) AS ?count)
 WHERE {
@@ -241,15 +248,11 @@ ORDER BY ?year
 `
 
 export const sendingPlacesHeatmapQuery = `
-  SELECT DISTINCT ?id ?lat ?long
-  (1 as ?instanceCount) # for heatmap
+  SELECT DISTINCT ?id ?lat ?long (1 as ?instanceCount) # for heatmap
   WHERE {
     <FILTER>
-      
-    ?id :was_sent_from ?sending_place .
-      ?sending_place skos:prefLabel ?locationLabel ;
-        geo:lat ?lat ;
-        geo:long ?long .
+
+    ?id :was_sent_from [ geo:lat ?lat ; geo:long ?long ]
   }
 `
 
