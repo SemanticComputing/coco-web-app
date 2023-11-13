@@ -185,7 +185,7 @@
                                     "lastLabel": "Other"
                                 },
                                 "createChartData": "createTopTimelineChartData",
-                                "tooltip": { "x": { "format": "d MMM yyyy" } },
+                                "tooltip": { "x": { "format": "yyyy" } },
                                 "fill": { "opacity": [0.7, 0.5] },
                                 "legend": { "position": "bottom" },
                                 "grid": {
