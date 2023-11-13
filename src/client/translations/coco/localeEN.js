@@ -229,7 +229,7 @@ export default {
             NB. Clicking on the person name leads to a actor instance page providing more information about the actor, while clicking on the image opens the image in a larger scale.
           </li>
           <li>
-            <strong>MAP</strong> is a map visualization showing the known locations of activities, e.g. places of birth, sending and receiving letters, and death.
+            <strong>MAP</strong> is a map visualization showing the known locations of activities, e.g. places of birth, sending letters, and death.
             Places without the coordinate information are shown as a part of the place higher in the hierarchy.
           </li>
           <li>
@@ -876,7 +876,7 @@ export default {
           label: 'Number of events',
           description: `
           Number of letter sendings and references related to this place. 
-          A detailed list about the letters can be seen on the tab "LETTERS AND ACTORS"
+          A detailed list about the letters can be seen on the instance page tab "LETTERS AND ACTORS"
           `
         },
         born: {
