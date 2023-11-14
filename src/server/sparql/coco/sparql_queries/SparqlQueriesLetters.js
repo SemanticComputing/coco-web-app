@@ -23,46 +23,33 @@ UNION
 UNION
 {
   ?id crm:P4_has_time-span ?productionTimespan__id .
-  
-  ?productionTimespan__id skos:prefLabel ?productionTimespan__prefLabel .
-  OPTIONAL { ?productionTimespan__id crm:P82a_begin_of_the_begin ?productionTimespan__start }
-  OPTIONAL { ?productionTimespan__id crm:P82b_end_of_the_end ?productionTimespan__end }
+  ?productionTimespan__id skos:prefLabel ?productionTimespan__prefLabel ;
+    crm:P82a_begin_of_the_begin ?productionTimespan__start ;
+    crm:P82b_end_of_the_end ?productionTimespan__end 
 }
 UNION
 {
   ?id :was_sent_from ?from__id .
-    ?from__id skos:prefLabel ?from__prefLabel ; a [] .
+  ?from__id a [] ; skos:prefLabel ?from__prefLabel .
   BIND(CONCAT("/places/page/", REPLACE(STR(?from__id), "^.*\\\\/(.+)", "$1")) AS ?from__dataProviderUrl)
-  OPTIONAL {
-    ?from__id crm:P89_falls_within+ ?countryfrom__id .
-    ?countryfrom__id a :Country .
-    ?countryfrom__id skos:prefLabel ?countryfrom__prefLabel .
-    BIND(CONCAT("/places/page/", REPLACE(STR(?countryfrom__id), "^.*\\\\/(.+)", "$1")) AS ?countryfrom__dataProviderUrl)
-  }
 }
-UNION 
+UNION
 { 
   ?id :letter ?uri__id .
   {
     ?uri__id :fonds ?fonds__id .
-    ?fonds__id skos:prefLabel ?fonds__prefLabel ; a [] .
+    ?fonds__id a [] ; skos:prefLabel ?fonds__prefLabel.
     BIND(CONCAT("/fonds/page/", REPLACE(STR(?fonds__id), "^.*\\\\/(.+)", "$1")) AS ?fonds__dataProviderUrl)
   }
   UNION
   { 
     ?uri__id dct:language ?language__id . 
-      ?language__id skos:prefLabel ?language__prefLabel ; a [] .
+    ?language__id a [] ; skos:prefLabel ?language__prefLabel .
     BIND (?language__id AS ?language__dataProviderUrl)
   }
   UNION
-  {
-    ?uri__id :series ?series
-  }
-  UNION
   { # Metadata values
-    ?uri__id :metadata ?_metadata .
-
-    ?_metadata dct:source ?datasource__id .
+    ?uri__id :metadata/dct:source ?datasource__id .
     ?datasource__id skos:prefLabel ?datasource__prefLabel .
     BIND(CONCAT("/sources/page/", REPLACE(STR(?datasource__id), "^.*\\\\/(.+)", "$1")) AS ?datasource__dataProviderUrl)
   }
@@ -102,7 +89,6 @@ UNION
 }
 UNION
 {
-
   ?id :letter ?uri__id .
   BIND(STR(?uri__id) as ?uri__prefLabel)
   BIND(?uri__id as ?uri__dataProviderUrl)

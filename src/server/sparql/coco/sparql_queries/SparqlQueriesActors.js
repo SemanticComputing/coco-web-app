@@ -299,22 +299,25 @@ export const letterLinksQuery = `
 SELECT DISTINCT ?source ?target 
   ?weight 
   (STR(?weight) AS ?prefLabel)
-WHERE {
-     { SELECT DISTINCT ?actor WHERE 
-    { 
-      { SELECT DISTINCT ?id2 WHERE { 
-      VALUES ?id { <ID> }
-      [] :actor1|:actor2 ?id ; :actor1|:actor2 ?id2 
-    }
-    }
-	  [] :actor1|:actor2 ?id2 ; :actor1|:actor2 ?actor 
+WHERE 
+{
+  { 
+    SELECT DISTINCT ?actor WHERE 
+      { 
+        { 
+          SELECT DISTINCT ?id2 WHERE { 
+            VALUES ?id { <ID> }
+            [] :actor1|:actor2 ?id ; :actor1|:actor2 ?id2 
+        }
+      }
+  	  [] :actor1|:actor2 ?id2 ; :actor1|:actor2 ?actor 
     }
   }
     
-    ?tie (:actor1|:actor2) ?actor ;
-        :actor1 ?source ;
-        :actor2 ?target ;
-        :num_letters ?weight .
+  ?tie (:actor1|:actor2) ?actor ;
+      :actor1 ?source ;
+      :actor2 ?target ;
+      :num_letters ?weight .
   
   # no self links
   FILTER (?source!=?target && ?weight>0)
