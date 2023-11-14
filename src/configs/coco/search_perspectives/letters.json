@@ -381,7 +381,7 @@
             "sortButton": true
         },
         "language": {
-            "containerClass": "four",
+            "containerClass": "seven",
             "facetType": "list",
             "filterType": "uriFilter",
             "predicate": ":letter/dct:language",

@@ -266,7 +266,7 @@ export default {
               <strong>NETWORK OF LETTERS</strong> shows this actors's relations to other actors connected by the correspondences. The network shown a maximum of 60 neighbors nodes within a distance of 3 degress from the network ego.
             </li>
             <li>
-              <strong>SOCIAL SIGNATURES</strong> view has a chart showing how much the actor has been in correspondence with the most, the second most, etc, important other actor during the different periods along the total time of activity.
+              <strong>SOCIAL SIGNATURES</strong> view has a chart showing how much the actor has been in correspondence with the most, the second most, etc, important other actor during the different periods along the total time of activity. In connections both sent and recieved letters are taken into account.
             </li>
             <li>
               <strong>EXPORT</strong> the SPARQL query used to generate the result
@@ -468,7 +468,7 @@ export default {
       </li>
       <li>
         <strong>TOP CORRESPONDENTS</STRONG> view shows a timeline of letters and most important correspondents. The upper chart of the timeline shows the activities using a precision of one day, the lower one the yearly amounts of sent and received letters.
-        NB. Letters having more approximate temporal information, e.g. 'sent 1860-1865' show up on the first day of that time period, e.g. '1 Jan. 1860'.
+        NB. Letters having more approximate temporal information, e.g. 'sent 1860-1865' show up on the first year of that time period, e.g. '1860'.
       </li>
       <li>
         <strong>EXPORT</strong> the SPARQL query used to generate the result
@@ -624,7 +624,7 @@ export default {
       }
     },
     fonds: {
-      label: 'Archive',
+      label: 'Archives',
       facetResultsType: 'fonds',
       shortDescription: 'Information about the Archival Organizations, Fonds, and Series',
       longDescription: `
