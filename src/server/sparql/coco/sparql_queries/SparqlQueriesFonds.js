@@ -18,12 +18,6 @@ export const fondsPropertiesFacetResults = `
     ?archival_organization__id a :Organization ; skos:prefLabel ?archival_organization__prefLabel .
     BIND(CONCAT("/fonds/page/", REPLACE(STR(?archival_organization__id), "^.*\\\\/(.+)", "$1")) AS ?archival_organization__dataProviderUrl)
   }
-  UNION
-  {
-    ?series__id :fonds ?id .
-    ?series__id a :Series ; skos:prefLabel ?series__prefLabel .
-    BIND(CONCAT("/series/page/", REPLACE(STR(?series__id), "^.*\\\\/(.+)", "$1")) AS ?series__dataProviderUrl)
-  }
 `
 
 export const fondsPropertiesInstancePage = `
@@ -45,12 +39,6 @@ export const fondsPropertiesInstancePage = `
     ?id :archival_organization ?archival_organization__id .
     ?archival_organization__id a :Organization ; skos:prefLabel ?archival_organization__prefLabel .
     BIND(CONCAT("/fonds/page/", REPLACE(STR(?archival_organization__id), "^.*\\\\/(.+)", "$1")) AS ?archival_organization__dataProviderUrl)
-  }
-  UNION
-  {
-    ?series__id :fonds ?id .
-    ?series__id a :Series ; skos:prefLabel ?series__prefLabel .
-    BIND(CONCAT("/series/page/", REPLACE(STR(?series__id), "^.*\\\\/(.+)", "$1")) AS ?series__dataProviderUrl)
   }
   UNION
   {

@@ -1,6 +1,6 @@
 // const perspectiveID = 'ties'
 export const sahaUrl = '"http://demo.seco.tkk.fi/saha/project/resource.shtml?uri="'
-export const sahaModel = '"&model=ckcc"'
+export const sahaModel = '"&model=coco"'
 
 //  http://demo.seco.tkk.fi/saha/project/resource.shtml?uri=http%3A%2F%2Femlo.bodleian.ox.ac.uk%2Fid%2F822ba92b-3ccf-4f1e-b776-e87aca45c866&model=emlo
 //  TODO: add suitable letter properties, e.g. subject etc.
@@ -111,7 +111,7 @@ SELECT DISTINCT ?source ?target
   ?weight (STR(?weight) AS ?prefLabel)
 WHERE {
   { VALUES ?id { <ID> }
-    VALUES ?class { crm:E21_Person crm:E39_Actor crm:E74_Group  :Family }
+    VALUES ?class { crm:E21_Person crm:E74_Group :Family }
     ?id a ?class .
   } UNION { 
     VALUES ?_tie { <ID> }
@@ -142,7 +142,7 @@ WHERE {
 export const tieNodesQuery = `
   SELECT DISTINCT ?id ?prefLabel ?class ?href
   WHERE {
-    VALUES ?class { crm:E21_Person crm:E39_Actor crm:E74_Group  :Family }
+    VALUES ?class { crm:E21_Person crm:E74_Group :Family }
     VALUES ?id { <ID_SET> }
     ?id a ?class ;
      skos:prefLabel ?_label .

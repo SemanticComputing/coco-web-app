@@ -173,17 +173,6 @@
             "expandedOnInstancePage": true
         },
         {
-            "id": "series",
-            "valueType": "object",
-            "makeLink": false,
-            "externalLink": false,
-            "sortValues": true,
-            "numberedList": false,
-            "minWidth": 70,
-            "priority": 5,
-            "expandedOnInstancePage": true
-        },
-        {
             "id": "uri",
             "valueType": "object",
             "makeLink": true,
@@ -218,9 +207,6 @@
         },
         "prefLabel": {
             "sortByPattern": "{ SELECT ?id ?orderBy WHERE { VALUES ?facetClass { <FACET_CLASS> } ?id a ?facetClass ; skos:prefLabel ?orderBy }}"
-        },
-        "series": {
-            "sortByPattern": "{ SELECT ?id ?orderBy WHERE { VALUES ?facetClass { <FACET_CLASS> } ?id a ?facetClass . OPTIONAL { ?id ^:fonds [ a :Series ; skos:prefLabel ?orderBy ] } }}"
         },
         "number_of_letters": {
             "sortByPattern": "{ SELECT ?id ?orderBy WHERE { VALUES ?facetClass { <FACET_CLASS> } ?id a ?facetClass . OPTIONAL { ?id :number_of_letters ?num } BIND (COALESCE(?num, 0) AS ?orderBy) }}"

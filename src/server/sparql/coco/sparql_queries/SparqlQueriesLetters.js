@@ -124,10 +124,6 @@ UNION
   }
   UNION
   {
-    ?uri__id :series [ a [] ; skos:prefLabel ?series ]
-  }    
-  UNION
-  {
     ?uri__id :archival_organization ?archival_organization__id .
     ?archival_organization__id a [] ; skos:prefLabel ?archival_organization__prefLabel .
     BIND(CONCAT("/fonds/page/", REPLACE(STR(?archival_organization__id), "^.*\\\\/(.+)", "$1")) AS ?archival_organization__dataProviderUrl)

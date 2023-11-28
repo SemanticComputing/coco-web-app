@@ -561,12 +561,6 @@ export default {
             Fonds
           `
         },
-        series: {
-          label: 'Series',
-          description: `
-            Series
-          `
-        },
         source: {
           label: 'Sender',
           description: `
@@ -626,10 +620,10 @@ export default {
     fonds: {
       label: 'Archives',
       facetResultsType: 'fonds',
-      shortDescription: 'Information about the Archival Organizations, Fonds, and Series',
+      shortDescription: 'Information about the Archival Organizations and Fonds',
       longDescription: `
       <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-        Use this perspective to access the archival organizations, fonds, and series in the dataset.
+        Use this perspective to access the archival organizations and fonds in the dataset.
       </p>
       <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
         See <a target="_" href="https://seco.cs.aalto.fi/projects/coco/coco-sampo-instructions.pdf">instructions</a> for using the
@@ -637,7 +631,7 @@ export default {
       </p>
       <ul class="MuiTypography-root MuiTypography-body1">
       <li>
-        <strong>TABLE</STRONG> view includes all archival organizations, fonds, and series in the CoCo data. 
+        <strong>TABLE</STRONG> view includes all archival organizations and fonds in the CoCo data. 
         One table row is equivalent to one organization.
       </li>
       <li>
@@ -732,12 +726,6 @@ export default {
           label: 'Number of Letters',
           description: `
             Number of letters in this fonds.
-          `
-        },
-        series: {
-          label: 'Series',
-          description: `
-            Archival series
           `
         },
         sender: {
