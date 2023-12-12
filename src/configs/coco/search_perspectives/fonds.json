@@ -1,7 +1,7 @@
 {
     "id": "fonds",
     "endpoint": {
-        "url": "https://ldf.fi/coco/sparql",
+        "url": "https://ldf.fi/coco-graphdb/sparql",
         "useAuth": true,
         "prefixesFile": "SparqlQueriesPrefixes.js"
     },
