@@ -131,10 +131,21 @@ const generateTextFilter = ({
        !has(facetConfig, 'textQueryHiglightingOptions')) {
     queryObject = `'${queryString}' ${textQueryMaxInstances}`
   }
-  const filterStr = facetConfig.textQueryPredicate
-    ? `${queryTargetVariable} text:query ${queryObject} .
-    ?${filterTarget} ${facetConfig.textQueryPredicate} ${queryTargetVariable} .`
-    : `${querySubject} text:query ${queryObject} .`
+  if (facetConfig.textQuetyType == 'ontotext') {
+    textQueryMaxInstances = facetConfig.textQueryMaxInstances
+  }
+  let filterStr = ''
+  if (facetConfig.textQueryType == 'ontotext') {
+    filterStr = `
+      ?text onto:fts "${queryString}" .
+      ${querySubject} ${facetConfig.textQueryProperty} ?text .
+    `
+  } else {
+    filterStr = facetConfig.textQueryPredicate
+      ? `${queryTargetVariable} text:query ${queryObject} .
+      ?${filterTarget} ${facetConfig.textQueryPredicate} ${queryTargetVariable} .`
+      : `${querySubject} text:query ${queryObject} .`
+  }
   if (inverse) {
     return `
       FILTER NOT EXISTS {

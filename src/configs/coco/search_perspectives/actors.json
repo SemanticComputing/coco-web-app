@@ -35,9 +35,7 @@
                 "propertiesQueryBlock": "actorPropertiesFacetResults",
                 "pagesize": 30,
                 "paginatedResultsAlwaysExpandRows": true,
-                "paginatedResultsRowContentMaxHeight": 150,
-                "sortBy": "numSent",
-                "sortDirection": "desc"
+                "paginatedResultsRowContentMaxHeight": 150
             },
             "instanceConfig": {
                 "propertiesQueryBlock": "actorPropertiesInstancePage",
@@ -626,7 +624,8 @@
             "facetType": "text",
             "filterType": "textFilter",
             "sortByPredicate": "skos:prefLabel",
-            "textQueryProperty": "skos:prefLabel"
+            "textQueryProperty": "skos:prefLabel|skos:altLabel",
+            "textQueryType": "ontotext"
         },
         "type": {
             "containerClass": "four",
