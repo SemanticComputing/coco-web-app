@@ -163,7 +163,7 @@ export const actorPropertiesInstancePage = `
     ?id sch:image ?image__id ;
       skos:prefLabel ?image__description ;
       skos:prefLabel ?image__title .
-    BIND(URI(CONCAT(REPLACE(STR(?image__id), "^https*:", ""), "?width=600")) as ?image__url)
+    BIND(URI(CONCAT(REPLACE(STR(?image__id), "https:", ""), "?width=600")) as ?image__url)
   }
   UNION
   {
