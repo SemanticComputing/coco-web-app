@@ -341,7 +341,8 @@
             "sortByPredicate": ":was_authored_by/skos:prefLabel",
             "sortDirection": "desc",
             "pieChartButton": true,
-            "sortButton": true
+            "sortButton": true,
+            "hideUnknownValue": true
         },
         "target": {
             "containerClass": "ten",
@@ -353,7 +354,8 @@
             "sortByPredicate": ":letter/:was_addressed_to/skos:prefLabel",
             "sortDirection": "desc",
             "pieChartButton": true,
-            "sortButton": true
+            "sortButton": true,
+            "hideUnknownValue": true
         },
         "productionTimespan": {
             "containerClass": "four",
@@ -378,7 +380,8 @@
             "sortByPredicate": ":was_sent_from/skos:prefLabel",
             "sortDirection": "desc",
             "pieChartButton": true,
-            "sortButton": true
+            "sortButton": true,
+            "hideUnknownValue": true
         },
         "language": {
             "containerClass": "seven",
@@ -390,7 +393,8 @@
             "sortDirection": "desc",
             "sortButton": true,
             "pieChartButton": true,
-            "sortByPredicate": ":letter/dct:language/skos:prefLabel"
+            "sortByPredicate": ":letter/dct:language/skos:prefLabel",
+            "hideUnknownValue": true
         },
         "datasource": {
             "containerClass": "ten",
@@ -414,7 +418,8 @@
             "sortDirection": "desc",
             "sortButton": false,
             "pieChartButton": true,
-            "sortByPredicate": ":letter/:fonds/skos:prefLabel"
+            "sortByPredicate": ":letter/:fonds/skos:prefLabel",
+            "hideUnknownValue": true
         },
         "prefLabel": {
             "sortByPattern": "{ SELECT ?id ?orderBy WHERE { VALUES ?facetClass { <FACET_CLASS> } ?id a ?facetClass ; skos:prefLabel ?orderBy }}"

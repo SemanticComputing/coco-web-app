@@ -192,7 +192,8 @@
             "sortDirection": "desc",
             "pieChartButton": true,
             "sortButton": true,
-            "sortByPredicate": ":archival_organization/skos:prefLabel"
+            "sortByPredicate": ":archival_organization/skos:prefLabel",
+            "hideUnknownValue": true
         },
         "fonds": {
             "containerClass": "ten",
