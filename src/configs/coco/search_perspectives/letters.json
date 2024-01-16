@@ -406,12 +406,14 @@
         },
         "fonds": {
             "containerClass": "ten",
-            "facetType": "hierarchical",
+            "facetType": "list",
             "filterType": "uriFilter",
-            "parentProperty": ":archival_organization",
             "predicate": ":letter/:fonds",
-            "searchField": true,
+            "searchField": false,
+            "sortBy": "instanceCount",
+            "sortDirection": "desc",
             "sortButton": false,
+            "pieChartButton": true,
             "sortByPredicate": ":letter/:fonds/skos:prefLabel"
         },
         "prefLabel": {
