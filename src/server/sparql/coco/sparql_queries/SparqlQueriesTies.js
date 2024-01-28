@@ -38,7 +38,7 @@ UNION
       ?letter__id :in_tie ?id ;
                   skos:prefLabel ?letter__prefLabel . 
 
-      OPTIONAL { ?letter__id crm:P4_has_time-span/crm:P82a_begin_of_the_begin ?letter__timespan }
+      OPTIONAL { ?letter__id :has_time-span/crm:P82a_begin_of_the_begin ?letter__timespan }
 
     } 
     ORDER BY COALESCE(STR(?letter__timespan), CONCAT("9999", ?letter__prefLabel))
@@ -63,7 +63,7 @@ SELECT DISTINCT ?id ?sender1__label ?sender2__label (xsd:date(?_date) AS ?date) 
   BIND(<ID> as ?id)
   
   ?letter :in_tie ?id ;
-          crm:P4_has_time-span/crm:P82a_begin_of_the_begin ?_date .
+          :has_time-span/crm:P82a_begin_of_the_begin ?_date .
   
   {
     ?id :actor1 [ ^:was_authored_by ?letter ; skos:prefLabel ?sender1__label ]
@@ -88,7 +88,7 @@ SELECT DISTINCT (STR(?year) as ?category)
   BIND(<ID> as ?id)
   
   ?letter :in_tie ?id ;
-          crm:P4_has_time-span/crm:P82a_begin_of_the_begin ?time_0 .
+          :has_time-span/crm:P82a_begin_of_the_begin ?time_0 .
   BIND (year(?time_0) AS ?year)
   FILTER (BOUND(?year))
   

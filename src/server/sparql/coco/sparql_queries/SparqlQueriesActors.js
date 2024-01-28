@@ -240,7 +240,7 @@ export const actorLettersInstancePageQuery = `
         (CONCAT("/fonds/page/", REPLACE(STR(?in_fonds__id), "^.*\\\\/(.+)", "$1")) AS ?in_fonds__dataProviderUrl)
       WHERE {
         {
-          ?_evt :was_authored_by ?id ; :letter/:fonds ?in_fonds__id 
+          ?_evt :was_authored_by ?id ; :fonds ?in_fonds__id 
         }
         UNION
         {
@@ -253,7 +253,7 @@ export const actorLettersInstancePageQuery = `
     }
     UNION
     {
-      ?id (^:was_authored_by)/:letter/:archival_organization [ a [] ; skos:prefLabel ?archival_organization ]
+      ?id (^:was_authored_by)/:archival_organization [ a [] ; skos:prefLabel ?archival_organization ]
     }
     UNION
     {
@@ -264,31 +264,31 @@ export const actorLettersInstancePageQuery = `
       SELECT DISTINCT ?id ?sentletter__id ?sentletter__prefLabel ?sentletter__dataProviderUrl
       WHERE {
         ?id ^:was_authored_by ?sentletter__id .
-          ?sentletter__id a :Production ;
+          ?sentletter__id a :Letter ;
             skos:prefLabel ?sentletter__prefLabel .
         BIND(CONCAT("/letters/page/", REPLACE(STR(?sentletter__id), "^.*\\\\/(.+)", "$1")) AS ?sentletter__dataProviderUrl)
-        OPTIONAL { ?sentletter__id crm:P4_has_time-span/crm:P82a_begin_of_the_begin ?time }
+        OPTIONAL { ?sentletter__id :has_time-span/crm:P82a_begin_of_the_begin ?time }
       } ORDER BY COALESCE(STR(?time), CONCAT("9999", ?sentletter__prefLabel))
     }
     UNION
     { SELECT DISTINCT ?id ?mentioningletter__id ?mentioningletter__prefLabel ?mentioningletter__dataProviderUrl
       WHERE {
-        ?id (^:referenced_actor)/(^:letter) ?mentioningletter__id .
-          ?mentioningletter__id a :Production ;
+        ?id ^:referenced_actor ?mentioningletter__id .
+          ?mentioningletter__id a :Letter ;
             skos:prefLabel ?mentioningletter__prefLabel .
         BIND(CONCAT("/letters/page/", REPLACE(STR(?mentioningletter__id), "^.*\\\\/(.+)", "$1")) AS ?mentioningletter__dataProviderUrl)
-        OPTIONAL { ?mentioningletter__id crm:P4_has_time-span/crm:P82a_begin_of_the_begin ?time }
+        OPTIONAL { ?mentioningletter__id :has_time-span/crm:P82a_begin_of_the_begin ?time }
       } ORDER BY COALESCE(STR(?time), CONCAT("9999", ?mentioningletter__prefLabel))
     }
     UNION 
     { SELECT DISTINCT ?id ?receivedletter__id ?receivedletter__prefLabel ?receivedletter__dataProviderUrl
       WHERE {
       ?receivedletter__id
-        :letter/:was_addressed_to ?id ;
-        a :Production ;
+        :was_addressed_to ?id ;
+        a :Letter ;
         skos:prefLabel ?receivedletter__prefLabel .
       BIND(CONCAT("/letters/page/", REPLACE(STR(?receivedletter__id), "^.*\\\\/(.+)", "$1")) AS ?receivedletter__dataProviderUrl)
-      OPTIONAL { ?receivedletter__id crm:P4_has_time-span/crm:P82a_begin_of_the_begin ?time }
+      OPTIONAL { ?receivedletter__id :has_time-span/crm:P82a_begin_of_the_begin ?time }
       } ORDER BY COALESCE(STR(?time), CONCAT("9999", ?receivedletter__prefLabel))
     } 
   }
@@ -363,7 +363,7 @@ export const placePropertiesInfoWindow = `
 
 //  TODO: add href to tie
 //  query on people facet page tab 'Network'
-export const networkLinksQuery = `
+export const networkLinksQuery_OLD = `
 SELECT DISTINCT (?actor as ?source) ?target ?weight (str(?weight) as ?prefLabel)
   WHERE {
     <FILTER>
@@ -373,26 +373,44 @@ SELECT DISTINCT (?actor as ?source) ?target ?weight (str(?weight) as ?prefLabel)
 }
 `
 
+export const networkLinksQuery = `
+SELECT DISTINCT ?source ?target ?weight (str(?weight) as ?prefLabel)
+  WHERE {
+    
+  { SELECT DISTINCT ?id WHERE {
+    
+    <FILTER>
+  
+   [] :actor1|:actor2 ?actor ;
+      :actor1|:actor2 ?id .
+    } LIMIT 5000 
+  }
+   [] :actor1|:actor2 ?id ;
+      :actor2 ?source ;
+      :actor1 ?target ;
+    :num_letters ?weight .
+}`
+
 export const correspondenceTimelineQuery = `SELECT DISTINCT ?id ?source ?source__label ?target ?target__label ?date ?type ?year
 WHERE 
 {
 VALUES ?node { <ID> } 
 {
   ?node ^:was_authored_by ?letter .
-  ?letter a :Production ;
+  ?letter a :Letter ;
     :was_addressed_to ?target .
   ?target skos:prefLabel ?_target__label . 
   BIND(?node AS ?source)
 } UNION {
-  ?letter :letter/:was_addressed_to ?node ;
-    a :Production .
+  ?letter :was_addressed_to ?node ;
+    a :Letter .
   ?source ^:was_authored_by ?letter ;
     skos:prefLabel ?_source__label . 
   BIND(?node AS ?target)
 }
 ?target skos:prefLabel ?target__label .
 ?source skos:prefLabel ?source__label .
-?letter crm:P4_has_time-span/crm:P82a_begin_of_the_begin ?date .
+?letter :has_time-span/crm:P82a_begin_of_the_begin ?date .
 BIND(year(?date) AS ?year)
 } ORDER BY ?date
 `
@@ -406,26 +424,26 @@ WHERE
   VALUES ?node { <ID> }
   {
     ?letter :was_authored_by ?node ;
-      a :Production ;
-      :letter/:was_addressed_to ?target .
+      a :Letter ;
+      :was_addressed_to ?target .
   
     BIND(?node AS ?source)
   } UNION {
-    ?letter :letter/:was_addressed_to ?node ;
-      a :Production ;
+    ?letter :was_addressed_to ?node ;
+      a :Letter ;
       :was_authored_by ?source .
     BIND(?node AS ?target)
   }
   ?target skos:prefLabel ?target__label .
   ?source skos:prefLabel ?source__label .
-  ?letter crm:P4_has_time-span/crm:P82a_begin_of_the_begin ?time_0 .
+  ?letter :has_time-span/crm:P82a_begin_of_the_begin ?time_0 .
 } `
 
 export const networkNodesQuery = `
   SELECT DISTINCT ?id ?prefLabel ?class ?href
     (COALESCE(?_out, 0)+COALESCE(?_in, 0) AS ?numLetters)
   WHERE {
-    VALUES ?class { crm:E21_Person crm:E39_Actor crm:E74_Group :Family }
+    VALUES ?class { crm:E21_Person crm:E74_Group :Family }
     VALUES ?id { <ID_SET> }
     ?id a ?class ;
       skos:prefLabel ?_label .
@@ -441,7 +459,7 @@ export const networkNodesFacetQuery = `
  SELECT DISTINCT ?id ?prefLabel ?class ?href
  (COALESCE(?_out, 0)+COALESCE(?_in, 0) AS ?numLetters)
  WHERE {
-   VALUES ?class { crm:E21_Person crm:E39_Actor crm:E74_Group  :Family }
+   VALUES ?class { crm:E21_Person crm:E74_Group :Family }
     VALUES ?id { <ID_SET> }
     ?id a ?class ;
     skos:prefLabel ?_label .
@@ -460,15 +478,15 @@ WHERE
     VALUES ?id { <ID> }
   {
     ?letter :was_authored_by ?id ;
-      a :Production ;
-      :letter/:was_addressed_to ?target .
+      a :Letter ;
+      :was_addressed_to ?target .
     ?target skos:prefLabel ?_target__label .
     BIND ("to" AS ?type)
   
     BIND(?id AS ?source)
   } UNION {
-    ?letter :letter/:was_addressed_to ?id ;
-      a :Production ;
+    ?letter :was_addressed_to ?id ;
+      a :Letter ;
       :was_authored_by ?source .
     ?source skos:prefLabel ?_source__label . 
 
@@ -478,7 +496,7 @@ WHERE
   }
   ?target skos:prefLabel ?target__label .
   ?source skos:prefLabel ?source__label .
-  ?letter crm:P4_has_time-span/crm:P82a_begin_of_the_begin ?_date .
+  ?letter :has_time-span/crm:P82a_begin_of_the_begin ?_date .
 } 
 `
 
@@ -492,15 +510,15 @@ export const sentReceivedInstancePageQuery = `
     BIND(<ID> as ?id)
     {
       ?sent_letter :was_authored_by ?id ; 
-        a :Production ;
-        crm:P4_has_time-span/crm:P82a_begin_of_the_begin ?time_0 .
+        a :Letter ;
+        :has_time-span/crm:P82a_begin_of_the_begin ?time_0 .
       BIND (year(?time_0) AS ?year)
     } 
     UNION 
     {
-      ?received_letter :letter/:was_addressed_to ?id ;
-                       a :Production ;
-                      crm:P4_has_time-span/crm:P82a_begin_of_the_begin ?time_0 .
+      ?received_letter :was_addressed_to ?id ;
+                       a :Letter ;
+                      :has_time-span/crm:P82a_begin_of_the_begin ?time_0 .
       BIND (year(?time_0) AS ?year)
     }
     FILTER (BOUND(?year))

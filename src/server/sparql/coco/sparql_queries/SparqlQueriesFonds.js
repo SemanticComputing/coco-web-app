@@ -46,7 +46,7 @@ export const fondsPropertiesInstancePage = `
 	    (CONCAT(?_label, ' (', STR(COUNT(DISTINCT ?_evt)), ')') AS ?sender__prefLabel)
     	(CONCAT("/actors/page/", REPLACE(STR(?sender__id), "^.*\\\\/(.+)", "$1")) AS ?sender__dataProviderUrl)
     WHERE {
-      ?_evt :letter/:fonds ?id ; :was_authored_by ?sender__id .
+      ?_evt :fonds ?id ; :was_authored_by ?sender__id .
       ?sender__id skos:prefLabel ?_label ; a [] .
   	}
     GROUPBY ?id ?sender__id ?_label
@@ -73,10 +73,10 @@ export const fondsPropertiesInstancePage = `
     WHERE {
       ?id ^:fonds ?_letter .
       ?letter__id :letter ?_letter ;
-            a :Production ;
+            a :Letter ;
             skos:prefLabel ?letter__prefLabel .
       
-      OPTIONAL { ?letter__id crm:P4_has_time-span/crm:P82a_begin_of_the_begin ?time }
+      OPTIONAL { ?letter__id :has_time-span/crm:P82a_begin_of_the_begin ?time }
       
       # { ?letter__id :was_authored_by ?person__id }
     	# UNION
@@ -94,7 +94,7 @@ SELECT DISTINCT ?id ?lat ?long
 (COUNT(DISTINCT ?event) AS ?instanceCount)
 WHERE {
   <FILTER>
-  ?event :letter/:fonds ?fonds ; :was_sent_from ?id .
+  ?event :fonds ?fonds ; :was_sent_from ?id .
   ?id geo:lat ?lat ; geo:long ?long .
 } GROUP BY ?id ?lat ?long
 `
@@ -122,9 +122,9 @@ export const archiveByYearQuery = `
 SELECT DISTINCT ?category (COUNT(DISTINCT ?letter) AS ?count)
 WHERE {
   <FILTER>
-  ?letter :letter/:fonds ?fonds ; 
-    a :Production ;
-    crm:P4_has_time-span/crm:P82a_begin_of_the_begin ?time_0 .
+  ?letter :fonds ?fonds ; 
+    a :Letter ;
+    :has_time-span/crm:P82a_begin_of_the_begin ?time_0 .
   BIND (STR(year(?time_0)) AS ?category)
   FILTER (BOUND(?category))
 } 
