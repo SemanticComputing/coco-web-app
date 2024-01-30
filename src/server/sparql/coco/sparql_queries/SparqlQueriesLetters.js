@@ -4,7 +4,7 @@ export const letterProperties = `
   BIND (?prefLabel__id as ?prefLabel__prefLabel)
   BIND(CONCAT("/letters/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
 
-  BIND(?id as ?uri__id)
+  BIND(?id as ?uri__id) 
   BIND(STR(?id) as ?uri__prefLabel)
   BIND(?id as ?uri__dataProviderUrl)
 }
@@ -58,7 +58,7 @@ export const letterPropertiesInstancePage = `
   ?id skos:prefLabel ?prefLabel__id .
   BIND (?prefLabel__id as ?prefLabel__prefLabel)
   BIND(STR(?id) as ?uri__prefLabel)
-  BIND(?id as ?uri__dataProviderUrl)
+  BIND(?id as ?uri__dataProviderUrl) 
 }
 UNION
 {

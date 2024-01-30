@@ -715,13 +715,13 @@
             "containerClass": "ten",
             "facetType": "list",
             "filterType": "uriFilter",
-            "predicate": "(^:was_authored_by)/:letter/:fonds",
+            "predicate": "(^:was_authored_by)/:fonds",
             "searchField": false,
             "sortBy": "instanceCount",
             "sortDirection": "desc",
             "sortButton": true,
             "pieChartButton": true,
-            "sortByPredicate": "(^:was_authored_by)/:letter/:fonds/skos:prefLabel"
+            "sortByPredicate": "(^:was_authored_by)/:fonds/skos:prefLabel"
         },
         "external": {
             "containerClass": "seven",

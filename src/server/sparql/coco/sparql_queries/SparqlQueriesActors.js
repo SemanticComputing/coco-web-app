@@ -63,7 +63,7 @@ export const actorPropertiesFacetResults = `
     ?id sch:image ?image__id ;
       skos:prefLabel ?image__description ;
       skos:prefLabel ?image__title .
-    BIND(URI(CONCAT(REPLACE(STR(?image__id), "^https*:", ""), "?width=600")) as ?image__url)
+    BIND(CONCAT(REPLACE(STR(?image__id), "https*:", ""), "?width=300") as ?image__url)
   }
   UNION
   {
@@ -163,8 +163,8 @@ export const actorPropertiesInstancePage = `
     ?id sch:image ?image__id ;
       skos:prefLabel ?image__description ;
       skos:prefLabel ?image__title .
-    BIND(URI(CONCAT(REPLACE(STR(?image__id), "^https*:", ""), "?width=600")) as ?image__url)
-  }
+      BIND(CONCAT(REPLACE(STR(?image__id), "https*:", ""), "?width=600") as ?image__url)
+    }
   UNION
   {
     ?id dct:source/skos:prefLabel ?datasource
@@ -244,7 +244,7 @@ export const actorLettersInstancePageQuery = `
         }
         UNION
         {
-          ?_evt2 :letter [ :was_addressed_to ?id ; :fonds ?in_fonds__id ]
+          ?_evt2 :was_addressed_to ?id ; :fonds ?in_fonds__id 
         }
         ?in_fonds__id skos:prefLabel ?_label ; a [] .
       }
@@ -283,8 +283,7 @@ export const actorLettersInstancePageQuery = `
     UNION 
     { SELECT DISTINCT ?id ?receivedletter__id ?receivedletter__prefLabel ?receivedletter__dataProviderUrl
       WHERE {
-      ?receivedletter__id
-        :was_addressed_to ?id ;
+      ?receivedletter__id :was_addressed_to ?id ;
         a :Letter ;
         skos:prefLabel ?receivedletter__prefLabel .
       BIND(CONCAT("/letters/page/", REPLACE(STR(?receivedletter__id), "^.*\\\\/(.+)", "$1")) AS ?receivedletter__dataProviderUrl)

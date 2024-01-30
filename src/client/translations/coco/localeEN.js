@@ -561,6 +561,12 @@ export default {
             Fonds
           `
         },
+        series: {
+          label: 'Series',
+          description: `
+            Series
+          `
+        },
         source: {
           label: 'Sender',
           description: `

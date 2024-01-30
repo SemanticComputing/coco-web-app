@@ -58,35 +58,26 @@ export const fondsPropertiesInstancePage = `
 	    (CONCAT(?_label, ' (', STR(COUNT(DISTINCT ?_evt)), ')') AS ?recipient__prefLabel)
     	(CONCAT("/actors/page/", REPLACE(STR(?recipient__id), "^.*\\\\/(.+)", "$1")) AS ?recipient__dataProviderUrl)
     WHERE {
-      ?_evt :letter [ :fonds ?id ; :was_addressed_to ?recipient__id ;  ] .  
+      ?_evt :fonds ?id ; :was_addressed_to ?recipient__id .  
       ?recipient__id skos:prefLabel ?_label ; a [] .
   	}
     GROUPBY ?id ?recipient__id ?_label
     ORDERBY DESC(COUNT(DISTINCT ?_evt))
   }  
   UNION
-  { 
+  {
     SELECT DISTINCT ?id ?letter__id ?letter__prefLabel 
       (CONCAT("/letters/page/", REPLACE(STR(?letter__id), "^.*\\\\/(.+)", "$1")) AS ?letter__dataProviderUrl)
 	    # ?person__id ?person__prefLabel 
     	# (CONCAT("/actors/page/", REPLACE(STR(?person__id), "^.*\\\\/(.+)", "$1")) AS ?person__dataProviderUrl)
     WHERE {
-      ?id ^:fonds ?_letter .
-      ?letter__id :letter ?_letter ;
-            a :Letter ;
+      ?id ^:fonds ?letter__id .
+      ?letter__id a :Letter ;
             skos:prefLabel ?letter__prefLabel .
       
       OPTIONAL { ?letter__id :has_time-span/crm:P82a_begin_of_the_begin ?time }
-      
-      # { ?letter__id :was_authored_by ?person__id }
-    	# UNION
-      # { ?_letter :was_addressed_to ?person__id }
-      # 	UNION
-      # { ?_letter :referenced_actor ?person__id }
-    
-      # ?person__id skos:prefLabel ?person__prefLabel .
     } ORDER BY COALESCE(STR(?time), CONCAT("9999", ?letter__prefLabel))
-  } 
+  }
 `
 
 export const archivePlacesQuery = `
@@ -104,7 +95,7 @@ export const peopleRelatedTo = `
     <FILTER>
     { SELECT ?id ?related__id ?person__id (CONCAT(?_plabel, ' (', STR(COUNT(DISTINCT ?_evt)), ')') AS ?person__prefLabel) (CONCAT("/actors/page/", REPLACE(STR(?person__id), "^.*\\\\/(.+)", "$1")) AS ?person__dataProviderUrl)
       WHERE {
-    ?_evt :fonds ?related__id ; ^:letter [ :was_sent_from ?id ; :was_authored_by ?person__id ] .
+    ?_evt :fonds ?related__id ; :was_sent_from ?id ; :was_authored_by ?person__id .
     ?person__id skos:prefLabel ?_plabel .
       } GROUPBY ?id ?related__id ?person__id ?_plabel ORDERBY DESC(COUNT(?_evt)) ?_plabel
     }
