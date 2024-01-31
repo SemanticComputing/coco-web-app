@@ -7,8 +7,8 @@
     },
     "sparqlQueriesFile": "SparqlQueriesLetters.js",
     "baseURI": "http://ldf.fi/coco",
-    "URITemplate": "<BASE_URI>/events/<LOCAL_ID>",
-    "facetClass": ":Production",
+    "URITemplate": "<BASE_URI>/letters/<LOCAL_ID>",
+    "facetClass": ":Letter",
     "frontPageImage": "main_page/works-452x262.jpg",
     "searchMode": "faceted-search",
     "defaultActiveFacets": [
@@ -341,19 +341,21 @@
             "sortByPredicate": ":was_authored_by/skos:prefLabel",
             "sortDirection": "desc",
             "pieChartButton": true,
-            "sortButton": true
+            "sortButton": true,
+            "hideUnknownValue": true
         },
         "target": {
             "containerClass": "ten",
             "facetType": "list",
             "filterType": "uriFilter",
-            "predicate": ":letter/:was_addressed_to",
+            "predicate": ":was_addressed_to",
             "searchField": true,
             "sortBy": "instanceCount",
-            "sortByPredicate": ":letter/:was_addressed_to/skos:prefLabel",
+            "sortByPredicate": ":was_addressed_to/skos:prefLabel",
             "sortDirection": "desc",
             "pieChartButton": true,
-            "sortButton": true
+            "sortButton": true,
+            "hideUnknownValue": true
         },
         "productionTimespan": {
             "containerClass": "four",
@@ -363,9 +365,9 @@
             "dataType": "xsd:dateTime",
             "max": null,
             "min": null,
-            "predicate": "crm:P4_has_time-span",
-            "sortByAscPredicate": "crm:P4_has_time-span/crm:P82a_begin_of_the_begin",
-            "sortByDescPredicate": "crm:P4_has_time-span/crm:P82b_end_of_the_end",
+            "predicate": ":has_time-span",
+            "sortByAscPredicate": ":has_time-span/crm:P82a_begin_of_the_begin",
+            "sortByDescPredicate": ":has_time-span/crm:P82b_end_of_the_end",
             "startProperty": "crm:P82a_begin_of_the_begin"
         },
         "from": {
@@ -378,41 +380,47 @@
             "sortByPredicate": ":was_sent_from/skos:prefLabel",
             "sortDirection": "desc",
             "pieChartButton": true,
-            "sortButton": true
+            "sortButton": true,
+            "hideUnknownValue": true
         },
         "language": {
             "containerClass": "seven",
             "facetType": "list",
             "filterType": "uriFilter",
-            "predicate": ":letter/dct:language",
+            "predicate": "dct:language",
             "searchField": false,
             "sortBy": "instanceCount",
             "sortDirection": "desc",
             "sortButton": true,
             "pieChartButton": true,
-            "sortByPredicate": ":letter/dct:language/skos:prefLabel"
+            "sortByPredicate": "dct:language/skos:prefLabel",
+            "hideUnknownValue": true
         },
         "datasource": {
             "containerClass": "ten",
             "facetType": "list",
             "filterType": "uriFilter",
-            "predicate": ":letter/:metadata/dct:source",
+            "predicate": "dct:source",
             "searchField": false,
             "sortBy": "instanceCount",
             "sortDirection": "desc",
             "sortButton": true,
             "pieChartButton": true,
-            "sortByPredicate": ":letter/:metadata/dct:source/skos:prefLabel"
+            "sortByPredicate": "dct:source/skos:prefLabel",
+            "hideUnknownValue": true
         },
         "fonds": {
             "containerClass": "ten",
-            "facetType": "hierarchical",
+            "facetType": "list",
             "filterType": "uriFilter",
-            "parentProperty": ":archival_organization",
-            "predicate": ":letter/:fonds",
-            "searchField": true,
+            "predicate": ":fonds",
+            "searchField": false,
+            "sortBy": "instanceCount",
+            "sortDirection": "desc",
             "sortButton": false,
-            "sortByPredicate": ":letter/:fonds/skos:prefLabel"
+            "pieChartButton": true,
+            "sortByPredicate": ":fonds/skos:prefLabel",
+            "hideUnknownValue": true
         },
         "prefLabel": {
             "sortByPattern": "{ SELECT ?id ?orderBy WHERE { VALUES ?facetClass { <FACET_CLASS> } ?id a ?facetClass ; skos:prefLabel ?orderBy }}"

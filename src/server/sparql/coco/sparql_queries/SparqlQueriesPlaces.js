@@ -29,7 +29,7 @@ export const placePropertiesFacetResults = `
     ?id sch:image ?image__id ;
       skos:prefLabel ?image__description ;
       skos:prefLabel ?image__title .
-    BIND(URI(CONCAT(REPLACE(STR(?image__id), "^https*:", ""), "?width=300")) as ?image__url)
+    BIND(CONCAT(REPLACE(STR(?image__id), "https*:", ""), "?width=300") as ?image__url)
   }
 `
 
@@ -98,8 +98,8 @@ export const placePropertiesInstancePage = `
     ?id sch:image ?image__id ;
       skos:prefLabel ?image__description ;
       skos:prefLabel ?image__title .
-    BIND(URI(CONCAT(REPLACE(STR(?image__id), "^https*:", ""), "?width=600")) as ?image__url)
-  }
+      BIND(CONCAT(REPLACE(STR(?image__id), "https*:", ""), "?width=600") as ?image__url)
+    }
   `
 
 export const placeLettersInstancePageQuery = `
@@ -121,13 +121,13 @@ WHERE {
     WHERE {
 	    ?id ^:was_sent_from ?from__id .
     	?from__id skos:prefLabel ?from__prefLabel .
-      OPTIONAL { ?from__id crm:P4_has_time-span/crm:P82a_begin_of_the_begin ?_time }
+      OPTIONAL { ?from__id :has_time-span/crm:P82a_begin_of_the_begin ?_time }
     } ORDERBY COALESCE(year(?_time), 9999)
   } 
   UNION
   {
-    ?id (^:referenced_place)/(^:letter) ?mentioningletter__id .
-          ?mentioningletter__id a :Production ;
+    ?id ^:referenced_place ?mentioningletter__id .
+          ?mentioningletter__id a :Letter ;
             skos:prefLabel ?mentioningletter__prefLabel .
         BIND(CONCAT("/letters/page/", REPLACE(STR(?mentioningletter__id), "^.*\\\\/(.+)", "$1")) AS ?mentioningletter__dataProviderUrl)
   }
@@ -180,8 +180,8 @@ export const sentReceivedByPlaceQuery = `
       BIND(<ID> as ?id)
       ?sub skos:broader* ?id .
       ?evt :was_sent_from ?sub ;
-        a :Production ;
-        crm:P4_has_time-span/crm:P82a_begin_of_the_begin ?time .
+        a :Letter ;
+        :has_time-span/crm:P82a_begin_of_the_begin ?time .
       BIND (STR(year(?time)) AS ?year)
   } GROUP BY ?year ORDER BY ?year 
 `
