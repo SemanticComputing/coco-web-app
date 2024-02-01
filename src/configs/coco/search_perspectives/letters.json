@@ -31,7 +31,7 @@
             ],
             "zoom": 4
         },
-        "placesArchive": {
+        "activitiesByPlace": {
             "center": [
                 65.184809,
                 27.314050
@@ -94,7 +94,7 @@
                 "width": 2
             }
         },
-        "placesArchive": {
+        "activitiesByPlace": {
             "tabID": 2,
             "component": "LeafletMap",
             "tabPath": "map",
@@ -112,7 +112,7 @@
         "sendingPlacesHeatmap": {
             "tabID": 3,
             "tabPath": "heatmap",
-            "tabIcon": "AddLocation",
+            "tabIcon": "LocalFireDepartment",
             "component": "Deck",
             "layerType": "heatmapLayer",
             "sparqlQuery": "sendingPlacesHeatmapQuery",

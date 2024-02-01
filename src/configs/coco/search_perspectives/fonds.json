@@ -17,7 +17,7 @@
     "defaultTab": "table",
     "defaultInstancePageTab": "table",
     "maps": {
-        "placesArchive": {
+        "activitiesByPlace": {
             "center": [
                 22.43,
                 10.37
@@ -82,7 +82,7 @@
                 "width": 2
             }
         },
-        "placesArchive": {
+        "activitiesByPlace": {
             "tabID": 2,
             "component": "LeafletMap",
             "tabPath": "map",
