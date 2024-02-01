@@ -464,7 +464,8 @@ export default {
         <strong>BY YEAR</strong> includes a chart showing the yearly distribution of letters in the database.
       </li>
       <li>
-        <strong>MAP</strong> includes a map showing the locations of sending the letters.
+        <strong>MAP</strong> includes a map showing the locations of sending the letters. 
+        Clicking on a marker opens up a popup showing a list of actors have sent letters from each location.
       </li>
       <li>
         <strong>HEATMAP</strong> includes a heatmap showing the locations of letters activities.
