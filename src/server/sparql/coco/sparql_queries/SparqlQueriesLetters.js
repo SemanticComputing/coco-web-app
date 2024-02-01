@@ -130,8 +130,8 @@ UNION
     ?_metadata :original_record ?original_record 
   }
   UNION
-  { # TODO :homepage should be used
-    ?_metadata foaf:page|foaf:homepage ?related__id . 
+  { 
+    ?_metadata foaf:page ?related__id . 
     BIND(?related__id AS ?related__prefLabel)
     BIND(?related__id AS ?related__dataProviderUrl)
   }
