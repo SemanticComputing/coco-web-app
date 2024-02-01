@@ -230,6 +230,37 @@ GROUP BY ?year
 ORDER BY ?year
 `
 
+export const sendingPlacesMapQuery = `
+SELECT DISTINCT ?id ?lat ?long 
+(COUNT(DISTINCT ?letter) AS ?instanceCount)
+WHERE {
+  <FILTER>
+  
+  ?id a crm:E53_Place ; geo:lat ?lat ; geo:long ?long .
+
+  ?letter :was_sent_from ?id .
+
+} GROUP BY ?id ?lat ?long
+`
+
+export const placePropertiesInfoWindow = `
+  OPTIONAL { ?id skos:prefLabel ?_label }
+  BIND(COALESCE(?_label, "<place>") AS ?prefLabel__id)
+  BIND(?prefLabel__id AS ?prefLabel__prefLabel)
+  BIND(CONCAT("/places/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
+`
+
+export const peopleRelatedTo = `
+  { SELECT DISTINCT ?id ?person__id (CONCAT(?_plabel, ' (', STR(COUNT(DISTINCT ?related__id)), ')') AS ?person__prefLabel) (CONCAT("/actors/page/", REPLACE(STR(?person__id), "^.*\\\\/(.+)", "$1")) AS ?person__dataProviderUrl)
+  WHERE {
+      <FILTER>
+
+  ?related__id :was_sent_from ?id ; :was_authored_by ?person__id .
+  ?person__id skos:prefLabel ?_plabel .
+    } GROUPBY ?id ?person__id ?_plabel ORDERBY DESC(COUNT(?related__id)) ?_plabel
+  }
+`
+
 export const sendingPlacesHeatmapQuery = `
   SELECT DISTINCT ?id ?lat ?long (1 as ?instanceCount) # for heatmap
   WHERE {

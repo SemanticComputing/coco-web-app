@@ -30,6 +30,13 @@
                 27.314050
             ],
             "zoom": 4
+        },
+        "placesArchive": {
+            "center": [
+                65.184809,
+                27.314050
+            ],
+            "zoom": 4
         }
     },
     "resultClasses": {
@@ -87,8 +94,23 @@
                 "width": 2
             }
         },
-        "sendingPlacesHeatmap": {
+        "placesArchive": {
             "tabID": 2,
+            "component": "LeafletMap",
+            "tabPath": "map",
+            "tabIcon": "AddLocation",
+            "sparqlQuery": "sendingPlacesMapQuery",
+            "facetClass": "letters",
+            "filterTarget": "letter",
+            "resultMapper": "mapPlaces",
+            "instanceConfig": {
+                "propertiesQueryBlock": "placePropertiesInfoWindow",
+                "relatedInstances": "peopleRelatedTo",
+                "createPopUpContent": "createPopUpContentLetterSampo"
+            }
+        },
+        "sendingPlacesHeatmap": {
+            "tabID": 3,
             "tabPath": "heatmap",
             "tabIcon": "AddLocation",
             "component": "Deck",
@@ -99,7 +121,7 @@
             "resultMapper": "mapPlaces"
         },
         "actorTops": {
-            "tabID": 3,
+            "tabID": 4,
             "component": "ApexChartsDouble",
             "tabPath": "top-correspondents",
             "tabIcon": "Tune",
@@ -168,7 +190,7 @@
             }
         },
         "export": {
-            "tabID": 4,
+            "tabID": 5,
             "component": "Export",
             "tabPath": "export",
             "tabIcon": "CloudDownload",
