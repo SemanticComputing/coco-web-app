@@ -464,7 +464,10 @@ export default {
         <strong>BY YEAR</strong> includes a chart showing the yearly distribution of letters in the database.
       </li>
       <li>
-        <strong>HEATMAP</strong> includes a map showing the locations of letters activities.
+        <strong>MAP</strong> includes a map showing the locations of sending the letters.
+      </li>
+      <li>
+        <strong>HEATMAP</strong> includes a heatmap showing the locations of letters activities.
       </li>
       <li>
         <strong>TOP CORRESPONDENTS</STRONG> view shows a timeline of letters and most important correspondents. The upper chart of the timeline shows the activities using a precision of one day, the lower one the yearly amounts of sent and received letters.
