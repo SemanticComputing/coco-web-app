@@ -276,6 +276,17 @@
             "expandedOnInstancePage": true
         },
         {
+            "id": "source_url",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": true,
+            "sortValues": true,
+            "numberedList": false,
+            "minWidth": 250,
+            "onlyOnInstancePage": true,
+            "expandedOnInstancePage": true
+        },
+        {
             "id": "archival_organization",
             "valueType": "object",
             "makeLink": true,

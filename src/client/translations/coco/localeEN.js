@@ -620,6 +620,12 @@ export default {
           description: `
             External links providing more information about this letter
           `
+        },
+        source_url: {
+          label: 'External data source',
+          description: `
+            External data source for the letter information
+          `
         }
       }
     },
