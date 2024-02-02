@@ -558,6 +558,17 @@
             "expandedOnInstancePage": true
         },
         {
+            "id": "description",
+            "valueType": "string",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": false,
+            "numberedList": true,
+            "minWidth": 220,
+            "onlyOnInstancePage": true,
+            "expandedOnInstancePage": true
+        },
+        {
             "id": "occupation",
             "valueType": "string",
             "makeLink": true,

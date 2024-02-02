@@ -337,6 +337,10 @@ export default {
           label: 'Alternative names',
           description: `Alternative names of the actor.`
         },
+        description: {
+          label: 'Description',
+          description: `Short description of the actor. The descriptions might be in different languages.`
+        },
         occupation: {
           label: 'Occupation',
           description: `Occupation of a person. Notice that the other types of actors do not have this value.`

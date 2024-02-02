@@ -160,6 +160,10 @@ export const actorPropertiesInstancePage = `
   }
   UNION
   {
+    ?id dct:description ?description
+  }
+  UNION
+  {
     ?id sch:image ?image__id ;
       skos:prefLabel ?image__description ;
       skos:prefLabel ?image__title .
