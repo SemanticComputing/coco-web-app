@@ -853,7 +853,7 @@ export default {
           label: 'Places within',
           description: `
             Smaller places, e.g. towns and villages contained within the place.
-            The optional number in parenthesis is the number of activities. 
+            The optional number in parenthesis is the number of letter sendings and mentions of that place. 
           `
         },
         place: {
