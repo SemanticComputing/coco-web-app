@@ -25,7 +25,7 @@ export default {
     searchBarPlaceHolder: 'Search all content',
     searchBarPlaceHolderShort: 'Search',
     instructions: 'instructions',
-    instructionsUrl: 'https://seco.cs.aalto.fi/projects/coco/coco-sampo-instructions.pdf'
+    instructionsUrl: 'https://docs.google.com/document/d/e/2PACX-1vRPPYcK4VLKdh_uVbNMZ8diOe0MZhvVjisvVpDCzUn5hMU8SAKfG5QF8iwS6grYpXB41PfzDkT0tttg/pub'
 
   },
   facetBar: {
@@ -218,7 +218,7 @@ export default {
         </p>
         <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
           Use this perspective to access data related to the actors in the dataset.
-          See <a target="_" href="https://seco.cs.aalto.fi/projects/coco/coco-sampo-instructions.pdf">instructions</a> for using the
+          See <a target="_" href="https://docs.google.com/document/d/e/2PACX-1vRPPYcK4VLKdh_uVbNMZ8diOe0MZhvVjisvVpDCzUn5hMU8SAKfG5QF8iwS6grYpXB41PfzDkT0tttg/pub">instructions</a> for using the
           filters. The result view can be selected using the tabs:
         </p>
         <ul class="MuiTypography-root MuiTypography-body1">
@@ -456,7 +456,7 @@ export default {
         Use this perspective to access the letter data in the dataset.
       </p>
       <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-        See <a target="_" href="https://seco.cs.aalto.fi/projects/coco/coco-sampo-instructions.pdf">instructions</a> for using the
+        See <a target="_" href="https://docs.google.com/document/d/e/2PACX-1vRPPYcK4VLKdh_uVbNMZ8diOe0MZhvVjisvVpDCzUn5hMU8SAKfG5QF8iwS6grYpXB41PfzDkT0tttg/pub">instructions</a> for using the
         filters. The result view can be selected using the tabs:
       </p>
       <ul class="MuiTypography-root MuiTypography-body1">
@@ -646,7 +646,7 @@ export default {
         Use this perspective to access the archival organizations and fonds in the dataset.
       </p>
       <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-        See <a target="_" href="https://seco.cs.aalto.fi/projects/coco/coco-sampo-instructions.pdf">instructions</a> for using the
+        See <a target="_" href="https://docs.google.com/document/d/e/2PACX-1vRPPYcK4VLKdh_uVbNMZ8diOe0MZhvVjisvVpDCzUn5hMU8SAKfG5QF8iwS6grYpXB41PfzDkT0tttg/pub">instructions</a> for using the
         filters. The result view can be selected using the tabs:
       </p>
       <ul class="MuiTypography-root MuiTypography-body1">
@@ -783,7 +783,7 @@ export default {
       In addition to that there are places required to, e.g., build the geographical hiearchy.
     </p>
     <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-      See <a target="_" href="https://seco.cs.aalto.fi/projects/coco/coco-sampo-instructions.pdf">instructions</a> for using the
+      See <a target="_" href="https://docs.google.com/document/d/e/2PACX-1vRPPYcK4VLKdh_uVbNMZ8diOe0MZhvVjisvVpDCzUn5hMU8SAKfG5QF8iwS6grYpXB41PfzDkT0tttg/pub">instructions</a> for using the
       filters. The result view can be selected using the tabs:
     </p>
     <ul class="MuiTypography-root MuiTypography-body1">
@@ -853,7 +853,7 @@ export default {
           label: 'Places within',
           description: `
             Smaller places, e.g. towns and villages contained within the place.
-            The optional number in parenthesis is the number of activities. 
+            The optional number in parenthesis is the number of letter sendings and mentions of that place. 
           `
         },
         place: {
