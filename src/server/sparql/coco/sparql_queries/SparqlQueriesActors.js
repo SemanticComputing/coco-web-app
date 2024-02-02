@@ -160,6 +160,10 @@ export const actorPropertiesInstancePage = `
   }
   UNION
   {
+    ?id dct:description ?description
+  }
+  UNION
+  {
     ?id sch:image ?image__id ;
       skos:prefLabel ?image__description ;
       skos:prefLabel ?image__title .
@@ -323,23 +327,23 @@ WHERE
 } 
 `
 
-//  outdated: https://api.triplydb.com/s/lhDOivCiG
 export const peopleEventPlacesQuery = `
 SELECT DISTINCT ?id ?lat ?long 
 (COUNT(DISTINCT ?person) AS ?instanceCount)
 WHERE {
   <FILTER>
+  
+  ?id a crm:E53_Place ; geo:lat ?lat ; geo:long ?long .
+
   { ?person ^:was_authored_by/:was_sent_from ?id }
   UNION
   { ?person :was_born_in_location ?id }
   UNION
   { ?person :died_at_location ?id }
-  ?id geo:lat ?lat ;
-    geo:long ?long .
+
 } GROUP BY ?id ?lat ?long
 `
 
-//  outdated: https://api.triplydb.com/s/ck2-SDpCO
 export const peopleRelatedTo = `
   OPTIONAL {
     <FILTER>
@@ -499,7 +503,6 @@ WHERE
 } 
 `
 
-//  https://api.triplydb.com/s/N98jJ1hhJ
 export const sentReceivedInstancePageQuery = `
   SELECT DISTINCT (STR(?year) as ?category) 
     (count(distinct ?sent_letter) AS ?sentCount) 

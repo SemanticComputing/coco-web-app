@@ -29,7 +29,7 @@ export const placePropertiesFacetResults = `
     ?id sch:image ?image__id ;
       skos:prefLabel ?image__description ;
       skos:prefLabel ?image__title .
-    BIND(CONCAT(REPLACE(STR(?image__id), "https*:", ""), "?width=300") as ?image__url)
+    BIND(CONCAT(REPLACE(STR(?image__id), "https*:", ""), "?width=600") as ?image__url)
   }
 `
 
@@ -157,18 +157,6 @@ WHERE {
     BIND(CONCAT("/actors/page/", REPLACE(STR(?deceased__id), "^.*\\\\/(.+)", "$1")) AS ?deceased__dataProviderUrl)
   }
 }
-`
-
-export const eventPlacesQuery = `
-  SELECT ?id ?lat ?long
-  (COUNT(DISTINCT ?event) as ?instanceCount)
-  WHERE {
-    <FILTER>
-    ?event crm:P7_took_place_at ?id .
-    ?id wgs84:lat ?lat ;
-        wgs84:long ?long .
-  }
-  GROUP BY ?id ?lat ?long
 `
 
 //  TODO add subplaces to counts

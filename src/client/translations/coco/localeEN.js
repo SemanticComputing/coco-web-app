@@ -337,6 +337,10 @@ export default {
           label: 'Alternative names',
           description: `Alternative names of the actor.`
         },
+        description: {
+          label: 'Description',
+          description: `Short description of the actor. The descriptions might be in different languages.`
+        },
         occupation: {
           label: 'Occupation',
           description: `Occupation of a person. Notice that the other types of actors do not have this value.`
@@ -464,7 +468,11 @@ export default {
         <strong>BY YEAR</strong> includes a chart showing the yearly distribution of letters in the database.
       </li>
       <li>
-        <strong>HEATMAP</strong> includes a map showing the locations of letters activities.
+        <strong>MAP</strong> includes a map showing the locations of sending the letters. 
+        Clicking on a marker opens up a popup showing a list of actors have sent letters from each location.
+      </li>
+      <li>
+        <strong>HEATMAP</strong> includes a heatmap showing the locations of letters activities.
       </li>
       <li>
         <strong>TOP CORRESPONDENTS</STRONG> view shows a timeline of letters and most important correspondents. The upper chart of the timeline shows the activities using a precision of one day, the lower one the yearly amounts of sent and received letters.
@@ -619,6 +627,12 @@ export default {
           label: 'External links',
           description: `
             External links providing more information about this letter
+          `
+        },
+        source_url: {
+          label: 'External data source',
+          description: `
+            External data source for the letter information
           `
         }
       }

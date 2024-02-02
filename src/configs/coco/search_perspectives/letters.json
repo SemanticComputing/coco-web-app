@@ -30,6 +30,13 @@
                 27.314050
             ],
             "zoom": 4
+        },
+        "activitiesByPlace": {
+            "center": [
+                65.184809,
+                27.314050
+            ],
+            "zoom": 4
         }
     },
     "resultClasses": {
@@ -87,10 +94,25 @@
                 "width": 2
             }
         },
-        "sendingPlacesHeatmap": {
+        "activitiesByPlace": {
             "tabID": 2,
-            "tabPath": "heatmap",
+            "component": "LeafletMap",
+            "tabPath": "map",
             "tabIcon": "AddLocation",
+            "sparqlQuery": "sendingPlacesMapQuery",
+            "facetClass": "letters",
+            "filterTarget": "letter",
+            "resultMapper": "mapPlaces",
+            "instanceConfig": {
+                "propertiesQueryBlock": "placePropertiesInfoWindow",
+                "relatedInstances": "peopleRelatedTo",
+                "createPopUpContent": "createPopUpContentLetterSampo"
+            }
+        },
+        "sendingPlacesHeatmap": {
+            "tabID": 3,
+            "tabPath": "heatmap",
+            "tabIcon": "LocalFireDepartment",
             "component": "Deck",
             "layerType": "heatmapLayer",
             "sparqlQuery": "sendingPlacesHeatmapQuery",
@@ -99,7 +121,7 @@
             "resultMapper": "mapPlaces"
         },
         "actorTops": {
-            "tabID": 3,
+            "tabID": 4,
             "component": "ApexChartsDouble",
             "tabPath": "top-correspondents",
             "tabIcon": "Tune",
@@ -168,7 +190,7 @@
             }
         },
         "export": {
-            "tabID": 4,
+            "tabID": 5,
             "component": "Export",
             "tabPath": "export",
             "tabIcon": "CloudDownload",
@@ -266,6 +288,17 @@
         },
         {
             "id": "related",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": true,
+            "sortValues": true,
+            "numberedList": false,
+            "minWidth": 250,
+            "onlyOnInstancePage": true,
+            "expandedOnInstancePage": true
+        },
+        {
+            "id": "source_url",
             "valueType": "object",
             "makeLink": true,
             "externalLink": true,
