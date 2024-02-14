@@ -15,7 +15,11 @@ BIND(CONCAT(?pagetype, "/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?pr
   
 BIND(IF (str(?literal) != str(?prefLabel__prefLabel), ?literal, '') AS ?altLabel)
 
-OPTIONAL { ?id ?value_prop ?number_of_activities }
+OPTIONAL { 
+  ?id ?value_prop ?_num .
+  BIND(REPLACE(CONCAT("     ", str(?_num)), "^.*(.{5})$", "$1")  AS ?number_of_activities)
+}
+
 
 OPTIONAL   {
   ?id sch:image ?image__id ;
