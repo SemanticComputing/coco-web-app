@@ -200,8 +200,17 @@ export default {
         prefLabel: {
           label: 'Label'
         },
+        altLabel: {
+          label: 'Alternative label'
+        },
         type: {
           label: 'Type'
+        },
+        image: {
+          label: 'Image'
+        },
+        number_of_activities: {
+          label: 'Number of activities'
         }
       }
     },
@@ -424,7 +433,9 @@ export default {
           label: 'Fonds',
           description: `
             Fonds containing letters related to this actor. 
-            The number of sent+received letters is shown in parenthesis.
+            The name of the archival organization is shown in parenthesis after the name of the fonds,
+            as well as the number of (sent+received) letters. 
+            (Notice that all letters do not necessarily belong to a fonds.)
           `
         },
         fonds: {

@@ -27,7 +27,36 @@
             "externalLink": false,
             "sortValues": false,
             "numberedList": false,
-            "minWidth": 300
+            "minWidth": 70
+        },
+        {
+            "id": "image",
+            "valueType": "image",
+            "previewImageHeight": 160,
+            "makeLink": false,
+            "externalLink": true,
+            "sortValues": true,
+            "numberedList": false,
+            "hideHeader": true,
+            "minWidth": 60
+        },
+        {
+            "id": "altLabel",
+            "valueType": "string",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": false,
+            "numberedList": false,
+            "minWidth": 400
+        },
+        {
+            "id": "number_of_activities",
+            "valueType": "string",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": false,
+            "numberedList": false,
+            "minWidth": 200
         }
     ]
 }
