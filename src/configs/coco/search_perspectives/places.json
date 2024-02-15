@@ -73,7 +73,7 @@
                                 "valueType": "object",
                                 "makeLink": true,
                                 "externalLink": false,
-                                "sortValues": true,
+                                "sortValues": false,
                                 "numberedList": true,
                                 "onlyOnInstancePage": true,
                                 "expandedOnInstancePage": true
