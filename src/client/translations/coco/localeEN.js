@@ -634,6 +634,12 @@ export default {
             Textual values in the letter metadata record
           `
         },
+        other: {
+          label: 'Related letters',
+          description: `
+            List of all letters having the same metadata record
+          `
+        },
         related: {
           label: 'External links',
           description: `

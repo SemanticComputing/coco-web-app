@@ -130,6 +130,12 @@ UNION
     ?_metadata :original_record ?original_record 
   }
   UNION
+  {
+    ?other__id :metadata ?_metadata ;
+    	skos:prefLabel ?other__prefLabel .
+      BIND(CONCAT("/letters/page/", REPLACE(STR(?other__id), "^.*\\\\/(.+)", "$1")) AS ?other__dataProviderUrl)
+  }
+  UNION
   { 
     ?_metadata foaf:page ?related__id . 
     BIND(?related__id AS ?related__prefLabel)

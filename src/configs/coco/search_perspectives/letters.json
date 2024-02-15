@@ -335,6 +335,17 @@
             "onlyOnInstancePage": true
         },
         {
+            "id": "other",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": false,
+            "sortValues": false,
+            "numberedList": false,
+            "minWidth": 250,
+            "onlyOnInstancePage": true,
+            "expandedOnInstancePage": true
+        },
+        {
             "id": "record_value",
             "valueType": "string",
             "makeLink": false,
