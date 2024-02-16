@@ -292,7 +292,7 @@ export default {
         },
         prefLabel: {
           label: 'Name',
-          description: ''
+          description: 'Search actors by name. Search is based on Apache Lucene index search. In addition to simple searches, you can use wildcard matching, e.g. Finland*. You can also use the logical operators AND, OR and NOT, but then the search must be written in parentheses, e.g., like this (Jean AND Sibelius)'
         },
         gender: {
           label: 'Gender',
@@ -589,13 +589,19 @@ export default {
         source: {
           label: 'Sender',
           description: `
-            Sender of the letter.
+          Search for a sender by name. 
+          Search is based on Apache Lucene index search. 
+          In addition to simple searches, you can use wildcard matching, e.g. Finland*. 
+          You can also use the logical operators AND, OR and NOT, but then the search must be written in parentheses, e.g., like this (Jean AND Sibelius)'
           `
         },
         target: {
           label: 'Recipient',
           description: `
-          Recipient of the letter.
+          Search for a recipient by name. 
+          Search is based on Apache Lucene index search. 
+          In addition to simple searches, you can use wildcard matching, e.g. Finland*. 
+          You can also use the logical operators AND, OR and NOT, but then the search must be written in parentheses, e.g., like this (Jean AND Sibelius)'
           `
         },
         mentioned_person: {
