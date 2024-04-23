@@ -179,6 +179,12 @@ export const actorPropertiesInstancePage = `
     FILTER(LANG(?relative__prefLabel)='en')
     BIND(CONCAT("/actors/page/", REPLACE(STR(?relative__id), "^.*\\\\/(.+)", "$1")) AS ?relative__dataProviderUrl)
   }
+  UNION
+  {
+    ?id bioc:has_person_relation [ bioc:inheres_in ?acquaintance__id ; skos:prefLabel ?acquaintance__prefLabel ]
+    FILTER(LANG(?acquaintance__prefLabel)='en')
+    BIND(CONCAT("/actors/page/", REPLACE(STR(?acquaintance__id), "^.*\\\\/(.+)", "$1")) AS ?acquaintance__dataProviderUrl)
+  }
 `
 
 export const actorLettersInstancePageQuery = `

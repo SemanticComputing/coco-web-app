@@ -366,6 +366,12 @@ export default {
           Notice that this data has been extracted from external databased like BiographySampo, AcademySampo and Wikidata. 
           Only relations between people in the CoCo data are shown, so there might be missing relations or errors.`
         },
+        acquaintance: {
+          label: 'Personal relations',
+          description: `Personal relations to other people. 
+          Notice that this data has been extracted from external databased like BiographySampo, AcademySampo, Wikidata and ULAN. 
+          Only relations between people in the CoCo data are shown, so there might be missing relations or errors.`
+        },
         rel: {
           label: 'Related actors',
           description: `
