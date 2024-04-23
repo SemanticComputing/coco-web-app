@@ -771,6 +771,18 @@ export default {
             Number of letters in this fonds.
           `
         },
+        creator: {
+          label: 'Records creator',
+          description: `
+            Actor related to the fonds.
+          `
+        },
+        related: {
+          label: 'External links',
+          description: `
+            External links providing more information about the letters in this fonds.
+          `
+        },
         sender: {
           label: 'Senders',
           description: `

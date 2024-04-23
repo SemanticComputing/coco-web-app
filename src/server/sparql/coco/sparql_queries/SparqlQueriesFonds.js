@@ -41,6 +41,18 @@ export const fondsPropertiesInstancePage = `
     BIND(CONCAT("/fonds/page/", REPLACE(STR(?archival_organization__id), "^.*\\\\/(.+)", "$1")) AS ?archival_organization__dataProviderUrl)
   }
   UNION
+  { 
+    ?id :records_creator ?creator__id .
+    ?creator__id skos:prefLabel ?creator__prefLabel .
+    BIND(CONCAT("/actors/page/", REPLACE(STR(?creator__id), "^.*\\\\/(.+)", "$1")) AS ?creator__dataProviderUrl)
+  }
+  UNION
+  { 
+    ?id foaf:page ?related__id .
+    BIND(?related__id AS ?related__prefLabel)
+    BIND(?related__id AS ?related__dataProviderUrl)
+  }
+  UNION
   {
     SELECT DISTINCT ?id ?sender__id  
 	    (CONCAT(?_label, ' (', STR(COUNT(DISTINCT ?_evt)), ')') AS ?sender__prefLabel)
