@@ -137,6 +137,30 @@
             "expandedOnInstancePage": false
         },
         {
+            "id": "creator",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": false,
+            "sortValues": false,
+            "numberedList": true,
+            "minWidth": 120,
+            "priority": 5,
+            "onlyOnInstancePage": true,
+            "expandedOnInstancePage": true
+        },
+        {
+            "id": "related",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": true,
+            "sortValues": false,
+            "numberedList": true,
+            "minWidth": 120,
+            "priority": 5,
+            "onlyOnInstancePage": true,
+            "expandedOnInstancePage": true
+        },
+        {
             "id": "sender",
             "valueType": "object",
             "makeLink": true,

@@ -8,7 +8,7 @@
     "sparqlQueriesFile": "SparqlQueriesActors.js",
     "baseURI": "http://ldf.fi/coco",
     "URITemplate": "<BASE_URI>/actors/<LOCAL_ID>",
-    "facetClass": "crm:E21_Person crm:E74_Group :Family :Company :Unknown",
+    "facetClass": "crm:E21_Person crm:E74_Group :Family :Unknown",
     "frontPageImage": "main_page/people2-452x262.jpg",
     "searchMode": "faceted-search",
     "defaultActiveFacets": [
@@ -580,6 +580,17 @@
         },
         {
             "id": "relative",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": false,
+            "minWidth": 220,
+            "onlyOnInstancePage": true,
+            "expandedOnInstancePage": true
+        },
+        {
+            "id": "acquaintance",
             "valueType": "object",
             "makeLink": true,
             "externalLink": false,
