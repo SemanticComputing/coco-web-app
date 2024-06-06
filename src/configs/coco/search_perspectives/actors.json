@@ -116,6 +116,16 @@
                                 "expandedOnInstancePage": true
                             },
                             {
+                                "id": "created_fonds",
+                                "valueType": "object",
+                                "makeLink": true,
+                                "externalLink": false,
+                                "sortValues": true,
+                                "numberedList": true,
+                                "expandedOnInstancePage": true,
+                                "onlyOnInstancePage": true
+                            },
+                            {
                                 "id": "sentletter",
                                 "valueType": "object",
                                 "makeLink": true,

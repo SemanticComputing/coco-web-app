@@ -194,10 +194,12 @@ export const actorLettersInstancePageQuery = `
     BIND(?id as ?uri__id)
     BIND(?id as ?uri__prefLabel)
     BIND(?id as ?uri__dataProviderUrl)
-  
-    ?id skos:prefLabel ?prefLabel__id .
-    BIND (?prefLabel__id as ?prefLabel__prefLabel)
-  
+
+    {
+      ?id skos:prefLabel ?prefLabel__id .
+      BIND (?prefLabel__id as ?prefLabel__prefLabel)
+    }
+    UNION
     {
       SELECT DISTINCT ?id ?metrics__id ?metrics__dataProviderUrl ?metrics__prefLabel
       WHERE {
@@ -263,6 +265,12 @@ export const actorLettersInstancePageQuery = `
       }
       GROUPBY ?id ?_label ?in_fonds__id 
       ORDERBY DESC(COUNT(DISTINCT ?_evt))
+    }
+    UNION
+    {
+      ?created_fonds__id :records_creator ?id ;
+                        skos:prefLabel ?created_fonds__prefLabel .
+      BIND (CONCAT("/fonds/page/", REPLACE(STR(?created_fonds__id), "^.*\\\\/(.+)", "$1")) AS ?created_fonds__dataProviderUrl)
     }
     UNION
     {

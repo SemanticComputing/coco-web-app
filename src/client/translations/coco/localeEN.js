@@ -444,6 +444,13 @@ export default {
             (Notice that all letters do not necessarily belong to a fonds.)
           `
         },
+        created_fonds: {
+          label: 'Created Fonds',
+          description: `
+            TODO. 
+            (Notice that all actors do not necessarily belong to a fonds.)
+          `
+        },
         fonds: {
           label: 'Fonds',
           description: `
