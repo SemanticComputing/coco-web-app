@@ -253,6 +253,7 @@
             "makeLink": true,
             "externalLink": false,
             "sortValues": true,
+            "onlyOnInstancePage": true,
             "numberedList": false,
             "minWidth": 200
         },
@@ -284,38 +285,26 @@
             "sortValues": true,
             "numberedList": false,
             "minWidth": 150,
-            "expandedOnInstancePage": true
-        },
-        {
-            "id": "related",
-            "valueType": "object",
-            "makeLink": true,
-            "externalLink": true,
-            "sortValues": true,
-            "numberedList": false,
-            "minWidth": 250,
             "onlyOnInstancePage": true,
             "expandedOnInstancePage": true
         },
         {
-            "id": "source_url",
+            "id": "datasource",
             "valueType": "object",
-            "makeLink": true,
-            "externalLink": true,
-            "sortValues": true,
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": false,
             "numberedList": false,
-            "minWidth": 250,
-            "onlyOnInstancePage": true,
-            "expandedOnInstancePage": true
+            "onlyOnInstancePage": false
         },
         {
             "id": "archival_organization",
             "valueType": "object",
-            "makeLink": true,
+            "makeLink": false,
             "externalLink": false,
             "sortValues": false,
             "numberedList": false,
-            "onlyOnInstancePage": true
+            "onlyOnInstancePage": false
         },
         {
             "id": "fonds",
@@ -363,6 +352,28 @@
             "sortValues": false,
             "numberedList": false,
             "onlyOnInstancePage": true
+        },
+        {
+            "id": "related",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": true,
+            "sortValues": true,
+            "numberedList": false,
+            "minWidth": 250,
+            "onlyOnInstancePage": true,
+            "expandedOnInstancePage": true
+        },
+        {
+            "id": "source_url",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": true,
+            "sortValues": true,
+            "numberedList": false,
+            "minWidth": 250,
+            "onlyOnInstancePage": true,
+            "expandedOnInstancePage": true
         },
         {
             "id": "uri",
@@ -453,6 +464,19 @@
             "sortByPredicate": "dct:source/skos:prefLabel",
             "hideUnknownValue": true
         },
+        "archival_organization": {
+            "containerClass": "ten",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "predicate": ":archival_organization",
+            "searchField": false,
+            "sortBy": "instanceCount",
+            "sortDirection": "desc",
+            "sortButton": true,
+            "pieChartButton": true,
+            "sortByPredicate": ":archival_organization/skos:prefLabel",
+            "hideUnknownValue": true
+        },
         "fonds": {
             "containerClass": "ten",
             "facetType": "list",
@@ -461,7 +485,7 @@
             "searchField": false,
             "sortBy": "instanceCount",
             "sortDirection": "desc",
-            "sortButton": false,
+            "sortButton": true,
             "pieChartButton": true,
             "sortByPredicate": ":fonds/skos:prefLabel",
             "hideUnknownValue": true

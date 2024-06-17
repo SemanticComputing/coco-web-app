@@ -447,8 +447,7 @@ export default {
         created_fonds: {
           label: 'Created Fonds',
           description: `
-            TODO. 
-            (Notice that all actors do not necessarily belong to a fonds.)
+            THe fonds where this actor is marked as the records creator.
           `
         },
         fonds: {
@@ -728,19 +727,6 @@ export default {
         prefLabel: {
           label: 'Fonds',
           description: 'The label of the Fonds'
-        },
-        language: {
-          label: 'Language',
-          description: `
-            The language in which a Work is written in the manuscript
-            (i.e., an “Expression” of a Work). One manuscript may contain multiple languages.
-          `
-        },
-        subject: {
-          label: 'Subject',
-          description: `
-            The subject of the letter.
-          `
         },
         datasource: {
           label: 'Data source',

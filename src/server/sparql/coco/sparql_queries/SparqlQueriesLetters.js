@@ -4,7 +4,7 @@ export const letterProperties = `
   BIND (?prefLabel__id as ?prefLabel__prefLabel)
   BIND(CONCAT("/letters/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
 
-  BIND(?id as ?uri__id) 
+  BIND(?id as ?uri__id)
   BIND(STR(?id) as ?uri__prefLabel)
   BIND(?id as ?uri__dataProviderUrl)
 }
@@ -29,27 +29,21 @@ UNION
 }
 UNION
 {
-  ?id :was_sent_from ?from__id .
-  ?from__id a [] ; skos:prefLabel ?from__prefLabel .
-  BIND(CONCAT("/places/page/", REPLACE(STR(?from__id), "^.*\\\\/(.+)", "$1")) AS ?from__dataProviderUrl)
-}
-UNION
-{
   ?id :fonds ?fonds__id .
   ?fonds__id a [] ; skos:prefLabel ?fonds__prefLabel.
   BIND(CONCAT("/fonds/page/", REPLACE(STR(?fonds__id), "^.*\\\\/(.+)", "$1")) AS ?fonds__dataProviderUrl)
 }
 UNION
-{ 
-  ?id dct:language ?language__id . 
-  ?language__id a [] ; skos:prefLabel ?language__prefLabel .
-  BIND (?language__id AS ?language__dataProviderUrl)
-}
-UNION
-{ # Metadata values
-  ?id :metadata/dct:source ?datasource__id .
+{
+  ?id dct:source ?datasource__id .
   ?datasource__id skos:prefLabel ?datasource__prefLabel .
   BIND(CONCAT("/sources/page/", REPLACE(STR(?datasource__id), "^.*\\\\/(.+)", "$1")) AS ?datasource__dataProviderUrl)
+}
+UNION
+{
+  ?id :archival_organization ?archival_organization__id .
+  ?archival_organization__id a [] ; skos:prefLabel ?archival_organization__prefLabel .
+  BIND(CONCAT("/fonds/page/", REPLACE(STR(?archival_organization__id), "^.*\\\\/(.+)", "$1")) AS ?archival_organization__dataProviderUrl)
 }
 `
 
@@ -58,16 +52,16 @@ export const letterPropertiesInstancePage = `
   ?id skos:prefLabel ?prefLabel__id .
   BIND (?prefLabel__id as ?prefLabel__prefLabel)
   BIND(STR(?id) as ?uri__prefLabel)
-  BIND(?id as ?uri__dataProviderUrl) 
+  BIND(?id as ?uri__dataProviderUrl)
 }
 UNION
 {
-  ?id :was_authored_by ?source__id . 
+  ?id :was_authored_by ?source__id .
   ?source__id skos:prefLabel ?source__prefLabel . 
   # FILTER (!REGEX(STR(?source__prefLabel), 'unknown', 'i'))
   BIND(CONCAT("/actors/page/", REPLACE(STR(?source__id), "^.*\\\\/(.+)", "$1")) AS ?source__dataProviderUrl)
 }
-UNION 
+UNION
 {
   ?id :has_time-span ?productionTimespan__id .
   ?productionTimespan__id skos:prefLabel ?productionTimespan__prefLabel .
@@ -110,6 +104,12 @@ UNION
   ?id dct:language ?language__id . 
   ?language__id a [] ; skos:prefLabel ?language__prefLabel .
   BIND (?language__id AS ?language__dataProviderUrl)
+}
+UNION
+{
+  ?id dct:source ?datasource__id .
+  ?datasource__id skos:prefLabel ?datasource__prefLabel .
+  BIND(CONCAT("/sources/page/", REPLACE(STR(?datasource__id), "^.*\\\\/(.+)", "$1")) AS ?datasource__dataProviderUrl)
 }
 UNION
 {

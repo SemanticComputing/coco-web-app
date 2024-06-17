@@ -108,6 +108,15 @@
     },
     "properties": [
         {
+            "id": "prefLabel",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": false,
+            "minWidth": 100
+        },
+        {
             "id": "archival_organization",
             "valueType": "object",
             "makeLink": false,
@@ -117,13 +126,13 @@
             "minWidth": 120
         },
         {
-            "id": "prefLabel",
-            "valueType": "object",
-            "makeLink": true,
+            "id": "datasource",
+            "valueType": "string",
+            "makeLink": false,
             "externalLink": false,
             "sortValues": true,
             "numberedList": false,
-            "minWidth": 100
+            "minWidth": 120
         },
         {
             "id": "number_of_letters",
@@ -207,8 +216,20 @@
         }
     ],
     "facets": {
+        "datasource": {
+            "containerClass": "ten",
+            "facetType": "list",
+            "predicate": "dct:source",
+            "filterType": "uriFilter",
+            "sortBy": "instanceCount",
+            "sortDirection": "desc",
+            "pieChartButton": true,
+            "sortButton": true,
+            "hideUnknownValue": true,
+            "sortByPredicate": "dct:source/skos:prefLabel"
+        },
         "archival_organization": {
-            "containerClass": "five",
+            "containerClass": "ten",
             "facetType": "list",
             "predicate": ":archival_organization",
             "filterType": "uriFilter",
@@ -216,14 +237,27 @@
             "sortDirection": "desc",
             "pieChartButton": true,
             "sortButton": true,
-            "sortByPredicate": ":archival_organization/skos:prefLabel",
-            "hideUnknownValue": true
+            "hideUnknownValue": true,
+            "sortByPredicate": ":archival_organization/skos:prefLabel"
         },
         "fonds": {
             "containerClass": "ten",
             "facetType": "list",
             "predicate": ":self_link",
             "filterType": "uriFilter",
+            "sortBy": "instanceCount",
+            "sortDirection": "desc",
+            "pieChartButton": true,
+            "searchField": true,
+            "sortButton": true,
+            "sortByPredicate": "skos:prefLabel"
+        },
+        "creator": {
+            "containerClass": "ten",
+            "facetType": "list",
+            "predicate": ":records_creator",
+            "filterType": "uriFilter",
+            "sortBy": "instanceCount",
             "sortDirection": "desc",
             "pieChartButton": true,
             "searchField": true,
