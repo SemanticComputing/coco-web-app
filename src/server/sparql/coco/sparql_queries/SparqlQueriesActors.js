@@ -194,7 +194,6 @@ export const actorLettersInstancePageQuery = `
     BIND(?id as ?uri__id)
     BIND(?id as ?uri__prefLabel)
     BIND(?id as ?uri__dataProviderUrl)
-
     {
       ?id skos:prefLabel ?prefLabel__id .
       BIND (?prefLabel__id as ?prefLabel__prefLabel)
@@ -492,23 +491,25 @@ export const networkNodesFacetQuery = `
 `
 
 export const topCorrespondenceInstancePageQuery = `
-SELECT ?id (?source__label AS ?from__label) (?target__label AS ?to__label)  (xsd:date(?_date) AS ?date) ?type (year(?_date) AS ?year)
-WHERE 
+SELECT DISTINCT ?id (?source__label AS ?from__label) (?target__label AS ?to__label) (xsd:date(CONCAT(STR(?year), '-01-01')) AS ?date) ?type ?year
+WHERE
 {
-    VALUES ?id { <ID> }
+  VALUES ?id { <ID> }
   {
     ?letter :was_authored_by ?id ;
       a :Letter ;
       :was_addressed_to ?target .
     ?target skos:prefLabel ?_target__label .
+
     BIND ("to" AS ?type)
-  
     BIND(?id AS ?source)
-  } UNION {
+  }
+  UNION
+  {
     ?letter :was_addressed_to ?id ;
       a :Letter ;
       :was_authored_by ?source .
-    ?source skos:prefLabel ?_source__label . 
+    ?source skos:prefLabel ?_source__label .
 
     BIND(?id AS ?target)
     BIND ("from" AS ?type)
@@ -516,7 +517,19 @@ WHERE
   }
   ?target skos:prefLabel ?target__label .
   ?source skos:prefLabel ?source__label .
-  ?letter :has_time-span/crm:P82a_begin_of_the_begin ?_date .
+  ?letter :estimated_year ?year .
+
+  OPTIONAL {
+    ?id :birthDate/crm:P82b_end_of_the_end ?birth_end .
+    BIND(year(?birth_end) AS ?birth)
+  }
+  FILTER (!bound(?birth) || (bound(?birth) && ?birth<?year))
+
+  OPTIONAL {
+    ?id :deathDate/crm:P82b_end_of_the_end ?death_end .
+    BIND(year(?death_end) AS ?death)
+  }
+  FILTER (!bound(?death) || (bound(?death) && ?year<=?death))
 } 
 `
 
@@ -530,15 +543,13 @@ export const sentReceivedInstancePageQuery = `
     {
       ?sent_letter :was_authored_by ?id ; 
         a :Letter ;
-        :has_time-span/crm:P82a_begin_of_the_begin ?time_0 .
-      BIND (year(?time_0) AS ?year)
+        :estimated_year ?year .
     } 
     UNION 
     {
       ?received_letter :was_addressed_to ?id ;
-                       a :Letter ;
-                      :has_time-span/crm:P82a_begin_of_the_begin ?time_0 .
-      BIND (year(?time_0) AS ?year)
+        a :Letter ;
+        :estimated_year ?year .
     }
     FILTER (BOUND(?year))
 
@@ -546,14 +557,14 @@ export const sentReceivedInstancePageQuery = `
       ?id :birthDate/crm:P82b_end_of_the_end ?birth_end .
     BIND(year(?birth_end) AS ?birth)
     }
-    FILTER ((bound(?birth) && ?birth<?year) || !bound(?birth))
+    FILTER (!bound(?birth) || (bound(?birth) && ?birth<?year))
 
     OPTIONAL {
         ?id :deathDate/crm:P82b_end_of_the_end ?death_end .
-      BIND(year(?death_start) AS ?death)
+      BIND(year(?death_end) AS ?death)
     }
-    FILTER ((bound(?death) && ?year<=?death) || !bound(?death))
-  } 
+    FILTER (!bound(?death) || (bound(?death) && ?year<=?death))
+  }
   GROUP BY ?year
   ORDER BY ?year
 `
