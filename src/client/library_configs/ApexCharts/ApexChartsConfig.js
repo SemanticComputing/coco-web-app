@@ -138,11 +138,13 @@ export const createTopTimelineChartData = ({
   resultClassConfig,
   screenSize
 }) => {
-  // console.log('topN', results.topN)
   const {
     title,
     fill,
-    tooltip,
+    stroke,
+    markers,
+    dataLabels,
+    plotOptions,
     legend,
     grid
   } = resultClassConfig
@@ -150,7 +152,7 @@ export const createTopTimelineChartData = ({
   const apexChartOptionsWithData = {
     chart: {
       id: 'topN',
-      type: 'scatter',
+      type: 'bubble',
       width: '100%',
       height: '100%',
       fontFamily: 'Roboto',
@@ -186,8 +188,18 @@ export const createTopTimelineChartData = ({
         align: 'right'
       }
     },
+    tooltip: {
+      x: { format: "yyyy" },
+      z: {
+          formatter: function (val, opts) { return Math.round(val*val) },
+          title: "Letters: "
+      }
+    },
+    ...(dataLabels) && { dataLabels },
+    ...(plotOptions) && { plotOptions },
+    ...(markers) && { markers },
+    ...(stroke) && { stroke },
     ...(grid) && { grid },
-    ...(tooltip) && { tooltip },
     ...(legend) && { legend },
     ...(fill) && { fill }
   }

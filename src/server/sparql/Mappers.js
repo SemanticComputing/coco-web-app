@@ -560,26 +560,66 @@ export const createCorrespondenceChartData = ({ sparqlBindings, config }) => {
   const { numberTopResults, types, lastLabel } = config
   let topN = numberTopResults || 10
 
-  sparqlBindings.forEach(b => { Object.keys(b).forEach(key => { b[key] = b[key].value }) })
+  sparqlBindings.forEach(ob => { Object.keys(ob).forEach(key => { ob[key] = ob[key].value }) })
 
   //  Dates '1663-10-26' to UTC -9662204389000
-  sparqlBindings.forEach(b => { b.date = Date.parse(b.date) })
+  sparqlBindings.forEach(ob => { ob.date = Date.parse(ob.date) })
+
+  let cnAll = new Counter()
+
+  //  Check if query result has parameter 'count' e.g. number of items for each result per year
+  const has_counts = sparqlBindings.find(ob => (has(ob, 'count')))
+  if (has_counts) {
+    sparqlBindings.forEach(ob => {
+      ob.count = parseInt(ob.count)
+      cnAll.addItem(ob[ob.type + '__label'], ob.count)
+    })
+  }
+  else
+  {
+    cnAll = new Counter(sparqlBindings.map(ob => ob[ob.type + '__label']))
+  }
 
   //  find the N most common values in the data
-  const cnAll = new Counter(sparqlBindings.map(ob => ob[ob.type + '__label']))
   const topTies = cnAll.mostCommonLabels(topN)
 
   const datas = {}
+  const others = {}
+  
   types.forEach(type => { datas[type] = [] })
+  if (lastLabel) {
+    types.forEach(type => { others[type] = {} })
+    sparqlBindings.forEach(ob => {
+      others[ob.type][ob.date] = 0
+    })
+  }
+  
   sparqlBindings.forEach(ob => {
     const v = topTies.indexOf(ob[ob.type + '__label'])
     //  one of the top correspondences (v > -1) or in other (topTies.length)
-    if (v > -1) {
-      datas[ob.type].push([ob.date, v])
-    } else if (lastLabel) {
-      datas[ob.type].push([ob.date, topTies.length])
+    if (has_counts) {
+      if (v > -1) {
+        datas[ob.type].push([ob.date, v, Math.sqrt(ob.count)])
+      } else if (lastLabel) {
+        others[ob.type][ob.date] += ob.count
+        // datas[ob.type].push([ob.date, topTies.length, 75+10*ob.count])
+      }
+    } else {
+      if (v > -1) {
+        datas[ob.type].push([ob.date, v])
+      } else if (lastLabel) {
+        datas[ob.type].push([ob.date, topTies.length])
+      }
     }
   })
+
+  //  Add 'others' to the yearly data:
+  for (const [ob_type, year_values] of Object.entries(others)) {
+    for (const [ob_date, num_letters] of Object.entries(year_values)) {
+      // console.log(`${ob_type} ${ob_date}: ${num_letters}`)
+      datas[ob_type].push([parseInt(ob_date), topTies.length, Math.sqrt(num_letters)])
+    }
+  }
 
   const years = new Set(sparqlBindings.map(ob => { return parseInt(ob.year) }))
 

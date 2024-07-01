@@ -228,12 +228,24 @@
                                 "resultMapper": "createCorrespondenceChartData",
                                 "resultMapperConfig": {
                                     "types": ["to", "from"],
-                                    "numberTopResults": 10,
-                                    "lastLabel": "Other"
+                                    "numberTopResults": 10
                                 },
                                 "createChartData": "createTopTimelineChartData",
-                                "tooltip": { "x": { "format": "yyyy" } },
                                 "fill": { "opacity": [0.7, 0.5] },
+                                "markers": {
+                                    "strokeColors": "#777",
+                                    "strokeWidth": 1
+                                },
+                                "dataLabels": {
+                                    "enabled": false
+                                },
+                                "plotOptions": {
+                                    "bubble": {
+                                      "zScaling": true,
+                                      "minBubbleRadius": 2,
+                                      "maxBubbleRadius": 50
+                                    }
+                                },
                                 "legend": { "position": "bottom" },
                                 "grid": {
                                     "row": {

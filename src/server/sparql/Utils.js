@@ -403,11 +403,11 @@ export class Counter {
     }
   }
 
-  addItem (x) {
+  addItem (x, count) {
     if (x in this.dct) {
-      this.dct[x] += 1
+      this.dct[x] += count || 1
     } else {
-      this.dct[x] = 1
+      this.dct[x] = count || 1
     }
   }
 }

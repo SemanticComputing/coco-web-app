@@ -491,7 +491,13 @@ export const networkNodesFacetQuery = `
 `
 
 export const topCorrespondenceInstancePageQuery = `
-SELECT DISTINCT ?id (?source__label AS ?from__label) (?target__label AS ?to__label) (xsd:date(CONCAT(STR(?year), '-01-01')) AS ?date) ?type ?year
+SELECT DISTINCT ?id 
+  (?source__label AS ?from__label)
+  (?target__label AS ?to__label)
+  (xsd:date(CONCAT(STR(?year), '-01-01')) AS ?date) 
+  ?type
+  ?year
+  (COUNT(DISTINCT ?letter) AS ?count)
 WHERE
 {
   VALUES ?id { <ID> }
@@ -530,7 +536,7 @@ WHERE
     BIND(year(?death_end) AS ?death)
   }
   FILTER (!bound(?death) || (bound(?death) && ?year<=?death))
-} 
+} GROUPBY ?id ?source__label ?target__label ?year ?type
 `
 
 export const sentReceivedQuery = `
