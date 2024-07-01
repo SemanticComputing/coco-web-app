@@ -267,6 +267,11 @@ export default {
               NB some people may not have any letter information available.
             </li>
             <li>
+              <strong>TIMELINE OF LETTERS</strong> shows time series of the letters sent or recieved by the actor.
+              Howering or clicking on the bullets 'Sent', 'Received', or 'All' allows to hide/show e.g. only the sent or received letters.
+              The letters that are known to be sent during multiple years are spread evenly along that period.
+            </li>
+            <li>
               <strong>TOP CORRESPONDENCES</strong> show a time series of the actor's correspondences with 10 ten other people.
               Howering or clicking on the bullets 'to', 'from', 'Sent', 'Received', or 'All' allows to focus e.g. on only the sent or received letters.
               When looking at the time series notice that some data source have letters with a precision of a day, some other have only the year.

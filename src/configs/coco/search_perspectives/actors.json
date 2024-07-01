@@ -173,8 +173,45 @@
                             }
                         ]
                     },
-                    "actorInstancePageTopCorrespondences": {
+                    "actorInstancePageLettersByYear": {
                         "tabID": 2,
+                        "component": "ApexCharts",
+                        "pageType": "instancePage",
+                        "createChartData": "createMultipleLineChartData",
+                        "stroke": {
+                            "curve": "straight",
+                            "width": 2
+                        },
+                        "fill": {
+                            "type": "gradient",
+                            "gradient": {
+                                "shadeIntensity": 1,
+                                "inverseColors": false,
+                                "opacityFrom": 0.6,
+                                "opacityTo": 0.05,
+                                "stops": [
+                                    20,
+                                    60,
+                                    100,
+                                    100
+                                ]
+                            }
+                        },
+                        "title": "Letters by year",
+                        "xaxisTitle": "Year",
+                        "xaxisType": "category",
+                        "xaxisTickAmount": 20,
+                        "yaxisTitle": "Number of letters",
+                        "tabPath": "letters-by-year",
+                        "tabIcon": "ShowChart",
+                        "sparqlQuery": "sentReceivedQuery",
+                        "resultMapper": "mapMultipleLineChart",
+                        "resultMapperConfig": {
+                            "fillEmptyValues": true
+                        }
+                    },
+                    "actorInstancePageTopCorrespondences": {
+                        "tabID": 3,
                         "component": "ApexChartsDouble",
                         "pageType": "instancePage",
                         "tabPath": "top-correspondences",
@@ -244,7 +281,7 @@
                         }
                     },
                     "actorInstancePageLetterNetwork": {
-                        "tabID": 3,
+                        "tabID": 4,
                         "component": "Network",
                         "tabPath": "letter-network",
                         "tabIcon": "BubbleChart",
@@ -307,7 +344,7 @@
                         }
                     },
                     "actorInstancePageSocialSignatures": {
-                        "tabID": 4,
+                        "tabID": 5,
                         "component": "ApexCharts",
                         "pageType": "instancePage",
                         "createChartData": "createMultipleLineChartData",

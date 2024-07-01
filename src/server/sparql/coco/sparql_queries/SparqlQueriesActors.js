@@ -533,6 +533,40 @@ WHERE
 } 
 `
 
+export const sentReceivedQuery = `
+SELECT DISTINCT (STR(?year) as ?category) 
+  (count(distinct ?sent_letter) AS ?sentCount) 
+  (count(distinct ?received_letter) AS ?receivedCount) 
+  ((?sentCount + ?receivedCount) as ?allCount)
+WHERE {
+  BIND (<ID> as ?id)
+
+  {
+    ?sent_letter :was_authored_by ?id ; 
+                 :estimated_year ?year
+  } 
+  UNION 
+  {
+    ?received_letter :was_addressed_to ?id ;
+	                 :estimated_year ?year
+  }
+  FILTER (BOUND(?year))
+
+  OPTIONAL {
+    ?id :birthDate/crm:P82a_begin_of_the_begin ?_birth .
+    BIND(year(?_birth) AS ?birth)
+  }
+  FILTER ((bound(?birth) && ?birth<?year) || !bound(?birth))
+
+  OPTIONAL {
+    ?id :deathDate/crm:P82b_end_of_the_end ?_death .
+    BIND(year(?_death) AS ?death)
+  }
+  FILTER ((bound(?death) && ?year<=?death) || !bound(?death))
+} 
+GROUP BY ?year ORDER BY ?year
+`
+
 export const sentReceivedInstancePageQuery = `
   SELECT DISTINCT (STR(?year) as ?category) 
     (count(distinct ?sent_letter) AS ?sentCount) 
