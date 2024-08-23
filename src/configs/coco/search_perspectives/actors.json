@@ -1,14 +1,14 @@
 {
     "id": "actors",
     "endpoint": {
-        "url": "https://ldf.fi/coco/sparql",
+        "url": "https://ldf.fi/coco-dev/sparql",
         "useAuth": true,
         "prefixesFile": "SparqlQueriesPrefixes.js"
     },
     "sparqlQueriesFile": "SparqlQueriesActors.js",
     "baseURI": "http://ldf.fi/coco",
-    "URITemplate": "<BASE_URI>/actors/<LOCAL_ID>",
-    "facetClass": "crm:E21_Person crm:E74_Group :Family :Unknown",
+    "URITemplate": "<BASE_URI>/provided/<LOCAL_ID>",
+    "facetClass": ":ProvidedActor",
     "frontPageImage": "main_page/people2-452x262.jpg",
     "searchMode": "faceted-search",
     "defaultActiveFacets": [
@@ -712,12 +712,12 @@
         "type": {
             "containerClass": "four",
             "facetType": "list",
-            "predicate": "a",
+            "predicate": "(^:proxy_for)/a",
             "filterType": "uriFilter",
             "sortBy": "instanceCount",
             "sortDirection": "desc",
             "pieChartButton": true,
-            "sortByPredicate": "a/skos:prefLabel"
+            "sortByPredicate": "(^:proxy_for)/a/skos:prefLabel"
         },
         "gender": {
             "containerClass": "three",
@@ -737,9 +737,9 @@
             "dataType": "xsd:dateTime",
             "max": null,
             "min": null,
-            "predicate": ":birthDate",
-            "sortByAscPredicate": ":birthDate/crm:P82a_begin_of_the_begin",
-            "sortByDescPredicate": ":birthDate/crm:P82b_end_of_the_end",
+            "predicate": "(^:proxy_for)/:birthDate",
+            "sortByAscPredicate": "(^:proxy_for)/:birthDate/crm:P82a_begin_of_the_begin",
+            "sortByDescPredicate": "(^:proxy_for)/:birthDate/crm:P82b_end_of_the_end",
             "startProperty": "crm:P82a_begin_of_the_begin"
         },
         "floruitTimespan": {
@@ -763,46 +763,46 @@
             "dataType": "xsd:dateTime",
             "max": null,
             "min": null,
-            "predicate": ":deathDate",
-            "sortByAscPredicate": ":deathDate/crm:P82a_begin_of_the_begin",
-            "sortByDescPredicate": ":deathDate/crm:P82b_end_of_the_end",
+            "predicate": "(^:proxy_for)/:deathDate",
+            "sortByAscPredicate": "(^:proxy_for)/:deathDate/crm:P82a_begin_of_the_begin",
+            "sortByDescPredicate": "(^:proxy_for)/:deathDate/crm:P82b_end_of_the_end",
             "startProperty": "crm:P82a_begin_of_the_begin"
         },
         "occupation": {
             "containerClass": "seven",
             "facetType": "list",
             "filterType": "uriFilter",
-            "predicate": "bioc:has_occupation",
+            "predicate": "(^:proxy_for)/bioc:has_occupation",
             "searchField": true,
             "sortBy": "instanceCount",
             "sortDirection": "desc",
             "sortButton": true,
             "pieChartButton": true,
-            "sortByPredicate": "bioc:has_occupation/skos:prefLabel"
+            "sortByPredicate": "(^:proxy_for)/bioc:has_occupation/skos:prefLabel"
         },
         "datasource": {
             "containerClass": "ten",
             "facetType": "list",
             "filterType": "uriFilter",
-            "predicate": "dct:source",
+            "predicate": "(^:proxy_for)/dct:source",
             "searchField": false,
             "sortBy": "instanceCount",
             "sortDirection": "desc",
             "sortButton": true,
             "pieChartButton": true,
-            "sortByPredicate": "dct:source/skos:prefLabel"
+            "sortByPredicate": "(^:proxy_for)/dct:source/skos:prefLabel"
         },
         "fonds": {
             "containerClass": "ten",
             "facetType": "list",
             "filterType": "uriFilter",
-            "predicate": "(^:was_authored_by)/:fonds",
+            "predicate": "(^:proxy_for)/(^:was_authored_by)/:fonds",
             "searchField": false,
             "sortBy": "instanceCount",
             "sortDirection": "desc",
             "sortButton": true,
             "pieChartButton": true,
-            "sortByPredicate": "(^:was_authored_by)/:fonds/skos:prefLabel"
+            "sortByPredicate": "(^:proxy_for)/(^:was_authored_by)/:fonds/skos:prefLabel"
         },
         "external": {
             "containerClass": "seven",
