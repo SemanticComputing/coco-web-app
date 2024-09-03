@@ -10,13 +10,13 @@ export const letterProperties = `
 }
 UNION
 {
-  ?id :was_authored_by ?source__id . 
+  ?id :was_authored_by/:proxy_for ?source__id . 
   ?source__id skos:prefLabel ?source__prefLabel . 
   BIND(CONCAT("/actors/page/", REPLACE(STR(?source__id), "^.*\\\\/(.+)", "$1")) AS ?source__dataProviderUrl)
 }
 UNION
 {
-  ?id :was_addressed_to ?target__id . 
+  ?id :was_addressed_to/:proxy_for ?target__id . 
   ?target__id skos:prefLabel ?target__prefLabel ; a [] .
   BIND(CONCAT("/actors/page/", REPLACE(STR(?target__id), "^.*\\\\/(.+)", "$1")) AS ?target__dataProviderUrl)
 }
@@ -56,7 +56,7 @@ export const letterPropertiesInstancePage = `
 }
 UNION
 {
-  ?id :was_authored_by ?source__id .
+  ?id :was_authored_by/:proxy_for ?source__id .
   ?source__id skos:prefLabel ?source__prefLabel . 
   # FILTER (!REGEX(STR(?source__prefLabel), 'unknown', 'i'))
   BIND(CONCAT("/actors/page/", REPLACE(STR(?source__id), "^.*\\\\/(.+)", "$1")) AS ?source__dataProviderUrl)
@@ -82,14 +82,14 @@ UNION
 }
 UNION
 {
-  ?id :was_addressed_to ?target__id . 
+  ?id :was_addressed_to/:proxy_for ?target__id . 
   ?target__id skos:prefLabel ?target__prefLabel ;
   FILTER (!REGEX(STR(?target__prefLabel), 'unknown', 'i'))
   BIND(CONCAT("/actors/page/", REPLACE(STR(?target__id), "^.*\\\\/(.+)", "$1")) AS ?target__dataProviderUrl)
 }
 UNION 
 {
-  ?id :referenced_actor ?mentioned_person__id . 
+  ?id :referenced_actor/:proxy_for ?mentioned_person__id . 
   ?mentioned_person__id skos:prefLabel ?mentioned_person__prefLabel . 
   BIND(CONCAT("/actors/page/", REPLACE(STR(?mentioned_person__id), "^.*\\\\/(.+)", "$1")) AS ?mentioned_person__dataProviderUrl)
 }
