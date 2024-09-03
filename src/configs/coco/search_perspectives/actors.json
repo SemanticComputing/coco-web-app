@@ -750,9 +750,9 @@
             "dataType": "xsd:dateTime",
             "max": null,
             "min": null,
-            "predicate": ":flourished",
-            "sortByAscPredicate": ":flourished/crm:P82a_begin_of_the_begin",
-            "sortByDescPredicate": ":flourished/crm:P82b_end_of_the_end",
+            "predicate": ":floruit",
+            "sortByAscPredicate": ":floruit/crm:P82a_begin_of_the_begin",
+            "sortByDescPredicate": ":floruit/crm:P82b_end_of_the_end",
             "startProperty": "crm:P82a_begin_of_the_begin"
         },
         "deathDateTimespan": {

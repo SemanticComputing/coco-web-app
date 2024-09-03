@@ -32,7 +32,7 @@ export const actorPropertiesFacetResults = `
   }
   UNION
   { 
-    ?id :flourished ?floruitTimespan__id .
+    ?id :floruit ?floruitTimespan__id .
     ?floruitTimespan__id skos:prefLabel ?floruitTimespan__prefLabel .
     OPTIONAL { ?floruitTimespan__id crm:P82a_begin_of_the_begin ?floruitTimespan__start }
     OPTIONAL { ?floruitTimespan__id crm:P82b_end_of_the_end ?floruitTimespan__end }
@@ -133,7 +133,7 @@ export const actorPropertiesInstancePage = `
   }
   UNION
   { 
-    ?id :flourished ?floruitTimespan__id .
+    ?id :floruit ?floruitTimespan__id .
     ?floruitTimespan__id skos:prefLabel ?floruitTimespan__prefLabel .
     OPTIONAL { ?floruitTimespan__id crm:P82a_begin_of_the_begin ?floruitTimespan__start }
     OPTIONAL { ?floruitTimespan__id crm:P82b_end_of_the_end ?floruitTimespan__end }
@@ -238,7 +238,7 @@ export const actorLettersInstancePageQuery = `
     }  
     UNION
     {
-      ?id :flourished/skos:prefLabel ?floruit
+      ?id :floruit/skos:prefLabel ?floruit
     }
     UNION
     {
