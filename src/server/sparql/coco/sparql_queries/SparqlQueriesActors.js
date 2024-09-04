@@ -201,6 +201,28 @@ SELECT *
       ?id skos:prefLabel ?prefLabel__id .
       BIND (?prefLabel__id as ?prefLabel__prefLabel)
     }
+    
+    UNION
+    {
+      ?id :out_degree ?numSent 
+    }
+    UNION
+    {
+      ?id :in_degree ?numReceived
+    }
+    UNION
+    {
+      ?id :num_correspondences ?numCorrespondences
+    }  
+    
+    UNION
+    {
+      ?id :floruit/skos:prefLabel ?floruit
+    }
+    UNION
+    {
+      ?id :receiving_time/skos:prefLabel ?receiving_time
+    }
     UNION
     {
       SELECT DISTINCT ?id ?metrics__id ?metrics__dataProviderUrl ?metrics__prefLabel
@@ -216,32 +238,10 @@ SELECT *
     }
     UNION
     {
-      ?id :out_degree ?numSent 
-    }
-    UNION
-    {
-      ?id :in_degree ?numReceived
-    }
-    UNION
-    {
-      ?id :num_correspondences ?numCorrespondences
-    }  
-    UNION
-    {
-      ?id :floruit/skos:prefLabel ?floruit
-    }
-    UNION
-    {
-      ?id :receiving_time/skos:prefLabel ?receiving_time
-    }
-    UNION
-    {
-    	?prx :proxy_for ?id
-    {
-      { SELECT ?prx ?tie__id ?tie__count ?tie__prefLabel WHERE {
-        { ?tie__id :actor1 ?prx }
+      { SELECT ?id ?tie__id ?tie__count ?tie__prefLabel WHERE {
+        { ?tie__id :actor1 ?id }
         UNION
-        { ?tie__id :actor2 ?prx }
+        { ?tie__id :actor2 ?id }
         ?tie__id :num_letters ?tie__count ;
                    skos:prefLabel ?_lbl .
         BIND (CONCAT(?_lbl, ' (', STR(?tie__count), ')') AS ?tie__prefLabel)
@@ -249,79 +249,81 @@ SELECT *
       FILTER (BOUND(?tie__id))
       BIND(CONCAT("/ties/page/", REPLACE(STR(?tie__id), "^.*\\\\/(.+)", "$1")) AS ?tie__dataProviderUrl)
     }
-	UNION
+    UNION
     {
-      SELECT DISTINCT ?prx ?in_fonds__id  
-    (CONCAT(?_label, COALESCE(SAMPLE(?_org2), ''), ' (', STR(COUNT(DISTINCT ?_evt)), '+', STR(COUNT(DISTINCT ?_evt2)), ')') AS ?in_fonds__prefLabel)
-        (CONCAT("/fonds/page/", REPLACE(STR(?in_fonds__id), "^.*\\\\/(.+)", "$1")) AS ?in_fonds__dataProviderUrl)
-      WHERE {
-        {
-          ?_evt :was_authored_by ?prx ; 
-            :fonds ?in_fonds__id 
+    	?prx :proxy_for ?id
+      {
+        SELECT DISTINCT ?prx ?in_fonds__id  
+      (CONCAT(?_label, COALESCE(SAMPLE(?_org2), ''), ' (', STR(COUNT(DISTINCT ?_evt)), '+', STR(COUNT(DISTINCT ?_evt2)), ')') AS ?in_fonds__prefLabel)
+          (CONCAT("/fonds/page/", REPLACE(STR(?in_fonds__id), "^.*\\\\/(.+)", "$1")) AS ?in_fonds__dataProviderUrl)
+        WHERE {
+          {
+            ?_evt :was_authored_by ?prx ; 
+              :fonds ?in_fonds__id 
+          }
+          UNION
+          {
+            ?_evt2 :was_addressed_to ?prx ; 
+              :fonds ?in_fonds__id 
+          }
+          ?in_fonds__id skos:prefLabel ?_label ; 
+            a [] .
+          OPTIONAL { ?in_fonds__id :archival_organization/skos:prefLabel ?_org . 
+            BIND(CONCAT(' (', str(?_org), ') ') AS ?_org2)
+          }
         }
-        UNION
-        {
-          ?_evt2 :was_addressed_to ?prx ; 
-            :fonds ?in_fonds__id 
-        }
-        ?in_fonds__id skos:prefLabel ?_label ; 
-          a [] .
-        OPTIONAL { ?in_fonds__id :archival_organization/skos:prefLabel ?_org . 
-          BIND(CONCAT(' (', str(?_org), ') ') AS ?_org2)
-        }
+        GROUPBY ?prx ?_label ?in_fonds__id 
+        ORDERBY DESC(COUNT(DISTINCT ?_evt))
       }
-      GROUPBY ?prx ?_label ?in_fonds__id 
-      ORDERBY DESC(COUNT(DISTINCT ?_evt))
-    }
-    UNION
-    {
-      ?created_fonds__id :records_creator ?prx ;
-                        skos:prefLabel ?created_fonds__prefLabel .
-      BIND (CONCAT("/fonds/page/", REPLACE(STR(?created_fonds__id), "^.*\\\\/(.+)", "$1")) AS ?created_fonds__dataProviderUrl)
-    }
-    UNION
-    {
-      ?prx (^:was_authored_by)/:archival_organization [ 
-        a [] ; 
-        skos:prefLabel ?archival_organization ]
-    }
-    UNION
-    {
-      ?prx (^:was_addressed_to)/:archival_organization [ 
-        a [] ; 
-        skos:prefLabel ?archival_organization ]
-    }
-    UNION
-    { 
-      SELECT DISTINCT ?prx ?sentletter__id ?sentletter__prefLabel ?sentletter__dataProviderUrl
-      WHERE {
-        ?prx ^:was_authored_by ?sentletter__id .
-          ?sentletter__id a :Letter ;
-            skos:prefLabel ?sentletter__prefLabel .
-        BIND(CONCAT("/letters/page/", REPLACE(STR(?sentletter__id), "^.*\\\\/(.+)", "$1")) AS ?sentletter__dataProviderUrl)
-        OPTIONAL { ?sentletter__id :has_time-span/crm:P82a_begin_of_the_begin ?time }
-      } ORDER BY COALESCE(STR(?time), CONCAT("9999", ?sentletter__prefLabel))
-    }
-    UNION
-    { SELECT DISTINCT ?prx ?mentioningletter__id ?mentioningletter__prefLabel ?mentioningletter__dataProviderUrl
-      WHERE {
-        ?prx ^:referenced_actor ?mentioningletter__id .
-          ?mentioningletter__id a :Letter ;
-            skos:prefLabel ?mentioningletter__prefLabel .
-        BIND(CONCAT("/letters/page/", REPLACE(STR(?mentioningletter__id), "^.*\\\\/(.+)", "$1")) AS ?mentioningletter__dataProviderUrl)
-        OPTIONAL { ?mentioningletter__id :has_time-span/crm:P82a_begin_of_the_begin ?time }
-      } ORDER BY COALESCE(STR(?time), CONCAT("9999", ?mentioningletter__prefLabel))
-    }
-    UNION 
-    { SELECT DISTINCT ?prx ?receivedletter__id ?receivedletter__prefLabel ?receivedletter__dataProviderUrl
-      WHERE {
-      ?receivedletter__id :was_addressed_to ?prx ;
-        a :Letter ;
-        skos:prefLabel ?receivedletter__prefLabel .
-      BIND(CONCAT("/letters/page/", REPLACE(STR(?receivedletter__id), "^.*\\\\/(.+)", "$1")) AS ?receivedletter__dataProviderUrl)
-      OPTIONAL { ?receivedletter__id :has_time-span/crm:P82a_begin_of_the_begin ?time }
-      } ORDER BY COALESCE(STR(?time), CONCAT("9999", ?receivedletter__prefLabel))
-    } 
+      UNION
+      {
+        ?created_fonds__id :records_creator ?prx ;
+                          skos:prefLabel ?created_fonds__prefLabel .
+        BIND (CONCAT("/fonds/page/", REPLACE(STR(?created_fonds__id), "^.*\\\\/(.+)", "$1")) AS ?created_fonds__dataProviderUrl)
+      }
+      UNION
+      {
+        ?prx (^:was_authored_by)/:archival_organization [ 
+          a [] ; 
+          skos:prefLabel ?archival_organization ]
+      }
+      UNION
+      {
+        ?prx (^:was_addressed_to)/:archival_organization [ 
+          a [] ; 
+          skos:prefLabel ?archival_organization ]
+      }
+      UNION
+      { 
+        SELECT DISTINCT ?prx ?sentletter__id ?sentletter__prefLabel ?sentletter__dataProviderUrl
+        WHERE {
+          ?prx ^:was_authored_by ?sentletter__id .
+            ?sentletter__id a :Letter ;
+              skos:prefLabel ?sentletter__prefLabel .
+          BIND(CONCAT("/letters/page/", REPLACE(STR(?sentletter__id), "^.*\\\\/(.+)", "$1")) AS ?sentletter__dataProviderUrl)
+          OPTIONAL { ?sentletter__id :has_time-span/crm:P82a_begin_of_the_begin ?time }
+        } ORDER BY COALESCE(STR(?time), CONCAT("9999", ?sentletter__prefLabel))
+      }
+      UNION
+      { SELECT DISTINCT ?prx ?mentioningletter__id ?mentioningletter__prefLabel ?mentioningletter__dataProviderUrl
+        WHERE {
+          ?prx ^:referenced_actor ?mentioningletter__id .
+            ?mentioningletter__id a :Letter ;
+              skos:prefLabel ?mentioningletter__prefLabel .
+          BIND(CONCAT("/letters/page/", REPLACE(STR(?mentioningletter__id), "^.*\\\\/(.+)", "$1")) AS ?mentioningletter__dataProviderUrl)
+          OPTIONAL { ?mentioningletter__id :has_time-span/crm:P82a_begin_of_the_begin ?time }
+        } ORDER BY COALESCE(STR(?time), CONCAT("9999", ?mentioningletter__prefLabel))
+      }
+      UNION 
+      { SELECT DISTINCT ?prx ?receivedletter__id ?receivedletter__prefLabel ?receivedletter__dataProviderUrl
+        WHERE {
+        ?receivedletter__id :was_addressed_to ?prx ;
+          a :Letter ;
+          skos:prefLabel ?receivedletter__prefLabel .
+        BIND(CONCAT("/letters/page/", REPLACE(STR(?receivedletter__id), "^.*\\\\/(.+)", "$1")) AS ?receivedletter__dataProviderUrl)
+        OPTIONAL { ?receivedletter__id :has_time-span/crm:P82a_begin_of_the_begin ?time }
+        } ORDER BY COALESCE(STR(?time), CONCAT("9999", ?receivedletter__prefLabel))
+      } 
   }
 }
 `
@@ -429,20 +431,21 @@ SELECT DISTINCT ?source ?target ?weight (str(?weight) as ?prefLabel)
     :num_letters ?weight .
 }`
 
-export const correspondenceTimelineQuery = `SELECT DISTINCT ?id ?source ?source__label ?target ?target__label ?date ?type ?year
+export const correspondenceTimelineQuery = `
+SELECT DISTINCT ?id ?source ?source__label ?target ?target__label ?date ?type ?year
 WHERE 
 {
 VALUES ?node { <ID> } 
 {
-  ?node ^:was_authored_by ?letter .
+  ?node ^(:was_authored_by/:proxy_for) ?letter .
   ?letter a :Letter ;
-    :was_addressed_to ?target .
+    :was_addressed_to/:proxy_for ?target .
   ?target skos:prefLabel ?_target__label . 
   BIND(?node AS ?source)
 } UNION {
-  ?letter :was_addressed_to ?node ;
+  ?letter :was_addressed_to/:proxy_for ?node ;
     a :Letter .
-  ?source ^:was_authored_by ?letter ;
+  ?source ^(:was_authored_by/:proxy_for) ?letter ;
     skos:prefLabel ?_source__label . 
   BIND(?node AS ?target)
 }
@@ -481,7 +484,7 @@ export const networkNodesQuery = `
   SELECT DISTINCT ?id ?prefLabel ?class ?href
     (COALESCE(?_out, 0)+COALESCE(?_in, 0) AS ?numLetters)
   WHERE {
-    VALUES ?class { crm:E21_Person crm:E74_Group :Family }
+    VALUES ?class { :ProvidedActor }
     VALUES ?id { <ID_SET> }
     ?id a ?class ;
       skos:prefLabel ?_label .
@@ -497,7 +500,7 @@ export const networkNodesFacetQuery = `
  SELECT DISTINCT ?id ?prefLabel ?class ?href
  (COALESCE(?_out, 0)+COALESCE(?_in, 0) AS ?numLetters)
  WHERE {
-   VALUES ?class { crm:E21_Person crm:E74_Group :Family }
+   VALUES ?class { :ProvidedActor }
     VALUES ?id { <ID_SET> }
     ?id a ?class ;
     skos:prefLabel ?_label .
@@ -523,7 +526,7 @@ WHERE
   {
     ?letter :was_authored_by/:proxy_for ?id ;
       a :Letter ;
-      :was_addressed_to ?target .
+      :was_addressed_to/:proxy_for ?target .
     ?target skos:prefLabel ?_target__label .
 
     BIND ("to" AS ?type)
@@ -533,7 +536,7 @@ WHERE
   {
     ?letter :was_addressed_to/:proxy_for ?id ;
       a :Letter ;
-      :was_authored_by ?source .
+      :was_authored_by/:proxy_for ?source .
     ?source skos:prefLabel ?_source__label .
 
     BIND(?id AS ?target)

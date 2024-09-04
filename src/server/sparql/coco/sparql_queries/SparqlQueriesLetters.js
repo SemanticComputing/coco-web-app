@@ -196,29 +196,33 @@ UNION
  * Also the number of results is limited to 100000
  */
 export const topCorrespondenceFacetPageQuery = `
-SELECT DISTINCT ?from__label ?to__label # (xsd:date(?_date) AS ?date) 
-	?type (year(?_date) AS ?year) (xsd:date(CONCAT(STR(?year),'-01-01')) AS ?date)
+SELECT DISTINCT 
+  ?from__label 
+  ?to__label 
+	?type 
+  ?year
+  (xsd:date(CONCAT(STR(?year),'-01-01')) AS ?date)
+  (COUNT(DISTINCT ?id) AS ?count)
 WHERE {
   ?id a :Letter .
 
   <FILTER>
 
-  ?id :was_addressed_to/skos:prefLabel ?to__label ;
-    :has_time-span/crm:P82a_begin_of_the_begin ?_date ;
-    :was_authored_by/skos:prefLabel ?from__label .
+  ?id :was_addressed_to/:proxy_for/skos:prefLabel ?to__label ;
+    :estimated_year ?year ;
+    :was_authored_by/:proxy_for/skos:prefLabel ?from__label .
 
   VALUES ?type { "to" "from" }
-} LIMIT 100000
+} GROUPBY ?from__label ?to__label ?type ?year LIMIT 100000
 `
 
 export const lettersByYearQuery = `
 SELECT DISTINCT ?category (COUNT(DISTINCT ?letter) AS ?count)
 WHERE {
   <FILTER>
+  
   ?letter a :Letter ;
-    :has_time-span/crm:P82a_begin_of_the_begin ?time_0 .
-  BIND (STR(year(?time_0)) AS ?category)
-  FILTER (BOUND(?category))
+    :estimated_year ?category .
 } 
 GROUP BY ?category ORDER BY ?category
 `
@@ -261,7 +265,7 @@ export const peopleRelatedTo = `
   WHERE {
       <FILTER>
 
-  ?related__id :was_sent_from ?id ; :was_authored_by ?person__id .
+  ?related__id :was_sent_from ?id ; :was_authored_by/:proxy_for ?person__id .
   ?person__id skos:prefLabel ?_plabel .
     } GROUPBY ?id ?person__id ?_plabel ORDERBY DESC(COUNT(?related__id)) ?_plabel
   }
