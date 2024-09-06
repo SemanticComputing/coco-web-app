@@ -107,6 +107,10 @@ UNION
 }
 UNION
 {
+  ?id :type [ a [] ; skos:prefLabel ?lettertype ]
+}
+UNION
+{
   ?id dct:source ?datasource__id .
   ?datasource__id skos:prefLabel ?datasource__prefLabel .
   BIND(CONCAT("/sources/page/", REPLACE(STR(?datasource__id), "^.*\\\\/(.+)", "$1")) AS ?datasource__dataProviderUrl)
@@ -220,7 +224,7 @@ export const lettersByYearQuery = `
 SELECT DISTINCT ?category (COUNT(DISTINCT ?letter) AS ?count)
 WHERE {
   <FILTER>
-  
+
   ?letter a :Letter ;
     :estimated_year ?category .
 } 

@@ -651,6 +651,12 @@ export default {
           Place from where the letter was sent.
           `
         },
+        lettertype: {
+          label: 'Type of letter',
+          description: `
+          Comments marked with the letter.
+          `
+        },
         record_value: {
           label: 'Metadata record values',
           description: `
