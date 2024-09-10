@@ -138,7 +138,7 @@ WHERE {
     (CONCAT("/actors/page/", REPLACE(STR(?related__id), "^.*\\\\/(.+)", "$1")) AS ?related__dataProviderUrl)
     WHERE {
 
-      ?id ^:was_sent_from ?_sent . ?_sent :was_authored_by/:proxy_for ?related__id .
+      ?id ^:was_sent_from ?_sent . ?_sent portal:sender ?related__id .
       ?related__id skos:prefLabel ?_label .
     }
     

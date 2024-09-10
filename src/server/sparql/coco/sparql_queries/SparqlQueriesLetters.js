@@ -10,13 +10,13 @@ export const letterProperties = `
 }
 UNION
 {
-  ?id :was_authored_by/:proxy_for ?source__id . 
+  ?id portal:sender ?source__id . 
   ?source__id skos:prefLabel ?source__prefLabel . 
   BIND(CONCAT("/actors/page/", REPLACE(STR(?source__id), "^.*\\\\/(.+)", "$1")) AS ?source__dataProviderUrl)
 }
 UNION
 {
-  ?id :was_addressed_to/:proxy_for ?target__id . 
+  ?id portal:recipient ?target__id . 
   ?target__id skos:prefLabel ?target__prefLabel ; a [] .
   BIND(CONCAT("/actors/page/", REPLACE(STR(?target__id), "^.*\\\\/(.+)", "$1")) AS ?target__dataProviderUrl)
 }
@@ -56,7 +56,7 @@ export const letterPropertiesInstancePage = `
 }
 UNION
 {
-  ?id :was_authored_by/:proxy_for ?source__id .
+  ?id portal:sender ?source__id .
   ?source__id skos:prefLabel ?source__prefLabel . 
   # FILTER (!REGEX(STR(?source__prefLabel), 'unknown', 'i'))
   BIND(CONCAT("/actors/page/", REPLACE(STR(?source__id), "^.*\\\\/(.+)", "$1")) AS ?source__dataProviderUrl)
@@ -82,7 +82,7 @@ UNION
 }
 UNION
 {
-  ?id :was_addressed_to/:proxy_for ?target__id . 
+  ?id portal:recipient ?target__id . 
   ?target__id skos:prefLabel ?target__prefLabel ;
   FILTER (!REGEX(STR(?target__prefLabel), 'unknown', 'i'))
   BIND(CONCAT("/actors/page/", REPLACE(STR(?target__id), "^.*\\\\/(.+)", "$1")) AS ?target__dataProviderUrl)
@@ -212,9 +212,9 @@ WHERE {
 
   <FILTER>
 
-  ?id :was_addressed_to/:proxy_for/skos:prefLabel ?to__label ;
+  ?id portal:recipient/skos:prefLabel ?to__label ;
     :estimated_year ?year ;
-    :was_authored_by/:proxy_for/skos:prefLabel ?from__label .
+    portal:sender/skos:prefLabel ?from__label .
 
   VALUES ?type { "to" "from" }
 } GROUPBY ?from__label ?to__label ?type ?year LIMIT 100000
@@ -269,7 +269,7 @@ export const peopleRelatedTo = `
   WHERE {
       <FILTER>
 
-  ?related__id :was_sent_from ?id ; :was_authored_by/:proxy_for ?person__id .
+  ?related__id :was_sent_from ?id ; portal:sender ?person__id .
   ?person__id skos:prefLabel ?_plabel .
     } GROUPBY ?id ?person__id ?_plabel ORDERBY DESC(COUNT(?related__id)) ?_plabel
   }

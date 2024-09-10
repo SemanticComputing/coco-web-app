@@ -73,12 +73,12 @@ SELECT DISTINCT
           :estimated_year ?year .
   
   {
-    ?id :actor1 [ ^(:was_authored_by/:proxy_for) ?letter ; skos:prefLabel ?sender1__label ]
+    ?id :actor1 [ ^portal:sender ?letter ; skos:prefLabel ?sender1__label ]
     BIND ("sender1" AS ?type)
   }
   UNION
   {
-    ?id :actor2 [ ^(:was_authored_by/:proxy_for) ?letter ; skos:prefLabel ?sender2__label ]
+    ?id :actor2 [ ^portal:sender ?letter ; skos:prefLabel ?sender2__label ]
     BIND ("sender2" AS ?type)
   }
 } GROUPBY ?id ?sender1__label ?sender2__label ?year ?type
@@ -98,12 +98,12 @@ SELECT DISTINCT (STR(?year) as ?category)
           :estimated_year ?year
   
   {
-    ?id :actor1/^(:was_authored_by/:proxy_for) ?letter .
+    ?id :actor1/^portal:sender ?letter .
     BIND (?letter AS ?sent_letter)
   }
   UNION
   {
-    ?id :actor2/^(:was_authored_by/:proxy_for) ?letter .
+    ?id :actor2/^portal:sender ?letter .
     BIND (?letter AS ?received_letter)
   }
   } 

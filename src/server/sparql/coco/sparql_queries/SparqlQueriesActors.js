@@ -437,15 +437,15 @@ WHERE
 {
 VALUES ?node { <ID> } 
 {
-  ?node ^(:was_authored_by/:proxy_for) ?letter .
+  ?node ^portal:sender ?letter .
   ?letter a :Letter ;
-    :was_addressed_to/:proxy_for ?target .
+    portal:recipient ?target .
   ?target skos:prefLabel ?_target__label . 
   BIND(?node AS ?source)
 } UNION {
-  ?letter :was_addressed_to/:proxy_for ?node ;
+  ?letter portal:recipient ?node ;
     a :Letter .
-  ?source ^(:was_authored_by/:proxy_for) ?letter ;
+  ?source ^(portal:sender) ?letter ;
     skos:prefLabel ?_source__label . 
   BIND(?node AS ?target)
 }
@@ -464,15 +464,15 @@ WHERE
 {
   VALUES ?node { <ID> }
   {
-    ?letter :was_authored_by/:proxy_for ?node ;
+    ?letter portal:sender ?node ;
       a :Letter ;
-      :was_addressed_to/:proxy_for ?target .
+      portal:recipient ?target .
   
     BIND(?node AS ?source)
   } UNION {
-    ?letter :was_addressed_to/:proxy_for ?node ;
+    ?letter portal:recipient ?node ;
       a :Letter ;
-      :was_authored_by/:proxy_for ?source .
+      portal:sender ?source .
     BIND(?node AS ?target)
   }
   ?target skos:prefLabel ?target__label .
@@ -524,9 +524,9 @@ WHERE
 {
   VALUES ?id { <ID> }
   {
-    ?letter :was_authored_by/:proxy_for ?id ;
+    ?letter portal:sender ?id ;
       a :Letter ;
-      :was_addressed_to/:proxy_for ?target .
+      portal:recipient ?target .
     ?target skos:prefLabel ?_target__label .
 
     BIND ("to" AS ?type)
@@ -534,9 +534,9 @@ WHERE
   }
   UNION
   {
-    ?letter :was_addressed_to/:proxy_for ?id ;
+    ?letter portal:recipient ?id ;
       a :Letter ;
-      :was_authored_by/:proxy_for ?source .
+      portal:sender ?source .
     ?source skos:prefLabel ?_source__label .
 
     BIND(?id AS ?target)
@@ -572,12 +572,12 @@ WHERE {
   BIND (<ID> as ?id)
 
   {
-    ?sent_letter :was_authored_by/:proxy_for ?id ; 
+    ?sent_letter portal:sender ?id ; 
                  :estimated_year ?year
   } 
   UNION 
   {
-    ?received_letter :was_addressed_to/:proxy_for ?id ;
+    ?received_letter portal:recipient ?id ;
 	                 :estimated_year ?year
   }
   FILTER (BOUND(?year))
@@ -607,13 +607,13 @@ export const sentReceivedInstancePageQuery = `
   WHERE {
     BIND(<ID> as ?id)
     {
-      ?sent_letter :was_authored_by/:proxy_for ?id ; 
+      ?sent_letter portal:sender ?id ; 
         a :Letter ;
         :estimated_year ?year .
     } 
     UNION 
     {
-      ?received_letter :was_addressed_to/:proxy_for ?id ;
+      ?received_letter portal:recipient ?id ;
         a :Letter ;
         :estimated_year ?year .
     }
