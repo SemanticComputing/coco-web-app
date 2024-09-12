@@ -512,8 +512,6 @@
             "externalLink": false,
             "sortValues": false,
             "numberedList": false,
-            "showSource": false,
-            "sourceExternalLink": false,
             "minWidth": 70
         },
         {
@@ -523,8 +521,6 @@
             "externalLink": false,
             "sortValues": false,
             "numberedList": false,
-            "showSource": false,
-            "sourceExternalLink": false,
             "minWidth": 70
         },
         {
@@ -556,8 +552,9 @@
             "sortValues": true,
             "numberedList": false,
             "showSource": true,
-            "sourceExternalLink": true,
-            "minWidth": 90
+            "sourceExternalLink": false,
+            "minWidth": 90,
+            "expandedOnInstancePage": true
         },
         {
             "id": "birthPlace",
@@ -567,9 +564,11 @@
             "externalLink": false,
             "sortValues": false,
             "numberedList": false,
-            "sourceExternalLink": true,
+            "showSource": true, 
+            "sourceExternalLink": false,
             "minWidth": 150,
-            "onlyOnInstancePage": true
+            "onlyOnInstancePage": true,
+            "expandedOnInstancePage": true
         },
         {
             "id": "floruitTimespan",
@@ -589,8 +588,9 @@
             "sortValues": true,
             "numberedList": false,
             "showSource": true,
-            "sourceExternalLink": true,
-            "minWidth": 90
+            "sourceExternalLink": false,
+            "minWidth": 90,
+            "expandedOnInstancePage": true
         },
         {
             "id": "deathPlace",
@@ -599,14 +599,15 @@
             "externalLink": false,
             "sortValues": false,
             "numberedList": false,
-            "sourceExternalLink": true,
+            "showSource": true,
+            "sourceExternalLink": false,
             "minWidth": 150,
-            "onlyOnInstancePage": true
+            "onlyOnInstancePage": true,
+            "expandedOnInstancePage": true
         },
         {
             "id": "altLabel",
-            "valueType": "string",
-            "renderAsHTML": false,
+            "valueType": "object",
             "makeLink": false,
             "externalLink": false,
             "sortValues": false,
@@ -614,6 +615,8 @@
             "minWidth": 150,
             "collapsedMaxWords": 12,
             "onlyOnInstancePage": true,
+            "showSource": true,
+            "sourceExternalLink": false,
             "expandedOnInstancePage": true
         },
         {
@@ -629,12 +632,14 @@
         },
         {
             "id": "occupation",
-            "valueType": "string",
-            "makeLink": true,
+            "valueType": "object",
+            "makeLink": false,
             "externalLink": false,
             "sortValues": false,
             "numberedList": false,
             "onlyOnInstancePage": true,
+            "showSource": true,
+            "sourceExternalLink": false,
             "expandedOnInstancePage": true
         },
         {
@@ -646,6 +651,7 @@
             "numberedList": false,
             "minWidth": 220,
             "onlyOnInstancePage": true,
+            "showSource": false, 
             "expandedOnInstancePage": true
         },
         {
