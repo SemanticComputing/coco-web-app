@@ -813,11 +813,11 @@
         "external": {
             "containerClass": "seven",
             "facetType": "list",
-            "predicate": ":is_related_to/a",
+            "predicate": "foaf:page/a",
             "filterType": "uriFilter",
             "sortBy": "instanceCount",
             "sortDirection": "desc",
-            "sortByPredicate": ":is_related_to/a/skos:prefLabel"
+            "sortByPredicate": ":foaf:page/a/skos:prefLabel"
         }
     }
 }
