@@ -32,6 +32,13 @@ export const actorPropertiesFacetResults = `
     BIND(?gender__id as ?gender__dataProviderUrl)
   }
   UNION
+    { ?id foaf:page ?external__id . 
+      OPTIONAL { ?external__id a/skos:prefLabel ?external__classlabel }
+      OPTIONAL { ?external__id skos:prefLabel ?external__label }
+      BIND(COALESCE(?external__label, ?external__classlabel, ?external__id) AS ?external__prefLabel)
+      BIND(?external__id AS ?external__dataProviderUrl)
+    }
+  UNION
   {
     ?prx :proxy_for ?id .
     {
@@ -52,13 +59,6 @@ export const actorPropertiesFacetResults = `
       ?deathDateTimespan__id skos:prefLabel ?deathDateTimespan__prefLabel .
       OPTIONAL { ?deathDateTimespan__id crm:P82a_begin_of_the_begin ?deathDateTimespan__start }
       OPTIONAL { ?deathDateTimespan__id crm:P82b_end_of_the_end ?deathDateTimespan__end }
-    }
-    UNION
-    { ?prx :is_related_to ?external__id . 
-      OPTIONAL { ?external__id a/skos:prefLabel ?external__classlabel }
-      OPTIONAL { ?external__id skos:prefLabel ?external__label }
-      BIND(COALESCE(?external__label, ?external__classlabel, ?external__id) AS ?external__prefLabel)
-      BIND(?external__id AS ?external__dataProviderUrl)
     }
     UNION
     {
@@ -103,6 +103,14 @@ export const actorPropertiesInstancePage = `
   }
   UNION
   { 
+    ?id foaf:page ?external__id . 
+    OPTIONAL { ?external__id a/skos:prefLabel ?external__classlabel }
+    OPTIONAL { ?external__id skos:prefLabel ?external__label }
+    BIND(COALESCE(?external__label, ?external__classlabel, ?external__id) AS ?external__prefLabel)
+    BIND(?external__id AS ?external__dataProviderUrl)
+  }
+  UNION
+  { 
     ?prx :proxy_for ?id .
     {
       ?prx a ?type__id .
@@ -112,17 +120,6 @@ export const actorPropertiesInstancePage = `
     UNION 
     { 
       GRAPH ?g { ?prx skos:prefLabel ?altLabel__id }
-      BIND (?altLabel__id AS ?altLabel__prefLabel)
-      BIND (?altLabel__id AS ?altLabel__dataProviderUrl)
-      
-      ?g skos:altLabel ?altLabel__source__prefLabel .
-      BIND(?prx AS ?altLabel__source__id)
-      # BIND(CONCAT("/proxies/page/", REPLACE(STR(?prx), "^.*\\\\/(.+)", "$1")) AS ?altLabel__source__dataProviderUrl)
-      
-    }
-    UNION 
-    { 
-      GRAPH ?g { ?prx skos:altLabel ?altLabel__id }
       BIND (?altLabel__id AS ?altLabel__prefLabel)
       BIND (?altLabel__id AS ?altLabel__dataProviderUrl)
       
@@ -141,14 +138,6 @@ export const actorPropertiesInstancePage = `
       BIND(?prx AS ?occupation__source__id)
       # BIND(CONCAT("/proxies/page/", REPLACE(STR(?prx), "^.*\\\\/(.+)", "$1")) AS ?occupation__source__dataProviderUrl)
       
-    }
-    UNION
-    { 
-      ?prx :is_related_to ?external__id . 
-      OPTIONAL { ?external__id a/skos:prefLabel ?external__classlabel }
-      OPTIONAL { ?external__id skos:prefLabel ?external__label }
-      BIND(COALESCE(?external__label, ?external__classlabel, ?external__id) AS ?external__prefLabel)
-      BIND(?external__id AS ?external__dataProviderUrl)
     }
     UNION
     {

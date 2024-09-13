@@ -73,9 +73,9 @@ export const placePropertiesInstancePage = `
       OPTIONAL { ?narrower__id :number_of_events ?_num }
     } ORDER BY DESC(COALESCE(?_num)) ?_label 
   }
-  UNIoN
-  { ?id :is_related_to ?external__id .
-    OPTIONAL { ?external__id a/skos:prefLabel ?external__classlabel }
+  UNION
+  { ?id owl:sameAs ?external__id .
+    ?external__id a/skos:prefLabel ?external__classlabel .
     OPTIONAL { ?external__id skos:prefLabel ?external__label }
     BIND(COALESCE(?external__label, ?external__classlabel, ?external__id) AS ?external__prefLabel)
     BIND(?external__id AS ?external__dataProviderUrl)
