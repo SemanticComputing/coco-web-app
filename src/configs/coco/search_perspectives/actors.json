@@ -718,12 +718,12 @@
         "type": {
             "containerClass": "four",
             "facetType": "list",
-            "predicate": "(^:proxy_for)/a",
+            "predicate": "portal:portal_class",
             "filterType": "uriFilter",
             "sortBy": "instanceCount",
             "sortDirection": "desc",
             "pieChartButton": true,
-            "sortByPredicate": "(^:proxy_for)/a/skos:prefLabel"
+            "sortByPredicate": "portal:portal_class/skos:prefLabel"
         },
         "gender": {
             "containerClass": "three",
