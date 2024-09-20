@@ -628,12 +628,14 @@
             "numberedList": true,
             "minWidth": 220,
             "onlyOnInstancePage": true,
+            "showSource": false,
+            "sourceExternalLink": false,
             "expandedOnInstancePage": true
         },
         {
             "id": "occupation",
             "valueType": "object",
-            "makeLink": false,
+            "makeLink": true,
             "externalLink": false,
             "sortValues": false,
             "numberedList": false,
@@ -651,7 +653,8 @@
             "numberedList": false,
             "minWidth": 220,
             "onlyOnInstancePage": true,
-            "showSource": false, 
+            "showSource": true,
+            "sourceExternalLink": false,
             "expandedOnInstancePage": true
         },
         {
@@ -663,6 +666,8 @@
             "numberedList": false,
             "minWidth": 220,
             "onlyOnInstancePage": true,
+            "showSource": true,
+            "sourceExternalLink": false,
             "expandedOnInstancePage": true
         },
         {

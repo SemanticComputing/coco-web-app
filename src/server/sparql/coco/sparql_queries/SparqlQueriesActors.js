@@ -1,9 +1,9 @@
 const perspectiveID = 'actors'
 
 export const actorPropertiesFacetResults = `
-  BIND(?id as ?uri__id)
-  BIND(?id as ?uri__dataProviderUrl)
-  BIND(?id as ?uri__prefLabel)
+  BIND (?id as ?uri__id)
+  BIND (?id as ?uri__dataProviderUrl)
+  BIND (?id as ?uri__prefLabel)
 
   {
     ?id skos:prefLabel ?prefLabel__id .
@@ -29,14 +29,14 @@ export const actorPropertiesFacetResults = `
   {
     ?id bioc:has_gender ?gender__id . 
     ?gender__id skos:prefLabel ?gender__prefLabel .
-    BIND(?gender__id as ?gender__dataProviderUrl)
+    BIND (?gender__id as ?gender__dataProviderUrl)
   }
   UNION
     { ?id foaf:page ?external__id . 
       OPTIONAL { ?external__id a/skos:prefLabel ?external__classlabel }
       OPTIONAL { ?external__id skos:prefLabel ?external__label }
-      BIND(COALESCE(?external__label, ?external__classlabel, ?external__id) AS ?external__prefLabel)
-      BIND(?external__id AS ?external__dataProviderUrl)
+      BIND (COALESCE(?external__label, ?external__classlabel, ?external__id) AS ?external__prefLabel)
+      BIND (?external__id AS ?external__dataProviderUrl)
     }
   UNION
   {
@@ -65,7 +65,7 @@ export const actorPropertiesFacetResults = `
       ?prx sch:image ?image__id ;
         skos:prefLabel ?image__description ;
         skos:prefLabel ?image__title .
-      BIND(CONCAT(REPLACE(STR(?image__id), "https*:", ""), "?width=300") as ?image__url)
+      BIND (CONCAT(REPLACE(STR(?image__id), "https*:", ""), "?width=300") as ?image__url)
     }
     UNION
     {
@@ -75,14 +75,14 @@ export const actorPropertiesFacetResults = `
 `
 
 export const actorPropertiesInstancePage = `
-  BIND(?id as ?uri__id)
-  BIND(?id as ?uri__prefLabel)
-  BIND(?id as ?uri__dataProviderUrl)
+  BIND (?id as ?uri__id)
+  BIND (?id as ?uri__prefLabel)
+  BIND (?id as ?uri__dataProviderUrl)
 
   {
     ?id skos:prefLabel ?prefLabel__id .
     BIND (?prefLabel__id as ?prefLabel__prefLabel)
-    BIND(CONCAT("/actors/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
+    BIND (CONCAT("/actors/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
   }
   UNION  
   { ?id :out_degree ?numSent }
@@ -99,15 +99,15 @@ export const actorPropertiesInstancePage = `
   {
     ?id bioc:has_gender ?gender . 
     ?gender skos:prefLabel ?gender__prefLabel .
-    BIND(?gender as ?gender__dataProviderUrl)
+    BIND (?gender as ?gender__dataProviderUrl)
   }
   UNION
   { 
     ?id foaf:page ?external__id . 
     OPTIONAL { ?external__id a/skos:prefLabel ?external__classlabel }
     OPTIONAL { ?external__id skos:prefLabel ?external__label }
-    BIND(COALESCE(?external__label, ?external__classlabel, ?external__id) AS ?external__prefLabel)
-    BIND(?external__id AS ?external__dataProviderUrl)
+    BIND (COALESCE(?external__label, ?external__classlabel, ?external__id) AS ?external__prefLabel)
+    BIND (?external__id AS ?external__dataProviderUrl)
   }
   UNION
   { 
@@ -123,21 +123,19 @@ export const actorPropertiesInstancePage = `
       BIND (?altLabel__id AS ?altLabel__prefLabel)
       BIND (?altLabel__id AS ?altLabel__dataProviderUrl)
       
-      ?g skos:altLabel ?altLabel__source__prefLabel .
-      BIND(?prx AS ?altLabel__source__id)
-      # BIND(CONCAT("/proxies/page/", REPLACE(STR(?prx), "^.*\\\\/(.+)", "$1")) AS ?altLabel__source__dataProviderUrl)
-      
+      ?g skos:altLabel ?altLabel__source__prefLabel
+      BIND (?prx AS ?altLabel__source__id)
+      BIND (CONCAT("/proxies/page/", REPLACE(STR(?prx), "^.*\\\\/(.+)", "$1")) AS ?altLabel__source__dataProviderUrl)
     }
     UNION
     {
       GRAPH ?g { ?prx bioc:has_occupation ?occupation__id }
       ?occupation__id skos:prefLabel ?occupation__prefLabel .
-      BIND(?occupation__id AS ?occupation__dataProviderUrl)
+      BIND (CONCAT("/occupations/page/", REPLACE(STR(?occupation__id), "^.*\\\\/(.+)", "$1")) AS ?occupation__dataProviderUrl)
       
       ?g skos:altLabel ?occupation__source__prefLabel .
-      BIND(?prx AS ?occupation__source__id)
-      # BIND(CONCAT("/proxies/page/", REPLACE(STR(?prx), "^.*\\\\/(.+)", "$1")) AS ?occupation__source__dataProviderUrl)
-      
+      BIND (?prx AS ?occupation__source__id)
+      # BIND (CONCAT("/proxies/page/", REPLACE(STR(?prx), "^.*\\\\/(.+)", "$1")) AS ?occupation__source__dataProviderUrl)
     }
     UNION
     {
@@ -147,21 +145,19 @@ export const actorPropertiesInstancePage = `
       OPTIONAL { ?birthDateTimespan__id crm:P82b_end_of_the_end ?birthDateTimespan__end }
       
       ?g skos:altLabel ?birthDateTimespan__source__prefLabel .
-      BIND(?prx AS ?birthDateTimespan__source__id)
-      # BIND(CONCAT("/proxies/page/", REPLACE(STR(?prx), "^.*\\\\/(.+)", "$1")) AS ?birthDateTimespan__source__dataProviderUrl)
-      
+      BIND (?prx AS ?birthDateTimespan__source__id)
+      # BIND (CONCAT("/proxies/page/", REPLACE(STR(?prx), "^.*\\\\/(.+)", "$1")) AS ?birthDateTimespan__source__dataProviderUrl)
     }
     UNION
     {
       GRAPH ?g { ?prx :was_born_in_location ?birthPlace__id }
       ?birthPlace__id skos:prefLabel ?birthPlace__prefLabel .
-      BIND(CONCAT("/places/page/", REPLACE(STR(?birthPlace__id), "^.*\\\\/(.+)", "$1")) AS ?birthPlace__dataProviderUrl)
-      FILTER(LANG(?birthPlace__prefLabel) = 'fi')
+      BIND (CONCAT("/places/page/", REPLACE(STR(?birthPlace__id), "^.*\\\\/(.+)", "$1")) AS ?birthPlace__dataProviderUrl)
+      FILTER (LANG(?birthPlace__prefLabel) = 'fi')
       
       ?g skos:altLabel ?birthPlace__source__prefLabel .
-      BIND(?prx AS ?birthPlace__source__id)
-      # BIND(CONCAT("/proxies/page/", REPLACE(STR(?prx), "^.*\\\\/(.+)", "$1")) AS ?birthPlace__source__dataProviderUrl)
-      
+      BIND (?prx AS ?birthPlace__source__id)
+      # BIND (CONCAT("/proxies/page/", REPLACE(STR(?prx), "^.*\\\\/(.+)", "$1")) AS ?birthPlace__source__dataProviderUrl)
     }
     UNION
     {
@@ -171,20 +167,20 @@ export const actorPropertiesInstancePage = `
       OPTIONAL { ?deathDateTimespan__id crm:P82b_end_of_the_end ?deathDateTimespan__end }
       
       ?g skos:altLabel ?deathDateTimespan__source__prefLabel .
-      BIND(?prx AS ?deathDateTimespan__source__id)
-      # BIND(CONCAT("/proxies/page/", REPLACE(STR(?prx), "^.*\\\\/(.+)", "$1")) AS ?deathDateTimespan__source__dataProviderUrl)
+      BIND (?prx AS ?deathDateTimespan__source__id)
+      # BIND (CONCAT("/proxies/page/", REPLACE(STR(?prx), "^.*\\\\/(.+)", "$1")) AS ?deathDateTimespan__source__dataProviderUrl)
       
     }
     UNION
     {
       GRAPH ?g { ?prx :died_at_location ?deathPlace__id }
       ?deathPlace__id skos:prefLabel ?deathPlace__prefLabel .
-      FILTER(LANG(?deathPlace__prefLabel) = 'fi')
-      BIND(CONCAT("/places/page/", REPLACE(STR(?deathPlace__id), "^.*\\\\/(.+)", "$1")) AS ?deathPlace__dataProviderUrl)
+      FILTER (LANG(?deathPlace__prefLabel) = 'fi')
+      BIND (CONCAT("/places/page/", REPLACE(STR(?deathPlace__id), "^.*\\\\/(.+)", "$1")) AS ?deathPlace__dataProviderUrl)
       
       ?g skos:altLabel ?deathPlace__source__prefLabel .
-      BIND(?prx AS ?deathPlace__source__id)
-      #  BIND(CONCAT("/proxies/page/", REPLACE(STR(?prx), "^.*\\\\/(.+)", "$1")) AS ?deathPlace__source__dataProviderUrl)
+      BIND (?prx AS ?deathPlace__source__id)
+      #  BIND (CONCAT("/proxies/page/", REPLACE(STR(?prx), "^.*\\\\/(.+)", "$1")) AS ?deathPlace__source__dataProviderUrl)
       
     }
     UNION
@@ -208,7 +204,7 @@ export const actorPropertiesInstancePage = `
       ?prx sch:image ?image__id ;
         skos:prefLabel ?image__description ;
         skos:prefLabel ?image__title .
-        BIND(CONCAT(REPLACE(STR(?image__id), "https*:", ""), "?width=600") as ?image__url)
+        BIND (CONCAT(REPLACE(STR(?image__id), "https*:", ""), "?width=600") as ?image__url)
       }
     UNION
     {
@@ -219,17 +215,24 @@ export const actorPropertiesInstancePage = `
       GRAPH ?g {
         ?prx bioc:has_family_relation [ bioc:inheres_in/:proxy_for ?relative__id ; skos:prefLabel ?relative__prefLabel ]
       }
-      FILTER(LANG(?relative__prefLabel)='en')
-      BIND(CONCAT("/actors/page/", REPLACE(STR(?relative__id), "^.*\\\\/(.+)", "$1")) AS ?relative__dataProviderUrl)
-      # BIND(?relative__id as ?relative__source__id)
-      # ?g skos:altLabel ?relative__source__prefLabel .
-      # BIND(?relative__dataProviderUrl as ?relative__source__dataProviderUrl)
+      FILTER (LANG(?relative__prefLabel)='en')
+      BIND (CONCAT("/actors/page/", REPLACE(STR(?relative__id), "^.*\\\\/(.+)", "$1")) AS ?relative__dataProviderUrl)
+      
+      ?g skos:altLabel ?relative__source__prefLabel 
+      BIND (?relative__id as ?relative__source__id)
+      BIND (?relative__dataProviderUrl as ?relative__source__dataProviderUrl)
     }
     UNION
     {
-      ?prx bioc:has_person_relation [ bioc:inheres_in/:proxy_for ?acquaintance__id ; skos:prefLabel ?acquaintance__prefLabel ]
-      FILTER(LANG(?acquaintance__prefLabel)='en')
-      BIND(CONCAT("/actors/page/", REPLACE(STR(?acquaintance__id), "^.*\\\\/(.+)", "$1")) AS ?acquaintance__dataProviderUrl)
+      GRAPH ?g {
+        ?prx bioc:has_person_relation [ bioc:inheres_in/:proxy_for ?acquaintance__id ; skos:prefLabel ?acquaintance__prefLabel ]
+      }
+      FILTER (LANG(?acquaintance__prefLabel)='en')
+      BIND (CONCAT("/actors/page/", REPLACE(STR(?acquaintance__id), "^.*\\\\/(.+)", "$1")) AS ?acquaintance__dataProviderUrl)
+      
+      ?g skos:altLabel ?acquaintance__source__prefLabel .
+      BIND (?acquaintance__id as ?acquaintance__source__id)
+      BIND (?acquaintance__dataProviderUrl as ?acquaintance__source__dataProviderUrl)
     }
   }
 `
@@ -237,15 +240,14 @@ export const actorPropertiesInstancePage = `
 export const actorLettersInstancePageQuery = `
 SELECT * 
   WHERE {
-    BIND(<ID> as ?id)
-    BIND(?id as ?uri__id)
-    BIND(?id as ?uri__prefLabel)
-    BIND(?id as ?uri__dataProviderUrl)
+    BIND (<ID> as ?id)
+    BIND (?id as ?uri__id)
+    BIND (?id as ?uri__prefLabel)
+    BIND (?id as ?uri__dataProviderUrl)
     {
       ?id skos:prefLabel ?prefLabel__id .
       BIND (?prefLabel__id as ?prefLabel__prefLabel)
     }
-    
     UNION
     {
       ?id :out_degree ?numSent 
@@ -257,8 +259,7 @@ SELECT *
     UNION
     {
       ?id :num_correspondences ?numCorrespondences
-    }  
-    
+    }
     UNION
     {
       ?id :floruit/skos:prefLabel ?floruit
@@ -277,7 +278,7 @@ SELECT *
           a ?metrics__id ] .
         ?metrics__id skos:prefLabel ?stat_label .
         BIND (CONCAT(?stat_label, ': ', STR(?stat_value), ' (#', STR(?stat_rank),")") AS ?metrics__prefLabel)
-        BIND(CONCAT("/metrics/page/", REPLACE(STR(?metrics__id), "^.*\\\\/(.+)", "$1")) AS ?metrics__dataProviderUrl)
+        BIND (CONCAT("/metrics/page/", REPLACE(STR(?metrics__id), "^.*\\\\/(.+)", "$1")) AS ?metrics__dataProviderUrl)
       }
     }
     UNION
@@ -291,32 +292,32 @@ SELECT *
         BIND (CONCAT(?_lbl, ' (', STR(?tie__count), ')') AS ?tie__prefLabel)
         } ORDER BY DESC(?tie__count) }
       FILTER (BOUND(?tie__id))
-      BIND(CONCAT("/ties/page/", REPLACE(STR(?tie__id), "^.*\\\\/(.+)", "$1")) AS ?tie__dataProviderUrl)
+      BIND (CONCAT("/ties/page/", REPLACE(STR(?tie__id), "^.*\\\\/(.+)", "$1")) AS ?tie__dataProviderUrl)
     }
     UNION
     {
     	?prx :proxy_for ?id
       {
-        SELECT DISTINCT ?prx ?in_fonds__id  
+        SELECT DISTINCT ?prx ?in_fonds__id
       (CONCAT(?_label, COALESCE(SAMPLE(?_org2), ''), ' (', STR(COUNT(DISTINCT ?_evt)), '+', STR(COUNT(DISTINCT ?_evt2)), ')') AS ?in_fonds__prefLabel)
           (CONCAT("/fonds/page/", REPLACE(STR(?in_fonds__id), "^.*\\\\/(.+)", "$1")) AS ?in_fonds__dataProviderUrl)
         WHERE {
           {
             ?_evt :was_authored_by ?prx ; 
-              :fonds ?in_fonds__id 
+              :fonds ?in_fonds__id
           }
           UNION
           {
             ?_evt2 :was_addressed_to ?prx ; 
-              :fonds ?in_fonds__id 
+              :fonds ?in_fonds__id
           }
-          ?in_fonds__id skos:prefLabel ?_label ; 
+          ?in_fonds__id skos:prefLabel ?_label ;
             a [] .
           OPTIONAL { ?in_fonds__id :archival_organization/skos:prefLabel ?_org . 
-            BIND(CONCAT(' (', str(?_org), ') ') AS ?_org2)
+            BIND (CONCAT(' (', str(?_org), ') ') AS ?_org2)
           }
         }
-        GROUPBY ?prx ?_label ?in_fonds__id 
+        GROUPBY ?prx ?_label ?in_fonds__id
         ORDERBY DESC(COUNT(DISTINCT ?_evt))
       }
       UNION
@@ -344,7 +345,7 @@ SELECT *
           ?prx ^:was_authored_by ?sentletter__id .
             ?sentletter__id a :Letter ;
               skos:prefLabel ?sentletter__prefLabel .
-          BIND(CONCAT("/letters/page/", REPLACE(STR(?sentletter__id), "^.*\\\\/(.+)", "$1")) AS ?sentletter__dataProviderUrl)
+          BIND (CONCAT("/letters/page/", REPLACE(STR(?sentletter__id), "^.*\\\\/(.+)", "$1")) AS ?sentletter__dataProviderUrl)
           OPTIONAL { ?sentletter__id :has_time-span/crm:P82a_begin_of_the_begin ?time }
         } ORDER BY COALESCE(STR(?time), CONCAT("9999", ?sentletter__prefLabel))
       }
@@ -354,7 +355,7 @@ SELECT *
           ?prx ^:referenced_actor ?mentioningletter__id .
             ?mentioningletter__id a :Letter ;
               skos:prefLabel ?mentioningletter__prefLabel .
-          BIND(CONCAT("/letters/page/", REPLACE(STR(?mentioningletter__id), "^.*\\\\/(.+)", "$1")) AS ?mentioningletter__dataProviderUrl)
+          BIND (CONCAT("/letters/page/", REPLACE(STR(?mentioningletter__id), "^.*\\\\/(.+)", "$1")) AS ?mentioningletter__dataProviderUrl)
           OPTIONAL { ?mentioningletter__id :has_time-span/crm:P82a_begin_of_the_begin ?time }
         } ORDER BY COALESCE(STR(?time), CONCAT("9999", ?mentioningletter__prefLabel))
       }
@@ -364,7 +365,7 @@ SELECT *
         ?receivedletter__id :was_addressed_to ?prx ;
           a :Letter ;
           skos:prefLabel ?receivedletter__prefLabel .
-        BIND(CONCAT("/letters/page/", REPLACE(STR(?receivedletter__id), "^.*\\\\/(.+)", "$1")) AS ?receivedletter__dataProviderUrl)
+        BIND (CONCAT("/letters/page/", REPLACE(STR(?receivedletter__id), "^.*\\\\/(.+)", "$1")) AS ?receivedletter__dataProviderUrl)
         OPTIONAL { ?receivedletter__id :has_time-span/crm:P82a_begin_of_the_begin ?time }
         } ORDER BY COALESCE(STR(?time), CONCAT("9999", ?receivedletter__prefLabel))
       } 
@@ -434,15 +435,15 @@ export const peopleRelatedTo = `
     { [] :proxy_for ?related__id ;
       :died_at_location ?id }
     ?related__id skos:prefLabel ?related__prefLabel .
-    BIND(CONCAT("/actors/page/", REPLACE(STR(?related__id), "^.*\\\\/(.+)", "$1")) AS ?related__dataProviderUrl)
+    BIND (CONCAT("/actors/page/", REPLACE(STR(?related__id), "^.*\\\\/(.+)", "$1")) AS ?related__dataProviderUrl)
   } 
 `
 
 export const placePropertiesInfoWindow = `
   OPTIONAL { ?id skos:prefLabel ?_label }
-  BIND(COALESCE(?_label, "<place>") AS ?prefLabel__id)
-  BIND(?prefLabel__id AS ?prefLabel__prefLabel)
-  BIND(CONCAT("/places/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
+  BIND (COALESCE(?_label, "<place>") AS ?prefLabel__id)
+  BIND (?prefLabel__id AS ?prefLabel__prefLabel)
+  BIND (CONCAT("/places/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
 `
 
 //  TODO: add href to tie
@@ -485,18 +486,18 @@ VALUES ?node { <ID> }
   ?letter a :Letter ;
     portal:recipient ?target .
   ?target skos:prefLabel ?_target__label . 
-  BIND(?node AS ?source)
+  BIND (?node AS ?source)
 } UNION {
   ?letter portal:recipient ?node ;
     a :Letter .
   ?source ^(portal:sender) ?letter ;
     skos:prefLabel ?_source__label . 
-  BIND(?node AS ?target)
+  BIND (?node AS ?target)
 }
 ?target skos:prefLabel ?target__label .
 ?source skos:prefLabel ?source__label .
 ?letter :has_time-span/crm:P82a_begin_of_the_begin ?date .
-BIND(year(?date) AS ?year)
+BIND (year(?date) AS ?year)
 } ORDER BY ?date
 `
 
@@ -512,12 +513,12 @@ WHERE
       a :Letter ;
       portal:recipient ?target .
   
-    BIND(?node AS ?source)
+    BIND (?node AS ?source)
   } UNION {
     ?letter portal:recipient ?node ;
       a :Letter ;
       portal:sender ?source .
-    BIND(?node AS ?target)
+    BIND (?node AS ?target)
   }
   ?target skos:prefLabel ?target__label .
   ?source skos:prefLabel ?source__label .
@@ -535,8 +536,8 @@ export const networkNodesQuery = `
     OPTIONAL { ?id :out_degree ?_out }
     OPTIONAL { ?id :in_degree ?_in }
 
-    BIND(REPLACE(?_label, ',[^,A-ZÜÅÄÖ]+$', '')AS ?prefLabel)
-    BIND(CONCAT("../../page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1"),"/letter-network") AS ?href)
+    BIND (REPLACE(?_label, ',[^,A-ZÜÅÄÖ]+$', '')AS ?prefLabel)
+    BIND (CONCAT("../../page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1"),"/letter-network") AS ?href)
   }
 `
 
@@ -551,8 +552,8 @@ export const networkNodesFacetQuery = `
     OPTIONAL { ?id :out_degree ?_out }
     OPTIONAL { ?id :in_degree ?_in }
     
-    BIND(REPLACE(?_label, ',[^,A-ZÜÅÄÖ]+$', '')AS ?prefLabel)
-    BIND(CONCAT("../../actors/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1"),"/letter-network") AS ?href)
+    BIND (REPLACE(?_label, ',[^,A-ZÜÅÄÖ]+$', '')AS ?prefLabel)
+    BIND (CONCAT("../../actors/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1"),"/letter-network") AS ?href)
   }
 `
 
@@ -574,7 +575,7 @@ WHERE
     ?target skos:prefLabel ?_target__label .
 
     BIND ("to" AS ?type)
-    BIND(?id AS ?source)
+    BIND (?id AS ?source)
   }
   UNION
   {
@@ -583,7 +584,7 @@ WHERE
       portal:sender ?source .
     ?source skos:prefLabel ?_source__label .
 
-    BIND(?id AS ?target)
+    BIND (?id AS ?target)
     BIND ("from" AS ?type)
 
   }
@@ -594,14 +595,14 @@ WHERE
   OPTIONAL {
     [] :proxy_for ?id ;
        :birthDate/crm:P82b_end_of_the_end ?birth_end .
-    BIND(year(?birth_end) AS ?birth)
+    BIND (year(?birth_end) AS ?birth)
   }
   FILTER (!bound(?birth) || (bound(?birth) && ?birth<?year))
 
   OPTIONAL {
     [] :proxy_for ?id ; 
       :deathDate/crm:P82b_end_of_the_end ?death_end .
-    BIND(year(?death_end) AS ?death)
+    BIND (year(?death_end) AS ?death)
   }
   FILTER (!bound(?death) || (bound(?death) && ?year<=?death))
 } GROUPBY ?id ?source__label ?target__label ?year ?type
@@ -629,14 +630,14 @@ WHERE {
   OPTIONAL {
     [] :proxy_for ?id ;
         :birthDate/crm:P82a_begin_of_the_begin ?_birth .
-    BIND(year(?_birth) AS ?birth)
+    BIND (year(?_birth) AS ?birth)
   }
   FILTER ((bound(?birth) && ?birth<?year) || !bound(?birth))
 
   OPTIONAL {
     [] :proxy_for ?id ;
         :deathDate/crm:P82b_end_of_the_end ?_death .
-    BIND(year(?_death) AS ?death)
+    BIND (year(?_death) AS ?death)
   }
   FILTER ((bound(?death) && ?year<=?death) || !bound(?death))
 } 
@@ -649,7 +650,7 @@ export const sentReceivedInstancePageQuery = `
     (count(distinct ?received_letter) AS ?receivedCount) 
     ((?sentCount + ?receivedCount) as ?allCount)
   WHERE {
-    BIND(<ID> as ?id)
+    BIND (<ID> as ?id)
     {
       ?sent_letter portal:sender ?id ; 
         a :Letter ;
@@ -666,14 +667,14 @@ export const sentReceivedInstancePageQuery = `
     OPTIONAL {
       [] :proxy_for ?id ;
         :birthDate/crm:P82b_end_of_the_end ?birth_end .
-      BIND(year(?birth_end) AS ?birth)
+      BIND (year(?birth_end) AS ?birth)
     }
     FILTER (!bound(?birth) || (bound(?birth) && ?birth<?year))
 
     OPTIONAL {
       [] :proxy_for ?id ;
        :deathDate/crm:P82b_end_of_the_end ?death_end .
-       BIND(year(?death_end) AS ?death)
+       BIND (year(?death_end) AS ?death)
     }
     FILTER (!bound(?death) || (bound(?death) && ?year<=?death))
   }
