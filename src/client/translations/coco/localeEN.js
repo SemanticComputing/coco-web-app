@@ -1103,6 +1103,249 @@ export default {
           `
         }
       }
-    }
+    },
+    proxies: {
+      label: 'Proxy',
+      facetResultsType: 'proxy',
+      shortDescription: 'People or groups of people in a specific collection',
+      instancePage: {
+        label: 'Proxy',
+        description: `
+          <h6 class="MuiTypography-root MuiTypography-h6">
+            Page tabs
+          </h6>
+          <ul class="MuiTypography-root MuiTypography-body1">
+            <li>
+              <strong>TABLE</STRONG> view provides detailed data about this actor.
+            </li>
+            <li>
+              <strong>LETTERS</strong> show the available information about letters sent or received by this person.
+              NB some people may not have any letter information available.
+            </li>
+            <li>
+              <strong>TIMELINE OF LETTERS</strong> shows time series of the letters sent or recieved by the actor.
+              Howering or clicking on the bullets 'Sent', 'Received', or 'All' allows to hide/show e.g. only the sent or received letters.
+              The letters that are known to be sent during multiple years are spread evenly along that period.
+            </li>
+            <li>
+              <strong>TOP CORRESPONDENCES</strong> show a time series of the actor's correspondences with 10 ten other people.
+              Howering or clicking on the bullets 'to', 'from', 'Sent', 'Received', or 'All' allows to focus e.g. on only the sent or received letters.
+              The letters that are known to be sent during multiple years are spread evenly along that period.
+            </li>
+            <li>
+              <strong>NETWORK OF LETTERS</strong> shows this actors's relations to other actors connected by the correspondences. The network shown a maximum of 60 neighbors nodes within a distance of 3 degress from the network ego.
+            </li>
+            <li>
+              <strong>SOCIAL SIGNATURES</strong> view has a chart showing how much the actor has been in correspondence with the most, the second most, etc, important other actor during the different periods along the total time of activity. In connections both sent and recieved letters are taken into account.
+            </li>
+            <li>
+              <strong>EXPORT</strong> the SPARQL query used to generate the result
+              table view into YASGUI query editor.
+            </li>
+          </ul>
+          <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph"></p>
+        `
+      },
+      properties: {
+        uri: {
+          label: 'URI',
+          description: 'Uniform Resource Identifier'
+        },
+        prefLabel: {
+          label: 'Name',
+          description: 'Search actors by name. Search is based on Apache Lucene index search. In addition to simple searches, you can use wildcard matching, e.g. Finland*. You can also use the logical operators AND, OR and NOT, but then the search must be written in parentheses, e.g., like this (Jean AND Sibelius)'
+        },
+        provided: {
+          label: 'Provided resource',
+          description: 'Same actor in all datasets.'
+        },
+        gender: {
+          label: 'Gender',
+          description: 'The gender of a person. Notice that the other types of actors do not have this value.'
+        },
+        image: {
+          label: 'Image of a person',
+          description: `
+            Image source: Wikimedia Commons.
+          `
+        },
+        other: {
+          label: 'Other proxies',
+          description: `
+            Other proxies of same actor.
+          `
+        },
+        label_in_letter: {
+          label: 'Labels used in letter metadata',
+          description: `
+            Labels used in letter metadata
+          `
+        },
+        type: {
+          label: 'Actor type',
+          description: 'Type of the actor: person, group, family, or unknown'
+        },
+        birthDateTimespan: {
+          label: 'Birth time',
+          description: `Birth time of a person. Notice that the other types of actors do not have this value.`
+        },
+        birthPlace: {
+          label: 'Place of Birth',
+          description: `Place of Birth. Notice that the other types of actors do not have this value.`
+        },
+        floruitTimespan: {
+          label: 'Floruit',
+          description: `
+          Floruit, e.g. time of flourishing, time of activity.
+          `
+        },
+        floruit: {
+          label: 'Floruit',
+          description: `
+          Floruit, e.g. time of flourishing, time of activity.
+          `
+        },
+        receiving_time: {
+          label: 'Time of receiving letters',
+          description: `
+          Years when letters has been sent to this actor.
+          `
+        },
+        deathDateTimespan: {
+          label: 'Death time',
+          description: `Death time of a person. Notice that the other types of actors do not have this value.`
+        },
+        deathPlace: {
+          label: 'Place of Death',
+          description: `Place of Death. Notice that the other types of actors do not have this value.`
+        },
+        altLabel: {
+          label: 'Alternative names',
+          description: `Alternative names of the actor.`
+        },
+        description: {
+          label: 'Description',
+          description: `Short description of the actor. The descriptions might be in different languages.`
+        },
+        occupation: {
+          label: 'Occupation',
+          description: `Occupation of a person. Notice that the other types of actors do not have this value.`
+        },
+        external: {
+          label: 'External databases',
+          description: `
+            Links to External databases.
+          `
+        },
+        relative: {
+          label: 'Relatives',
+          description: `Family relatives of a person. 
+          Notice that this data has been extracted from external databased like BiographySampo, AcademySampo and Wikidata. 
+          Only relations between people in the CoCo data are shown, so there might be missing relations or errors.`
+        },
+        acquaintance: {
+          label: 'Personal relations',
+          description: `Personal relations to other people. 
+          Notice that this data has been extracted from external databased like BiographySampo, AcademySampo, Wikidata and ULAN. 
+          Only relations between people in the CoCo data are shown, so there might be missing relations or errors.`
+        },
+        rel: {
+          label: 'Related actors',
+          description: `
+            Related actors, e.g. parents, spouses, acquaintances.
+          `
+        },
+        metrics: {
+          label: 'Network metrics',
+          description: `
+            Network metrics, e.g. centrality measures of the actor in the letter network. 
+            Each line has the label of the measure, its value, and the rank at the end in the parenthesis. 
+            (rank - 1 = the number of people who have a higher measure value).
+          `
+        },
+        numCorrespondences: {
+          label: 'Number of correspondences',
+          description: `
+          Number of distinct correspondences.
+          `
+        },
+        tie: {
+          label: 'Correspondences',
+          description: `
+            Other actors who have been in correspondence with this actor. 
+            The number of mutually sent letters is in parenthesis at end of the label.
+          `
+        },
+        numSent: {
+          label: 'Number of sent letters',
+          description: `
+            Number of sent letters.
+          `
+        },
+        sentletter: {
+          label: 'Sent letters',
+          description: `
+            List of sent letters.
+          `
+        },
+        numReceived: {
+          label: 'Number of received letters',
+          description: `
+            Number of received letters.
+          `
+        },
+        receivedletter: {
+          label: 'Received letters',
+          description: `
+            List of received letters.
+          `
+        },
+        mentioningletter: {
+          label: 'Mentioned in letters',
+          description: `
+          List of letters which mention this actor.
+          `
+        },
+        archival_organization: {
+          label: 'Archival Organization',
+          description: `
+            Archival Organizations having letter srelating to this actor.
+          `
+        },
+        in_fonds: {
+          label: 'Fonds',
+          description: `
+            Fonds containing letters related to this actor. 
+            The name of the archival organization is shown in parenthesis after the name of the fonds,
+            as well as the number of (sent+received) letters. 
+            (Notice that all letters do not necessarily belong to a fonds.)
+          `
+        },
+        created_fonds: {
+          label: 'Created Fonds',
+          description: `
+            THe fonds where this actor is marked as the records creator.
+          `
+        },
+        fonds: {
+          label: 'Fonds',
+          description: `
+            Fonds containing letters sent by this actor.
+          `
+        },
+        datasource: {
+          label: 'Data source',
+          description: `
+            The data source where this actor is mentioned.
+          `
+        },
+        knownLocation: {
+          label: 'Known locations',
+          description: `
+            List of known locations. The number in parenthesis is the number of sent letters.
+          `
+        }
+      }
+    },
   }
 }

@@ -10,9 +10,10 @@
             "fullTextSearch"
         ],
         "onlyInstancePages": [
-            "ties",
+            "proxies",
+            "metrics",
             "sources",
-            "metrics"
+            "ties"
         ]
     },
     "localeConfig": {
