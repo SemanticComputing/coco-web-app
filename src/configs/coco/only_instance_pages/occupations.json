@@ -1,0 +1,88 @@
+{
+  "id": "occupations",
+  "endpoint": {
+    "url": "https://ldf.fi/coco-dev/sparql",
+    "useAuth": true,
+    "prefixesFile": "SparqlQueriesPrefixes.js"
+  },
+  "sparqlQueriesFile": "SparqlQueriesOccupations.js",
+  "baseURI": "http://ldf.fi/coco",
+  "URITemplate": "<BASE_URI>/occupations/<LOCAL_ID>",
+  "resultClasses": {
+    "occupations": {
+      "instanceConfig": {
+        "propertiesQueryBlock": "occupationPropertiesInstancePage",
+        "instancePageResultClasses": {
+          "instancePageTable": {
+            "tabID": 0,
+            "component": "InstancePageTable",
+            "tabPath": "table",
+            "tabIcon": "CalendarViewDay"
+          },
+          "instancePageExport": {
+            "tabID": 1,
+            "component": "Export",
+            "tabPath": "export",
+            "tabIcon": "CloudDownload",
+            "pageType": "instancePage"
+          }
+        }
+      }
+    }
+  },
+  "properties": [
+    {
+      "id": "prefLabel",
+      "valueType": "object",
+      "makeLink": true,
+      "externalLink": false,
+      "sortValues": true,
+      "numberedList": false
+    },
+    {
+      "id": "altLabel",
+      "valueType": "string",
+      "makeLink": false,
+      "externalLink": false,
+      "sortValues": true,
+      "numberedList": true,
+      "expandedOnInstancePage": true
+    },
+    {
+      "id": "broader",
+      "valueType": "object",
+      "makeLink": true,
+      "externalLink": false,
+      "sortValues": true,
+      "numberedList": true,
+      "expandedOnInstancePage": true
+    },
+    {
+      "id": "people",
+      "valueType": "object",
+      "makeLink": true,
+      "externalLink": false,
+      "sortValues": true,
+      "numberedList": true,
+      "expandedOnInstancePage": true
+    },
+    {
+      "id": "related",
+      "valueType": "object",
+      "makeLink": true,
+      "externalLink": false,
+      "sortValues": false,
+      "numberedList": true,
+      "expandedOnInstancePage": true
+    },
+    {
+      "id": "external",
+      "valueType": "object",
+      "makeLink": true,
+      "externalLink": true,
+      "sortValues": true,
+      "numberedList": true,
+      "expandedOnInstancePage": true
+    }
+  ]
+}

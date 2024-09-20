@@ -1104,6 +1104,99 @@ export default {
         }
       }
     },
+    occupations: {
+      label: 'Occupation',
+      facetResultsType: 'occupation',
+      shortDescription: 'Occupations of the people in the data publications',
+      instancePage: {
+        label: 'Proxy',
+        description: `
+          <h6 class="MuiTypography-root MuiTypography-h6">
+            Page tabs
+          </h6>
+          <ul class="MuiTypography-root MuiTypography-body1">
+            <li>
+              <strong>TABLE</STRONG> view provides detailed data about this actor.
+            </li>
+            <li>
+              <strong>LETTERS</strong> show the available information about letters sent or received by this person.
+              NB some people may not have any letter information available.
+            </li>
+            <li>
+              <strong>TIMELINE OF LETTERS</strong> shows time series of the letters sent or recieved by the actor.
+              Howering or clicking on the bullets 'Sent', 'Received', or 'All' allows to hide/show e.g. only the sent or received letters.
+              The letters that are known to be sent during multiple years are spread evenly along that period.
+            </li>
+            <li>
+              <strong>TOP CORRESPONDENCES</strong> show a time series of the actor's correspondences with 10 ten other people.
+              Howering or clicking on the bullets 'to', 'from', 'Sent', 'Received', or 'All' allows to focus e.g. on only the sent or received letters.
+              The letters that are known to be sent during multiple years are spread evenly along that period.
+            </li>
+            <li>
+              <strong>NETWORK OF LETTERS</strong> shows this actors's relations to other actors connected by the correspondences. The network shown a maximum of 60 neighbors nodes within a distance of 3 degress from the network ego.
+            </li>
+            <li>
+              <strong>SOCIAL SIGNATURES</strong> view has a chart showing how much the actor has been in correspondence with the most, the second most, etc, important other actor during the different periods along the total time of activity. In connections both sent and recieved letters are taken into account.
+            </li>
+            <li>
+              <strong>EXPORT</strong> the SPARQL query used to generate the result
+              table view into YASGUI query editor.
+            </li>
+          </ul>
+          <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph"></p>
+        `
+      },
+      properties: {
+        uri: {
+          label: 'URI',
+          description: 'Uniform Resource Identifier'
+        },
+        prefLabel: {
+          label: 'Name',
+          description: 'Search actors by name. Search is based on Apache Lucene index search. In addition to simple searches, you can use wildcard matching, e.g. Finland*. You can also use the logical operators AND, OR and NOT, but then the search must be written in parentheses, e.g., like this (Jean AND Sibelius)'
+        },
+        provided: {
+          label: 'Provided resource',
+          description: 'Same actor in all datasets.'
+        },
+        people: {
+          label: 'People',
+          description: `
+            People related to the occupation.
+          `
+        },
+        related: {
+          label: 'Related occupations',
+          description: `
+            Related occupations.
+          `
+        },
+        altLabel: {
+          label: 'Alternative labels',
+          description: `Alternative labels of the occupation, e.g., in different languages.`
+        },
+        description: {
+          label: 'Description',
+          description: `Short description of the actor. The descriptions might be in different languages.`
+        },
+        occupation: {
+          label: 'Occupation',
+          description: `Occupation of a person. Notice that the other types of actors do not have this value.`
+        },
+        external: {
+          label: 'External databases',
+          description: `
+            Links to External databases.
+          `
+        },
+        broader: {
+          label: 'Broader concept of this occupation.',
+          description: `
+            Hiearchically broader concept of this occupation.
+          `
+        }
+      }
+    },
     proxies: {
       label: 'Proxy',
       facetResultsType: 'proxy',

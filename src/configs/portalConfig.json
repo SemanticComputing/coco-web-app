@@ -10,6 +10,7 @@
             "fullTextSearch"
         ],
         "onlyInstancePages": [
+            "occupations",
             "proxies",
             "metrics",
             "sources",
