@@ -55,19 +55,15 @@ export const proxyPropertiesInstancePage = `
     GROUPBY ?id 
   }
   UNION 
-  { 
-    SELECT DISTINCT ?id ?_letter (GROUP_CONCAT(?_label; separator="; ") AS ?label_in_letter)
-    WHERE {
-      {
-        ?_letter :was_authored_by ?id ;
-          :metadata/:sender ?_label 
-      } 
-      UNION
-      {
-        ?_letter :was_addressed_to ?id ;
-          :metadata/:recipient ?_label 
-      }
-    } GROUPBY ?id ?_letter ORDERBY STR(?_label)
+  { ?id tmp:marked_as_recipient ?label_in_letter }
+  UNION
+  { ?id tmp:marked_as_sender ?label_in_letter }
+  UNION
+  {
+    [] :was_authored_by ?id ; 
+       :fonds ?fonds__id .
+    ?fonds__id a [] ; skos:prefLabel ?fonds__prefLabel .
+    BIND(CONCAT("/fonds/page/", REPLACE(STR(?fonds__id), "^.*\\\\/(.+)", "$1")) AS ?fonds__dataProviderUrl)
   }
   UNION
   { 

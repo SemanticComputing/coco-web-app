@@ -20,4 +20,5 @@ PREFiX : <http://ldf.fi/schema/coco/>
 PREFIX actors: <http://ldf.fi/coco/actors/> 
 PrEFIX letters: <http://ldf.fi/coco/letters/>
 PREFIx places: <http://ldf.fi/coco/places/>
+PREFIX tmp: <http://ldf.fi/coco/tmp/>
 `

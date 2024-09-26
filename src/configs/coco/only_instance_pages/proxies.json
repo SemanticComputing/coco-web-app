@@ -60,39 +60,11 @@
         {
             "id": "prefLabel",
             "valueType": "object",
-            "makeLink": true,
+            "makeLink": false,
             "externalLink": false,
             "sortValues": true,
             "numberedList": false,
             "minWidth": 200
-        },
-        {
-            "id": "type",
-            "valueType": "object",
-            "makeLink": true,
-            "externalLink": false,
-            "sortValues": true,
-            "numberedList": false,
-            "minWidth": 70,
-            "priority": 5
-        },
-        {
-            "id": "numSent",
-            "valueType": "string",
-            "makeLink": false,
-            "externalLink": false,
-            "sortValues": false,
-            "numberedList": false,
-            "minWidth": 70
-        },
-        {
-            "id": "numReceived",
-            "valueType": "string",
-            "makeLink": false,
-            "externalLink": false,
-            "sortValues": false,
-            "numberedList": false,
-            "minWidth": 70
         },
         {
             "id": "provided",
@@ -115,6 +87,25 @@
             "expandedOnInstancePage": true
         },
         {
+            "id": "type",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": false,
+            "minWidth": 70,
+            "priority": 5
+        },
+        {
+            "id": "numSent",
+            "valueType": "string",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": false,
+            "numberedList": false,
+            "minWidth": 70
+        },
+        {
             "id": "sentletter",
             "valueType": "object",
             "makeLink": true,
@@ -124,6 +115,15 @@
             "minWidth": 250,
             "priority": 8,
             "expandedOnInstancePage": true
+        },
+        {
+            "id": "numReceived",
+            "valueType": "string",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": false,
+            "numberedList": false,
+            "minWidth": 70
         },
         {
             "id": "receivedletter",
@@ -151,6 +151,16 @@
             "id": "label_in_letter",
             "valueType": "string",
             "makeLink": false,
+            "externalLink": false,
+            "sortValues": false,
+            "numberedList": false,
+            "minWidth": 70,
+            "expandedOnInstancePage": true
+        },
+        {
+            "id": "fonds",
+            "valueType": "object",
+            "makeLink": true,
             "externalLink": false,
             "sortValues": false,
             "numberedList": false,
