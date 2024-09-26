@@ -85,6 +85,7 @@ export default {
     'social-signatures': 'social signatures',
     'top-correspondences': 'top correspondences',
     'top-correspondents': 'top correspondents',
+    'csv': 'csv',
     sentReceivedByPlace: 'timeline of letters',
     correspondenceTimeline: 'Letter Timeline',
     sentReceivedByTie: 'Timeline',
@@ -93,7 +94,8 @@ export default {
     'letters-and-actors': 'letters and actors',
     heatmap: 'heatmap',
     statistics: 'statistics',
-    download: 'download'
+    download: 'download',
+    sparql: 'sparql',
   },
   table: {
     rowsPerPage: 'Rows per page',

@@ -203,13 +203,22 @@
                 }
             }
         },
-        "export": {
+        "csvLetters": {
             "tabID": 5,
-            "component": "Export",
-            "tabPath": "export",
+            "component": "ExportCSV",
+            "tabPath": "csv",
             "tabIcon": "CloudDownload",
-            "resultClass": "perspective1",
-            "facetClass": "perspective1"
+            "facetClass": "letters",
+            "sparqlQuery": "csvQueryLetters",
+            "filterTarget": "id"
+        },
+        "export": {
+            "tabID": 6,
+            "component": "Export",
+            "tabPath": "sparql",
+            "tabIcon": "ArrowForward",
+            "resultClass": "letters",
+            "facetClass": "letters"
         }
     },
     "properties": [

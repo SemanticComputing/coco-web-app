@@ -275,6 +275,44 @@ export const peopleRelatedTo = `
   }
 `
 
+export const csvQueryLetters = `
+SELECT DISTINCT ?id ?label ?sender ?sender__id ?recipient ?recipient__id ?timespan ?datasource ?archival_organization ?fonds
+WHERE {
+
+  <FILTER>
+
+  FILTER(BOUND(?id))
+  ?id a :Letter ; 
+    skos:prefLabel ?label .
+  OPTIONAL
+  {
+    ?id portal:sender ?sender_id .
+    ?sender_id skos:prefLabel ?sender ; a []
+  }
+  OPTIONAL
+  {
+    ?id portal:recipient ?recipient_id . 
+    ?recipient_id skos:prefLabel ?recipient ; a []
+  }
+  OPTIONAL
+  {
+    ?id :has_time-span [ skos:prefLabel ?timespan ; a [] ]
+  }
+  OPTIONAL
+  {
+    ?id :fonds [ a [] ; skos:prefLabel ?fonds ]
+  }
+  OPTIONAL 
+  { 
+    ?id dct:source/skos:prefLabel ?datasource 
+  }
+  OPTIONAL 
+  {
+    ?id :archival_organization [ a [] ; skos:prefLabel ?archival_organization ]
+  }
+
+} ORDERBY ?label `
+
 export const sendingPlacesHeatmapQuery = `
   SELECT DISTINCT ?id ?lat ?long (1 as ?instanceCount) # for heatmap
   WHERE {
