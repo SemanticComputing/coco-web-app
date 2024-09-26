@@ -1271,7 +1271,7 @@ export default {
         label_in_letter: {
           label: 'Labels used in letter metadata',
           description: `
-            Labels used in letter metadata
+            How this actor was named as a sender or a recipient in the letter metadata 
           `
         },
         type: {
