@@ -1,0 +1,346 @@
+{
+    "id": "proxies",
+    "endpoint": {
+        "url": "https://ldf.fi/coco-dev/sparql",
+        "useAuth": true,
+        "prefixesFile": "SparqlQueriesPrefixes.js"
+    },
+    "sparqlQueriesFile": "SparqlQueriesProxies.js",
+    "baseURI": "http://ldf.fi/coco",
+    "URITemplate": "<BASE_URI>/actors/<LOCAL_ID>",
+    "facetClass": "crm:E21_Person crm:E74_Group :Family :Unknown",
+    "defaultTab": "table",
+    "defaultInstancePageTab": "table",
+    "resultClasses": {
+        "proxies": {
+            "instanceConfig": {
+                "propertiesQueryBlock": "proxyPropertiesInstancePage",
+                "instancePageResultClasses": {
+                    "actorInstancePageTable": {
+                        "tabID": 0,
+                        "component": "InstancePageTable",
+                        "tabPath": "table",
+                        "tabIcon": "CalendarViewDay"
+                    },
+                    "instancePageExport": {
+                        "tabID": 2,
+                        "component": "Export",
+                        "tabPath": "export",
+                        "tabIcon": "CloudDownload",
+                        "pageType": "instancePage"
+                    }
+                }
+            }
+        },
+        "placesActors": {
+            "tabID": 1,
+            "component": "LeafletMap",
+            "tabPath": "map",
+            "tabIcon": "AddLocation",
+            "sparqlQuery": "peopleEventPlacesQuery",
+            "facetClass": "actors",
+            "filterTarget": "person",
+            "resultMapper": "mapPlaces",
+            "instanceConfig": {
+                "propertiesQueryBlock": "placePropertiesInfoWindow",
+                "relatedInstances": "peopleRelatedTo",
+                "createPopUpContent": "createPopUpContentLetterSampo"
+            }
+        },
+        "export": {
+            "tabID": 3,
+            "component": "Export",
+            "tabPath": "export",
+            "tabIcon": "CloudDownload",
+            "resultClass": "perspective1",
+            "facetClass": "perspective1"
+        }
+    },
+    "properties": [
+        {
+            "id": "prefLabel",
+            "valueType": "object",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": false,
+            "minWidth": 200
+        },
+        {
+            "id": "provided",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": false,
+            "sortValues": false,
+            "numberedList": true,
+            "minWidth": 220
+        },
+        {
+            "id": "datasource",
+            "valueType": "string",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": false,
+            "numberedList": false,
+            "minWidth": 70,
+            "priority": 5,
+            "expandedOnInstancePage": true
+        },
+        {
+            "id": "type",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": false,
+            "minWidth": 70,
+            "priority": 5
+        },
+        {
+            "id": "numSent",
+            "valueType": "string",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": false,
+            "numberedList": false,
+            "minWidth": 70
+        },
+        {
+            "id": "floruit",
+            "valueType": "string",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": false,
+            "numberedList": false,
+            "minWidth": 70,
+            "priority": 5
+        },
+        {
+            "id": "sentletter",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": false,
+            "sortValues": false,
+            "numberedList": true,
+            "minWidth": 250,
+            "priority": 8,
+            "expandedOnInstancePage": true
+        },
+        {
+            "id": "numReceived",
+            "valueType": "string",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": false,
+            "numberedList": false,
+            "minWidth": 70
+        },
+        {
+            "id": "receiving_time",
+            "valueType": "string",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": false,
+            "numberedList": false,
+            "minWidth": 70,
+            "priority": 5
+        },
+        {
+            "id": "receivedletter",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": false,
+            "sortValues": false,
+            "numberedList": true,
+            "minWidth": 250,
+            "priority": 8,
+            "expandedOnInstancePage": true
+        },
+        {
+            "id": "mentioningletter",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": false,
+            "sortValues": false,
+            "numberedList": true,
+            "minWidth": 250,
+            "priority": 8,
+            "expandedOnInstancePage": true
+        },
+        {
+            "id": "label_in_letter",
+            "valueType": "string",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": false,
+            "numberedList": false,
+            "minWidth": 70,
+            "expandedOnInstancePage": true
+        },
+        {
+            "id": "fonds",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": false,
+            "sortValues": false,
+            "numberedList": false,
+            "minWidth": 70,
+            "expandedOnInstancePage": true
+        },
+        {
+            "id": "other",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": false,
+            "minWidth": 250,
+            "priority": 8,
+            "onlyOnInstancePage": false,
+            "expandedOnInstancePage": true
+        },
+        {
+            "id": "external",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": true,
+            "sortValues": true,
+            "numberedList": false,
+            "minWidth": 250,
+            "priority": 8,
+            "onlyOnInstancePage": false,
+            "expandedOnInstancePage": true
+        },
+        {
+            "id": "uri",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": true,
+            "sortValues": true,
+            "numberedList": false,
+            "onlyOnInstancePage": true
+        }
+    ],
+    "facets": {
+        "numSent": {
+            "sortByPattern": "{ SELECT ?id (COALESCE(?_orderBy,0) AS ?orderBy) WHERE { VALUES ?facetClass { <FACET_CLASS> } ?id a ?facetClass . OPTIONAL { ?id :out_degree ?_orderBy }} }"
+        },
+        "numReceived": {
+            "sortByPattern": "{ SELECT ?id (COALESCE(?_orderBy,0) AS ?orderBy) WHERE { VALUES ?facetClass { <FACET_CLASS> } ?id a ?facetClass . OPTIONAL { ?id :in_degree ?_orderBy }} }"
+        },
+        "image": {
+            "sortByPattern": "{ SELECT ?id (COALESCE(?_orderBy,'z') AS ?orderBy) WHERE { VALUES ?facetClass { <FACET_CLASS> } ?id a ?facetClass . OPTIONAL { ?id sch:image ?_orderBy }} }"
+        },
+        "prefLabel": {
+            "containerClass": "one",
+            "facetType": "text",
+            "filterType": "textFilter",
+            "sortByPredicate": "skos:prefLabel",
+            "textQueryProperty": "skos:prefLabel"
+        },
+        "type": {
+            "containerClass": "four",
+            "facetType": "list",
+            "predicate": "portal:portal_class",
+            "filterType": "uriFilter",
+            "sortBy": "instanceCount",
+            "sortDirection": "desc",
+            "pieChartButton": true,
+            "sortByPredicate": "portal:portal_class/skos:prefLabel"
+        },
+        "gender": {
+            "containerClass": "three",
+            "facetType": "list",
+            "predicate": "bioc:has_gender",
+            "filterType": "uriFilter",
+            "sortBy": "instanceCount",
+            "sortDirection": "desc",
+            "pieChartButton": true,
+            "sortByPredicate": "bioc:has_gender/skos:prefLabel"
+        },
+        "birthDateTimespan": {
+            "containerClass": "four",
+            "endProperty": "crm:P82b_end_of_the_end",
+            "facetType": "timespan",
+            "filterType": "timespanFilter",
+            "dataType": "xsd:dateTime",
+            "max": null,
+            "min": null,
+            "predicate": "(^:proxy_for)/:birthDate",
+            "sortByAscPredicate": "(^:proxy_for)/:birthDate/crm:P82a_begin_of_the_begin",
+            "sortByDescPredicate": "(^:proxy_for)/:birthDate/crm:P82b_end_of_the_end",
+            "startProperty": "crm:P82a_begin_of_the_begin"
+        },
+        "floruitTimespan": {
+            "containerClass": "four",
+            "endProperty": "crm:P82b_end_of_the_end",
+            "facetType": "timespan",
+            "filterType": "timespanFilter",
+            "dataType": "xsd:dateTime",
+            "max": null,
+            "min": null,
+            "predicate": ":floruit",
+            "sortByAscPredicate": ":floruit/crm:P82a_begin_of_the_begin",
+            "sortByDescPredicate": ":floruit/crm:P82b_end_of_the_end",
+            "startProperty": "crm:P82a_begin_of_the_begin"
+        },
+        "deathDateTimespan": {
+            "containerClass": "four",
+            "endProperty": "crm:P82b_end_of_the_end",
+            "facetType": "timespan",
+            "filterType": "timespanFilter",
+            "dataType": "xsd:dateTime",
+            "max": null,
+            "min": null,
+            "predicate": "(^:proxy_for)/:deathDate",
+            "sortByAscPredicate": "(^:proxy_for)/:deathDate/crm:P82a_begin_of_the_begin",
+            "sortByDescPredicate": "(^:proxy_for)/:deathDate/crm:P82b_end_of_the_end",
+            "startProperty": "crm:P82a_begin_of_the_begin"
+        },
+        "occupation": {
+            "containerClass": "seven",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "predicate": "(^:proxy_for)/bioc:has_occupation",
+            "searchField": true,
+            "sortBy": "instanceCount",
+            "sortDirection": "desc",
+            "sortButton": true,
+            "pieChartButton": true,
+            "sortByPredicate": "(^:proxy_for)/bioc:has_occupation/skos:prefLabel"
+        },
+        "datasource": {
+            "containerClass": "ten",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "predicate": "(^:proxy_for)/dct:source",
+            "searchField": false,
+            "sortBy": "instanceCount",
+            "sortDirection": "desc",
+            "sortButton": true,
+            "pieChartButton": true,
+            "sortByPredicate": "(^:proxy_for)/dct:source/skos:prefLabel"
+        },
+        "fonds": {
+            "containerClass": "ten",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "predicate": "(^:proxy_for)/(^:was_authored_by)/:fonds",
+            "searchField": false,
+            "sortBy": "instanceCount",
+            "sortDirection": "desc",
+            "sortButton": true,
+            "pieChartButton": true,
+            "sortByPredicate": "(^:proxy_for)/(^:was_authored_by)/:fonds/skos:prefLabel"
+        },
+        "external": {
+            "containerClass": "seven",
+            "facetType": "list",
+            "predicate": "foaf:page/a",
+            "filterType": "uriFilter",
+            "sortBy": "instanceCount",
+            "sortDirection": "desc",
+            "sortByPredicate": ":foaf:page/a/skos:prefLabel"
+        }
+    }
+}

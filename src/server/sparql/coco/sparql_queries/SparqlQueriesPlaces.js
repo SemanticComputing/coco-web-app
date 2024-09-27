@@ -73,9 +73,9 @@ export const placePropertiesInstancePage = `
       OPTIONAL { ?narrower__id :number_of_events ?_num }
     } ORDER BY DESC(COALESCE(?_num)) ?_label 
   }
-  UNIoN
-  { ?id :is_related_to ?external__id .
-    OPTIONAL { ?external__id a/skos:prefLabel ?external__classlabel }
+  UNION
+  { ?id owl:sameAs ?external__id .
+    ?external__id a/skos:prefLabel ?external__classlabel .
     OPTIONAL { ?external__id skos:prefLabel ?external__label }
     BIND(COALESCE(?external__label, ?external__classlabel, ?external__id) AS ?external__prefLabel)
     BIND(?external__id AS ?external__dataProviderUrl)
@@ -138,7 +138,7 @@ WHERE {
     (CONCAT("/actors/page/", REPLACE(STR(?related__id), "^.*\\\\/(.+)", "$1")) AS ?related__dataProviderUrl)
     WHERE {
 
-      ?id ^:was_sent_from ?_sent . ?_sent :was_authored_by ?related__id .
+      ?id ^:was_sent_from ?_sent . ?_sent portal:sender ?related__id .
       ?related__id skos:prefLabel ?_label .
     }
     
@@ -147,13 +147,15 @@ WHERE {
   }
   UNION
   {
-    ?born__id :was_born_in_location ?id ;
-      skos:prefLabel ?born__prefLabel .
+    [] :was_born_in_location ?id ;
+       :proxy_for ?born__id .
+    ?born__id skos:prefLabel ?born__prefLabel .
     BIND(CONCAT("/actors/page/", REPLACE(STR(?born__id), "^.*\\\\/(.+)", "$1")) AS ?born__dataProviderUrl)
   }
   UNION{
-    ?deceased__id :died_at_location ?id ;
-      skos:prefLabel ?deceased__prefLabel .
+    [] :died_at_location ?id ;
+      :proxy_for ?deceased__id .
+    ?deceased__id skos:prefLabel ?deceased__prefLabel .
     BIND(CONCAT("/actors/page/", REPLACE(STR(?deceased__id), "^.*\\\\/(.+)", "$1")) AS ?deceased__dataProviderUrl)
   }
 }

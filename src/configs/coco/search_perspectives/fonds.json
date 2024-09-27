@@ -1,7 +1,7 @@
 {
     "id": "fonds",
     "endpoint": {
-        "url": "https://ldf.fi/coco/sparql",
+        "url": "https://ldf.fi/coco-dev/sparql",
         "useAuth": true,
         "prefixesFile": "SparqlQueriesPrefixes.js"
     },
@@ -255,7 +255,7 @@
         "creator": {
             "containerClass": "ten",
             "facetType": "list",
-            "predicate": ":records_creator",
+            "predicate": ":records_creator/:proxy_for",
             "filterType": "uriFilter",
             "sortBy": "instanceCount",
             "sortDirection": "desc",

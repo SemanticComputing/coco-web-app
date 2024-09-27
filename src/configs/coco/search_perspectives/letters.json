@@ -1,7 +1,7 @@
 {
     "id": "letters",
     "endpoint": {
-        "url": "https://ldf.fi/coco/sparql",
+        "url": "https://ldf.fi/coco-dev/sparql",
         "useAuth": true,
         "prefixesFile": "SparqlQueriesPrefixes.js"
     },
@@ -143,6 +143,20 @@
                     "createChartData": "createTopTimelineChartData",
                     "tooltip": { "x": { "format": "yyyy" } },
                     "fill": { "opacity": [0.7, 0.5] },
+                    "markers": {
+                        "strokeColors": "#777",
+                        "strokeWidth": 1
+                    },
+                    "dataLabels": {
+                        "enabled": false
+                    },
+                    "plotOptions": {
+                        "bubble": {
+                          "zScaling": true,
+                          "minBubbleRadius": 2,
+                          "maxBubbleRadius": 50
+                        }
+                    },
                     "legend": { "position": "bottom" },
                     "grid": {
                         "row": {
@@ -189,13 +203,22 @@
                 }
             }
         },
-        "export": {
+        "csvLetters": {
             "tabID": 5,
-            "component": "Export",
-            "tabPath": "export",
+            "component": "ExportCSV",
+            "tabPath": "csv",
             "tabIcon": "CloudDownload",
-            "resultClass": "perspective1",
-            "facetClass": "perspective1"
+            "facetClass": "letters",
+            "sparqlQuery": "csvQueryLetters",
+            "filterTarget": "id"
+        },
+        "export": {
+            "tabID": 6,
+            "component": "Export",
+            "tabPath": "sparql",
+            "tabIcon": "ArrowForward",
+            "resultClass": "letters",
+            "facetClass": "letters"
         }
     },
     "properties": [
@@ -280,6 +303,17 @@
         {
             "id": "language",
             "valueType": "object",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": false,
+            "minWidth": 150,
+            "onlyOnInstancePage": true,
+            "expandedOnInstancePage": true
+        },
+        {
+            "id": "lettertype",
+            "valueType": "string",
             "makeLink": false,
             "externalLink": false,
             "sortValues": true,
@@ -390,10 +424,10 @@
             "containerClass": "ten",
             "facetType": "list",
             "filterType": "uriFilter",
-            "predicate": ":was_authored_by",
+            "predicate": "portal:sender",
             "searchField": true,
             "sortBy": "instanceCount",
-            "sortByPredicate": ":was_authored_by/skos:prefLabel",
+            "sortByPredicate": "portal:sender/skos:prefLabel",
             "sortDirection": "desc",
             "pieChartButton": true,
             "sortButton": true,
@@ -403,10 +437,10 @@
             "containerClass": "ten",
             "facetType": "list",
             "filterType": "uriFilter",
-            "predicate": ":was_addressed_to",
+            "predicate": "portal:recipient",
             "searchField": true,
             "sortBy": "instanceCount",
-            "sortByPredicate": ":was_addressed_to/skos:prefLabel",
+            "sortByPredicate": "portal:recipient/skos:prefLabel",
             "sortDirection": "desc",
             "pieChartButton": true,
             "sortButton": true,
@@ -449,6 +483,19 @@
             "sortButton": true,
             "pieChartButton": true,
             "sortByPredicate": "dct:language/skos:prefLabel",
+            "hideUnknownValue": true
+        },
+        "lettertype": {
+            "containerClass": "seven",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "predicate": ":type",
+            "searchField": false,
+            "sortBy": "instanceCount",
+            "sortDirection": "desc",
+            "sortButton": true,
+            "pieChartButton": true,
+            "sortByPredicate": ":type/skos:prefLabel",
             "hideUnknownValue": true
         },
         "datasource": {

@@ -1,17 +1,17 @@
 {
-  "id": "sources",
+  "id": "occupations",
   "endpoint": {
     "url": "https://ldf.fi/coco-dev/sparql",
     "useAuth": true,
     "prefixesFile": "SparqlQueriesPrefixes.js"
   },
-  "sparqlQueriesFile": "SparqlQueriesSources.js",
+  "sparqlQueriesFile": "SparqlQueriesOccupations.js",
   "baseURI": "http://ldf.fi/coco",
-  "URITemplate": "<BASE_URI>/sources/<LOCAL_ID>",
+  "URITemplate": "<BASE_URI>/occupations/<LOCAL_ID>",
   "resultClasses": {
-    "sources": {
+    "occupations": {
       "instanceConfig": {
-        "propertiesQueryBlock": "sourcePropertiesInstancePage",
+        "propertiesQueryBlock": "occupationPropertiesInstancePage",
         "instancePageResultClasses": {
           "instancePageTable": {
             "tabID": 0,
@@ -40,20 +40,49 @@
       "numberedList": false
     },
     {
-      "id": "numLetters",
+      "id": "altLabel",
       "valueType": "string",
       "makeLink": false,
       "externalLink": false,
       "sortValues": true,
-      "numberedList": true
+      "numberedList": true,
+      "expandedOnInstancePage": true
     },
     {
-      "id": "letter",
+      "id": "broader",
       "valueType": "object",
       "makeLink": true,
       "externalLink": false,
       "sortValues": true,
-      "numberedList": true
+      "numberedList": true,
+      "expandedOnInstancePage": true
+    },
+    {
+      "id": "people",
+      "valueType": "object",
+      "makeLink": true,
+      "externalLink": false,
+      "sortValues": true,
+      "numberedList": true,
+      "expandedOnInstancePage": true
+    },
+    {
+      "id": "related",
+      "valueType": "object",
+      "makeLink": true,
+      "externalLink": false,
+      "sortValues": false,
+      "numberedList": true,
+      "expandedOnInstancePage": true
+    },
+    {
+      "id": "external",
+      "valueType": "object",
+      "makeLink": true,
+      "externalLink": true,
+      "sortValues": true,
+      "numberedList": true,
+      "expandedOnInstancePage": true
     }
   ]
 }

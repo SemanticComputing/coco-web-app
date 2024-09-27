@@ -21,7 +21,7 @@ export const fondsPropertiesFacetResults = `
   }
   UNION
   { 
-    ?id :records_creator ?creator__id .
+    ?id :records_creator/:proxy_for ?creator__id .
     ?creator__id skos:prefLabel ?creator__prefLabel .
     BIND(CONCAT("/actors/page/", REPLACE(STR(?creator__id), "^.*\\\\/(.+)", "$1")) AS ?creator__dataProviderUrl)
   }
@@ -57,7 +57,7 @@ export const fondsPropertiesInstancePage = `
   }
   UNION
   { 
-    ?id :records_creator ?creator__id .
+    ?id :records_creator/:proxy_for ?creator__id .
     ?creator__id skos:prefLabel ?creator__prefLabel .
     BIND(CONCAT("/actors/page/", REPLACE(STR(?creator__id), "^.*\\\\/(.+)", "$1")) AS ?creator__dataProviderUrl)
   }
@@ -73,7 +73,7 @@ export const fondsPropertiesInstancePage = `
 	    (CONCAT(?_label, ' (', STR(COUNT(DISTINCT ?_evt)), ')') AS ?sender__prefLabel)
     	(CONCAT("/actors/page/", REPLACE(STR(?sender__id), "^.*\\\\/(.+)", "$1")) AS ?sender__dataProviderUrl)
     WHERE {
-      ?_evt :fonds ?id ; :was_authored_by ?sender__id .
+      ?_evt :fonds ?id ; portal:sender ?sender__id .
       ?sender__id skos:prefLabel ?_label ; a [] .
   	}
     GROUPBY ?id ?sender__id ?_label
@@ -85,7 +85,8 @@ export const fondsPropertiesInstancePage = `
 	    (CONCAT(?_label, ' (', STR(COUNT(DISTINCT ?_evt)), ')') AS ?recipient__prefLabel)
     	(CONCAT("/actors/page/", REPLACE(STR(?recipient__id), "^.*\\\\/(.+)", "$1")) AS ?recipient__dataProviderUrl)
     WHERE {
-      ?_evt :fonds ?id ; :was_addressed_to ?recipient__id .  
+      ?_evt :fonds ?id ; 
+        portal:recipient ?recipient__id .  
       ?recipient__id skos:prefLabel ?_label ; a [] .
   	}
     GROUPBY ?id ?recipient__id ?_label

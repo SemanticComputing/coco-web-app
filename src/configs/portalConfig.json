@@ -10,9 +10,11 @@
             "fullTextSearch"
         ],
         "onlyInstancePages": [
-            "ties",
+            "occupations",
+            "proxies",
+            "metrics",
             "sources",
-            "metrics"
+            "ties"
         ]
     },
     "localeConfig": {
@@ -105,7 +107,7 @@
         "yasguiParams": {
             "contentTypeConstruct": "text/turtle",
             "contentTypeSelect": "application/sparql-results+json",
-            "endpoint": "https://ldf.fi/coco/sparql",
+            "endpoint": "https://ldf.fi/coco-dev/sparql",
             "requestMethod": "POST",
             "tabTitle": "Exported query"
         }

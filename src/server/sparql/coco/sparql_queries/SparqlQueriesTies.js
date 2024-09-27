@@ -57,24 +57,31 @@ UNION
 `
 
 export const tieTimelineQuery = `
-SELECT DISTINCT ?id ?sender1__label ?sender2__label (xsd:date(?_date) AS ?date) (year(?_date) AS ?year) ?type
+SELECT DISTINCT 
+  ?id 
+  ?sender1__label 
+  ?sender2__label 
+  ?year 
+  (xsd:date(CONCAT(STR(?year), '-01-01')) AS ?date)  
+  ?type
+  (COUNT(DISTINCT ?letter) AS ?count)
   WHERE {
   
   BIND(<ID> as ?id)
   
   ?letter :in_tie ?id ;
-          :has_time-span/crm:P82a_begin_of_the_begin ?_date .
+          :estimated_year ?year .
   
   {
-    ?id :actor1 [ ^:was_authored_by ?letter ; skos:prefLabel ?sender1__label ]
+    ?id :actor1 [ ^portal:sender ?letter ; skos:prefLabel ?sender1__label ]
     BIND ("sender1" AS ?type)
   }
   UNION
   {
-    ?id :actor2 [ ^:was_authored_by ?letter ; skos:prefLabel ?sender2__label ]
+    ?id :actor2 [ ^portal:sender ?letter ; skos:prefLabel ?sender2__label ]
     BIND ("sender2" AS ?type)
   }
-}
+} GROUPBY ?id ?sender1__label ?sender2__label ?year ?type
 `
 
 //  https://api.triplydb.com/s/ILhzAxhyr
@@ -88,17 +95,15 @@ SELECT DISTINCT (STR(?year) as ?category)
   BIND(<ID> as ?id)
   
   ?letter :in_tie ?id ;
-          :has_time-span/crm:P82a_begin_of_the_begin ?time_0 .
-  BIND (year(?time_0) AS ?year)
-  FILTER (BOUND(?year))
+          :estimated_year ?year
   
   {
-    ?id :actor1/^:was_authored_by ?letter .
+    ?id :actor1/^portal:sender ?letter .
     BIND (?letter AS ?sent_letter)
   }
   UNION
   {
-    ?id :actor2/^:was_authored_by?letter .
+    ?id :actor2/^portal:sender ?letter .
     BIND (?letter AS ?received_letter)
   }
   } 
@@ -111,7 +116,7 @@ SELECT DISTINCT ?source ?target
   ?weight (STR(?weight) AS ?prefLabel)
 WHERE {
   { VALUES ?id { <ID> }
-    VALUES ?class { crm:E21_Person crm:E74_Group :Family }
+    VALUES ?class { :ProvidedActor }
     ?id a ?class .
   } UNION { 
     VALUES ?_tie { <ID> }
@@ -142,7 +147,7 @@ WHERE {
 export const tieNodesQuery = `
   SELECT DISTINCT ?id ?prefLabel ?class ?href
   WHERE {
-    VALUES ?class { crm:E21_Person crm:E74_Group :Family }
+    VALUES ?class { :ProvidedActor }
     VALUES ?id { <ID_SET> }
     ?id a ?class ;
      skos:prefLabel ?_label .

@@ -10,13 +10,13 @@ export const letterProperties = `
 }
 UNION
 {
-  ?id :was_authored_by ?source__id . 
+  ?id portal:sender ?source__id . 
   ?source__id skos:prefLabel ?source__prefLabel . 
   BIND(CONCAT("/actors/page/", REPLACE(STR(?source__id), "^.*\\\\/(.+)", "$1")) AS ?source__dataProviderUrl)
 }
 UNION
 {
-  ?id :was_addressed_to ?target__id . 
+  ?id portal:recipient ?target__id . 
   ?target__id skos:prefLabel ?target__prefLabel ; a [] .
   BIND(CONCAT("/actors/page/", REPLACE(STR(?target__id), "^.*\\\\/(.+)", "$1")) AS ?target__dataProviderUrl)
 }
@@ -56,7 +56,7 @@ export const letterPropertiesInstancePage = `
 }
 UNION
 {
-  ?id :was_authored_by ?source__id .
+  ?id portal:sender ?source__id .
   ?source__id skos:prefLabel ?source__prefLabel . 
   # FILTER (!REGEX(STR(?source__prefLabel), 'unknown', 'i'))
   BIND(CONCAT("/actors/page/", REPLACE(STR(?source__id), "^.*\\\\/(.+)", "$1")) AS ?source__dataProviderUrl)
@@ -82,14 +82,14 @@ UNION
 }
 UNION
 {
-  ?id :was_addressed_to ?target__id . 
+  ?id portal:recipient ?target__id . 
   ?target__id skos:prefLabel ?target__prefLabel ;
   FILTER (!REGEX(STR(?target__prefLabel), 'unknown', 'i'))
   BIND(CONCAT("/actors/page/", REPLACE(STR(?target__id), "^.*\\\\/(.+)", "$1")) AS ?target__dataProviderUrl)
 }
 UNION 
 {
-  ?id :referenced_actor ?mentioned_person__id . 
+  ?id :referenced_actor/:proxy_for ?mentioned_person__id . 
   ?mentioned_person__id skos:prefLabel ?mentioned_person__prefLabel . 
   BIND(CONCAT("/actors/page/", REPLACE(STR(?mentioned_person__id), "^.*\\\\/(.+)", "$1")) AS ?mentioned_person__dataProviderUrl)
 }
@@ -104,6 +104,10 @@ UNION
   ?id dct:language ?language__id . 
   ?language__id a [] ; skos:prefLabel ?language__prefLabel .
   BIND (?language__id AS ?language__dataProviderUrl)
+}
+UNION
+{
+  ?id :type [ a [] ; skos:prefLabel ?lettertype ]
 }
 UNION
 {
@@ -196,29 +200,33 @@ UNION
  * Also the number of results is limited to 100000
  */
 export const topCorrespondenceFacetPageQuery = `
-SELECT DISTINCT ?from__label ?to__label # (xsd:date(?_date) AS ?date) 
-	?type (year(?_date) AS ?year) (xsd:date(CONCAT(STR(?year),'-01-01')) AS ?date)
+SELECT DISTINCT 
+  ?from__label 
+  ?to__label 
+	?type 
+  ?year
+  (xsd:date(CONCAT(STR(?year),'-01-01')) AS ?date)
+  (COUNT(DISTINCT ?id) AS ?count)
 WHERE {
   ?id a :Letter .
 
   <FILTER>
 
-  ?id :was_addressed_to/skos:prefLabel ?to__label ;
-    :has_time-span/crm:P82a_begin_of_the_begin ?_date ;
-    :was_authored_by/skos:prefLabel ?from__label .
+  ?id portal:recipient/skos:prefLabel ?to__label ;
+    :estimated_year ?year ;
+    portal:sender/skos:prefLabel ?from__label .
 
   VALUES ?type { "to" "from" }
-} LIMIT 100000
+} GROUPBY ?from__label ?to__label ?type ?year LIMIT 100000
 `
 
 export const lettersByYearQuery = `
 SELECT DISTINCT ?category (COUNT(DISTINCT ?letter) AS ?count)
 WHERE {
   <FILTER>
+
   ?letter a :Letter ;
-    :has_time-span/crm:P82a_begin_of_the_begin ?time_0 .
-  BIND (STR(year(?time_0)) AS ?category)
-  FILTER (BOUND(?category))
+    :estimated_year ?category .
 } 
 GROUP BY ?category ORDER BY ?category
 `
@@ -261,11 +269,49 @@ export const peopleRelatedTo = `
   WHERE {
       <FILTER>
 
-  ?related__id :was_sent_from ?id ; :was_authored_by ?person__id .
+  ?related__id :was_sent_from ?id ; portal:sender ?person__id .
   ?person__id skos:prefLabel ?_plabel .
     } GROUPBY ?id ?person__id ?_plabel ORDERBY DESC(COUNT(?related__id)) ?_plabel
   }
 `
+
+export const csvQueryLetters = `
+SELECT DISTINCT ?id ?label ?sender ?sender__id ?recipient ?recipient__id ?timespan ?datasource ?archival_organization ?fonds
+WHERE {
+
+  <FILTER>
+
+  FILTER(BOUND(?id))
+  ?id a :Letter ; 
+    skos:prefLabel ?label .
+  OPTIONAL
+  {
+    ?id portal:sender ?sender_id .
+    ?sender_id skos:prefLabel ?sender ; a []
+  }
+  OPTIONAL
+  {
+    ?id portal:recipient ?recipient_id . 
+    ?recipient_id skos:prefLabel ?recipient ; a []
+  }
+  OPTIONAL
+  {
+    ?id :has_time-span [ skos:prefLabel ?timespan ; a [] ]
+  }
+  OPTIONAL
+  {
+    ?id :fonds [ a [] ; skos:prefLabel ?fonds ]
+  }
+  OPTIONAL 
+  { 
+    ?id dct:source/skos:prefLabel ?datasource 
+  }
+  OPTIONAL 
+  {
+    ?id :archival_organization [ a [] ; skos:prefLabel ?archival_organization ]
+  }
+
+} ORDERBY ?label `
 
 export const sendingPlacesHeatmapQuery = `
   SELECT DISTINCT ?id ?lat ?long (1 as ?instanceCount) # for heatmap
