@@ -77,6 +77,36 @@ export const proxyPropertiesInstancePage = `
     } ORDER BY COALESCE(STR(?time), CONCAT("9999", ?sentletter__prefLabel))
   }
   UNION
+  { 
+    SELECT DISTINCT ?id 
+      (IF (MIN(?year0)=MAX(?year1), 
+          STR(MIN(?year0)), 
+          CONCAT(STR(MIN(?year0)), '-', STR(MAX(?year1)))) 
+          AS ?floruit)
+    WHERE {
+            ?_letter :was_authored_by ?id ;
+            a :Letter ;
+            :has_time-span [ crm:P82a_begin_of_the_begin ?_start ; crm:P82b_end_of_the_end ?_end ]
+            BIND (year(?_start) AS ?year0)
+            BIND (year(?_end) AS ?year1)
+    } GROUPBY ?id 
+  }
+  UNION
+  {
+    SELECT DISTINCT ?id 
+      (IF (MIN(?year0)=MAX(?year1), 
+          STR(MIN(?year0)), 
+          CONCAT(STR(MIN(?year0)), '-', STR(MAX(?year1)))) 
+          AS ?receiving_time)
+    WHERE {
+            ?_letter :was_addressed_to ?id ;
+            a :Letter ;
+            :has_time-span [ crm:P82a_begin_of_the_begin ?_start ; crm:P82b_end_of_the_end ?_end ]
+            BIND (year(?_start) AS ?year0)
+            BIND (year(?_end) AS ?year1)
+    } GROUPBY ?id 
+  }
+  UNION
   { SELECT DISTINCT ?id ?mentioningletter__id ?mentioningletter__prefLabel ?mentioningletter__dataProviderUrl
     WHERE {
       ?mentioningletter__id :referenced_actor ?id ;

@@ -106,6 +106,16 @@
             "minWidth": 70
         },
         {
+            "id": "floruit",
+            "valueType": "string",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": false,
+            "numberedList": false,
+            "minWidth": 70,
+            "priority": 5
+        },
+        {
             "id": "sentletter",
             "valueType": "object",
             "makeLink": true,
@@ -124,6 +134,16 @@
             "sortValues": false,
             "numberedList": false,
             "minWidth": 70
+        },
+        {
+            "id": "receiving_time",
+            "valueType": "string",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": false,
+            "numberedList": false,
+            "minWidth": 70,
+            "priority": 5
         },
         {
             "id": "receivedletter",
