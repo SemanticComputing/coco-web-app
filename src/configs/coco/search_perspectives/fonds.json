@@ -154,7 +154,7 @@
             "numberedList": true,
             "minWidth": 120,
             "priority": 5,
-            "onlyOnInstancePage": true,
+            "onlyOnInstancePage": false,
             "expandedOnInstancePage": true
         },
         {
