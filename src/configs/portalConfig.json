@@ -107,7 +107,7 @@
         "yasguiParams": {
             "contentTypeConstruct": "text/turtle",
             "contentTypeSelect": "application/sparql-results+json",
-            "endpoint": "https://ldf.fi/coco-dev/sparql",
+            "endpoint": "https://ldf.fi/coco/sparql",
             "requestMethod": "POST",
             "tabTitle": "Exported query"
         }

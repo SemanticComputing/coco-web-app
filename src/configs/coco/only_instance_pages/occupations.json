@@ -1,7 +1,7 @@
 {
   "id": "occupations",
   "endpoint": {
-    "url": "https://ldf.fi/coco-dev/sparql",
+    "url": "https://ldf.fi/coco/sparql",
     "useAuth": true,
     "prefixesFile": "SparqlQueriesPrefixes.js"
   },
