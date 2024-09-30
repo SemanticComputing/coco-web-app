@@ -276,7 +276,7 @@ export const peopleRelatedTo = `
 `
 
 export const csvQueryLetters = `
-SELECT DISTINCT ?id ?label ?sender ?sender__id ?recipient ?recipient__id ?timespan ?datasource ?archival_organization ?fonds
+SELECT DISTINCT ?id ?label ?sender ?sender_id ?recipient ?recipient_id ?timespan ?datasource ?archival_organization ?fonds
 WHERE {
 
   <FILTER>
