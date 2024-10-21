@@ -728,7 +728,8 @@
             "sortBy": "instanceCount",
             "sortDirection": "desc",
             "pieChartButton": true,
-            "sortByPredicate": "portal:portal_class/skos:prefLabel"
+            "sortByPredicate": "portal:portal_class/skos:prefLabel",
+            "hideUnknownValue": true
         },
         "gender": {
             "containerClass": "three",
@@ -813,7 +814,8 @@
             "sortDirection": "desc",
             "sortButton": true,
             "pieChartButton": true,
-            "sortByPredicate": "(^:proxy_for)/(^:was_authored_by)/:fonds/skos:prefLabel"
+            "sortByPredicate": "(^:proxy_for)/(^:was_authored_by)/:fonds/skos:prefLabel",
+            "hideUnknownValue": true
         },
         "external": {
             "containerClass": "seven",
