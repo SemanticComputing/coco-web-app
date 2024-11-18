@@ -122,85 +122,45 @@
         },
         "actorTops": {
             "tabID": 4,
-            "component": "ApexChartsDouble",
+            "component": "ApexCharts",
             "tabPath": "top-correspondents",
             "tabIcon": "Tune",
-            "upperResultClass": "correspondenceFacetPageDoubleUpper",
-            "lowerResultClass": "correspondenceFacetPageDoubleLower",
-            "resultClasses": {
-                "correspondenceFacetPageDoubleUpper": {
-                    "title": "Top {} Correspondents",
-                    "height": "60%",
-                    "facetClass": "letters",
-                    "filterTarget": "id",
-                    "sparqlQuery": "topCorrespondenceFacetPageQuery",
-                    "resultMapper": "createCorrespondenceChartData",
-                    "resultMapperConfig": {
-                        "types": ["to", "from"],
-                        "numberTopResults": 10,
-                        "lastLabel": null
-                    },
-                    "createChartData": "createTopTimelineChartData",
-                    "tooltip": { "x": { "format": "yyyy" } },
-                    "fill": { "opacity": [0.7, 0.5] },
-                    "markers": {
-                        "strokeColors": "#777",
-                        "strokeWidth": 1
-                    },
-                    "dataLabels": {
-                        "enabled": false
-                    },
-                    "plotOptions": {
-                        "bubble": {
-                          "zScaling": true,
-                          "minBubbleRadius": 2,
-                          "maxBubbleRadius": 50
-                        }
-                    },
-                    "legend": { "position": "bottom" },
-                    "grid": {
-                        "row": {
-                            "colors": ["#d5d5d5", "transparent"], "opacity": 0.5
-                        },
-                        "column": { "colors": ["#a8a8a8", "transparent"] },
-                        "xaxis": { "lines": { "show": true } },
-                        "yaxis": { "lines": { "show": true } }
-                    }
-                },
-                "correspondenceFacetPageDoubleLower": {
-                    "height": "40%",
-                    "facetClass": "letters",
-                    "filterTarget": "id",
-                    "sparqlQuery": "yearlyLettersFacetPageQuery",
-                    "resultMapper": "createCorrespondenceChartDataLower",
-                    "resultMapperConfig": {
-                        "fillEmptyValues": true
-                    },
-                    "createChartData": "createTopTimelineChartData2",
-                    "title": { "text": "Letters by Year", "align": "left" },
-                    "xaxis": {
-                        "type": "datetime",
-                        "tooltip": { "enabled": true }
-                    },
-                    "yaxis": {
-                        "labels": { "minWidth": 150, "maxWidth": 300 }
-                    },
-                    "grid": {
-                        "column": { "colors": ["#a8a8a8", "transparent"] },
-                        "xaxis": { "lines": { "show": true } },
-                        "yaxis": { "lines": { "show": true } }
-                    },
-                    "tooltip": { "x": { "format": "yyyy" } },
-                    "stroke": { "curve": "stepline", "width": 1 },
-                    "fill": {
-                        "type": "gradient",
-                        "gradient": {
-                            "shadeIntensity": 1,
-                            "opacityFrom": 0.3,
-                            "opacityTo": 0.6
-                        }
-                    }
+            "title": "Top {} Correspondents",
+            "height": "100%",
+            "facetClass": "letters",
+            "filterTarget": "id",
+            "sparqlQuery": "topCorrespondenceFacetPageQuery",
+            "resultMapper": "createCorrespondenceChartData",
+            "resultMapperConfig": {
+                "types": ["to", "from"],
+                "numberTopResults": 20,
+                "lastLabel": null
+            },
+            "createChartData": "createTopTimelineChartData",
+            "tooltip": { "x": { "format": "yyyy" } },
+            "fill": { "opacity": [0.7, 0.5] },
+            "markers": {
+                "strokeColors": "#777",
+                "strokeWidth": 1
+            },
+            "dataLabels": {
+                "enabled": false
+            },
+            "plotOptions": {
+                "bubble": {
+                    "zScaling": true,
+                    "minBubbleRadius": 2,
+                    "maxBubbleRadius": 50
                 }
+            },
+            "legend": { "position": "bottom" },
+            "grid": {
+                "row": {
+                    "colors": ["#d5d5d5", "transparent"], "opacity": 0.5
+                },
+                "column": { "colors": ["#a8a8a8", "transparent"] },
+                "xaxis": { "lines": { "show": true } },
+                "yaxis": { "lines": { "show": true } }
             }
         },
         "csvLetters": {
@@ -528,13 +488,13 @@
             "containerClass": "ten",
             "facetType": "list",
             "filterType": "uriFilter",
-            "predicate": ":archival_organization",
+            "predicate": ":archival_organization/:proxy_for",
             "searchField": false,
             "sortBy": "instanceCount",
             "sortDirection": "desc",
             "sortButton": true,
             "pieChartButton": true,
-            "sortByPredicate": ":archival_organization/skos:prefLabel",
+            "sortByPredicate": ":archival_organization/:proxy_for/skos:prefLabel",
             "hideUnknownValue": true
         },
         "fonds": {
