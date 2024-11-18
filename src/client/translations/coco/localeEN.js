@@ -692,9 +692,9 @@ export default {
       }
     },
     fonds: {
-      label: 'Archives',
+      label: 'Fonds and Collections',
       facetResultsType: 'fonds',
-      shortDescription: 'Information about the Archival Organizations and Fonds',
+      shortDescription: 'Information about Fonds and Collections',
       longDescription: `
       <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
         Use this perspective to access the archival organizations and fonds in the dataset.
@@ -721,7 +721,7 @@ export default {
     </ul>
       `,
       instancePage: {
-        label: 'Fonds',
+        label: 'Fonds and Collections',
         description: `
           <h6 class="MuiTypography-root MuiTypography-h6">
             Page tabs
@@ -793,6 +793,12 @@ export default {
           label: 'Records creator',
           description: `
             Records creator of the fonds.
+          `
+        },
+        creator_type: {
+          label: 'Records creator, type',
+          description: `
+            Type of the records creator.
           `
         },
         creator_gender: {
