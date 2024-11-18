@@ -118,14 +118,6 @@
                                 "onlyOnInstancePage": true
                             },
                             {
-                                "id": "numSent",
-                                "valueType": "string",
-                                "makeLink": false,
-                                "externalLink": false,
-                                "sortValues": false,
-                                "numberedList": false
-                            },
-                            {
                                 "id": "sentletter",
                                 "valueType": "object",
                                 "makeLink": true,
@@ -212,84 +204,44 @@
                     },
                     "actorInstancePageTopCorrespondences": {
                         "tabID": 3,
-                        "component": "ApexChartsDouble",
+                        "component": "ApexCharts",
                         "pageType": "instancePage",
                         "tabPath": "top-correspondences",
                         "tabIcon": "Tune",
-                        "upperResultClass": "actorInstancePageDoubleUpper",
-                        "lowerResultClass": "actorInstancePageDoubleLower",
-                        "resultClasses": {
-                            "actorInstancePageDoubleUpper": {
-                                "title": "Top {} Correspondences",
-                                "pageType": "instancePage",
-                                "height": "60%",
-                                "sparqlQuery": "topCorrespondenceInstancePageQuery",
-                                "filterTarget": "instance",
-                                "resultMapper": "createCorrespondenceChartData",
-                                "resultMapperConfig": {
-                                    "types": ["to", "from"],
-                                    "numberTopResults": 10
-                                },
-                                "createChartData": "createTopTimelineChartData",
-                                "fill": { "opacity": [0.7, 0.5] },
-                                "markers": {
-                                    "strokeColors": "#777",
-                                    "strokeWidth": 1
-                                },
-                                "dataLabels": {
-                                    "enabled": false
-                                },
-                                "plotOptions": {
-                                    "bubble": {
-                                      "zScaling": true,
-                                      "minBubbleRadius": 2,
-                                      "maxBubbleRadius": 50
-                                    }
-                                },
-                                "legend": { "position": "bottom" },
-                                "grid": {
-                                    "row": {
-                                      "colors": ["#d5d5d5", "transparent"], "opacity": 0.5
-                                    },
-                                    "column": { "colors": ["#a8a8a8", "transparent"] },
-                                    "xaxis": { "lines": { "show": true } },
-                                    "yaxis": { "lines": { "show": true } }
-                                }
-                            },
-                            "actorInstancePageDoubleLower": {
-                                "pageType": "instancePage",
-                                "height": "40%",
-                                "filterTarget": "instance",
-                                "sparqlQuery": "sentReceivedInstancePageQuery",
-                                "resultMapper": "createCorrespondenceChartDataLower",
-                                "resultMapperConfig": {
-                                    "fillEmptyValues": true
-                                },
-                                "createChartData": "createTopTimelineChartData2",
-                                "title": { "text": "Letters by Year", "align": "left" },
-                                "xaxis": {
-                                    "type": "datetime",
-                                    "tooltip": { "enabled": true }
-                                },
-                                "yaxis": {
-                                    "labels": { "minWidth": 150, "maxWidth": 300 }
-                                },
-                                "grid": {
-                                    "column": { "colors": ["#a8a8a8", "transparent"] },
-                                    "xaxis": { "lines": { "show": true } },
-                                    "yaxis": { "lines": { "show": true } }
-                                },
-                                "tooltip": { "x": { "format": "yyyy" } },
-                                "stroke": { "curve": "stepline", "width": 1 },
-                                "fill": {
-                                    "type": "gradient",
-                                    "gradient": {
-                                        "shadeIntensity": 1,
-                                        "opacityFrom": 0.3,
-                                        "opacityTo": 0.6
-                                    }
-                                }
+                        "ResultClasses": "actorInstancePageDoubleUpper",
+                        "title": "Top {} Correspondences",
+                        "height": "100%",
+                        "sparqlQuery": "topCorrespondenceInstancePageQuery",
+                        "filterTarget": "instance",
+                        "resultMapper": "createCorrespondenceChartData",
+                        "resultMapperConfig": {
+                            "types": ["to", "from"],
+                            "numberTopResults": 20
+                        },
+                        "createChartData": "createTopTimelineChartData",
+                        "fill": { "opacity": [0.7, 0.5] },
+                        "markers": {
+                            "strokeColors": "#777",
+                            "strokeWidth": 1
+                        },
+                        "dataLabels": {
+                            "enabled": false
+                        },
+                        "plotOptions": {
+                            "bubble": {
+                                "zScaling": true,
+                                "minBubbleRadius": 2,
+                                "maxBubbleRadius": 50
                             }
+                        },
+                        "legend": { "position": "bottom" },
+                        "grid": {
+                            "row": {
+                                "colors": ["#d5d5d5", "transparent"], "opacity": 0.5
+                            },
+                            "column": { "colors": ["#a8a8a8", "transparent"] },
+                            "xaxis": { "lines": { "show": true } },
+                            "yaxis": { "lines": { "show": true } }
                         }
                     },
                     "actorInstancePageLetterNetwork": {
@@ -379,7 +331,7 @@
                         "queryType": "signature"
                     },
                     "instancePageExport": {
-                        "tabID": 5,
+                        "tabID": 6,
                         "component": "Export",
                         "tabPath": "export",
                         "tabIcon": "CloudDownload",
