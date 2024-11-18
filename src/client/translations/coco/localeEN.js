@@ -587,6 +587,12 @@ export default {
             Archival organization
           `
         },
+        digital_edition: {
+          label: 'Digital Edition',
+          description: `
+            Digital Edition
+          `
+        },
         original_record: {
           label: 'Original record',
           description: `
@@ -786,7 +792,25 @@ export default {
         creator: {
           label: 'Records creator',
           description: `
-            Actor related to the fonds.
+            Records creator of the fonds.
+          `
+        },
+        creator_gender: {
+          label: 'Records creator, gender',
+          description: `
+            Gender of the records creator.
+          `
+        },
+        creator_occupation: {
+          label: 'Records creator, occupation',
+          description: `
+            Occupation of the records creator.
+          `
+        },
+        creator_external: {
+          label: 'Records creator, external database',
+          description: `
+            Records creators in  external databases.
           `
         },
         related: {

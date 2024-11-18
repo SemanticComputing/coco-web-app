@@ -216,29 +216,17 @@
         }
     ],
     "facets": {
-        "datasource": {
-            "containerClass": "ten",
-            "facetType": "list",
-            "predicate": "dct:source",
-            "filterType": "uriFilter",
-            "sortBy": "instanceCount",
-            "sortDirection": "desc",
-            "pieChartButton": true,
-            "sortButton": true,
-            "hideUnknownValue": true,
-            "sortByPredicate": "dct:source/skos:prefLabel"
-        },
         "archival_organization": {
             "containerClass": "ten",
             "facetType": "list",
-            "predicate": ":archival_organization",
+            "predicate": ":archival_organization/:proxy_for",
             "filterType": "uriFilter",
             "sortBy": "instanceCount",
             "sortDirection": "desc",
             "pieChartButton": true,
             "sortButton": true,
             "hideUnknownValue": true,
-            "sortByPredicate": ":archival_organization/skos:prefLabel"
+            "sortByPredicate": ":archival_organization/:proxy_for/skos:prefLabel"
         },
         "fonds": {
             "containerClass": "ten",
@@ -263,6 +251,54 @@
             "searchField": true,
             "sortButton": true,
             "sortByPredicate": "skos:prefLabel"
+        },
+        "creator_gender": {
+            "containerClass": "five",
+            "facetType": "list",
+            "predicate": "portal:gender",
+            "filterType": "uriFilter",
+            "sortBy": "instanceCount",
+            "sortDirection": "desc",
+            "pieChartButton": true,
+            "searchField": true,
+            "sortButton": true,
+            "sortByPredicate": "skos:prefLabel"
+        },
+        "creator_occupation": {
+            "containerClass": "ten",
+            "facetType": "list",
+            "predicate": "portal:occupation",
+            "filterType": "uriFilter",
+            "sortBy": "instanceCount",
+            "sortDirection": "desc",
+            "pieChartButton": true,
+            "searchField": true,
+            "sortButton": true,
+            "sortByPredicate": "skos:prefLabel"
+        },
+        "creator_external": {
+            "containerClass": "ten",
+            "facetType": "list",
+            "predicate": "portal:external",
+            "filterType": "uriFilter",
+            "sortBy": "instanceCount",
+            "sortDirection": "desc",
+            "pieChartButton": true,
+            "searchField": true,
+            "sortButton": true,
+            "sortByPredicate": "skos:prefLabel"
+        },
+        "datasource": {
+            "containerClass": "ten",
+            "facetType": "list",
+            "predicate": "dct:source",
+            "filterType": "uriFilter",
+            "sortBy": "instanceCount",
+            "sortDirection": "desc",
+            "pieChartButton": true,
+            "sortButton": true,
+            "hideUnknownValue": true,
+            "sortByPredicate": "dct:source/skos:prefLabel"
         },
         "prefLabel": {
             "sortByPattern": "{ SELECT ?id ?orderBy WHERE { VALUES ?facetClass { <FACET_CLASS> } ?id a ?facetClass ; skos:prefLabel ?orderBy }}"

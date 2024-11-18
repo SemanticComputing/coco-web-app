@@ -90,14 +90,6 @@
                                 "expandedOnInstancePage": true
                             },
                             {
-                                "id": "numSent",
-                                "valueType": "string",
-                                "makeLink": false,
-                                "externalLink": false,
-                                "sortValues": false,
-                                "numberedList": false
-                            },
-                            {
                                 "id": "archival_organization",
                                 "valueType": "string",
                                 "makeLink": false,
@@ -124,6 +116,14 @@
                                 "numberedList": true,
                                 "expandedOnInstancePage": true,
                                 "onlyOnInstancePage": true
+                            },
+                            {
+                                "id": "numSent",
+                                "valueType": "string",
+                                "makeLink": false,
+                                "externalLink": false,
+                                "sortValues": false,
+                                "numberedList": false
                             },
                             {
                                 "id": "sentletter",
@@ -728,8 +728,7 @@
             "sortBy": "instanceCount",
             "sortDirection": "desc",
             "pieChartButton": true,
-            "sortByPredicate": "portal:portal_class/skos:prefLabel",
-            "hideUnknownValue": true
+            "sortByPredicate": "portal:portal_class/skos:prefLabel"
         },
         "gender": {
             "containerClass": "three",

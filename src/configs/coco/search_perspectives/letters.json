@@ -498,6 +498,19 @@
             "sortByPredicate": ":type/skos:prefLabel",
             "hideUnknownValue": true
         },
+        "digital_edition": {
+            "containerClass": "six",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "predicate": ":digital_edition",
+            "searchField": false,
+            "sortBy": "instanceCount",
+            "sortDirection": "desc",
+            "sortButton": true,
+            "pieChartButton": true,
+            "sortByPredicate": ":digital_edition/skos:prefLabel",
+            "hideUnknownValue": true
+        },
         "datasource": {
             "containerClass": "ten",
             "facetType": "list",
