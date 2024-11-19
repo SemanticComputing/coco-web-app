@@ -313,7 +313,7 @@ SELECT *
           }
           ?in_fonds__id skos:prefLabel ?_label ;
             a [] .
-          OPTIONAL { ?in_fonds__id :archival_organization/skos:prefLabel ?_org . 
+          OPTIONAL { ?in_fonds__id :archival_organization/:proxy_for/skos:prefLabel ?_org . 
             BIND (CONCAT(' (', str(?_org), ') ') AS ?_org2)
           }
         }
@@ -329,14 +329,14 @@ SELECT *
       UNION
       {
         ?prx (^:was_authored_by)/:archival_organization [ 
-          a [] ; 
-          skos:prefLabel ?archival_organization ]
+          a [] ;
+          :proxy_for/skos:prefLabel ?archival_organization ]
       }
       UNION
       {
         ?prx (^:was_addressed_to)/:archival_organization [ 
           a [] ; 
-          skos:prefLabel ?archival_organization ]
+          :proxy_for/skos:prefLabel ?archival_organization ]
       }
       UNION
       { 
