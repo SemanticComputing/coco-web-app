@@ -118,6 +118,14 @@
                                 "onlyOnInstancePage": true
                             },
                             {
+                                "id": "numSent",
+                                "valueType": "string",
+                                "makeLink": false,
+                                "externalLink": false,
+                                "sortValues": false,
+                                "numberedList": false
+                            },
+                            {
                                 "id": "sentletter",
                                 "valueType": "object",
                                 "makeLink": true,
