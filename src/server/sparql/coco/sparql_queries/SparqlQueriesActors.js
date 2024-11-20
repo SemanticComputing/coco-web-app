@@ -558,8 +558,8 @@ export const networkNodesFacetQuery = `
 
 export const topCorrespondenceInstancePageQuery = `
 SELECT DISTINCT ?id 
-  (?source__label AS ?from__label)
-  (?target__label AS ?to__label)
+  (REPLACE(?source__label, ' [(][0-9-]+[)]$', '') AS ?from__label)
+  (REPLACE(?target__label, ' [(][0-9-]+[)]$', '') AS ?to__label)
   (xsd:date(CONCAT(STR(?year), '-01-01')) AS ?date) 
   ?type
   ?year

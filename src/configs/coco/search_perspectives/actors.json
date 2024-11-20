@@ -231,7 +231,7 @@
                             "bubble": {
                                 "zScaling": true,
                                 "minBubbleRadius": 2,
-                                "maxBubbleRadius": 50
+                                "maxBubbleRadius": 20
                             }
                         },
                         "legend": { "position": "bottom" },

@@ -201,9 +201,9 @@ UNION
  */
 export const topCorrespondenceFacetPageQuery = `
 SELECT DISTINCT 
-  ?from__label 
-  ?to__label 
-	?type 
+  (REPLACE(?_from__label, ' [(][0-9-]+[)]$', '') AS ?from__label)
+  (REPLACE(?_to__label, ' [(][0-9-]+[)]$', '') AS ?to__label)
+	?type
   ?year
   (xsd:date(CONCAT(STR(?year),'-01-01')) AS ?date)
   (COUNT(DISTINCT ?id) AS ?count)
@@ -212,12 +212,12 @@ WHERE {
 
   <FILTER>
 
-  ?id portal:recipient/skos:prefLabel ?to__label ;
+  ?id portal:recipient/skos:prefLabel ?_to__label ;
     :estimated_year ?year ;
-    portal:sender/skos:prefLabel ?from__label .
+    portal:sender/skos:prefLabel ?_from__label .
 
   VALUES ?type { "to" "from" }
-} GROUPBY ?from__label ?to__label ?type ?year LIMIT 100000
+} GROUPBY ?_from__label ?_to__label ?type ?year LIMIT 100000
 `
 
 export const lettersByYearQuery = `
