@@ -12,6 +12,7 @@ export default {
       Historical Letters on the Semantic Web
     `
   },
+  selectEditionPerpective: 'Select a perspective to search letters of specific person:',
   selectPerspective: 'Select a perspective to search and browse the knowledge graph:',
   mainPageImageLicence: 'Images used under license from Wikimedia Commons',
   backendErrorText: 'One of the backend services is not available at the moment. Please try again later.',
@@ -1468,6 +1469,862 @@ export default {
           label: 'Known locations',
           description: `
             List of known locations. The number in parenthesis is the number of sent letters.
+          `
+        }
+      }
+    },
+    snellmanedition: {
+      label: 'Snellman',
+      facetResultsType: 'letters',
+      shortDescription: 'J. V. Snellman',
+      longDescription: `
+      <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
+        Use this perspective to access the letter data in the dataset.
+      </p>
+      <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
+        See <a target="_" href="https://docs.google.com/document/d/e/2PACX-1vRPPYcK4VLKdh_uVbNMZ8diOe0MZhvVjisvVpDCzUn5hMU8SAKfG5QF8iwS6grYpXB41PfzDkT0tttg/pub">instructions</a> for using the
+        filters. The result view can be selected using the tabs:
+      </p>
+      <ul class="MuiTypography-root MuiTypography-body1">
+      <li>
+        <strong>TABLE</STRONG> view includes all letter in
+        the CoCo data. One table row is equivalent to one letter.
+      </li>
+      <li>
+        <strong>BY YEAR</strong> includes a chart showing the yearly distribution of letters in the database.
+      </li>
+      <li>
+        <strong>MAP</strong> includes a map showing the locations of sending the letters. 
+        Clicking on a marker opens up a popup showing a list of actors have sent letters from each location.
+      </li>
+      <li>
+        <strong>HEATMAP</strong> includes a heatmap showing the locations of letters activities.
+      </li>
+      <li>
+        <strong>TOP CORRESPONDENTS</STRONG> view shows a timeline of letters and most important correspondents. The upper chart of the timeline shows the activities using a precision of one day, the lower one the yearly amounts of sent and received letters.
+        NB. Letters having more approximate temporal information, e.g. 'sent 1860-1865' show up on the first year of that time period, e.g. '1860'.
+      </li>
+      <li>
+        <strong>EXPORT</strong> the SPARQL query used to generate the result
+        table view into YASGUI query editor.
+      </li>
+    </ul>
+      `,
+      instancePage: {
+        label: 'Letter',
+        description: `
+          <h6 class="MuiTypography-root MuiTypography-h6">
+            Page tabs
+          </h6>
+          <ul class="MuiTypography-root MuiTypography-body1">
+            <li>
+              <strong>TABLE</strong> show the available information about the letter in the database.
+            </li>
+            <li>
+              <strong>EXPORT</strong> the SPARQL query used to generate the result
+              table view into YASGUI query editor.
+            </li>
+          </ul>
+          <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph"></p>
+        `
+      },
+      properties: {
+        uri: {
+          label: 'URI',
+          description: 'Uniform Resource Identifier'
+        },
+        prefLabel: {
+          label: 'Label',
+          description: 'The label of the Letter'
+        },
+        language: {
+          label: 'Language',
+          description: `
+            The language in which a Work is written in the manuscript
+            (i.e., an “Expression” of a Work). One manuscript may contain multiple languages.
+          `
+        },
+        subject: {
+          label: 'Subject',
+          description: `
+            The subject of the letter.
+          `
+        },
+        datasource: {
+          label: 'Data source',
+          description: `
+            The data source of the letter.
+          `
+        },
+        description: {
+          label: 'Description',
+          description: `
+          The description of the letter content.
+          `
+        },
+        comment: {
+          label: 'Comment',
+          description: `
+          Comments marked with the letter.
+          `
+        },
+        productionTimespan: {
+          label: 'Date',
+          description: `
+            The date(s) when the manuscript(s) in which the Work can be found were written.
+            Multiple production dates may appear for a single manuscript,
+            when there are discrepancies between the contributing data source
+            or when the precise date is uncertain.
+          `
+        },
+        archival_organization: {
+          label: 'Archival organization',
+          description: `
+            Archival organization
+          `
+        },
+        digital_edition: {
+          label: 'Digital Edition',
+          description: `
+            Digital Edition
+          `
+        },
+        original_record: {
+          label: 'Original record',
+          description: `
+          Original record.
+          `
+        },
+        fonds: {
+          label: 'Fonds',
+          description: `
+            Fonds
+          `
+        },
+        series: {
+          label: 'Series',
+          description: `
+            Series
+          `
+        },
+        source: {
+          label: 'Sender',
+          description: `
+          Search for a sender by name. 
+          Search is based on Apache Lucene index search. 
+          In addition to simple searches, you can use wildcard matching, e.g. Finland*. 
+          You can also use the logical operators AND, OR and NOT, but then the search must be written in parentheses, e.g., like this (Jean AND Sibelius)'
+          `
+        },
+        target: {
+          label: 'Recipient',
+          description: `
+          Search for a recipient by name. 
+          Search is based on Apache Lucene index search. 
+          In addition to simple searches, you can use wildcard matching, e.g. Finland*. 
+          You can also use the logical operators AND, OR and NOT, but then the search must be written in parentheses, e.g., like this (Jean AND Sibelius)'
+          `
+        },
+        mentioned_person: {
+          label: 'Mentioned actor',
+          description: `
+          Actors mentioned in the letter.
+          `
+        },
+        mentioned_place: {
+          label: 'Mentioned place',
+          description: `
+          Places mentioned in the letter.
+          `
+        },
+        store: {
+          label: 'Stored in',
+          description: `
+          A place where this letter is stored.
+          `
+        },
+        tie: {
+          label: 'Correspondence',
+          description: `
+          Correspondence of all letters between the sender and the recipient.
+          `
+        },
+        from: {
+          label: 'Place of sending',
+          description: `
+          Place from where the letter was sent.
+          `
+        },
+        lettertype: {
+          label: 'Type of letter',
+          description: `
+          Comments marked with the letter.
+          `
+        },
+        record_value: {
+          label: 'Metadata record values',
+          description: `
+            Textual values in the letter metadata record
+          `
+        },
+        other: {
+          label: 'Related letters',
+          description: `
+            List of all letters having the same metadata record
+          `
+        },
+        related: {
+          label: 'External links',
+          description: `
+            External links providing more information about this letter
+          `
+        },
+        source_url: {
+          label: 'External data source',
+          description: `
+            External data source for the letter information
+          `
+        }
+      }
+    },
+    topeliusedition: {
+      label: 'Topelius',
+      facetResultsType: 'letters',
+      shortDescription: 'Topelius',
+      longDescription: `
+      <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
+        Use this perspective to access the letter data in the dataset.
+      </p>
+      <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
+        See <a target="_" href="https://docs.google.com/document/d/e/2PACX-1vRPPYcK4VLKdh_uVbNMZ8diOe0MZhvVjisvVpDCzUn5hMU8SAKfG5QF8iwS6grYpXB41PfzDkT0tttg/pub">instructions</a> for using the
+        filters. The result view can be selected using the tabs:
+      </p>
+      <ul class="MuiTypography-root MuiTypography-body1">
+      <li>
+        <strong>TABLE</STRONG> view includes all letter in
+        the CoCo data. One table row is equivalent to one letter.
+      </li>
+      <li>
+        <strong>BY YEAR</strong> includes a chart showing the yearly distribution of letters in the database.
+      </li>
+      <li>
+        <strong>MAP</strong> includes a map showing the locations of sending the letters. 
+        Clicking on a marker opens up a popup showing a list of actors have sent letters from each location.
+      </li>
+      <li>
+        <strong>HEATMAP</strong> includes a heatmap showing the locations of letters activities.
+      </li>
+      <li>
+        <strong>TOP CORRESPONDENTS</STRONG> view shows a timeline of letters and most important correspondents. The upper chart of the timeline shows the activities using a precision of one day, the lower one the yearly amounts of sent and received letters.
+        NB. Letters having more approximate temporal information, e.g. 'sent 1860-1865' show up on the first year of that time period, e.g. '1860'.
+      </li>
+      <li>
+        <strong>EXPORT</strong> the SPARQL query used to generate the result
+        table view into YASGUI query editor.
+      </li>
+    </ul>
+      `,
+      instancePage: {
+        label: 'Letter',
+        description: `
+          <h6 class="MuiTypography-root MuiTypography-h6">
+            Page tabs
+          </h6>
+          <ul class="MuiTypography-root MuiTypography-body1">
+            <li>
+              <strong>TABLE</strong> show the available information about the letter in the database.
+            </li>
+            <li>
+              <strong>EXPORT</strong> the SPARQL query used to generate the result
+              table view into YASGUI query editor.
+            </li>
+          </ul>
+          <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph"></p>
+        `
+      },
+      properties: {
+        uri: {
+          label: 'URI',
+          description: 'Uniform Resource Identifier'
+        },
+        prefLabel: {
+          label: 'Label',
+          description: 'The label of the Letter'
+        },
+        language: {
+          label: 'Language',
+          description: `
+            The language in which a Work is written in the manuscript
+            (i.e., an “Expression” of a Work). One manuscript may contain multiple languages.
+          `
+        },
+        subject: {
+          label: 'Subject',
+          description: `
+            The subject of the letter.
+          `
+        },
+        datasource: {
+          label: 'Data source',
+          description: `
+            The data source of the letter.
+          `
+        },
+        description: {
+          label: 'Description',
+          description: `
+          The description of the letter content.
+          `
+        },
+        comment: {
+          label: 'Comment',
+          description: `
+          Comments marked with the letter.
+          `
+        },
+        productionTimespan: {
+          label: 'Date',
+          description: `
+            The date(s) when the manuscript(s) in which the Work can be found were written.
+            Multiple production dates may appear for a single manuscript,
+            when there are discrepancies between the contributing data source
+            or when the precise date is uncertain.
+          `
+        },
+        archival_organization: {
+          label: 'Archival organization',
+          description: `
+            Archival organization
+          `
+        },
+        digital_edition: {
+          label: 'Digital Edition',
+          description: `
+            Digital Edition
+          `
+        },
+        original_record: {
+          label: 'Original record',
+          description: `
+          Original record.
+          `
+        },
+        fonds: {
+          label: 'Fonds',
+          description: `
+            Fonds
+          `
+        },
+        series: {
+          label: 'Series',
+          description: `
+            Series
+          `
+        },
+        source: {
+          label: 'Sender',
+          description: `
+          Search for a sender by name. 
+          Search is based on Apache Lucene index search. 
+          In addition to simple searches, you can use wildcard matching, e.g. Finland*. 
+          You can also use the logical operators AND, OR and NOT, but then the search must be written in parentheses, e.g., like this (Jean AND Sibelius)'
+          `
+        },
+        target: {
+          label: 'Recipient',
+          description: `
+          Search for a recipient by name. 
+          Search is based on Apache Lucene index search. 
+          In addition to simple searches, you can use wildcard matching, e.g. Finland*. 
+          You can also use the logical operators AND, OR and NOT, but then the search must be written in parentheses, e.g., like this (Jean AND Sibelius)'
+          `
+        },
+        mentioned_person: {
+          label: 'Mentioned actor',
+          description: `
+          Actors mentioned in the letter.
+          `
+        },
+        mentioned_place: {
+          label: 'Mentioned place',
+          description: `
+          Places mentioned in the letter.
+          `
+        },
+        store: {
+          label: 'Stored in',
+          description: `
+          A place where this letter is stored.
+          `
+        },
+        tie: {
+          label: 'Correspondence',
+          description: `
+          Correspondence of all letters between the sender and the recipient.
+          `
+        },
+        from: {
+          label: 'Place of sending',
+          description: `
+          Place from where the letter was sent.
+          `
+        },
+        lettertype: {
+          label: 'Type of letter',
+          description: `
+          Comments marked with the letter.
+          `
+        },
+        record_value: {
+          label: 'Metadata record values',
+          description: `
+            Textual values in the letter metadata record
+          `
+        },
+        other: {
+          label: 'Related letters',
+          description: `
+            List of all letters having the same metadata record
+          `
+        },
+        related: {
+          label: 'External links',
+          description: `
+            External links providing more information about this letter
+          `
+        },
+        source_url: {
+          label: 'External data source',
+          description: `
+            External data source for the letter information
+          `
+        }
+      }
+    },
+    lonnrotedition: {
+      label: 'Lönnrot',
+      facetResultsType: 'letters',
+      shortDescription: 'Elias Lönnrot',
+      longDescription: `
+      <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
+        Use this perspective to access the letter data in the dataset.
+      </p>
+      <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
+        See <a target="_" href="https://docs.google.com/document/d/e/2PACX-1vRPPYcK4VLKdh_uVbNMZ8diOe0MZhvVjisvVpDCzUn5hMU8SAKfG5QF8iwS6grYpXB41PfzDkT0tttg/pub">instructions</a> for using the
+        filters. The result view can be selected using the tabs:
+      </p>
+      <ul class="MuiTypography-root MuiTypography-body1">
+      <li>
+        <strong>TABLE</STRONG> view includes all letter in
+        the CoCo data. One table row is equivalent to one letter.
+      </li>
+      <li>
+        <strong>BY YEAR</strong> includes a chart showing the yearly distribution of letters in the database.
+      </li>
+      <li>
+        <strong>MAP</strong> includes a map showing the locations of sending the letters. 
+        Clicking on a marker opens up a popup showing a list of actors have sent letters from each location.
+      </li>
+      <li>
+        <strong>HEATMAP</strong> includes a heatmap showing the locations of letters activities.
+      </li>
+      <li>
+        <strong>TOP CORRESPONDENTS</STRONG> view shows a timeline of letters and most important correspondents. The upper chart of the timeline shows the activities using a precision of one day, the lower one the yearly amounts of sent and received letters.
+        NB. Letters having more approximate temporal information, e.g. 'sent 1860-1865' show up on the first year of that time period, e.g. '1860'.
+      </li>
+      <li>
+        <strong>EXPORT</strong> the SPARQL query used to generate the result
+        table view into YASGUI query editor.
+      </li>
+    </ul>
+      `,
+      instancePage: {
+        label: 'Letter',
+        description: `
+          <h6 class="MuiTypography-root MuiTypography-h6">
+            Page tabs
+          </h6>
+          <ul class="MuiTypography-root MuiTypography-body1">
+            <li>
+              <strong>TABLE</strong> show the available information about the letter in the database.
+            </li>
+            <li>
+              <strong>EXPORT</strong> the SPARQL query used to generate the result
+              table view into YASGUI query editor.
+            </li>
+          </ul>
+          <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph"></p>
+        `
+      },
+      properties: {
+        uri: {
+          label: 'URI',
+          description: 'Uniform Resource Identifier'
+        },
+        prefLabel: {
+          label: 'Label',
+          description: 'The label of the Letter'
+        },
+        language: {
+          label: 'Language',
+          description: `
+            The language in which a Work is written in the manuscript
+            (i.e., an “Expression” of a Work). One manuscript may contain multiple languages.
+          `
+        },
+        subject: {
+          label: 'Subject',
+          description: `
+            The subject of the letter.
+          `
+        },
+        datasource: {
+          label: 'Data source',
+          description: `
+            The data source of the letter.
+          `
+        },
+        description: {
+          label: 'Description',
+          description: `
+          The description of the letter content.
+          `
+        },
+        comment: {
+          label: 'Comment',
+          description: `
+          Comments marked with the letter.
+          `
+        },
+        productionTimespan: {
+          label: 'Date',
+          description: `
+            The date(s) when the manuscript(s) in which the Work can be found were written.
+            Multiple production dates may appear for a single manuscript,
+            when there are discrepancies between the contributing data source
+            or when the precise date is uncertain.
+          `
+        },
+        archival_organization: {
+          label: 'Archival organization',
+          description: `
+            Archival organization
+          `
+        },
+        digital_edition: {
+          label: 'Digital Edition',
+          description: `
+            Digital Edition
+          `
+        },
+        original_record: {
+          label: 'Original record',
+          description: `
+          Original record.
+          `
+        },
+        fonds: {
+          label: 'Fonds',
+          description: `
+            Fonds
+          `
+        },
+        series: {
+          label: 'Series',
+          description: `
+            Series
+          `
+        },
+        source: {
+          label: 'Sender',
+          description: `
+          Search for a sender by name. 
+          Search is based on Apache Lucene index search. 
+          In addition to simple searches, you can use wildcard matching, e.g. Finland*. 
+          You can also use the logical operators AND, OR and NOT, but then the search must be written in parentheses, e.g., like this (Jean AND Sibelius)'
+          `
+        },
+        target: {
+          label: 'Recipient',
+          description: `
+          Search for a recipient by name. 
+          Search is based on Apache Lucene index search. 
+          In addition to simple searches, you can use wildcard matching, e.g. Finland*. 
+          You can also use the logical operators AND, OR and NOT, but then the search must be written in parentheses, e.g., like this (Jean AND Sibelius)'
+          `
+        },
+        mentioned_person: {
+          label: 'Mentioned actor',
+          description: `
+          Actors mentioned in the letter.
+          `
+        },
+        mentioned_place: {
+          label: 'Mentioned place',
+          description: `
+          Places mentioned in the letter.
+          `
+        },
+        store: {
+          label: 'Stored in',
+          description: `
+          A place where this letter is stored.
+          `
+        },
+        tie: {
+          label: 'Correspondence',
+          description: `
+          Correspondence of all letters between the sender and the recipient.
+          `
+        },
+        from: {
+          label: 'Place of sending',
+          description: `
+          Place from where the letter was sent.
+          `
+        },
+        lettertype: {
+          label: 'Type of letter',
+          description: `
+          Comments marked with the letter.
+          `
+        },
+        record_value: {
+          label: 'Metadata record values',
+          description: `
+            Textual values in the letter metadata record
+          `
+        },
+        other: {
+          label: 'Related letters',
+          description: `
+            List of all letters having the same metadata record
+          `
+        },
+        related: {
+          label: 'External links',
+          description: `
+            External links providing more information about this letter
+          `
+        },
+        source_url: {
+          label: 'External data source',
+          description: `
+            External data source for the letter information
+          `
+        }
+      }
+    },
+    runebergedition: {
+      label: 'Runeberg',
+      facetResultsType: 'letters',
+      shortDescription: 'Johan Ludvig Runeberg',
+      longDescription: `
+      <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
+        Use this perspective to access the letter data in the dataset.
+      </p>
+      <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
+        See <a target="_" href="https://docs.google.com/document/d/e/2PACX-1vRPPYcK4VLKdh_uVbNMZ8diOe0MZhvVjisvVpDCzUn5hMU8SAKfG5QF8iwS6grYpXB41PfzDkT0tttg/pub">instructions</a> for using the
+        filters. The result view can be selected using the tabs:
+      </p>
+      <ul class="MuiTypography-root MuiTypography-body1">
+      <li>
+        <strong>TABLE</STRONG> view includes all letter in
+        the CoCo data. One table row is equivalent to one letter.
+      </li>
+      <li>
+        <strong>BY YEAR</strong> includes a chart showing the yearly distribution of letters in the database.
+      </li>
+      <li>
+        <strong>MAP</strong> includes a map showing the locations of sending the letters. 
+        Clicking on a marker opens up a popup showing a list of actors have sent letters from each location.
+      </li>
+      <li>
+        <strong>HEATMAP</strong> includes a heatmap showing the locations of letters activities.
+      </li>
+      <li>
+        <strong>TOP CORRESPONDENTS</STRONG> view shows a timeline of letters and most important correspondents. The upper chart of the timeline shows the activities using a precision of one day, the lower one the yearly amounts of sent and received letters.
+        NB. Letters having more approximate temporal information, e.g. 'sent 1860-1865' show up on the first year of that time period, e.g. '1860'.
+      </li>
+      <li>
+        <strong>EXPORT</strong> the SPARQL query used to generate the result
+        table view into YASGUI query editor.
+      </li>
+    </ul>
+      `,
+      instancePage: {
+        label: 'Letter',
+        description: `
+          <h6 class="MuiTypography-root MuiTypography-h6">
+            Page tabs
+          </h6>
+          <ul class="MuiTypography-root MuiTypography-body1">
+            <li>
+              <strong>TABLE</strong> show the available information about the letter in the database.
+            </li>
+            <li>
+              <strong>EXPORT</strong> the SPARQL query used to generate the result
+              table view into YASGUI query editor.
+            </li>
+          </ul>
+          <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph"></p>
+        `
+      },
+      properties: {
+        uri: {
+          label: 'URI',
+          description: 'Uniform Resource Identifier'
+        },
+        prefLabel: {
+          label: 'Label',
+          description: 'The label of the Letter'
+        },
+        language: {
+          label: 'Language',
+          description: `
+            The language in which a Work is written in the manuscript
+            (i.e., an “Expression” of a Work). One manuscript may contain multiple languages.
+          `
+        },
+        subject: {
+          label: 'Subject',
+          description: `
+            The subject of the letter.
+          `
+        },
+        datasource: {
+          label: 'Data source',
+          description: `
+            The data source of the letter.
+          `
+        },
+        description: {
+          label: 'Description',
+          description: `
+          The description of the letter content.
+          `
+        },
+        comment: {
+          label: 'Comment',
+          description: `
+          Comments marked with the letter.
+          `
+        },
+        productionTimespan: {
+          label: 'Date',
+          description: `
+            The date(s) when the manuscript(s) in which the Work can be found were written.
+            Multiple production dates may appear for a single manuscript,
+            when there are discrepancies between the contributing data source
+            or when the precise date is uncertain.
+          `
+        },
+        archival_organization: {
+          label: 'Archival organization',
+          description: `
+            Archival organization
+          `
+        },
+        digital_edition: {
+          label: 'Digital Edition',
+          description: `
+            Digital Edition
+          `
+        },
+        original_record: {
+          label: 'Original record',
+          description: `
+          Original record.
+          `
+        },
+        fonds: {
+          label: 'Fonds',
+          description: `
+            Fonds
+          `
+        },
+        series: {
+          label: 'Series',
+          description: `
+            Series
+          `
+        },
+        source: {
+          label: 'Sender',
+          description: `
+          Search for a sender by name. 
+          Search is based on Apache Lucene index search. 
+          In addition to simple searches, you can use wildcard matching, e.g. Finland*. 
+          You can also use the logical operators AND, OR and NOT, but then the search must be written in parentheses, e.g., like this (Jean AND Sibelius)'
+          `
+        },
+        target: {
+          label: 'Recipient',
+          description: `
+          Search for a recipient by name. 
+          Search is based on Apache Lucene index search. 
+          In addition to simple searches, you can use wildcard matching, e.g. Finland*. 
+          You can also use the logical operators AND, OR and NOT, but then the search must be written in parentheses, e.g., like this (Jean AND Sibelius)'
+          `
+        },
+        mentioned_person: {
+          label: 'Mentioned actor',
+          description: `
+          Actors mentioned in the letter.
+          `
+        },
+        mentioned_place: {
+          label: 'Mentioned place',
+          description: `
+          Places mentioned in the letter.
+          `
+        },
+        store: {
+          label: 'Stored in',
+          description: `
+          A place where this letter is stored.
+          `
+        },
+        tie: {
+          label: 'Correspondence',
+          description: `
+          Correspondence of all letters between the sender and the recipient.
+          `
+        },
+        from: {
+          label: 'Place of sending',
+          description: `
+          Place from where the letter was sent.
+          `
+        },
+        lettertype: {
+          label: 'Type of letter',
+          description: `
+          Comments marked with the letter.
+          `
+        },
+        record_value: {
+          label: 'Metadata record values',
+          description: `
+            Textual values in the letter metadata record
+          `
+        },
+        other: {
+          label: 'Related letters',
+          description: `
+            List of all letters having the same metadata record
+          `
+        },
+        related: {
+          label: 'External links',
+          description: `
+            External links providing more information about this letter
+          `
+        },
+        source_url: {
+          label: 'External data source',
+          description: `
+            External data source for the letter information
           `
         }
       }

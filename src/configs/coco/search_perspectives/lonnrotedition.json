@@ -1,0 +1,517 @@
+{
+    "id": "lonnrotedition",
+    "endpoint": {
+        "url": "https://ldf.fi/coco/sparql",
+        "useAuth": true,
+        "prefixesFile": "SparqlQueriesPrefixes.js"
+    },
+    "sparqlQueriesFile": "SparqlQueriesLetters.js",
+    "baseURI": "http://ldf.fi/coco",
+    "URITemplate": "<BASE_URI>/letters/<LOCAL_ID>",
+    "facetClass": ":Letter",
+    "frontPageImage": "main_page/works-452x262.jpg",
+    "searchMode": "faceted-search",
+    "defaultActiveFacets": [
+        "prefLabel"
+    ],
+    "defaultTab": "table",
+    "defaultInstancePageTab": "table",
+    "maps": {
+        "lettersMigrations": {
+            "center": [
+                22.43,
+                10.37
+            ],
+            "zoom": 2
+        },
+        "sendingPlacesHeatmap": {
+            "center": [
+                65.184809,
+                27.314050
+            ],
+            "zoom": 4
+        },
+        "activitiesByPlace": {
+            "center": [
+                65.184809,
+                27.314050
+            ],
+            "zoom": 4
+        }
+    },
+    "resultClasses": {
+        "lonnrotedition": {
+            "paginatedResultsConfig": {
+                "tabID": 0,
+                "component": "ResultTable",
+                "tabPath": "table",
+                "tabIcon": "CalendarViewDay",
+                "propertiesQueryBlock": "letterProperties",
+                "pagesize": 30,
+                "sortBy": null,
+                "sortDirection": null
+            },
+            "instanceConfig": {
+                "propertiesQueryBlock": "letterPropertiesInstancePage",
+                "instancePageResultClasses": {
+                    "instancePageTable": {
+                        "tabID": 0,
+                        "component": "InstancePageTable",
+                        "tabPath": "table",
+                        "tabIcon": "CalendarViewDay"
+                    },
+                    "instancePageExport": {
+                        "tabID": 1,
+                        "component": "Export",
+                        "tabPath": "export",
+                        "tabIcon": "CloudDownload",
+                        "pageType": "instancePage"
+                    }
+                }
+            }
+        },
+        "lettersByYear": {
+            "tabID": 1,
+            "component": "ApexCharts",
+            "tabPath": "by-year",
+            "tabIcon": "ShowChart",
+            "sparqlQuery": "lettersByYearQuery",
+            "facetClass": "letters",
+            "filterTarget": "letter",
+            "resultMapper": "mapLineChart",
+            "resultMapperConfig": {
+                "fillEmptyValues": false
+            },
+            "createChartData": "createSingleLineChartData",
+            "title": "Letters by year",
+            "xaxisTitle": "Year",
+            "xaxisType": "category",
+            "xaxisTickAmount": 20,
+            "yaxisTitle": "Number of letters",
+            "seriesTitle": "Number of letters",
+            "stroke": {
+                "curve": "straight",
+                "width": 2
+            }
+        },
+        "activitiesByPlace": {
+            "tabID": 2,
+            "component": "LeafletMap",
+            "tabPath": "map",
+            "tabIcon": "AddLocation",
+            "sparqlQuery": "sendingPlacesMapQuery",
+            "facetClass": "letters",
+            "filterTarget": "letter",
+            "resultMapper": "mapPlaces",
+            "instanceConfig": {
+                "propertiesQueryBlock": "placePropertiesInfoWindow",
+                "relatedInstances": "peopleRelatedTo",
+                "createPopUpContent": "createPopUpContentLetterSampo"
+            }
+        },
+        "sendingPlacesHeatmap": {
+            "tabID": 3,
+            "tabPath": "heatmap",
+            "tabIcon": "LocalFireDepartment",
+            "component": "Deck",
+            "layerType": "heatmapLayer",
+            "sparqlQuery": "sendingPlacesHeatmapQuery",
+            "facetClass": "letters",
+            "filterTarget": "id",
+            "resultMapper": "mapPlaces"
+        },
+        "actorTops": {
+            "tabID": 4,
+            "component": "ApexCharts",
+            "tabPath": "top-correspondents",
+            "tabIcon": "Tune",
+            "title": "Top {} Correspondents",
+            "height": "100%",
+            "facetClass": "letters",
+            "filterTarget": "id",
+            "sparqlQuery": "topCorrespondenceFacetPageQuery",
+            "resultMapper": "createCorrespondenceChartData",
+            "resultMapperConfig": {
+                "types": ["to", "from"],
+                "numberTopResults": 20,
+                "lastLabel": null
+            },
+            "createChartData": "createTopTimelineChartData",
+            "tooltip": { "x": { "format": "yyyy" } },
+            "fill": { "opacity": [0.7, 0.5] },
+            "markers": {
+                "strokeColors": "#777",
+                "strokeWidth": 1
+            },
+            "dataLabels": {
+                "enabled": false
+            },
+            "plotOptions": {
+                "bubble": {
+                    "zScaling": true,
+                    "minBubbleRadius": 2,
+                    "maxBubbleRadius": 20
+                }
+            },
+            "legend": { "position": "bottom" },
+            "grid": {
+                "row": {
+                    "colors": ["#d5d5d5", "transparent"], "opacity": 0.5
+                },
+                "column": { "colors": ["#a8a8a8", "transparent"] },
+                "xaxis": { "lines": { "show": true } },
+                "yaxis": { "lines": { "show": true } }
+            }
+        },
+        "csvLetters": {
+            "tabID": 5,
+            "component": "ExportCSV",
+            "tabPath": "csv",
+            "tabIcon": "CloudDownload",
+            "facetClass": "letters",
+            "sparqlQuery": "csvQueryLetters",
+            "filterTarget": "id"
+        },
+        "export": {
+            "tabID": 6,
+            "component": "Export",
+            "tabPath": "sparql",
+            "tabIcon": "ArrowForward",
+            "resultClass": "letters",
+            "facetClass": "letters"
+        }
+    },
+    "properties": [
+        {
+            "id": "prefLabel",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": false,
+            "sortValues": false,
+            "numberedList": false,
+            "minWidth": 250
+        },
+        {
+            "id": "source",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": false,
+            "minWidth": 200,
+            "expandedOnInstancePage": true
+        },
+        {
+            "id": "target",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": false,
+            "minWidth": 200,
+            "expandedOnInstancePage": true
+        },
+        {
+            "id": "productionTimespan",
+            "valueType": "object",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": false,
+            "minWidth": 100
+        },
+        {
+            "id": "tie",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": false,
+            "sortValues": false,
+            "numberedList": true,
+            "onlyOnInstancePage": true,
+            "expandedOnInstancePage": true
+        },
+        {
+            "id": "from",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": false,
+            "sortValues": true,
+            "onlyOnInstancePage": true,
+            "numberedList": false,
+            "minWidth": 200
+        },
+        {
+            "id": "mentioned_person",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": false,
+            "sortValues": false,
+            "numberedList": true,
+            "onlyOnInstancePage": true,
+            "expandedOnInstancePage": true
+        },
+        {
+            "id": "mentioned_place",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": false,
+            "sortValues": false,
+            "numberedList": true,
+            "onlyOnInstancePage": true,
+            "expandedOnInstancePage": true
+        },
+        {
+            "id": "language",
+            "valueType": "object",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": false,
+            "minWidth": 150,
+            "onlyOnInstancePage": true,
+            "expandedOnInstancePage": true
+        },
+        {
+            "id": "lettertype",
+            "valueType": "string",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": false,
+            "minWidth": 150,
+            "onlyOnInstancePage": true,
+            "expandedOnInstancePage": true
+        },
+        {
+            "id": "datasource",
+            "valueType": "object",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": false,
+            "numberedList": false,
+            "onlyOnInstancePage": false
+        },
+        {
+            "id": "archival_organization",
+            "valueType": "object",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": false,
+            "numberedList": false,
+            "onlyOnInstancePage": false
+        },
+        {
+            "id": "fonds",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": false,
+            "sortValues": false,
+            "numberedList": false
+        },
+        {
+            "id": "series",
+            "valueType": "string",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": false,
+            "numberedList": false,
+            "onlyOnInstancePage": true
+        },
+        {
+            "id": "other",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": false,
+            "sortValues": false,
+            "numberedList": false,
+            "minWidth": 250,
+            "onlyOnInstancePage": true,
+            "expandedOnInstancePage": true
+        },
+        {
+            "id": "record_value",
+            "valueType": "string",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": false,
+            "onlyOnInstancePage": true,
+            "expandedOnInstancePage": true
+        },
+        { 
+            "id": "original_record",
+            "valueType": "string",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": false,
+            "numberedList": false,
+            "onlyOnInstancePage": true
+        },
+        {
+            "id": "related",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": true,
+            "sortValues": true,
+            "numberedList": false,
+            "minWidth": 250,
+            "onlyOnInstancePage": true,
+            "expandedOnInstancePage": true
+        },
+        {
+            "id": "source_url",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": true,
+            "sortValues": true,
+            "numberedList": false,
+            "minWidth": 250,
+            "onlyOnInstancePage": true,
+            "expandedOnInstancePage": true
+        },
+        {
+            "id": "uri",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": true,
+            "sortValues": true,
+            "numberedList": false,
+            "onlyOnInstancePage": true
+        }
+    ],
+    "facets": {
+        "source": {
+            "containerClass": "ten",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "predicate": "portal:sender",
+            "searchField": true,
+            "sortBy": "instanceCount",
+            "sortByPredicate": "portal:sender/skos:prefLabel",
+            "sortDirection": "desc",
+            "pieChartButton": true,
+            "sortButton": true,
+            "hideUnknownValue": true
+        },
+        "target": {
+            "containerClass": "ten",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "predicate": "portal:recipient",
+            "searchField": true,
+            "sortBy": "instanceCount",
+            "sortByPredicate": "portal:recipient/skos:prefLabel",
+            "sortDirection": "desc",
+            "pieChartButton": true,
+            "sortButton": true,
+            "hideUnknownValue": true
+        },
+        "productionTimespan": {
+            "containerClass": "four",
+            "endProperty": "crm:P82b_end_of_the_end",
+            "facetType": "timespan",
+            "filterType": "timespanFilter",
+            "dataType": "xsd:dateTime",
+            "max": null,
+            "min": null,
+            "predicate": ":has_time-span",
+            "sortByAscPredicate": ":has_time-span/crm:P82a_begin_of_the_begin",
+            "sortByDescPredicate": ":has_time-span/crm:P82b_end_of_the_end",
+            "startProperty": "crm:P82a_begin_of_the_begin"
+        },
+        "from": {
+            "containerClass": "seven",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "predicate": ":was_sent_from",
+            "searchField": true,
+            "sortBy": "instanceCount",
+            "sortByPredicate": ":was_sent_from/skos:prefLabel",
+            "sortDirection": "desc",
+            "pieChartButton": true,
+            "sortButton": true,
+            "hideUnknownValue": true
+        },
+        "language": {
+            "containerClass": "seven",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "predicate": "dct:language",
+            "searchField": false,
+            "sortBy": "instanceCount",
+            "sortDirection": "desc",
+            "sortButton": true,
+            "pieChartButton": true,
+            "sortByPredicate": "dct:language/skos:prefLabel",
+            "hideUnknownValue": true
+        },
+        "lettertype": {
+            "containerClass": "seven",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "predicate": ":type",
+            "searchField": false,
+            "sortBy": "instanceCount",
+            "sortDirection": "desc",
+            "sortButton": true,
+            "pieChartButton": true,
+            "sortByPredicate": ":type/skos:prefLabel",
+            "hideUnknownValue": true
+        },
+        "digital_edition": {
+            "containerClass": "six",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "predicate": ":digital_edition",
+            "searchField": false,
+            "sortBy": "instanceCount",
+            "sortDirection": "desc",
+            "sortButton": true,
+            "pieChartButton": true,
+            "sortByPredicate": ":digital_edition/skos:prefLabel",
+            "hideUnknownValue": true
+        },
+        "datasource": {
+            "containerClass": "ten",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "predicate": "dct:source",
+            "searchField": false,
+            "sortBy": "instanceCount",
+            "sortDirection": "desc",
+            "sortButton": true,
+            "pieChartButton": true,
+            "sortByPredicate": "dct:source/skos:prefLabel",
+            "hideUnknownValue": true
+        },
+        "archival_organization": {
+            "containerClass": "ten",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "predicate": ":archival_organization/:proxy_for",
+            "searchField": false,
+            "sortBy": "instanceCount",
+            "sortDirection": "desc",
+            "sortButton": true,
+            "pieChartButton": true,
+            "sortByPredicate": ":archival_organization/:proxy_for/skos:prefLabel",
+            "hideUnknownValue": true
+        },
+        "fonds": {
+            "containerClass": "ten",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "predicate": ":fonds",
+            "searchField": false,
+            "sortBy": "instanceCount",
+            "sortDirection": "desc",
+            "sortButton": true,
+            "pieChartButton": true,
+            "sortByPredicate": ":fonds/skos:prefLabel",
+            "hideUnknownValue": true
+        },
+        "prefLabel": {
+            "sortByPattern": "{ SELECT ?id ?orderBy WHERE { VALUES ?facetClass { <FACET_CLASS> } ?id a ?facetClass ; skos:prefLabel ?orderBy }}"
+        }
+    }
+}

@@ -13,6 +13,15 @@ import { getSpacing } from '../../../helpers/helpers'
  */
 const Main = props => {
   const { perspectives, screenSize, layoutConfig } = props
+  const mainPerspectives = []
+  const editionPerpectives = []
+  perspectives.forEach(perspective => {
+    if (perspective.id.includes('edition')) {
+      editionPerpectives.push(perspective)
+    } else if (perspective.id !== 'fullTextSearch') {
+      mainPerspectives.push(perspective)
+    }
+  })
   const { mainPage } = layoutConfig
   let headingVariant = 'h5'
   let subheadingVariant = 'body1'
@@ -147,7 +156,7 @@ const Main = props => {
           container spacing={screenSize === 'sm' ? 2 : 1}
           justifyContent={screenSize === 'xs' || screenSize === 'sm' ? 'center' : 'flex-start'}
         >
-          {perspectives.map(perspective => {
+          {mainPerspectives.map(perspective => {
             const hideCard = (has(perspective.hideCardOnFrontPage) && perspective.hideCardOnFrontPage)
             if (!hideCard) {
               return (
@@ -169,7 +178,33 @@ const Main = props => {
             justifyContent: 'center'
           })}
         >
+        <Typography variant={descriptionVariant} align='center' color='textPrimary'>
+            {intl.get('selectEditionPerpective')}
+          </Typography>
+          </Box>
+          <Grid
+          container spacing={screenSize === 'sm' ? 2 : 1}
+          justifyContent='center'
+        >
+          {editionPerpectives.map(perspective => {
+            const hideCard = (has(perspective.hideCardOnFrontPage) && perspective.hideCardOnFrontPage)
+            if (!hideCard) {
+              return (
+                <MainCard
+                  key={perspective.id}
+                  perspective={perspective}
+                  cardHeadingVariant='h5'
+                  rootUrl={props.rootUrl}
+                />
+              )
+            }
+            return null
+          })}
+        </Grid>
+        </Box>
+
           <Typography
+            align='center'
             sx={theme => ({
               marginTop: theme.spacing(0.5),
               fontSize: '0.7em'
@@ -178,8 +213,7 @@ const Main = props => {
             {intl.getHTML('mainPageImageLicence')}
           </Typography>
         </Box>
-      </Box>
-    </Box>
+
   )
 }
 
