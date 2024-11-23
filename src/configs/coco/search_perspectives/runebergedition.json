@@ -9,6 +9,7 @@
     "baseURI": "http://ldf.fi/coco",
     "URITemplate": "<BASE_URI>/letters/<LOCAL_ID>",
     "facetClass": ":Letter",
+    "defaultConstraint": "<SUBJECT> portal:sender|portal:recipient <http://ldf.fi/coco/provided/p2393354828548287393> .",
     "frontPageImage": "main_page/runeberg.jpg",
     "searchMode": "faceted-search",
     "defaultActiveFacets": [

@@ -9,6 +9,7 @@
     "baseURI": "http://ldf.fi/coco",
     "URITemplate": "<BASE_URI>/letters/<LOCAL_ID>",
     "facetClass": ":Letter",
+    "defaultConstraint": "<SUBJECT> :digital_edition <http://ldf.fi/coco/source/topelius>  .",
     "frontPageImage": "main_page/topelius.jpg",
     "searchMode": "faceted-search",
     "defaultActiveFacets": [
