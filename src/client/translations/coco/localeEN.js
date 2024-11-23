@@ -12,7 +12,7 @@ export default {
       Historical Letters on the Semantic Web
     `
   },
-  selectEditionPerpective: 'Select a perspective to search letters of specific person:',
+  selectEditionPerpective: 'Select a perspective to search digital edition of letters of specific person:',
   selectPerspective: 'Select a perspective to search and browse the knowledge graph:',
   mainPageImageLicence: 'Images used under license from Wikimedia Commons',
   backendErrorText: 'One of the backend services is not available at the moment. Please try again later.',
@@ -1476,7 +1476,7 @@ export default {
     snellmanedition: {
       label: 'Snellman',
       facetResultsType: 'letters',
-      shortDescription: 'J. V. Snellman',
+      shortDescription: 'Letters of J. V. Snellman',
       longDescription: `
       <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
         Use this perspective to access the letter data in the dataset.
@@ -1690,7 +1690,7 @@ export default {
     topeliusedition: {
       label: 'Topelius',
       facetResultsType: 'letters',
-      shortDescription: 'Topelius',
+      shortDescription: 'Letters of Zacharias Topelius',
       longDescription: `
       <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
         Use this perspective to access the letter data in the dataset.
@@ -1904,7 +1904,7 @@ export default {
     lonnrotedition: {
       label: 'Lönnrot',
       facetResultsType: 'letters',
-      shortDescription: 'Elias Lönnrot',
+      shortDescription: 'Letters of Elias Lönnrot',
       longDescription: `
       <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
         Use this perspective to access the letter data in the dataset.
@@ -2118,7 +2118,7 @@ export default {
     runebergedition: {
       label: 'Runeberg',
       facetResultsType: 'letters',
-      shortDescription: 'Johan Ludvig Runeberg',
+      shortDescription: 'Letters of Johan Ludvig Runeberg',
       longDescription: `
       <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
         Use this perspective to access the letter data in the dataset.

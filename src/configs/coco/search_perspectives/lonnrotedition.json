@@ -9,7 +9,7 @@
     "baseURI": "http://ldf.fi/coco",
     "URITemplate": "<BASE_URI>/letters/<LOCAL_ID>",
     "facetClass": ":Letter",
-    "frontPageImage": "main_page/works-452x262.jpg",
+    "frontPageImage": "main_page/lonnrot.jpg",
     "searchMode": "faceted-search",
     "defaultActiveFacets": [
         "prefLabel"

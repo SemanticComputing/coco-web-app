@@ -171,6 +171,9 @@ const Main = props => {
             return null
           })}
         </Grid>
+        <div>
+           <hr />
+        </div>
         <Box
           sx={theme => ({
             marginTop: theme.spacing(1),
