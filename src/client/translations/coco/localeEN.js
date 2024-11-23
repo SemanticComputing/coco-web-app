@@ -12,7 +12,7 @@ export default {
       Historical Letters on the Semantic Web
     `
   },
-  selectEditionPerpective: 'Select a perspective to search digital edition of letters of specific person:',
+  selectEditionPerpective: 'Search digital editions of letters of specific person (UNDER CONSTRUCTION)',
   selectPerspective: 'Select a perspective to search and browse the knowledge graph:',
   mainPageImageLicence: 'Images used under license from Wikimedia Commons',
   backendErrorText: 'One of the backend services is not available at the moment. Please try again later.',
