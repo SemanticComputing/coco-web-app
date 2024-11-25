@@ -1,18 +1,18 @@
 export default {
   languageLabel: 'English',
   html: {
-    title: 'CoCo – Historical Letters on the Semantic Web',
+    title: 'LetterSampo Finland (1809 - 1917)',
     description: 'CoCo can be used for analysing epistolary data in different data repositories in different countries, or for aggegated international datasets, such as Republic of Letters Data.'
   },
   appTitle: {
-    short: 'CoCo',
-    long: ' CoCo',
-    mobile: 'CoCo',
+    short: '',
+    long: ' LetterSampo Finland',
+    mobile: 'LetterSampo Finland',
     subheading: `
-      Historical Letters on the Semantic Web
+      Finnish Historical Letters on the Semantic Web 1809-1917
     `
   },
-  selectEditionPerpective: 'Search digital editions of letters of specific person (UNDER CONSTRUCTION)',
+  selectEditionPerpective: 'Search digital editions of letters of specific persons (UNDER CONSTRUCTION)',
   selectPerspective: 'Select a perspective to search and browse the knowledge graph:',
   mainPageImageLicence: 'Images used under license from Wikimedia Commons',
   backendErrorText: 'One of the backend services is not available at the moment. Please try again later.',

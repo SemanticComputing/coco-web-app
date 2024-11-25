@@ -47,7 +47,7 @@
     "layoutConfig": {
         "colorPalette": {
             "primary": {
-                "main": "#212121"
+                "main": "#dbae72"
             },
             "secondary": {
                 "main": "#EB1806"
@@ -59,6 +59,7 @@
         "paginationToolbarHeight": 37,
         "tableFontSize": "0.8rem",
         "topBar": {
+            "logoImage": "logos/CoCo_logo.png",
             "logoTextTransform": "none",
             "showLanguageButton": false,
             "feedbackLink": "https://link.webropolsurveys.com/S/21E30E313885D6AF",
@@ -77,11 +78,11 @@
             ]
         },
         "mainPage": {
-            "bannerImage": "main_page/mmm-banner.jpg",
+            "bannerImage": "main_page/simberg_banner.png",
             "bannerBackround": "linear-gradient( rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45) ), url(<BANNER_IMAGE_URL)",
             "bannerMobileHeight": 150,
-            "bannerReducedHeight": 220,
-            "bannerDefaultHeight": 300,
+            "bannerReducedHeight": 200,
+            "bannerDefaultHeight": 250,
             "wrapSubheading": false
         },
         "infoHeader": {
