@@ -60,6 +60,8 @@
         "tableFontSize": "0.8rem",
         "topBar": {
             "logoImage": "logos/CoCo_logo.png",
+            "logoImageHeight": 64,
+            "logoImageReducedHeight": 44,
             "logoTextTransform": "none",
             "showLanguageButton": false,
             "feedbackLink": "https://link.webropolsurveys.com/S/21E30E313885D6AF",
