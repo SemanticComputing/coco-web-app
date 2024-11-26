@@ -407,14 +407,12 @@ export const peopleEventPlacesQuery = `
 SELECT DISTINCT ?id ?lat ?long 
 (COUNT(DISTINCT ?person) AS ?instanceCount)
 WHERE {
-  
-
-
-  { <FILTER>
+  <FILTER>
+  {
    ?letter portal:sender ?person ; :was_sent_from ?id .
   }
   UNION
-  { <FILTER>
+  {
    ?proxy :proxy_for ?person ;
     {
       ?person :was_born_in_location ?id .
