@@ -415,11 +415,11 @@ WHERE {
   {
    ?proxy :proxy_for ?person ;
     {
-      ?person :was_born_in_location ?id .
+      ?proxy :was_born_in_location ?id .
     }
     UNION
     {
-      ?person :died_at_location ?id .
+      ?proxy :died_at_location ?id .
     }
   }
   ?id a crm:E53_Place ; geo:lat ?lat ; geo:long ?long .
