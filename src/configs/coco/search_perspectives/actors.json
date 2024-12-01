@@ -767,13 +767,13 @@
             "containerClass": "ten",
             "facetType": "list",
             "filterType": "uriFilter",
-            "predicate": "(^:proxy_for)/(^:was_authored_by)/:fonds",
+            "predicate": "portal:fonds",
             "searchField": false,
             "sortBy": "instanceCount",
             "sortDirection": "desc",
             "sortButton": true,
             "pieChartButton": true,
-            "sortByPredicate": "(^:proxy_for)/(^:was_authored_by)/:fonds/skos:prefLabel",
+            "sortByPredicate": "portal:fonds/skos:prefLabel",
             "hideUnknownValue": true
         },
         "external": {
