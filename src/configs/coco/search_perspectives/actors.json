@@ -688,7 +688,8 @@
             "sortBy": "instanceCount",
             "sortDirection": "desc",
             "pieChartButton": true,
-            "sortByPredicate": "portal:portal_class/skos:prefLabel"
+            "sortByPredicate": "portal:portal_class/skos:prefLabel",
+            "hideUnknownValue": true
         },
         "gender": {
             "containerClass": "three",

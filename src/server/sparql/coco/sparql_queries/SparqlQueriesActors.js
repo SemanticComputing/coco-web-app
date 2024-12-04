@@ -408,20 +408,7 @@ SELECT DISTINCT ?id ?lat ?long
 (COUNT(DISTINCT ?person) AS ?instanceCount)
 WHERE {
   <FILTER>
-  {
-   ?letter portal:sender ?person ; :was_sent_from ?id .
-  }
-  UNION
-  {
-   ?proxy :proxy_for ?person ;
-    {
-      ?proxy :was_born_in_location ?id .
-    }
-    UNION
-    {
-      ?proxy :died_at_location ?id .
-    }
-  }
+  ?person portal:known_location ?id .
   ?id a crm:E53_Place ; geo:lat ?lat ; geo:long ?long .
 
 } GROUP BY ?id ?lat ?long
