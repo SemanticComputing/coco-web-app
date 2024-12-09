@@ -753,7 +753,7 @@
             "sortByPredicate": "(^:proxy_for)/bioc:has_occupation/skos:prefLabel"
         },
         "datasource": {
-            "containerClass": "ten",
+            "containerClass": "fiveteen",
             "facetType": "list",
             "filterType": "uriFilter",
             "predicate": "(^:proxy_for)/dct:source",
