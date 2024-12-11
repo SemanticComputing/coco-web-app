@@ -12,10 +12,9 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX sch: <http://schema.org/>
 PREFiX skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX spatial: <http://jena.apache.org/spatial#>
-PREFiX text: <http://jena.apache.org/text#>
+PREFiX text: <http://jena.apache.org/text#> 
 PREFIX wgs84: <http://www.w3.org/2003/01/geo/wgs84_pos#>
-PREFIx xsd: <http://www.w3.org/2001/XMLSchema#>
-
+PREFIx xsd: <http://www.w3.org/2001/XMLSchema#> 
 PREFiX : <http://ldf.fi/schema/coco/>
 PREFIX actors: <http://ldf.fi/coco/actors/> 
 PrEFIX letters: <http://ldf.fi/coco/letters/>

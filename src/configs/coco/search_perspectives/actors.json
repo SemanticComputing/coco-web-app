@@ -762,7 +762,8 @@
             "sortDirection": "desc",
             "sortButton": true,
             "pieChartButton": true,
-            "sortByPredicate": "(^:proxy_for)/dct:source/skos:prefLabel"
+            "sortByPredicate": "(^:proxy_for)/dct:source/skos:prefLabel",
+            "hideUnknownValue": true
         },
         "fonds": {
             "containerClass": "ten",
