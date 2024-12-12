@@ -11,7 +11,7 @@ export const queryJenaIndex = async ({
   let q = fullTextQuery
   const perspectiveConfig = backendSearchConfig[resultClass]
   const { endpoint, propertiesQueryBlock } = perspectiveConfig
-  q = q.replace('<QUERY>', `(?id ?score ?literal) text:query ('${queryTerm.toLowerCase()}' 500) .`)
+  q = q.replace('<QUERY>', `(?id ?score ?literal) text:query ('${queryTerm.toLowerCase()}' 10000) .`)
   q = q.replace('<RESULT_SET_PROPERTIES>', propertiesQueryBlock)
   const results = await runSelectQuery({
     query: endpoint.prefixes + q,
