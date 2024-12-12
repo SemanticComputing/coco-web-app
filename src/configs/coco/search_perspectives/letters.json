@@ -393,6 +393,30 @@
             "sortButton": true,
             "hideUnknownValue": true
         },
+        "source_type": {
+            "containerClass": "three",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "predicate": "portal:sender_type",
+            "sortBy": "instanceCount",
+            "sortByPredicate": "portal:sender_type/skos:prefLabel",
+            "sortDirection": "desc",
+            "pieChartButton": true,
+            "sortButton": true,
+            "hideUnknownValue": true
+        },
+        "source_gender": {
+            "containerClass": "three",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "predicate": "portal:sender_gender",
+            "sortBy": "instanceCount",
+            "sortByPredicate": "portal:sender_gender/skos:prefLabel",
+            "sortDirection": "desc",
+            "pieChartButton": true,
+            "sortButton": true,
+            "hideUnknownValue": true
+        },
         "target": {
             "containerClass": "ten",
             "facetType": "list",
@@ -401,6 +425,30 @@
             "searchField": true,
             "sortBy": "instanceCount",
             "sortByPredicate": "portal:recipient/skos:prefLabel",
+            "sortDirection": "desc",
+            "pieChartButton": true,
+            "sortButton": true,
+            "hideUnknownValue": true
+        },
+        "target_type": {
+            "containerClass": "three",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "predicate": "portal:recipient_type",
+            "sortBy": "instanceCount",
+            "sortByPredicate": "portal:recipient_type/skos:prefLabel",
+            "sortDirection": "desc",
+            "pieChartButton": true,
+            "sortButton": true,
+            "hideUnknownValue": true
+        },
+        "target_gender": {
+            "containerClass": "three",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "predicate": "portal:recipient_gender",
+            "sortBy": "instanceCount",
+            "sortByPredicate": "portal:recipient_gender/skos:prefLabel",
             "sortDirection": "desc",
             "pieChartButton": true,
             "sortButton": true,
