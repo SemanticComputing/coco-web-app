@@ -1,7 +1,7 @@
 export const prefixes = `
 PREFIX bioc: <http://ldf.fi/schema/bioc/>
 PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/>
-PReFiX dct: <http://purl.org/dc/terms/>
+PReFiX dct: <http://purl.org/dc/terms/> 
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 PREFIx geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
 PREFIx owl: <http://www.w3.org/2002/07/owl#>
