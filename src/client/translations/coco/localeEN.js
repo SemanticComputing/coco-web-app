@@ -632,7 +632,7 @@ export default {
         source_gender: {
           label: 'Sender: Gender',
           description: `
-          Filter the senders by their gender.
+          Filter the senders by their gender. NB: Group, Families, and Unknowns do not have a gender.
           `
         },
         target: {
@@ -1642,6 +1642,18 @@ export default {
           You can also use the logical operators AND, OR and NOT, but then the search must be written in parentheses, e.g., like this (Jean AND Sibelius)'
           `
         },
+        source_type: {
+          label: 'Sender: Type',
+          description: `
+          Select the type of sender: Person, Group, Family or Unknown.
+          `
+        },
+        source_gender: {
+          label: 'Sender: Gender',
+          description: `
+          Filter the senders by their gender. NB: Group, Families, and Unknowns do not have a gender.
+          `
+        },
         target: {
           label: 'Recipient',
           description: `
@@ -1649,6 +1661,18 @@ export default {
           Search is based on Apache Lucene index search. 
           In addition to simple searches, you can use wildcard matching, e.g. Finland*. 
           You can also use the logical operators AND, OR and NOT, but then the search must be written in parentheses, e.g., like this (Jean AND Sibelius)'
+          `
+        },
+        target_type: {
+          label: 'Recipient: Type',
+          description: `
+          Filter the recipients by their type: Person, Group, Family or Unknown.
+          `
+        },
+        target_gender: {
+          label: 'Recipient: Gender',
+          description: `
+          Filter the recipients by their gender.
           `
         },
         mentioned_person: {
@@ -1856,6 +1880,18 @@ export default {
           You can also use the logical operators AND, OR and NOT, but then the search must be written in parentheses, e.g., like this (Jean AND Sibelius)'
           `
         },
+        source_type: {
+          label: 'Sender: Type',
+          description: `
+          Select the type of sender: Person, Group, Family or Unknown.
+          `
+        },
+        source_gender: {
+          label: 'Sender: Gender',
+          description: `
+          Filter the senders by their gender. NB: Group, Families, and Unknowns do not have a gender.
+          `
+        },
         target: {
           label: 'Recipient',
           description: `
@@ -1863,6 +1899,18 @@ export default {
           Search is based on Apache Lucene index search. 
           In addition to simple searches, you can use wildcard matching, e.g. Finland*. 
           You can also use the logical operators AND, OR and NOT, but then the search must be written in parentheses, e.g., like this (Jean AND Sibelius)'
+          `
+        },
+        target_type: {
+          label: 'Recipient: Type',
+          description: `
+          Filter the recipients by their type: Person, Group, Family or Unknown.
+          `
+        },
+        target_gender: {
+          label: 'Recipient: Gender',
+          description: `
+          Filter the recipients by their gender.
           `
         },
         mentioned_person: {
@@ -2070,6 +2118,18 @@ export default {
           You can also use the logical operators AND, OR and NOT, but then the search must be written in parentheses, e.g., like this (Jean AND Sibelius)'
           `
         },
+        source_type: {
+          label: 'Sender: Type',
+          description: `
+          Select the type of sender: Person, Group, Family or Unknown.
+          `
+        },
+        source_gender: {
+          label: 'Sender: Gender',
+          description: `
+          Filter the senders by their gender. NB: Group, Families, and Unknowns do not have a gender.
+          `
+        },
         target: {
           label: 'Recipient',
           description: `
@@ -2077,6 +2137,18 @@ export default {
           Search is based on Apache Lucene index search. 
           In addition to simple searches, you can use wildcard matching, e.g. Finland*. 
           You can also use the logical operators AND, OR and NOT, but then the search must be written in parentheses, e.g., like this (Jean AND Sibelius)'
+          `
+        },
+        target_type: {
+          label: 'Recipient: Type',
+          description: `
+          Filter the recipients by their type: Person, Group, Family or Unknown.
+          `
+        },
+        target_gender: {
+          label: 'Recipient: Gender',
+          description: `
+          Filter the recipients by their gender.
           `
         },
         mentioned_person: {
@@ -2284,6 +2356,18 @@ export default {
           You can also use the logical operators AND, OR and NOT, but then the search must be written in parentheses, e.g., like this (Jean AND Sibelius)'
           `
         },
+        source_type: {
+          label: 'Sender: Type',
+          description: `
+          Select the type of sender: Person, Group, Family or Unknown.
+          `
+        },
+        source_gender: {
+          label: 'Sender: Gender',
+          description: `
+          Filter the senders by their gender. NB: Group, Families, and Unknowns do not have a gender.
+          `
+        },
         target: {
           label: 'Recipient',
           description: `
@@ -2291,6 +2375,18 @@ export default {
           Search is based on Apache Lucene index search. 
           In addition to simple searches, you can use wildcard matching, e.g. Finland*. 
           You can also use the logical operators AND, OR and NOT, but then the search must be written in parentheses, e.g., like this (Jean AND Sibelius)'
+          `
+        },
+        target_type: {
+          label: 'Recipient: Type',
+          description: `
+          Filter the recipients by their type: Person, Group, Family or Unknown.
+          `
+        },
+        target_gender: {
+          label: 'Recipient: Gender',
+          description: `
+          Filter the recipients by their gender.
           `
         },
         mentioned_person: {

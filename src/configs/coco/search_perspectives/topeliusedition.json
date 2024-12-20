@@ -59,10 +59,48 @@
                         "tabID": 0,
                         "component": "InstancePageTable",
                         "tabPath": "table",
-                        "tabIcon": "CalendarViewDay"
+                        "tabIcon": "MailOutline"
+                    },
+                    "actorInstancePageLetters": {
+                        "tabID": 1,
+                        "component": "InstancePageTable",
+                        "tabPath": "metadata",
+                        "tabIcon": "FormatListBulleted",
+                        "fetchResultsWhenMounted": true,
+                        "sparqlQuery": "letterMetadataInstancePageQuery",
+                        "properties": [
+                            {
+                                "id": "record_value",
+                                "valueType": "string",
+                                "makeLink": false,
+                                "externalLink": false,
+                                "sortValues": true,
+                                "numberedList": false,
+                                "onlyOnInstancePage": true,
+                                "expandedOnInstancePage": true
+                            },
+                            {
+                                "id": "original_record",
+                                "valueType": "string",
+                                "makeLink": false,
+                                "externalLink": false,
+                                "sortValues": false,
+                                "numberedList": false,
+                                "onlyOnInstancePage": true
+                            },
+                            {
+                                "id": "uri",
+                                "valueType": "object",
+                                "makeLink": true,
+                                "externalLink": true,
+                                "sortValues": true,
+                                "numberedList": false,
+                                "onlyOnInstancePage": true
+                            }
+                        ]
                     },
                     "instancePageExport": {
-                        "tabID": 1,
+                        "tabID": 2,
                         "component": "Export",
                         "tabPath": "export",
                         "tabIcon": "CloudDownload",
@@ -330,25 +368,6 @@
             "expandedOnInstancePage": true
         },
         {
-            "id": "record_value",
-            "valueType": "string",
-            "makeLink": false,
-            "externalLink": false,
-            "sortValues": true,
-            "numberedList": false,
-            "onlyOnInstancePage": true,
-            "expandedOnInstancePage": true
-        },
-        { 
-            "id": "original_record",
-            "valueType": "string",
-            "makeLink": false,
-            "externalLink": false,
-            "sortValues": false,
-            "numberedList": false,
-            "onlyOnInstancePage": true
-        },
-        {
             "id": "related",
             "valueType": "object",
             "makeLink": true,
@@ -394,6 +413,30 @@
             "sortButton": true,
             "hideUnknownValue": true
         },
+        "source_type": {
+            "containerClass": "three",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "predicate": "portal:sender_type",
+            "sortBy": "instanceCount",
+            "sortByPredicate": "portal:sender_type/skos:prefLabel",
+            "sortDirection": "desc",
+            "pieChartButton": true,
+            "sortButton": true,
+            "hideUnknownValue": true
+        },
+        "source_gender": {
+            "containerClass": "three",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "predicate": "portal:sender_gender",
+            "sortBy": "instanceCount",
+            "sortByPredicate": "portal:sender_gender/skos:prefLabel",
+            "sortDirection": "desc",
+            "pieChartButton": true,
+            "sortButton": true,
+            "hideUnknownValue": true
+        },
         "target": {
             "containerClass": "ten",
             "facetType": "list",
@@ -402,6 +445,30 @@
             "searchField": true,
             "sortBy": "instanceCount",
             "sortByPredicate": "portal:recipient/skos:prefLabel",
+            "sortDirection": "desc",
+            "pieChartButton": true,
+            "sortButton": true,
+            "hideUnknownValue": true
+        },
+        "target_type": {
+            "containerClass": "three",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "predicate": "portal:recipient_type",
+            "sortBy": "instanceCount",
+            "sortByPredicate": "portal:recipient_type/skos:prefLabel",
+            "sortDirection": "desc",
+            "pieChartButton": true,
+            "sortButton": true,
+            "hideUnknownValue": true
+        },
+        "target_gender": {
+            "containerClass": "three",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "predicate": "portal:recipient_gender",
+            "sortBy": "instanceCount",
+            "sortByPredicate": "portal:recipient_gender/skos:prefLabel",
             "sortDirection": "desc",
             "pieChartButton": true,
             "sortButton": true,
