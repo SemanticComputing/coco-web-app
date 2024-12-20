@@ -126,15 +126,6 @@
             "minWidth": 120
         },
         {
-            "id": "datasource",
-            "valueType": "string",
-            "makeLink": false,
-            "externalLink": false,
-            "sortValues": true,
-            "numberedList": false,
-            "minWidth": 120
-        },
-        {
             "id": "number_of_letters",
             "valueType": "string",
             "makeLink": false,
@@ -156,6 +147,15 @@
             "priority": 5,
             "onlyOnInstancePage": false,
             "expandedOnInstancePage": true
+        },
+        {
+            "id": "datasource",
+            "valueType": "string",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": false,
+            "minWidth": 120
         },
         {
             "id": "related",
