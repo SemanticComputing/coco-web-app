@@ -21,6 +21,7 @@ import {
   PlayArrow,
   MailOutline,
   TrendingDown,
+  FormatListBulleted,
   Tune,
   ArrowForward,
   Subject
@@ -51,6 +52,7 @@ const MuiIcon = props => {
     MailOutline: MailOutline,
     TrendingDown: TrendingDown,
     Tune: Tune,
+    FormatListBulleted: FormatListBulleted,
     ArrowForward: ArrowForward,
     Subject: Subject
   }

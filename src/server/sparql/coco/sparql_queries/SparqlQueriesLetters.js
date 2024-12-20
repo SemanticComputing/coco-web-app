@@ -131,10 +131,6 @@ UNION
 { # Metadata values
   ?id :metadata ?_metadata .
   {
-    ?_metadata :original_record ?original_record 
-  }
-  UNION
-  {
     ?other__id :metadata ?_metadata ;
     	skos:prefLabel ?other__prefLabel .
       BIND(CONCAT("/letters/page/", REPLACE(STR(?other__id), "^.*\\\\/(.+)", "$1")) AS ?other__dataProviderUrl)
@@ -151,49 +147,65 @@ UNION
     BIND(?source_url__id AS ?source_url__prefLabel)
     BIND(?source_url__id AS ?source_url__dataProviderUrl)
   }
-  UNION
-  {
-      VALUES (?prop ?prop_label) {
-        # (:recipient_as_interpreted 'recipient as interpreted')
-        # (:sender_as_interpreted 'sender as interpreted')
-        (:archival_location 'archival location')
-        (:fonds_as_recorded 'fonds as recorded')
-        (:number_of_letters 'number of letters')
-        # (:original_record 'original record')
-        # (:recipient 'recipient')
-        (:recipient_as_recorded 'recipient as recorded')
-        # (:sender 'sender')
-        (:sender_as_recorded 'sender as recorded')
-        (:sending_date 'date of sending as recorded')
-        (:type_as_recorded 'type as recorded')
-        (:sender_class 'sender class')
-        (:sender_familyname 'sender familyname')
-        (:sender_firstname 'sender firstname')
-        (:sender_comment 'comment about sender')
-        (:source_api_url 'source api url')
-        (:sending_place 'place of sending as recorded')
-        (:summary 'summary')
-        (:type 'type')
-        (:recipient_class 'recipient class')
-        (:recipient_familyname 'recipient familyname')
-        (:recipient_familyname_prev 'recipient familyname prev')
-        (:recipient_firstname 'recipient firstname')
-        (:recipient_comment 'comment about recipient')
-        (:records_creator 'records creator')
-        (:sender_familyname_prev 'sender familyname prev')
-        (:note 'note')
-        (rdfs:comment 'comment')
-        (:archival_organization_as_recorded 'archival organization as recorded')
-        (:series_as_recorded 'series as recorded')
-        (:referenced_actor_as_recorded 'referenced actor as recorded')
-        (:referenced_place_as_recorded 'referenced place as recorded')
-        (dct:language 'language')
+}
+`
+
+export const letterMetadataInstancePageQuery = `
+SELECT * 
+  WHERE { 
+  BIND (<ID> as ?id)
+    BIND (?id as ?uri__id)
+    BIND (STR(?id) as ?uri__prefLabel)
+    BIND (?id as ?uri__dataProviderUrl)
+    {
+      ?id skos:prefLabel ?prefLabel__id .
+      BIND (?prefLabel__id as ?prefLabel__prefLabel)
+    }
+    UNION
+    {
+    ?id :metadata ?_metadata .
+      {
+        ?_metadata :original_record ?original_record 
       }
+      UNION
+      {     
+        VALUES (?prop ?prop_label) {
+          (:archival_location 'archival location')
+          (:fonds_as_recorded 'fonds as recorded')
+          (:number_of_letters 'number of letters')
+          (:recipient_as_recorded 'recipient as recorded')
+          (:sender_as_recorded 'sender as recorded')
+          (:sending_date 'date of sending as recorded')
+          (:type_as_recorded 'type as recorded')
+          (:sender_class 'sender class')
+          (:sender_familyname 'sender familyname')
+          (:sender_firstname 'sender firstname')
+          (:sender_comment 'comment about sender')
+          (:source_api_url 'source api url')
+          (:sending_place 'place of sending as recorded')
+          (:summary 'summary')
+          (:type 'type')
+          (:recipient_class 'recipient class')
+          (:recipient_familyname 'recipient familyname')
+          (:recipient_familyname_prev 'recipient familyname prev')
+          (:recipient_firstname 'recipient firstname')
+          (:recipient_comment 'comment about recipient')
+          (:records_creator 'records creator')
+          (:sender_familyname_prev 'sender familyname prev')
+          (:note 'note')
+          (rdfs:comment 'comment')
+          (:archival_organization_as_recorded 'archival organization as recorded')
+          (:series_as_recorded 'series as recorded')
+          (:referenced_actor_as_recorded 'referenced actor as recorded')
+          (:referenced_place_as_recorded 'referenced place as recorded')
+          (dct:language 'language')
+        }
+      ?id :metadata ?_metadata .
       ?_metadata ?prop ?v .
       BIND(CONCAT(?prop_label, ': ', STR(?v)) AS ?record_value ) 
+    }
   }
 }
-
 `
 
 /**

@@ -58,10 +58,48 @@
                         "tabID": 0,
                         "component": "InstancePageTable",
                         "tabPath": "table",
-                        "tabIcon": "CalendarViewDay"
+                        "tabIcon": "MailOutline"
+                    },
+                    "actorInstancePageLetters": {
+                        "tabID": 1,
+                        "component": "InstancePageTable",
+                        "tabPath": "metadata",
+                        "tabIcon": "FormatListBulleted",
+                        "fetchResultsWhenMounted": true,
+                        "sparqlQuery": "letterMetadataInstancePageQuery",
+                        "properties": [
+                            {
+                                "id": "record_value",
+                                "valueType": "string",
+                                "makeLink": false,
+                                "externalLink": false,
+                                "sortValues": true,
+                                "numberedList": false,
+                                "onlyOnInstancePage": true,
+                                "expandedOnInstancePage": true
+                            },
+                            {
+                                "id": "original_record",
+                                "valueType": "string",
+                                "makeLink": false,
+                                "externalLink": false,
+                                "sortValues": false,
+                                "numberedList": false,
+                                "onlyOnInstancePage": true
+                            },
+                            {
+                                "id": "uri",
+                                "valueType": "object",
+                                "makeLink": true,
+                                "externalLink": true,
+                                "sortValues": true,
+                                "numberedList": false,
+                                "onlyOnInstancePage": true
+                            }
+                        ]
                     },
                     "instancePageExport": {
-                        "tabID": 1,
+                        "tabID": 2,
                         "component": "Export",
                         "tabPath": "export",
                         "tabIcon": "CloudDownload",
@@ -327,25 +365,6 @@
             "minWidth": 250,
             "onlyOnInstancePage": true,
             "expandedOnInstancePage": true
-        },
-        {
-            "id": "record_value",
-            "valueType": "string",
-            "makeLink": false,
-            "externalLink": false,
-            "sortValues": true,
-            "numberedList": false,
-            "onlyOnInstancePage": true,
-            "expandedOnInstancePage": true
-        },
-        { 
-            "id": "original_record",
-            "valueType": "string",
-            "makeLink": false,
-            "externalLink": false,
-            "sortValues": false,
-            "numberedList": false,
-            "onlyOnInstancePage": true
         },
         {
             "id": "related",
