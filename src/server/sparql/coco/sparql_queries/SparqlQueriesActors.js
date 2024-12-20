@@ -299,17 +299,21 @@ SELECT *
     	?prx :proxy_for ?id
       {
         SELECT DISTINCT ?prx ?in_fonds__id
-      (CONCAT(?_label, COALESCE(SAMPLE(?_org2), ''), ' (', STR(COUNT(DISTINCT ?_evt)), '+', STR(COUNT(DISTINCT ?_evt2)), ')') AS ?in_fonds__prefLabel)
+      (CONCAT(?_label, ' (', STR(COUNT(DISTINCT ?_evt)), '+', STR(COUNT(DISTINCT ?_evt2)), ')') AS ?in_fonds__prefLabel)
           (CONCAT("/fonds/page/", REPLACE(STR(?in_fonds__id), "^.*\\\\/(.+)", "$1")) AS ?in_fonds__dataProviderUrl)
         WHERE {
           {
-            ?_evt :was_authored_by ?prx ; 
+            ?_evt :was_authored_by ?prx ;
               :fonds ?in_fonds__id
           }
           UNION
           {
             ?_evt2 :was_addressed_to ?prx ; 
               :fonds ?in_fonds__id
+          }
+          UNION
+          {
+            ?in_fonds__id :archival_organization ?prx ; a :Fonds .
           }
           ?in_fonds__id skos:prefLabel ?_label ;
             a [] .
@@ -408,7 +412,19 @@ SELECT DISTINCT ?id ?lat ?long
 (COUNT(DISTINCT ?person) AS ?instanceCount)
 WHERE {
   <FILTER>
-  ?person portal:known_location ?id .
+  {
+    ?person portal:known_location ?id 
+  }
+  UNION
+  { 
+    [] :proxy_for ?person ;
+    :was_born_in_location ?id 
+  }
+  UNION
+  { 
+    [] :proxy_for ?person ;
+    :died_at_location ?id 
+  }
   ?id a crm:E53_Place ; geo:lat ?lat ; geo:long ?long .
 
 } GROUP BY ?id ?lat ?long
@@ -417,14 +433,17 @@ WHERE {
 export const peopleRelatedTo = `
   OPTIONAL {
     <FILTER>
-    { [] :proxy_for ?related__id 
-        ;^:was_authored_by/:was_sent_from ?id }
-    UNION
-    { [] :proxy_for ?related__id 
-        ;:was_born_in_location ?id }
+    { [] :proxy_for ?related__id .
+      ?related__id portal:known_location ?id 
+    }
     UNION
     { [] :proxy_for ?related__id ;
-      :died_at_location ?id }
+      :was_born_in_location ?id 
+    }
+    UNION
+    { [] :proxy_for ?related__id ;
+      :died_at_location ?id 
+    }
     ?related__id skos:prefLabel ?related__prefLabel .
     BIND (CONCAT("/actors/page/", REPLACE(STR(?related__id), "^.*\\\\/(.+)", "$1")) AS ?related__dataProviderUrl)
   } 

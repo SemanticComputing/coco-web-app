@@ -17,7 +17,7 @@ export const fondsPropertiesFacetResults = `
   {
     ?id :archival_organization/:proxy_for ?archival_organization__id .
     ?archival_organization__id skos:prefLabel ?archival_organization__prefLabel .
-    BIND(CONCAT("/fonds/page/", REPLACE(STR(?archival_organization__id), "^.*\\\\/(.+)", "$1")) AS ?archival_organization__dataProviderUrl)
+    BIND(CONCAT("/actors/page/", REPLACE(STR(?archival_organization__id), "^.*\\\\/(.+)", "$1")) AS ?archival_organization__dataProviderUrl)
   }
   UNION
   { 
@@ -53,7 +53,7 @@ export const fondsPropertiesInstancePage = `
   {
     ?id :archival_organization/:proxy_for ?archival_organization__id .
     ?archival_organization__id skos:prefLabel ?archival_organization__prefLabel .
-    BIND(CONCAT("/fonds/page/", REPLACE(STR(?archival_organization__id), "^.*\\\\/(.+)", "$1")) AS ?archival_organization__dataProviderUrl)
+    BIND(CONCAT("/actors/page/", REPLACE(STR(?archival_organization__id), "^.*\\\\/(.+)", "$1")) AS ?archival_organization__dataProviderUrl)
   }
   UNION
   { 
