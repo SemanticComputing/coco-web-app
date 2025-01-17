@@ -691,6 +691,17 @@
             "sortByPredicate": "portal:portal_class/skos:prefLabel",
             "hideUnknownValue": true
         },
+        "role": {
+            "containerClass": "four",
+            "facetType": "list",
+            "predicate": "portal:actor_role",
+            "filterType": "uriFilter",
+            "sortBy": "instanceCount",
+            "sortDirection": "desc",
+            "pieChartButton": true,
+            "sortByPredicate": "portal:actor_role/skos:prefLabel",
+            "hideUnknownValue": true
+        },
         "gender": {
             "containerClass": "three",
             "facetType": "list",

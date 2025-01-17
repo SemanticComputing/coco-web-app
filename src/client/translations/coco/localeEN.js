@@ -318,6 +318,10 @@ export default {
           label: 'Actor type',
           description: 'Type of the actor: person, group, family, or unknown'
         },
+        role: {
+          label: 'Actor role',
+          description: 'Role of the actor: letter sender, recipient, referenced in content, or records creator'
+        },
         birthDateTimespan: {
           label: 'Birth time',
           description: `Birth time of a person. Notice that the other types of actors do not have this value.`
