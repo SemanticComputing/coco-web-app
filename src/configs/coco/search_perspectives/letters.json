@@ -538,19 +538,6 @@
             "sortByPredicate": ":digital_edition/skos:prefLabel",
             "hideUnknownValue": true
         },
-        "datasource": {
-            "containerClass": "ten",
-            "facetType": "list",
-            "filterType": "uriFilter",
-            "predicate": "dct:source",
-            "searchField": false,
-            "sortBy": "instanceCount",
-            "sortDirection": "desc",
-            "sortButton": true,
-            "pieChartButton": true,
-            "sortByPredicate": "dct:source/skos:prefLabel",
-            "hideUnknownValue": true
-        },
         "archival_organization": {
             "containerClass": "ten",
             "facetType": "list",
@@ -569,12 +556,25 @@
             "facetType": "list",
             "filterType": "uriFilter",
             "predicate": ":fonds",
-            "searchField": false,
+            "searchField": true,
             "sortBy": "instanceCount",
             "sortDirection": "desc",
             "sortButton": true,
             "pieChartButton": true,
             "sortByPredicate": ":fonds/skos:prefLabel",
+            "hideUnknownValue": true
+        },
+        "datasource": {
+            "containerClass": "ten",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "predicate": "dct:source",
+            "searchField": false,
+            "sortBy": "instanceCount",
+            "sortDirection": "desc",
+            "sortButton": true,
+            "pieChartButton": true,
+            "sortByPredicate": "dct:source/skos:prefLabel",
             "hideUnknownValue": true
         },
         "prefLabel": {

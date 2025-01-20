@@ -117,15 +117,6 @@
             "minWidth": 100
         },
         {
-            "id": "archival_organization",
-            "valueType": "object",
-            "makeLink": false,
-            "externalLink": false,
-            "sortValues": true,
-            "numberedList": false,
-            "minWidth": 120
-        },
-        {
             "id": "number_of_letters",
             "valueType": "string",
             "makeLink": false,
@@ -147,6 +138,15 @@
             "priority": 5,
             "onlyOnInstancePage": false,
             "expandedOnInstancePage": true
+        },
+        {
+            "id": "archival_organization",
+            "valueType": "object",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": false,
+            "minWidth": 120
         },
         {
             "id": "datasource",
@@ -232,6 +232,18 @@
             "containerClass": "ten",
             "facetType": "list",
             "predicate": ":self_link",
+            "filterType": "uriFilter",
+            "sortBy": "instanceCount",
+            "sortDirection": "desc",
+            "pieChartButton": true,
+            "searchField": true,
+            "sortButton": true,
+            "sortByPredicate": "skos:prefLabel"
+        },
+        "digital_edition": {
+            "containerClass": "six",
+            "facetType": "list",
+            "predicate": "portal:digital_edition",
             "filterType": "uriFilter",
             "sortBy": "instanceCount",
             "sortDirection": "desc",

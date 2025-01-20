@@ -425,6 +425,12 @@ export default {
             List of sent letters.
           `
         },
+        digital_edition: {
+          label: 'Digital Edition',
+          description: `
+            Digital Edition
+          `
+        },
         numReceived: {
           label: 'Number of received letters',
           description: `
@@ -806,6 +812,12 @@ export default {
           label: 'Archival organization',
           description: `
             Archival organization
+          `
+        },
+        digital_edition: {
+          label: 'Digital Edition',
+          description: `
+            Digital Edition
           `
         },
         fondsLabel: {
