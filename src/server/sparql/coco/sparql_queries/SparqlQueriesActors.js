@@ -104,11 +104,7 @@ export const actorPropertiesInstancePage = `
   UNION
   { 
     ?prx :proxy_for ?id .
-    {
-      ?prx a ?type__id .
-      ?type__id skos:prefLabel ?type__prefLabel .
-      BIND (?type__id as ?type_dataProviderUrl)
-    }
+    { ?prx a/skos:prefLabel ?type }
     UNION 
     { 
       GRAPH ?g { ?prx skos:prefLabel ?altLabel__id }
@@ -711,24 +707,17 @@ WHERE {
   {
     ?id bioc:has_gender/skos:prefLabel ?gender
   }
-  # OPTIONAL
-  #{ ?id foaf:page ?external__id .
-  #  OPTIONAL { ?external__id a/skos:prefLabel ?external__classlabel }
-  #  OPTIONAL { ?external__id skos:prefLabel ?external__label }
-  #  BIND (COALESCE(?external__label, ?external__classlabel, ?external__id) AS ?external__prefLabel)
-  #  BIND (?external__id AS ?external__dataProviderUrl)
-  #}
   
-    ?proxy :proxy_for ?id ; a/skos:prefLabel ?type
-  	
-    OPTIONAL
-    {
-      ?proxy :birthDate/skos:prefLabel ?birth
-    }
-    OPTIONAL
-    {
-      ?proxy :deathDate/skos:prefLabel ?death
-    }
+  ?proxy :proxy_for ?id ; a/skos:prefLabel ?type
+  
+  OPTIONAL
+  {
+    ?proxy :birthDate/skos:prefLabel ?birth
+  }
+  OPTIONAL
+  {
+    ?proxy :deathDate/skos:prefLabel ?death
+  }
 } 
 GROUPBY ?id ?label ?type ?gender ?number_of_sent_letters ?number_of_received_letters ?floruit 
 ORDER BY DESC(?number_of_sent_letters) ?label `
