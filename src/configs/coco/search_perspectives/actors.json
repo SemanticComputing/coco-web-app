@@ -426,11 +426,20 @@
                 "minTemp": 1
             }
         },
-        "export": {
+        "csvActors": {
             "tabID": 3,
+            "component": "ExportCSV",
+            "tabPath": "csv",
+            "tabIcon": "CloudDownload",
+            "facetClass": "actors",
+            "sparqlQuery": "csvQueryActors",
+            "filterTarget": "id"
+        },
+        "export": {
+            "tabID": 4,
             "component": "Export",
             "tabPath": "export",
-            "tabIcon": "CloudDownload",
+            "tabIcon": "ArrowForward",
             "resultClass": "perspective1",
             "facetClass": "perspective1"
         }
@@ -457,8 +466,8 @@
         },
         {
             "id": "type",
-            "valueType": "object",
-            "makeLink": true,
+            "valueType": "string",
+            "makeLink": false,
             "externalLink": false,
             "sortValues": true,
             "numberedList": false,
@@ -496,7 +505,7 @@
         },
         {
             "id": "gender",
-            "valueType": "object",
+            "valueType": "string",
             "makeLink": false,
             "externalLink": false,
             "sortValues": true,

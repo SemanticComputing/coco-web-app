@@ -27,9 +27,7 @@ export const actorPropertiesFacetResults = `
   }
   UNION
   {
-    ?id bioc:has_gender ?gender__id . 
-    ?gender__id skos:prefLabel ?gender__prefLabel .
-    BIND (?gender__id as ?gender__dataProviderUrl)
+    ?id bioc:has_gender/skos:prefLabel ?gender
   }
   UNION
     { ?id foaf:page ?external__id . 
@@ -42,9 +40,7 @@ export const actorPropertiesFacetResults = `
   {
     ?prx :proxy_for ?id .
     {
-      ?prx a ?type__id .
-      ?type__id skos:prefLabel ?type__prefLabel .
-      BIND (?type__id as ?type_dataProviderUrl)
+      ?prx a/skos:prefLabel ?type
     }
     UNION
     {
@@ -84,7 +80,7 @@ export const actorPropertiesInstancePage = `
     BIND (?prefLabel__id as ?prefLabel__prefLabel)
     BIND (CONCAT("/actors/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
   }
-  UNION  
+  UNION
   { ?id :out_degree ?numSent }
   UNION
   { ?id :in_degree ?numReceived }
@@ -96,11 +92,7 @@ export const actorPropertiesInstancePage = `
     OPTIONAL { ?floruitTimespan__id crm:P82b_end_of_the_end ?floruitTimespan__end }
   }
   UNION
-  {
-    ?id bioc:has_gender ?gender . 
-    ?gender skos:prefLabel ?gender__prefLabel .
-    BIND (?gender as ?gender__dataProviderUrl)
-  }
+  { ?id bioc:has_gender/skos:prefLabel ?gender }
   UNION
   { 
     ?id foaf:page ?external__id . 
@@ -691,3 +683,52 @@ export const sentReceivedInstancePageQuery = `
   GROUP BY ?year
   ORDER BY ?year
 `
+
+export const csvQueryActors = `
+SELECT DISTINCT ?id ?label ?type ?gender ?number_of_sent_letters ?number_of_received_letters 
+(SAMPLE(?birth) AS ?birth_time) ?floruit
+(SAMPLE(?death) AS ?death_time)
+
+WHERE {
+  
+  <FILTER> 
+  FILTER(BOUND(?id))
+
+  ?id skos:prefLabel ?label .
+
+  OPTIONAL {
+    ?id :out_degree ?number_of_sent_letters
+  }
+  OPTIONAL
+  {
+    ?id :in_degree ?number_of_received_letters
+  }
+  OPTIONAL
+  { 
+    ?id :floruit/skos:prefLabel ?floruit 
+  }
+  OPTIONAL
+  {
+    ?id bioc:has_gender/skos:prefLabel ?gender
+  }
+  # OPTIONAL
+  #{ ?id foaf:page ?external__id .
+  #  OPTIONAL { ?external__id a/skos:prefLabel ?external__classlabel }
+  #  OPTIONAL { ?external__id skos:prefLabel ?external__label }
+  #  BIND (COALESCE(?external__label, ?external__classlabel, ?external__id) AS ?external__prefLabel)
+  #  BIND (?external__id AS ?external__dataProviderUrl)
+  #}
+  
+    ?proxy :proxy_for ?id ; a/skos:prefLabel ?type
+  	
+    OPTIONAL
+    {
+      ?proxy :birthDate/skos:prefLabel ?birth
+    }
+    OPTIONAL
+    {
+      ?proxy :deathDate/skos:prefLabel ?death
+    }
+} 
+GROUPBY ?id ?label ?type ?gender ?number_of_sent_letters ?number_of_received_letters ?floruit 
+ORDER BY DESC(?number_of_sent_letters) ?label `
