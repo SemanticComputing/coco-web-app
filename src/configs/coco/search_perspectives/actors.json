@@ -781,7 +781,7 @@
             "facetType": "list",
             "filterType": "uriFilter",
             "predicate": "portal:fonds",
-            "searchField": false,
+            "searchField": true,
             "sortBy": "instanceCount",
             "sortDirection": "desc",
             "sortButton": true,
