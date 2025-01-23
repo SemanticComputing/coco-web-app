@@ -341,7 +341,7 @@
                     "instancePageExport": {
                         "tabID": 6,
                         "component": "Export",
-                        "tabPath": "export",
+                        "tabPath": "sparql",
                         "tabIcon": "CloudDownload",
                         "pageType": "instancePage"
                     }
@@ -438,7 +438,7 @@
         "export": {
             "tabID": 4,
             "component": "Export",
-            "tabPath": "export",
+            "tabPath": "sparql",
             "tabIcon": "ArrowForward",
             "resultClass": "perspective1",
             "facetClass": "perspective1"
