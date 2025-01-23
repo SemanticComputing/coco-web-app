@@ -681,7 +681,9 @@ export const sentReceivedInstancePageQuery = `
 `
 
 export const csvQueryActors = `
-SELECT DISTINCT ?id ?label ?type ?gender ?number_of_sent_letters ?number_of_received_letters 
+SELECT DISTINCT ?id ?label ?type ?gender 
+?prefix ?family_name ?given_name
+?number_of_sent_letters ?number_of_received_letters 
 (SAMPLE(?birth) AS ?birth_time) ?floruit
 (SAMPLE(?death) AS ?death_time)
 
@@ -692,6 +694,12 @@ WHERE {
 
   ?id skos:prefLabel ?label .
 
+  OPTIONAL {
+    ?id skosxl:prefLabel ?xl .
+    OPTIONAL { ?xl sch:familyName ?family_name }
+    OPTIONAL { ?xl sch:givenName ?given_name }
+    OPTIONAL { ?xl :name_addition ?prefix }
+  }
   OPTIONAL {
     ?id :out_degree ?number_of_sent_letters
   }
@@ -719,5 +727,7 @@ WHERE {
     ?proxy :deathDate/skos:prefLabel ?death
   }
 } 
-GROUPBY ?id ?label ?type ?gender ?number_of_sent_letters ?number_of_received_letters ?floruit 
+GROUPBY ?id ?label ?type ?gender
+  ?prefix ?family_name ?given_name
+  ?number_of_sent_letters ?number_of_received_letters ?floruit 
 ORDER BY DESC(?number_of_sent_letters) ?label `
