@@ -134,13 +134,23 @@
                 }
             }
         },
-        "export": {
-            "tabID": 1,
-            "component": "Export",
-            "tabPath": "export",
+        "csvPlaces": {
+            "tabID": 2,
+            "component": "ExportCSV",
+            "tabPath": "csv",
             "tabIcon": "CloudDownload",
-            "resultClass": "perspective1",
-            "facetClass": "perspective1"
+            "resultClass": "places",
+            "facetClass": "places",
+            "sparqlQuery": "csvQueryPlaces",
+            "filterTarget": "id"
+        },
+        "export": {
+            "tabID": 3,
+            "component": "Export",
+            "tabPath": "sparql",
+            "tabIcon": "ArrowForward",
+            "resultClass": "places",
+            "facetClass": "places"
         }
     },
     "properties": [

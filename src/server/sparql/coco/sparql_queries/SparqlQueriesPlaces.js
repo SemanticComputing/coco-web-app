@@ -175,3 +175,35 @@ export const sentReceivedByPlaceQuery = `
       BIND (STR(year(?time)) AS ?year)
   } GROUP BY ?year ORDER BY ?year 
 `
+
+export const csvQueryPlaces = `
+SELECT DISTINCT ?id ?label 
+	(xsd:decimal(?lat) AS ?latitude)
+	(xsd:decimal(?long) AS ?longitude)
+	?country ?country_id 
+	?broader ?broader_id 
+WHERE {
+  
+  <FILTER>
+  
+  FILTER(BOUND(?id))
+  ?id skos:prefLabel ?label .
+
+  OPTIONAL
+  {
+    ?id skos:broader ?broader_id .
+    ?broader_id skos:prefLabel ?broader
+  }
+  OPTIONAL
+  {
+    ?id :country ?country_id .
+    ?country_id skos:prefLabel ?country
+  }
+
+  OPTIONAL 
+  {
+    ?id wgs84:lat ?lat ;
+        wgs84:long ?long
+  }
+}
+`
