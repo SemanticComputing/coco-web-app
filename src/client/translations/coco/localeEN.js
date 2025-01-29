@@ -277,12 +277,12 @@ export default {
               The letters that are known to be sent during multiple years are spread evenly along that period.
             </li>
             <li>
-              <strong>TOP CORRESPONDENCES</strong> show a time series of the actor's correspondences with 10 ten other people.
+              <strong>TOP CORRESPONDENCE</strong> show a time series of the actor's correspondences with 10 ten other people.
               Howering or clicking on the bullets 'to', 'from', 'Sent', 'Received', or 'All' allows to focus e.g. on only the sent or received letters.
               The letters that are known to be sent during multiple years are spread evenly along that period.
             </li>
             <li>
-              <strong>NETWORK OF LETTERS</strong> shows this actors's relations to other actors connected by the correspondences. The network shown a maximum of 60 neighbors nodes within a distance of 3 degress from the network ego.
+              <strong>NETWORK OF LETTERS</strong> shows this actors's relations to other actors connected by the correspondence. The network shown a maximum of 60 neighbors nodes within a distance of 3 degress from the network ego.
             </li>
             <li>
               <strong>SOCIAL SIGNATURES</strong> view has a chart showing how much the actor has been in correspondence with the most, the second most, etc, important other actor during the different periods along the total time of activity. In connections both sent and recieved letters are taken into account.
@@ -407,7 +407,7 @@ export default {
           `
         },
         tie: {
-          label: 'Correspondences',
+          label: 'Correspondence',
           description: `
             Other actors who have been in correspondence with this actor. 
             The number of mutually sent letters is in parenthesis at end of the label.
@@ -557,8 +557,7 @@ export default {
         language: {
           label: 'Language',
           description: `
-            The language in which a Work is written in the manuscript
-            (i.e., an “Expression” of a Work). One manuscript may contain multiple languages.
+            The language in which a letter is written
           `
         },
         subject: {
@@ -678,12 +677,6 @@ export default {
           Places mentioned in the letter.
           `
         },
-        store: {
-          label: 'Stored in',
-          description: `
-          A place where this letter is stored.
-          `
-        },
         tie: {
           label: 'Correspondence',
           description: `
@@ -699,7 +692,7 @@ export default {
         lettertype: {
           label: 'Type of letter',
           description: `
-          Comments marked with the letter.
+          The type of letter, e.g., letter, telegram, postcard, etc.
           `
         },
         record_value: {
@@ -1582,8 +1575,7 @@ export default {
         language: {
           label: 'Language',
           description: `
-            The language in which a Work is written in the manuscript
-            (i.e., an “Expression” of a Work). One manuscript may contain multiple languages.
+            The language in which a letter is written
           `
         },
         subject: {
@@ -1703,12 +1695,6 @@ export default {
           Places mentioned in the letter.
           `
         },
-        store: {
-          label: 'Stored in',
-          description: `
-          A place where this letter is stored.
-          `
-        },
         tie: {
           label: 'Correspondence',
           description: `
@@ -1724,7 +1710,7 @@ export default {
         lettertype: {
           label: 'Type of letter',
           description: `
-          Comments marked with the letter.
+          The type of letter, e.g., letter, telegram, postcard, etc.
           `
         },
         record_value: {
@@ -1820,8 +1806,7 @@ export default {
         language: {
           label: 'Language',
           description: `
-            The language in which a Work is written in the manuscript
-            (i.e., an “Expression” of a Work). One manuscript may contain multiple languages.
+            The language in which a letter is written
           `
         },
         subject: {
@@ -1941,12 +1926,6 @@ export default {
           Places mentioned in the letter.
           `
         },
-        store: {
-          label: 'Stored in',
-          description: `
-          A place where this letter is stored.
-          `
-        },
         tie: {
           label: 'Correspondence',
           description: `
@@ -1962,7 +1941,7 @@ export default {
         lettertype: {
           label: 'Type of letter',
           description: `
-          Comments marked with the letter.
+          The type of letter, e.g., letter, telegram, postcard, etc.
           `
         },
         record_value: {
@@ -2058,8 +2037,7 @@ export default {
         language: {
           label: 'Language',
           description: `
-            The language in which a Work is written in the manuscript
-            (i.e., an “Expression” of a Work). One manuscript may contain multiple languages.
+            The language in which a letter is written
           `
         },
         subject: {
@@ -2179,12 +2157,6 @@ export default {
           Places mentioned in the letter.
           `
         },
-        store: {
-          label: 'Stored in',
-          description: `
-          A place where this letter is stored.
-          `
-        },
         tie: {
           label: 'Correspondence',
           description: `
@@ -2200,7 +2172,7 @@ export default {
         lettertype: {
           label: 'Type of letter',
           description: `
-          Comments marked with the letter.
+          The type of letter, e.g., letter, telegram, postcard, etc.
           `
         },
         record_value: {
@@ -2296,8 +2268,7 @@ export default {
         language: {
           label: 'Language',
           description: `
-            The language in which a Work is written in the manuscript
-            (i.e., an “Expression” of a Work). One manuscript may contain multiple languages.
+            The language in which a letter is written
           `
         },
         subject: {
@@ -2417,12 +2388,6 @@ export default {
           Places mentioned in the letter.
           `
         },
-        store: {
-          label: 'Stored in',
-          description: `
-          A place where this letter is stored.
-          `
-        },
         tie: {
           label: 'Correspondence',
           description: `
@@ -2438,7 +2403,7 @@ export default {
         lettertype: {
           label: 'Type of letter',
           description: `
-          Comments marked with the letter.
+          The type of letter, e.g., letter, telegram, postcard, etc.
           `
         },
         record_value: {
