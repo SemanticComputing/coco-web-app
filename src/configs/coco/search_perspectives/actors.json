@@ -663,6 +663,17 @@
             "expandedOnInstancePage": true
         },
         {
+            "id": "maxScore",
+            "valueType": "string",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": false,
+            "minWidth": 250,
+            "priority": 8,
+            "onlyOnInstancePage": false
+        },
+        {
             "id": "uri",
             "valueType": "object",
             "makeLink": true,
@@ -682,10 +693,15 @@
         "image": {
             "sortByPattern": "{ SELECT ?id (COALESCE(?_orderBy,'z') AS ?orderBy) WHERE { VALUES ?facetClass { <FACET_CLASS> } ?id a ?facetClass . OPTIONAL { ?id sch:image ?_orderBy }} }"
         },
+        "maxScore": {
+            "sortDirection": "desc"
+        },
         "prefLabel": {
             "containerClass": "one",
             "facetType": "text",
             "filterType": "textFilter",
+            "textQueryGetLiteral": true,
+            "textQueryHiglightingOptions": "",
             "sortByPredicate": "skos:prefLabel",
             "textQueryProperty": "skos:prefLabel"
         },

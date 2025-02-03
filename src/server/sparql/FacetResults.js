@@ -9,6 +9,18 @@ import {
   instanceQuery
 } from './SparqlQueriesGeneral'
 
+const checkTextFilter = (constraints) => {
+  let textFilter = false
+  if (constraints) {
+    constraints.forEach((constraint) => {
+      if (constraint['filterType'] == 'textFilter') {
+        textFilter = true
+      }
+    })
+  }
+  return textFilter
+}
+
 export const getPaginatedResults = ({
   backendSearchConfig,
   resultClass,
@@ -20,6 +32,7 @@ export const getPaginatedResults = ({
   resultFormat,
   dynamicLangTag,
 }) => {
+  let orderBy = sortBy
   let q = facetResultSetQuery
   const perspectiveConfig = backendSearchConfig[resultClass]
   const {
@@ -51,22 +64,35 @@ export const getPaginatedResults = ({
       facetID: null
     }))
   }
-  if (sortBy == null) {
+
+  if (checkTextFilter(constraints)) {
+    q = q.replace('<SCORE>', '(MAX(?score) AS ?maxScore) (MAX(?score) AS ?orderBy)')
+    q = q.replace('<GROUP_BY>', 'GROUP BY ?id ?maxScore ?orderBy ?literal')
+    orderBy = 'maxScore'  // if text searh facet active then always order by maxScore. Needs to be changed.
+  } else {
+    q = q.replace('<SCORE>', '?score')
+    q = q.replace('<GROUP_BY>', '')
+  }
+
+  if (orderBy == null) {
     q = q.replace('<ORDER_BY_TRIPLE>', '')
     q = q.replace('<ORDER_BY>', '# no sorting')
   }
-  if (sortBy !== null) {
+
+  if (orderBy !== null) {
     let sortByPredicate
-    if (sortBy.endsWith('Timespan')) {
+    if (orderBy.endsWith('Timespan')) {
       sortByPredicate = sortDirection === 'asc'
-        ? facets[sortBy].sortByAscPredicate
-        : facets[sortBy].sortByDescPredicate
+        ? facets[orderBy].sortByAscPredicate
+        : facets[orderBy].sortByDescPredicate
     } else {
-      sortByPredicate = facets[sortBy].sortByPredicate
+      sortByPredicate = facets[orderBy].sortByPredicate
     }
     let sortByPattern
-    if (has(facets[sortBy], 'sortByPattern')) {
-      sortByPattern = facets[sortBy].sortByPattern
+    if (has(facets[orderBy], 'sortByPattern')) {
+      sortByPattern = facets[orderBy].sortByPattern
+    } else if (orderBy == 'maxScore') {
+      sortByPattern = ''
     } else {
       sortByPattern = `OPTIONAL { ?id ${sortByPredicate} ?orderBy }`
     }

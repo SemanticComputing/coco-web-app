@@ -36,12 +36,15 @@ export const facetResultSetQuery = `
   WHERE {
     {
       # score and literal are used only for Jena full text index
-      SELECT DISTINCT ?id ?score ?literal {
+      # SELECT DISTINCT ?id ?score ?literal {
+      # (MAX(?score) AS ?maxScore) (MAX(?score) AS ?orderBy)
+        SELECT DISTINCT ?id <SCORE> ?literal {
         <FILTER>
         VALUES ?facetClass { <FACET_CLASS> }
         ?id <FACET_CLASS_PREDICATE> ?facetClass .
         <ORDER_BY_TRIPLE>
       }
+      <GROUP_BY>
       <ORDER_BY>
       <PAGE>
     }
