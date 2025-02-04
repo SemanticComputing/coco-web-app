@@ -108,6 +108,7 @@ const FacetedSearchPerspective = props => {
             apexChartsConfig={apexChartsConfig}
             leafletConfig={leafletConfig}
             networkConfig={networkConfig}
+            sortResults={props.sortResults}
           />
         </Grid>
         <Grid

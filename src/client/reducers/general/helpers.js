@@ -104,6 +104,12 @@ export const updateSortBy = (state, action) => {
       ...state,
       sortDirection: state.sortDirection === 'asc' ? 'desc' : 'asc'
     }
+  } else if (action.sortBy === 'maxScore') {
+    return {
+      ...state,
+      sortBy: action.sortBy,
+      sortDirection: 'desc'
+    }
   } else {
     return {
       ...state,

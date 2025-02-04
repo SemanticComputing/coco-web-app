@@ -65,10 +65,9 @@ export const getPaginatedResults = ({
     }))
   }
 
-  if (checkTextFilter(constraints)) {
+  if (orderBy === 'maxScore') {
     q = q.replace('<SCORE>', '(MAX(?score) AS ?maxScore) (MAX(?score) AS ?orderBy)')
     q = q.replace('<GROUP_BY>', 'GROUP BY ?id ?maxScore ?orderBy ?literal')
-    orderBy = 'maxScore'  // if text searh facet active then always order by maxScore. Needs to be changed.
   } else {
     q = q.replace('<SCORE>', '?score')
     q = q.replace('<GROUP_BY>', '')
@@ -78,7 +77,6 @@ export const getPaginatedResults = ({
     q = q.replace('<ORDER_BY_TRIPLE>', '')
     q = q.replace('<ORDER_BY>', '# no sorting')
   }
-
   if (orderBy !== null) {
     let sortByPredicate
     if (orderBy.endsWith('Timespan')) {

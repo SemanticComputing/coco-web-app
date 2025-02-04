@@ -31,6 +31,7 @@ const ResultTableHead = props => {
       <TableRow>
         <td className={classNames(classes.headerCol, classes.emptyHeaderCol)} key='empty' />
         {columns.map(column => {
+          if (column.id === 'maxScore' && sortBy != 'maxScore') { return null }
           if (column.onlyOnInstancePage) { return null }
           if (column.hideHeader) {
             return (

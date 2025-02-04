@@ -134,6 +134,8 @@ class FacetBar extends React.Component {
             fetchFacet={this.props.fetchFacet}
             someFacetIsFetching={someFacetIsFetching}
             updateFacetOption={this.props.updateFacetOption}
+            sortBy={this.props.perspectiveState.sortBy}
+            sortResults={this.props.sortResults}
           />
         )
         break
@@ -307,6 +309,7 @@ class FacetBar extends React.Component {
 
   renderFacets = ({ facets, someFacetIsFetching, propertiesTranslationsID }) => {
     const { screenSize } = this.props
+    //console.log(this.props.perspectiveState.sortBy)
     if (screenSize === 'xs' || screenSize === 'sm') {
       // note: some Accordion styles defined in theme (App.js)
       return (
@@ -443,7 +446,8 @@ FacetBar.propTypes = {
   leafletMap: PropTypes.object,
   showError: PropTypes.func.isRequired,
   rootUrl: PropTypes.string.isRequired,
-  screenSize: PropTypes.string.isRequired
+  screenSize: PropTypes.string.isRequired,
+  sortResults: PropTypes.func.isRequired
 }
 
 export default FacetBar

@@ -45,6 +45,9 @@ class TextFacet extends React.Component {
         option: this.props.facet.filterType,
         value: this.state.value
       })
+      if (this.props.facet.useTextScore) {
+        this.props.sortResults(this.props.resultClass, 'maxScore')
+      }
     }
   };
 
@@ -56,6 +59,9 @@ class TextFacet extends React.Component {
         option: this.props.facet.filterType,
         value: this.state.value
       })
+      if (this.props.facet.useTextScore) {
+        this.props.sortResults(this.props.resultClass, 'maxScore')
+      }
     }
   };
 
@@ -120,7 +126,9 @@ TextFacet.propTypes = {
   fetchFacet: PropTypes.func,
   someFacetIsFetching: PropTypes.bool.isRequired,
   updateFacetOption: PropTypes.func,
-  facetUpdateID: PropTypes.number
+  facetUpdateID: PropTypes.number,
+  sortBy: PropTypes.string,
+  sortResults: PropTypes.func.isRequired
 }
 
 export const TextFacetComponent = TextFacet

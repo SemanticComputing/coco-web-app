@@ -196,6 +196,7 @@ class ResultTable extends React.Component {
       if (screenSize === 'xs' || screenSize === 'sm') {
         previewImageHeight = 50
       }
+      if (column.id === 'maxScore' && this.props.data.sortBy != 'maxScore') { return null }
       if (column.onlyOnInstancePage) { return null }
       const columnData = row[column.id] == null ? '-' : row[column.id]
       const isArray = Array.isArray(columnData)

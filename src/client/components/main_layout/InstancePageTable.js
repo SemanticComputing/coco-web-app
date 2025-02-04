@@ -147,6 +147,7 @@ class InstancePageTable extends React.Component {
                   previewImageHeight = 50
                 }
                 const expanded = this.state.expandedRows.has(row.id)
+                if (id === 'maxScore') {return null}
                 return (
                   <TableRow key={row.id}>
                     <TableCell className={classes.labelCell}>

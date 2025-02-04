@@ -700,6 +700,7 @@
             "containerClass": "one",
             "facetType": "text",
             "filterType": "textFilter",
+            "useTextScore": true,
             "textQueryGetLiteral": true,
             "textQueryHiglightingOptions": "",
             "sortByPredicate": "skos:prefLabel",
