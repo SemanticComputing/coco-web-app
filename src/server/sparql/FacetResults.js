@@ -9,18 +9,6 @@ import {
   instanceQuery
 } from './SparqlQueriesGeneral'
 
-const checkTextFilter = (constraints) => {
-  let textFilter = false
-  if (constraints) {
-    constraints.forEach((constraint) => {
-      if (constraint['filterType'] == 'textFilter') {
-        textFilter = true
-      }
-    })
-  }
-  return textFilter
-}
-
 export const getPaginatedResults = ({
   backendSearchConfig,
   resultClass,
