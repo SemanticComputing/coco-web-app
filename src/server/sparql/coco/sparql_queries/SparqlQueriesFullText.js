@@ -16,8 +16,8 @@ BIND(COALESCE(?provided, ?id) AS ?match)
 ?match skos:prefLabel ?prefLabel__id .
 BIND(?prefLabel__id as ?prefLabel__prefLabel)
 BIND(CONCAT(?pagetype, "/page/", REPLACE(STR(?match), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
-  
-BIND(IF (str(?literal) != str(?prefLabel__prefLabel), ?literal, '') AS ?altLabel)
+
+BIND (IF(STR(?_altLabel) != str(?prefLabel__prefLabel), ?_altLabel, '') AS ?altLabel)
 
 OPTIONAL { 
   ?match ?value_prop ?_num .
