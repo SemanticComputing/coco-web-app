@@ -24,11 +24,12 @@ OPTIONAL {
   BIND(REPLACE(CONCAT("     ", str(?_num)), "^.*(.{5})$", "$1")  AS ?number_of_activities)
 }
 
-
 OPTIONAL {
-  ?match sch:image ?image__id ;
-    skos:prefLabel ?image__description ;
-    skos:prefLabel ?image__title .
+  ?match ^:proxy_for? [ 
+        sch:image ?image__id ;
+    	skos:prefLabel ?image__description ;
+    	skos:prefLabel ?image__title 
+    ]
   BIND(CONCAT(REPLACE(STR(?image__id), "https*:", ""), "?width=40") as ?image__url)
 }
 `
