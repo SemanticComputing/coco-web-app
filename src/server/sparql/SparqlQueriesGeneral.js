@@ -24,11 +24,13 @@ export const jenaQuery = `
 `
 
 export const fullTextQuery = `
-  SELECT *
+  SELECT ?id ?maxScore ?type__id ?type__prefLabel ?prefLabel__id ?prefLabel__prefLabel ?prefLabel__dataProviderUrl ?altLabel ?number_of_activities ?image__id ?image__description ?image__title ?image__url
   WHERE {
     <QUERY>
     <RESULT_SET_PROPERTIES>
   }
+  GROUP BY ?maxScore ?id ?type__id ?type__prefLabel ?prefLabel__id ?prefLabel__prefLabel ?prefLabel__dataProviderUrl ?altLabel ?number_of_activities ?image__id ?image__description ?image__title ?image__url
+  ORDER BY DESC(?maxScore)
 `
 
 export const facetResultSetQuery = `

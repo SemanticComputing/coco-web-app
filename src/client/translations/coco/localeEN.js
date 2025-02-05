@@ -214,6 +214,9 @@ export default {
         image: {
           label: 'Image'
         },
+        maxScore: {
+          label: 'Text search score'
+        },
         number_of_activities: {
           label: 'Number of activities'
         }

@@ -57,6 +57,15 @@
             "sortValues": false,
             "numberedList": false,
             "minWidth": 200
+        },
+        {
+            "id": "maxScore",
+            "valueType": "string",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": false,
+            "numberedList": false,
+            "minWidth": 200
         }
     ]
 }
