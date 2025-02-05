@@ -55,7 +55,7 @@ export const getPaginatedResults = ({
 
   if (orderBy === 'maxScore') {
     q = q.replace('<SCORE>', '(MAX(?score) AS ?maxScore) (MAX(?score) AS ?orderBy)')
-    q = q.replace('<GROUP_BY>', 'GROUP BY ?id ?maxScore ?orderBy ?literal')
+    q = q.replace('<GROUP_BY>', 'GROUP BY ?id ?maxScore ?orderBy')
   } else {
     q = q.replace('<SCORE>', '?score')
     q = q.replace('<GROUP_BY>', '')
