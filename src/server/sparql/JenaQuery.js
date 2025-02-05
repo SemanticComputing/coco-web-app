@@ -20,7 +20,7 @@ export const queryJenaIndex = async ({
     ORDER by DESC(?maxScore)
   }`)
   // q = q.replace('<RESULT_SET_PROPERTIES>', propertiesQueryBlock)
-  console.log(endpoint.prefixes + q)
+  // console.log(endpoint.prefixes + q)
   const results = await runSelectQuery({
     query: endpoint.prefixes + q,
     endpoint: endpoint.url,
