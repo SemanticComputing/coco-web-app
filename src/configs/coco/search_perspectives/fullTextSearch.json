@@ -41,15 +41,6 @@
             "minWidth": 60
         },
         {
-            "id": "altLabel",
-            "valueType": "string",
-            "makeLink": false,
-            "externalLink": false,
-            "sortValues": false,
-            "numberedList": false,
-            "minWidth": 400
-        },
-        {
             "id": "number_of_activities",
             "valueType": "string",
             "makeLink": false,
