@@ -151,6 +151,14 @@
             "tabIcon": "ArrowForward",
             "resultClass": "places",
             "facetClass": "places"
+        },
+        "share": {
+            "tabID": 4,
+            "component": "ExportLink",
+            "tabPath": "share",
+            "tabIcon": "CloudDownload",
+            "resultClass": "places",
+            "facetClass": "places"
         }
     },
     "properties": [

@@ -442,6 +442,14 @@
             "tabIcon": "ArrowForward",
             "resultClass": "perspective1",
             "facetClass": "perspective1"
+        },
+        "share": {
+            "tabID": 5,
+            "component": "ExportLink",
+            "tabPath": "share",
+            "tabIcon": "CloudDownload",
+            "resultClass": "actors",
+            "facetClass": "actors"
         }
     },
     "properties": [

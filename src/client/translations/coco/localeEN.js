@@ -99,6 +99,7 @@ export default {
     statistics: 'statistics',
     download: 'download',
     sparql: 'sparql',
+    share: 'share'
   },
   table: {
     rowsPerPage: 'Rows per page',

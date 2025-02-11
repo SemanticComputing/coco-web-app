@@ -104,6 +104,14 @@
             "tabIcon": "CloudDownload",
             "resultClass": "perspective1",
             "facetClass": "perspective1"
+        },
+        "share": {
+            "tabID": 4,
+            "component": "ExportLink",
+            "tabPath": "share",
+            "tabIcon": "CloudDownload",
+            "resultClass": "fonds",
+            "facetClass": "fonds"
         }
     },
     "properties": [

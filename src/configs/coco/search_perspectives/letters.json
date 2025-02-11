@@ -11,9 +11,7 @@
     "facetClass": ":Letter",
     "frontPageImage": "main_page/works-452x262.jpg",
     "searchMode": "faceted-search",
-    "defaultActiveFacets": [
-        "prefLabel"
-    ],
+    "defaultActiveFacets": [],
     "defaultTab": "table",
     "defaultInstancePageTab": "table",
     "maps": {
@@ -215,6 +213,14 @@
             "component": "Export",
             "tabPath": "sparql",
             "tabIcon": "ArrowForward",
+            "resultClass": "letters",
+            "facetClass": "letters"
+        },
+        "share": {
+            "tabID": 7,
+            "component": "ExportLink",
+            "tabPath": "share",
+            "tabIcon": "CloudDownload",
             "resultClass": "letters",
             "facetClass": "letters"
         }
