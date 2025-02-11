@@ -1,15 +1,15 @@
 {
     "id": "snellmanedition",
     "endpoint": {
-        "url": "https://ldf.fi/coco/sparql",
+        "url": "http://localhost:3041/ds/sparql",
         "useAuth": true,
         "prefixesFile": "SparqlQueriesPrefixes.js"
     },
-    "sparqlQueriesFile": "SparqlQueriesLetters.js",
+    "sparqlQueriesFile": "SparqlQueriesSnellman.js",
     "baseURI": "http://ldf.fi/coco",
     "URITemplate": "<BASE_URI>/letters/<LOCAL_ID>",
-    "facetClass": ":Letter",
-    "defaultConstraint": "<SUBJECT> :digital_edition <http://ldf.fi/coco/source/snellman>  .",
+    "facetClass": "snellman:Document",
+    "defaultConstraint": "VALUES ?snellmanType { snellman:13218 snellman:13238 } . \n <SUBJECT> dc:type ?snellmanType .",
     "frontPageImage": "main_page/snellman.jpg",
     "searchMode": "faceted-search",
     "defaultActiveFacets": [
@@ -47,7 +47,7 @@
                 "component": "ResultTable",
                 "tabPath": "table",
                 "tabIcon": "CalendarViewDay",
-                "propertiesQueryBlock": "letterProperties",
+                "propertiesQueryBlock": "snellmanProperties",
                 "pagesize": 30,
                 "sortBy": null,
                 "sortDirection": null
@@ -413,30 +413,6 @@
             "sortButton": true,
             "hideUnknownValue": true
         },
-        "source_type": {
-            "containerClass": "three",
-            "facetType": "list",
-            "filterType": "uriFilter",
-            "predicate": "portal:sender_type",
-            "sortBy": "instanceCount",
-            "sortByPredicate": "portal:sender_type/skos:prefLabel",
-            "sortDirection": "desc",
-            "pieChartButton": true,
-            "sortButton": true,
-            "hideUnknownValue": true
-        },
-        "source_gender": {
-            "containerClass": "three",
-            "facetType": "list",
-            "filterType": "uriFilter",
-            "predicate": "portal:sender_gender",
-            "sortBy": "instanceCount",
-            "sortByPredicate": "portal:sender_gender/skos:prefLabel",
-            "sortDirection": "desc",
-            "pieChartButton": true,
-            "sortButton": true,
-            "hideUnknownValue": true
-        },
         "target": {
             "containerClass": "ten",
             "facetType": "list",
@@ -450,132 +426,85 @@
             "sortButton": true,
             "hideUnknownValue": true
         },
-        "target_type": {
-            "containerClass": "three",
-            "facetType": "list",
-            "filterType": "uriFilter",
-            "predicate": "portal:recipient_type",
-            "sortBy": "instanceCount",
-            "sortByPredicate": "portal:recipient_type/skos:prefLabel",
-            "sortDirection": "desc",
-            "pieChartButton": true,
-            "sortButton": true,
-            "hideUnknownValue": true
-        },
-        "target_gender": {
-            "containerClass": "three",
-            "facetType": "list",
-            "filterType": "uriFilter",
-            "predicate": "portal:recipient_gender",
-            "sortBy": "instanceCount",
-            "sortByPredicate": "portal:recipient_gender/skos:prefLabel",
-            "sortDirection": "desc",
-            "pieChartButton": true,
-            "sortButton": true,
-            "hideUnknownValue": true
-        },
-        "productionTimespan": {
-            "containerClass": "four",
-            "endProperty": "crm:P82b_end_of_the_end",
-            "facetType": "timespan",
-            "filterType": "timespanFilter",
-            "dataType": "xsd:dateTime",
-            "max": null,
-            "min": null,
-            "predicate": ":has_time-span",
-            "sortByAscPredicate": ":has_time-span/crm:P82a_begin_of_the_begin",
-            "sortByDescPredicate": ":has_time-span/crm:P82b_end_of_the_end",
-            "startProperty": "crm:P82a_begin_of_the_begin"
-        },
         "from": {
             "containerClass": "seven",
             "facetType": "list",
             "filterType": "uriFilter",
-            "predicate": ":was_sent_from",
+            "predicate": "snellman:writtenIn",
             "searchField": true,
             "sortBy": "instanceCount",
-            "sortByPredicate": ":was_sent_from/skos:prefLabel",
+            "sortByPredicate": "snellman:writtenIn/skos:prefLabel",
             "sortDirection": "desc",
             "pieChartButton": true,
             "sortButton": true,
-            "hideUnknownValue": true
-        },
-        "language": {
-            "containerClass": "seven",
-            "facetType": "list",
-            "filterType": "uriFilter",
-            "predicate": "dct:language",
-            "searchField": false,
-            "sortBy": "instanceCount",
-            "sortDirection": "desc",
-            "sortButton": true,
-            "pieChartButton": true,
-            "sortByPredicate": "dct:language/skos:prefLabel",
-            "hideUnknownValue": true
+            "hideUnknownValue": false
         },
         "lettertype": {
             "containerClass": "seven",
             "facetType": "list",
             "filterType": "uriFilter",
-            "predicate": ":type",
+            "predicate": "dc:type",
             "searchField": false,
             "sortBy": "instanceCount",
             "sortDirection": "desc",
             "sortButton": true,
             "pieChartButton": true,
-            "sortByPredicate": ":type/skos:prefLabel",
-            "hideUnknownValue": true
+            "sortByPredicate": "dc:type/skos:prefLabel",
+            "hideUnknownValue": false
         },
-        "digital_edition": {
-            "containerClass": "six",
+        "relatedPerson": {
+            "containerClass": "seven",
             "facetType": "list",
             "filterType": "uriFilter",
-            "predicate": ":digital_edition",
-            "searchField": false,
+            "predicate": "dc:relation",
+            "searchField": true,
             "sortBy": "instanceCount",
+            "facetValueFilter": "?id a foaf:Person .",
             "sortDirection": "desc",
             "sortButton": true,
             "pieChartButton": true,
-            "sortByPredicate": ":digital_edition/skos:prefLabel",
+            "sortByPredicate": "dc:relation/skos:prefLabel",
             "hideUnknownValue": true
         },
-        "datasource": {
-            "containerClass": "ten",
+        "relatedPlace": {
+            "containerClass": "seven",
             "facetType": "list",
             "filterType": "uriFilter",
-            "predicate": "dct:source",
-            "searchField": false,
+            "predicate": "dc:relation",
+            "searchField": true,
             "sortBy": "instanceCount",
+            "facetValueFilter": "?id a snellman:Place .",
             "sortDirection": "desc",
             "sortButton": true,
             "pieChartButton": true,
-            "sortByPredicate": "dct:source/skos:prefLabel",
+            "sortByPredicate": "dc:relation/skos:prefLabel",
             "hideUnknownValue": true
         },
-        "archival_organization": {
-            "containerClass": "ten",
+        "relatedConcept": {
+            "containerClass": "seven",
             "facetType": "list",
             "filterType": "uriFilter",
-            "predicate": ":archival_organization/:proxy_for",
-            "searchField": false,
+            "predicate": "dc:relation",
+            "searchField": true,
             "sortBy": "instanceCount",
+            
             "sortDirection": "desc",
             "sortButton": true,
             "pieChartButton": true,
-            "sortByPredicate": ":archival_organization/:proxy_for/skos:prefLabel",
+            "sortByPredicate": "dc:relation/skos:prefLabel",
             "hideUnknownValue": true
         },
-        "fonds": {
-            "containerClass": "ten",
+        "nlpEntity": {
+            "containerClass": "seven",
             "facetType": "list",
             "filterType": "uriFilter",
-            "predicate": ":fonds",
-            "searchField": false,
+            "predicate": "sns:entity_instance/^sns:instance",
+            "searchField": true,
             "sortBy": "instanceCount",
             "sortDirection": "desc",
             "sortButton": true,
             "pieChartButton": true,
-            "sortByPredicate": ":fonds/skos:prefLabel",
+            "sortByPredicate": "dc:relation/skos:prefLabel",
             "hideUnknownValue": true
         },
         "prefLabel": {
