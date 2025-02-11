@@ -640,6 +640,17 @@
             "expandedOnInstancePage": true
         },
         {
+            "id": "similar",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": false,
+            "minWidth": 220,
+            "onlyOnInstancePage": true,
+            "expandedOnInstancePage": true
+        },
+        {
             "id": "datasource",
             "valueType": "string",
             "makeLink": false,
