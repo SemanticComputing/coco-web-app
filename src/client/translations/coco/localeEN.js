@@ -1579,6 +1579,22 @@ export default {
           label: 'Label',
           description: 'The label of the Letter'
         },
+        relatedPerson: {
+          label: 'Person',
+          description: ''
+        },
+        relatedPlace: {
+          label: 'Place',
+          description: ''
+        },
+        relatedConcept: {
+          label: 'Concept',
+          description: ''
+        },
+        nlpEntity: {
+          label: 'Entity (automatically)',
+          description: ''
+        },
         language: {
           label: 'Language',
           description: `

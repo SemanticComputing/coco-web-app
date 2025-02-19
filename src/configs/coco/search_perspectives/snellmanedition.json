@@ -1,7 +1,7 @@
 {
     "id": "snellmanedition",
     "endpoint": {
-        "url": "http://localhost:3041/ds/sparql",
+        "url": "https://ldf.fi/snellman/sparql",
         "useAuth": true,
         "prefixesFile": "SparqlQueriesPrefixes.js"
     },
@@ -225,7 +225,7 @@
             "id": "prefLabel",
             "valueType": "object",
             "makeLink": true,
-            "externalLink": false,
+            "externalLink": true,
             "sortValues": false,
             "numberedList": false,
             "minWidth": 250
@@ -251,25 +251,6 @@
             "expandedOnInstancePage": true
         },
         {
-            "id": "productionTimespan",
-            "valueType": "object",
-            "makeLink": false,
-            "externalLink": false,
-            "sortValues": true,
-            "numberedList": false,
-            "minWidth": 100
-        },
-        {
-            "id": "tie",
-            "valueType": "object",
-            "makeLink": true,
-            "externalLink": false,
-            "sortValues": false,
-            "numberedList": true,
-            "onlyOnInstancePage": true,
-            "expandedOnInstancePage": true
-        },
-        {
             "id": "from",
             "valueType": "object",
             "makeLink": true,
@@ -280,34 +261,13 @@
             "minWidth": 200
         },
         {
-            "id": "mentioned_person",
+            "id": "relatedEntity",
             "valueType": "object",
             "makeLink": true,
             "externalLink": false,
             "sortValues": false,
             "numberedList": true,
-            "onlyOnInstancePage": true,
-            "expandedOnInstancePage": true
-        },
-        {
-            "id": "mentioned_place",
-            "valueType": "object",
-            "makeLink": true,
-            "externalLink": false,
-            "sortValues": false,
-            "numberedList": true,
-            "onlyOnInstancePage": true,
-            "expandedOnInstancePage": true
-        },
-        {
-            "id": "language",
-            "valueType": "object",
-            "makeLink": false,
-            "externalLink": false,
-            "sortValues": true,
-            "numberedList": false,
-            "minWidth": 150,
-            "onlyOnInstancePage": true,
+            "onlyOnInstancePage": false,
             "expandedOnInstancePage": true
         },
         {
@@ -318,74 +278,6 @@
             "sortValues": true,
             "numberedList": false,
             "minWidth": 150,
-            "onlyOnInstancePage": true,
-            "expandedOnInstancePage": true
-        },
-        {
-            "id": "datasource",
-            "valueType": "object",
-            "makeLink": false,
-            "externalLink": false,
-            "sortValues": false,
-            "numberedList": false,
-            "onlyOnInstancePage": false
-        },
-        {
-            "id": "archival_organization",
-            "valueType": "object",
-            "makeLink": false,
-            "externalLink": false,
-            "sortValues": false,
-            "numberedList": false,
-            "onlyOnInstancePage": false
-        },
-        {
-            "id": "fonds",
-            "valueType": "object",
-            "makeLink": true,
-            "externalLink": false,
-            "sortValues": false,
-            "numberedList": false
-        },
-        {
-            "id": "series",
-            "valueType": "string",
-            "makeLink": false,
-            "externalLink": false,
-            "sortValues": false,
-            "numberedList": false,
-            "onlyOnInstancePage": true
-        },
-        {
-            "id": "other",
-            "valueType": "object",
-            "makeLink": true,
-            "externalLink": false,
-            "sortValues": false,
-            "numberedList": false,
-            "minWidth": 250,
-            "onlyOnInstancePage": true,
-            "expandedOnInstancePage": true
-        },
-        {
-            "id": "related",
-            "valueType": "object",
-            "makeLink": true,
-            "externalLink": true,
-            "sortValues": true,
-            "numberedList": false,
-            "minWidth": 250,
-            "onlyOnInstancePage": true,
-            "expandedOnInstancePage": true
-        },
-        {
-            "id": "source_url",
-            "valueType": "object",
-            "makeLink": true,
-            "externalLink": true,
-            "sortValues": true,
-            "numberedList": false,
-            "minWidth": 250,
             "onlyOnInstancePage": true,
             "expandedOnInstancePage": true
         },
@@ -499,6 +391,7 @@
             "facetType": "list",
             "filterType": "uriFilter",
             "predicate": "sns:entity_instance/^sns:instance",
+            "facetValueFilter": "?id owl:sameAs ?anySameAs . ",
             "searchField": true,
             "sortBy": "instanceCount",
             "sortDirection": "desc",
