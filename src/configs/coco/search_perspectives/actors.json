@@ -442,6 +442,14 @@
             "tabIcon": "ArrowForward",
             "resultClass": "perspective1",
             "facetClass": "perspective1"
+        },
+        "share": {
+            "tabID": 5,
+            "component": "ExportLink",
+            "tabPath": "share",
+            "tabIcon": "CloudDownload",
+            "resultClass": "actors",
+            "facetClass": "actors"
         }
     },
     "properties": [
@@ -637,6 +645,17 @@
             "onlyOnInstancePage": true,
             "showSource": true,
             "sourceExternalLink": false,
+            "expandedOnInstancePage": true
+        },
+        {
+            "id": "similar",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": false,
+            "minWidth": 220,
+            "onlyOnInstancePage": true,
             "expandedOnInstancePage": true
         },
         {

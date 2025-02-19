@@ -104,6 +104,14 @@
             "tabIcon": "CloudDownload",
             "resultClass": "perspective1",
             "facetClass": "perspective1"
+        },
+        "share": {
+            "tabID": 4,
+            "component": "ExportLink",
+            "tabPath": "share",
+            "tabIcon": "CloudDownload",
+            "resultClass": "fonds",
+            "facetClass": "fonds"
         }
     },
     "properties": [
@@ -238,7 +246,7 @@
             "pieChartButton": true,
             "searchField": true,
             "sortButton": true,
-            "sortByPredicate": "skos:prefLabel"
+            "sortByPredicate": ":self_link/skos:prefLabel"
         },
         "digital_edition": {
             "containerClass": "six",
@@ -250,7 +258,7 @@
             "pieChartButton": true,
             "searchField": true,
             "sortButton": true,
-            "sortByPredicate": "skos:prefLabel"
+            "sortByPredicate": "portal:digital_edition/skos:prefLabel"
         },
         "creator": {
             "containerClass": "ten",
@@ -262,7 +270,7 @@
             "pieChartButton": true,
             "searchField": true,
             "sortButton": true,
-            "sortByPredicate": "skos:prefLabel"
+            "sortByPredicate": ":records_creator/:proxy_for/skos:prefLabel"
         },
         "creator_gender": {
             "containerClass": "five",

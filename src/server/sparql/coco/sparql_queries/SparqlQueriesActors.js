@@ -102,6 +102,21 @@ export const actorPropertiesInstancePage = `
     BIND (?external__id AS ?external__dataProviderUrl)
   }
   UNION
+  {
+    SELECT DISTINCT ?id
+      ?similar__id
+      ?similar__prefLabel
+      (CONCAT("/actors/page/", REPLACE(STR(?similar__id), "^.*\\\\/(.+)", "$1")) AS ?similar__dataProviderUrl)
+      WHERE {
+      [] :proxy_for ?id ;
+        (skosxl:prefLabel|skosxl:altLabel)/skos:closeMatch? ?_label .
+      [] skosxl:prefLabel|skosxl:altLabel ?_label ;
+        :proxy_for ?similar__id .
+      FILTER (?similar__id != ?id)
+      ?similar__id skos:prefLabel ?similar__prefLabel 
+    }
+  }
+  UNION
   { 
     ?prx :proxy_for ?id .
     { ?prx a/skos:prefLabel ?type }

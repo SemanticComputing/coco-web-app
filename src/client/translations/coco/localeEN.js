@@ -99,6 +99,7 @@ export default {
     statistics: 'statistics',
     download: 'download',
     sparql: 'sparql',
+    share: 'share'
   },
   table: {
     rowsPerPage: 'Rows per page',
@@ -390,13 +391,21 @@ export default {
         acquaintance: {
           label: 'Personal relations',
           description: `Personal relations to other people. 
-          Notice that this data has been extracted from external databased like BiographySampo, AcademySampo, Wikidata and ULAN. 
+          Notice that this data has been extracted from external databased like BiographySampo, AcademySampo, Wikidata, and ULAN.
           Only relations between people in the CoCo data are shown, so there might be missing relations or errors.`
         },
         rel: {
           label: 'Related actors',
           description: `
             Related actors, e.g. parents, spouses, acquaintances.
+          `
+        },
+        similar: {
+          label: 'Actors with similar names',
+          description: `
+            Actors with names that are close to the name of the current actor. 
+            
+            NB: Linking the letter metadata to the actors is an automatic process and there might appear errors in the actor recognition.
           `
         },
         metrics: {

@@ -1,5 +1,5 @@
 export const fullTextSearchProperties = `
-VALUES (?type__id ?type__prefLabel ?pagetype ?value_prop)
+VALUES (?type__id ?type__label ?pagetype ?value_prop)
 {
   (:ProvidedActor "Actor" "/actors" :out_degree)
   #(crm:E21_Person "Person" "/actors" :out_degree)
@@ -11,13 +11,14 @@ VALUES (?type__id ?type__prefLabel ?pagetype ?value_prop)
 
 ?id a ?type__id .
 OPTIONAL { ?id :proxy_for ?provided }
-BIND(COALESCE(?provided, ?id) AS ?match)
+BIND (COALESCE(?provided, ?id) AS ?match)
+
+OPTIONAL { ?match portal:portal_class/skos:prefLabel ?type__class }
+BIND (COALESCE(?type__class, ?type__label) AS ?type__prefLabel)
 
 ?match skos:prefLabel ?prefLabel__id .
 BIND(?prefLabel__id as ?prefLabel__prefLabel)
 BIND(CONCAT(?pagetype, "/page/", REPLACE(STR(?match), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
-
-BIND (IF(STR(?_altLabel) != str(?prefLabel__prefLabel), ?_altLabel, '') AS ?altLabel)
 
 OPTIONAL { 
   ?match ?value_prop ?_num .

@@ -14,7 +14,7 @@ export const queryJenaIndex = async ({
   // q = q.replace('<QUERY>', `(?id ?score ?literal) text:query ('${queryTerm.toLowerCase()}' 10000) .`)
   // q = q.replace('<QUERY>', `(?id ?score ?literal) text:query ('${queryTerm.toLowerCase()}' 10000000) .`)
   q = q.replace('<QUERY>', `
-  { SELECT DISTINCT ?id (MAX(?score) AS ?maxScore) (SAMPLE(?literal) AS ?_altLabel) WHERE {
+  { SELECT DISTINCT ?id (MAX(?score) AS ?maxScore) WHERE {
     (?id ?score ?literal) text:query ('${queryTerm.toLowerCase()}' 10000000) .
     }
     GROUP BY ?id ?maxScore
