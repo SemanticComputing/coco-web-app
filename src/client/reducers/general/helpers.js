@@ -99,16 +99,16 @@ export const updateRowsPerPage = (state, action) => {
 }
 
 export const updateSortBy = (state, action) => {
-  if (state.sortBy === action.sortBy) {
-    return {
-      ...state,
-      sortDirection: state.sortDirection === 'asc' ? 'desc' : 'asc'
-    }
-  } else if (action.sortBy === 'maxScore') {
+  if (action.sortBy === 'maxScore') {
     return {
       ...state,
       sortBy: action.sortBy,
       sortDirection: 'desc'
+    }
+   } else if (state.sortBy === action.sortBy) {
+    return {
+      ...state,
+      sortDirection: state.sortDirection === 'asc' ? 'desc' : 'asc'
     }
   } else {
     return {
