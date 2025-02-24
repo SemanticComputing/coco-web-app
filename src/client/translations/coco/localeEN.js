@@ -1600,8 +1600,12 @@ export default {
           label: 'Concept',
           description: ''
         },
+        relatedEntity: {
+          label: 'Related entity',
+          description: ''
+        },
         nlpEntity: {
-          label: 'Any entity type (automatically)',
+          label: 'Related entity (automatically)',
           description: ''
         },
         nlpPerson: {

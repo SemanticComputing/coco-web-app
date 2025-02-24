@@ -23,8 +23,15 @@ UNION
 }
 UNION
 {
-  ?id dc:relation ?nlpEntity__id .
+  ?id dc:relation ?relatedEntity__id .
+  ?relatedEntity__id skos:prefLabel ?relatedEntity__prefLabel .
+  #BIND(CONCAT("/actors/page/", REPLACE(STR(?target__id), "^.*\\\\/(.+)", "$1")) AS ?target__dataProviderUrl)
+}
+  UNION
+{
+  ?id sns:entity_instance/^sns:instance ?nlpEntity__id .
   ?nlpEntity__id skos:prefLabel ?nlpEntity__prefLabel .
+  ?nlpEntity__id owl:sameAs ?anySameAs .
   #BIND(CONCAT("/actors/page/", REPLACE(STR(?target__id), "^.*\\\\/(.+)", "$1")) AS ?target__dataProviderUrl)
 }
 `

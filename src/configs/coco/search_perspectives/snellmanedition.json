@@ -261,6 +261,16 @@
             "minWidth": 200
         },
         {
+            "id": "relatedEntity",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": false,
+            "sortValues": false,
+            "numberedList": true,
+            "onlyOnInstancePage": false,
+            "minWidth": 200
+        },
+        {
             "id": "nlpEntity",
             "valueType": "object",
             "makeLink": true,
@@ -268,7 +278,7 @@
             "sortValues": false,
             "numberedList": true,
             "onlyOnInstancePage": false,
-            "expandedOnInstancePage": true
+            "minWidth": 200
         },
         {
             "id": "lettertype",
@@ -390,7 +400,7 @@
             "facetType": "list",
             "filterType": "uriFilter",
             "predicate": "sns:entity_instance/^sns:instance",
-            "facetValueFilter": "?id owl:sameAs ?anySameAs . \n ?id sns:entity_category sns:Person ",
+            "facetValueFilter": "?id owl:sameAs ?anySameAs . \n ?id sns:entity_category sns:Person .",
             "searchField": true,
             "sortBy": "instanceCount",
             "sortDirection": "desc",
@@ -404,7 +414,7 @@
             "facetType": "list",
             "filterType": "uriFilter",
             "predicate": "sns:entity_instance/^sns:instance",
-            "facetValueFilter": "?id owl:sameAs ?anySameAs . \n ?id sns:entity_category sns:Place ",
+            "facetValueFilter": "?id owl:sameAs ?anySameAs . \n ?id sns:entity_category sns:Place .",
             "searchField": true,
             "sortBy": "instanceCount",
             "sortDirection": "desc",
@@ -418,7 +428,7 @@
             "facetType": "list",
             "filterType": "uriFilter",
             "predicate": "sns:entity_instance/^sns:instance",
-            "facetValueFilter": "?id owl:sameAs ?anySameAs . \n ?id sns:entity_category sns:Location ",
+            "facetValueFilter": "?id owl:sameAs ?anySameAs . \n ?id sns:entity_category sns:Location .",
             "searchField": true,
             "sortBy": "instanceCount",
             "sortDirection": "desc",
