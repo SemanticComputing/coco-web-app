@@ -1601,7 +1601,39 @@ export default {
           description: ''
         },
         nlpEntity: {
-          label: 'Entity (automatically)',
+          label: 'Any entity type (automatically)',
+          description: ''
+        },
+        nlpPerson: {
+          label: 'Person (automatically)',
+          description: ''
+        },
+        nlpPlace: {
+          label: 'Place (automatically)',
+          description: ''
+        },
+        nlpLocation: {
+          label: 'Location (automatically)',
+          description: ''
+        },
+        nlpDate: {
+          label: 'Date (automatically)',
+          description: ''
+        },
+        nlpEvent: {
+          label: 'Event (automatically)',
+          description: ''
+        },
+        nlpOrganization: {
+          label: 'Organization (automatically)',
+          description: ''
+        },
+        nlpMisc: {
+          label: 'Misc (automatically)',
+          description: ''
+        },
+        nlpArtwork: {
+          label: 'Artwork (automatically)',
           description: ''
         },
         language: {

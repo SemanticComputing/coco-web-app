@@ -23,5 +23,5 @@ PREFIX letters: <http://ldf.fi/coco/letters/>
 PREFIX places: <http://ldf.fi/coco/places/>
 PREFIX tmp: <http://ldf.fi/coco/tmp/>
 PREFIX snellman: <http://ldf.fi/snellman/>
-PREFIX sns: <http://ldf.fi/snellman/schema/>
+PREFIX sns: <http://ldf.fi/schema/snellman/>
 `

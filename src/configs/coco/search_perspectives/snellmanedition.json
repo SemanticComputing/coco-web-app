@@ -261,7 +261,7 @@
             "minWidth": 200
         },
         {
-            "id": "relatedEntity",
+            "id": "nlpEntity",
             "valueType": "object",
             "makeLink": true,
             "externalLink": false,
@@ -288,7 +288,7 @@
             "externalLink": true,
             "sortValues": true,
             "numberedList": false,
-            "onlyOnInstancePage": true
+            "onlyOnInstancePage": false
         }
     ],
     "facets": {
@@ -379,11 +379,122 @@
             "predicate": "dc:relation",
             "searchField": true,
             "sortBy": "instanceCount",
-            
             "sortDirection": "desc",
             "sortButton": true,
             "pieChartButton": true,
             "sortByPredicate": "dc:relation/skos:prefLabel",
+            "hideUnknownValue": true
+        },
+        "nlpPerson": {
+            "containerClass": "seven",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "predicate": "sns:entity_instance/^sns:instance",
+            "facetValueFilter": "?id owl:sameAs ?anySameAs . \n ?id sns:entity_category sns:Person ",
+            "searchField": true,
+            "sortBy": "instanceCount",
+            "sortDirection": "desc",
+            "sortButton": true,
+            "pieChartButton": true,
+            "sortByPredicate": "sns:entity_instance/^sns:instance/skos:prefLabel",
+            "hideUnknownValue": true
+        },
+        "nlpPlace": {
+            "containerClass": "seven",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "predicate": "sns:entity_instance/^sns:instance",
+            "facetValueFilter": "?id owl:sameAs ?anySameAs . \n ?id sns:entity_category sns:Place ",
+            "searchField": true,
+            "sortBy": "instanceCount",
+            "sortDirection": "desc",
+            "sortButton": true,
+            "pieChartButton": true,
+            "sortByPredicate": "sns:entity_instance/^sns:instance/skos:prefLabel",
+            "hideUnknownValue": true
+        },
+        "nlpLocation": {
+            "containerClass": "seven",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "predicate": "sns:entity_instance/^sns:instance",
+            "facetValueFilter": "?id owl:sameAs ?anySameAs . \n ?id sns:entity_category sns:Location ",
+            "searchField": true,
+            "sortBy": "instanceCount",
+            "sortDirection": "desc",
+            "sortButton": true,
+            "pieChartButton": true,
+            "sortByPredicate": "sns:entity_instance/^sns:instance/skos:prefLabel",
+            "hideUnknownValue": true
+        },
+        "nlpEvent": {
+            "containerClass": "seven",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "predicate": "sns:entity_instance/^sns:instance",
+            "facetValueFilter": "?id owl:sameAs ?anySameAs . \n ?id sns:entity_category sns:Event .",
+            "searchField": true,
+            "sortBy": "instanceCount",
+            "sortDirection": "desc",
+            "sortButton": true,
+            "pieChartButton": true,
+            "sortByPredicate": "sns:entity_instance/^sns:instance/skos:prefLabel",
+            "hideUnknownValue": true
+        },
+        "nlpDate": {
+            "containerClass": "seven",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "predicate": "sns:entity_instance/^sns:instance",
+            "facetValueFilter": "?id owl:sameAs ?anySameAs . \n ?id sns:entity_category sns:Date .",
+            "searchField": true,
+            "sortBy": "instanceCount",
+            "sortDirection": "desc",
+            "sortButton": true,
+            "pieChartButton": true,
+            "sortByPredicate": "sns:entity_instance/^sns:instance/skos:prefLabel",
+            "hideUnknownValue": true
+        },
+        "nlpOrganization": {
+            "containerClass": "seven",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "predicate": "sns:entity_instance/^sns:instance",
+            "facetValueFilter": "?id owl:sameAs ?anySameAs . \n ?id sns:entity_category sns:Organization .",
+            "searchField": true,
+            "sortBy": "instanceCount",
+            "sortDirection": "desc",
+            "sortButton": true,
+            "pieChartButton": true,
+            "sortByPredicate": "sns:entity_instance/^sns:instance/skos:prefLabel",
+            "hideUnknownValue": true
+        },
+        "nlpArtwork": {
+            "containerClass": "seven",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "predicate": "sns:entity_instance/^sns:instance",
+            "facetValueFilter": "?id owl:sameAs ?anySameAs . \n ?id sns:entity_category sns:Artwork .",
+            "searchField": true,
+            "sortBy": "instanceCount",
+            "sortDirection": "desc",
+            "sortButton": true,
+            "pieChartButton": true,
+            "sortByPredicate": "sns:entity_instance/^sns:instance/skos:prefLabel",
+            "hideUnknownValue": true
+        },
+        "nlpMisc": {
+            "containerClass": "seven",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "predicate": "sns:entity_instance/^sns:instance",
+            "facetValueFilter": "?id owl:sameAs ?anySameAs . \n ?id sns:entity_category sns:Misc .",
+            "searchField": true,
+            "sortBy": "instanceCount",
+            "sortDirection": "desc",
+            "sortButton": true,
+            "pieChartButton": true,
+            "sortByPredicate": "sns:entity_instance/^sns:instance/skos:prefLabel",
             "hideUnknownValue": true
         },
         "nlpEntity": {
