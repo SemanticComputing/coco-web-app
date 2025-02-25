@@ -1589,15 +1589,15 @@ export default {
           description: 'The label of the Letter'
         },
         relatedPerson: {
-          label: 'Person',
+          label: 'Related person',
           description: ''
         },
         relatedPlace: {
-          label: 'Place',
+          label: 'Related place',
           description: ''
         },
         relatedConcept: {
-          label: 'Concept',
+          label: 'Related concept',
           description: ''
         },
         relatedEntity: {
@@ -1605,31 +1605,31 @@ export default {
           description: ''
         },
         nlpEntity: {
-          label: 'Related entity (automatically)',
+          label: 'Mentioned entity (automatically)',
           description: ''
         },
         nlpPerson: {
-          label: 'Person (automatically)',
+          label: 'Mentioned person (automatically)',
           description: ''
         },
         nlpPlace: {
-          label: 'Place (automatically)',
+          label: 'Mentioned place (automatically)',
           description: ''
         },
         nlpLocation: {
-          label: 'Location (automatically)',
+          label: 'Mentioned location (automatically)',
           description: ''
         },
         nlpDate: {
-          label: 'Date (automatically)',
+          label: 'Mentioned date (automatically)',
           description: ''
         },
         nlpEvent: {
-          label: 'Event (automatically)',
+          label: 'Mentioned event (automatically)',
           description: ''
         },
         nlpOrganization: {
-          label: 'Organization (automatically)',
+          label: 'Mentioned organization (automatically)',
           description: ''
         },
         nlpMisc: {
@@ -1637,7 +1637,7 @@ export default {
           description: ''
         },
         nlpArtwork: {
-          label: 'Artwork (automatically)',
+          label: 'Mentioned artwork (automatically)',
           description: ''
         },
         language: {
@@ -1770,7 +1770,7 @@ export default {
           `
         },
         from: {
-          label: 'Place of sending',
+          label: 'Place of sending (automatically)',
           description: `
           Place from where the letter was sent.
           `

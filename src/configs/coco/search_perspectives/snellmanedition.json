@@ -108,116 +108,6 @@
                     }
                 }
             }
-        },
-        "lettersByYear": {
-            "tabID": 1,
-            "component": "ApexCharts",
-            "tabPath": "by-year",
-            "tabIcon": "ShowChart",
-            "sparqlQuery": "lettersByYearQuery",
-            "facetClass": "letters",
-            "filterTarget": "letter",
-            "resultMapper": "mapLineChart",
-            "resultMapperConfig": {
-                "fillEmptyValues": false
-            },
-            "createChartData": "createSingleLineChartData",
-            "title": "Letters by year",
-            "xaxisTitle": "Year",
-            "xaxisType": "category",
-            "xaxisTickAmount": 20,
-            "yaxisTitle": "Number of letters",
-            "seriesTitle": "Number of letters",
-            "stroke": {
-                "curve": "straight",
-                "width": 2
-            }
-        },
-        "activitiesByPlace": {
-            "tabID": 2,
-            "component": "LeafletMap",
-            "tabPath": "map",
-            "tabIcon": "AddLocation",
-            "sparqlQuery": "sendingPlacesMapQuery",
-            "facetClass": "letters",
-            "filterTarget": "letter",
-            "resultMapper": "mapPlaces",
-            "instanceConfig": {
-                "propertiesQueryBlock": "placePropertiesInfoWindow",
-                "relatedInstances": "peopleRelatedTo",
-                "createPopUpContent": "createPopUpContentLetterSampo"
-            }
-        },
-        "sendingPlacesHeatmap": {
-            "tabID": 3,
-            "tabPath": "heatmap",
-            "tabIcon": "LocalFireDepartment",
-            "component": "Deck",
-            "layerType": "heatmapLayer",
-            "sparqlQuery": "sendingPlacesHeatmapQuery",
-            "facetClass": "letters",
-            "filterTarget": "id",
-            "resultMapper": "mapPlaces"
-        },
-        "actorTops": {
-            "tabID": 4,
-            "component": "ApexCharts",
-            "tabPath": "top-correspondents",
-            "tabIcon": "Tune",
-            "title": "Top {} Correspondents",
-            "height": "100%",
-            "facetClass": "letters",
-            "filterTarget": "id",
-            "sparqlQuery": "topCorrespondenceFacetPageQuery",
-            "resultMapper": "createCorrespondenceChartData",
-            "resultMapperConfig": {
-                "types": ["to", "from"],
-                "numberTopResults": 20,
-                "lastLabel": null
-            },
-            "createChartData": "createTopTimelineChartData",
-            "tooltip": { "x": { "format": "yyyy" } },
-            "fill": { "opacity": [0.7, 0.5] },
-            "markers": {
-                "strokeColors": "#777",
-                "strokeWidth": 1
-            },
-            "dataLabels": {
-                "enabled": false
-            },
-            "plotOptions": {
-                "bubble": {
-                    "zScaling": true,
-                    "minBubbleRadius": 2,
-                    "maxBubbleRadius": 20
-                }
-            },
-            "legend": { "position": "bottom" },
-            "grid": {
-                "row": {
-                    "colors": ["#d5d5d5", "transparent"], "opacity": 0.5
-                },
-                "column": { "colors": ["#a8a8a8", "transparent"] },
-                "xaxis": { "lines": { "show": true } },
-                "yaxis": { "lines": { "show": true } }
-            }
-        },
-        "csvLetters": {
-            "tabID": 5,
-            "component": "ExportCSV",
-            "tabPath": "csv",
-            "tabIcon": "CloudDownload",
-            "facetClass": "letters",
-            "sparqlQuery": "csvQueryLetters",
-            "filterTarget": "id"
-        },
-        "export": {
-            "tabID": 6,
-            "component": "Export",
-            "tabPath": "sparql",
-            "tabIcon": "ArrowForward",
-            "resultClass": "letters",
-            "facetClass": "letters"
         }
     },
     "properties": [
@@ -278,7 +168,7 @@
             "sortValues": false,
             "numberedList": true,
             "onlyOnInstancePage": false,
-            "minWidth": 200
+            "minWidth": 300
         },
         {
             "id": "lettertype",
@@ -306,10 +196,10 @@
             "containerClass": "ten",
             "facetType": "list",
             "filterType": "uriFilter",
-            "predicate": "portal:sender",
+            "predicate": "dc:creator",
             "searchField": true,
             "sortBy": "instanceCount",
-            "sortByPredicate": "portal:sender/skos:prefLabel",
+            "sortByPredicate": "dc:creator/skos:prefLabel",
             "sortDirection": "desc",
             "pieChartButton": true,
             "sortButton": true,
@@ -319,10 +209,10 @@
             "containerClass": "ten",
             "facetType": "list",
             "filterType": "uriFilter",
-            "predicate": "portal:recipient",
+            "predicate": "snellman:letterReceiver",
             "searchField": true,
             "sortBy": "instanceCount",
-            "sortByPredicate": "portal:recipient/skos:prefLabel",
+            "sortByPredicate": "snellman:letterReceiver/skos:prefLabel",
             "sortDirection": "desc",
             "pieChartButton": true,
             "sortButton": true,
@@ -485,20 +375,6 @@
             "filterType": "uriFilter",
             "predicate": "sns:entity_instance/^sns:instance",
             "facetValueFilter": "?id owl:sameAs ?anySameAs . \n ?id sns:entity_category sns:Artwork .",
-            "searchField": true,
-            "sortBy": "instanceCount",
-            "sortDirection": "desc",
-            "sortButton": true,
-            "pieChartButton": true,
-            "sortByPredicate": "sns:entity_instance/^sns:instance/skos:prefLabel",
-            "hideUnknownValue": true
-        },
-        "nlpMisc": {
-            "containerClass": "seven",
-            "facetType": "list",
-            "filterType": "uriFilter",
-            "predicate": "sns:entity_instance/^sns:instance",
-            "facetValueFilter": "?id owl:sameAs ?anySameAs . \n ?id sns:entity_category sns:Misc .",
             "searchField": true,
             "sortBy": "instanceCount",
             "sortDirection": "desc",
