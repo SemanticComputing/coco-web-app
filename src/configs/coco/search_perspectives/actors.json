@@ -598,14 +598,14 @@
         },
         {
             "id": "description",
-            "valueType": "string",
+            "valueType": "object",
             "makeLink": false,
             "externalLink": false,
             "sortValues": false,
-            "numberedList": true,
+            "numberedList": false,
             "minWidth": 220,
             "onlyOnInstancePage": true,
-            "showSource": false,
+            "showSource": true,
             "sourceExternalLink": false,
             "expandedOnInstancePage": true
         },

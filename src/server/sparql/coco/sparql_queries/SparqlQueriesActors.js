@@ -200,7 +200,13 @@ export const actorPropertiesInstancePage = `
     }
     UNION
     {
-      ?prx dct:description ?description
+      GRAPH ?g { ?prx dct:description ?description__id }
+      BIND (?description__id AS ?description__prefLabel)
+      BIND (?description__id AS ?description__dataProviderUrl)
+      
+      ?g skos:altLabel ?description__source__prefLabel .
+      BIND (?prx AS ?description__source__id)
+      BIND (CONCAT("/proxies/page/", REPLACE(STR(?prx), "^.*\\\\/(.+)", "$1")) AS ?description__source__dataProviderUrl)
     }
     UNION
     {
