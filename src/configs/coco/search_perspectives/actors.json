@@ -12,7 +12,7 @@
     "frontPageImage": "main_page/people2-452x262.jpg",
     "searchMode": "faceted-search",
     "defaultActiveFacets": [
-        "prefLabel"
+        "prefLabel", "role"
     ],
     "defaultTab": "table",
     "defaultInstancePageTab": "table",
