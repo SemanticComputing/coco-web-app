@@ -431,7 +431,7 @@
             "hideUnknownValue": true
         },
         "source_gender": {
-            "containerClass": "three",
+            "containerClass": "four",
             "facetType": "list",
             "filterType": "uriFilter",
             "predicate": "portal:sender_gender",
@@ -468,7 +468,7 @@
             "hideUnknownValue": true
         },
         "target_gender": {
-            "containerClass": "three",
+            "containerClass": "four",
             "facetType": "list",
             "filterType": "uriFilter",
             "predicate": "portal:recipient_gender",
