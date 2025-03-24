@@ -1,5 +1,5 @@
 {
-    "id": "runebergedition",
+    "id": "edelfeltedition",
     "endpoint": {
         "url": "https://ldf.fi/coco/sparql",
         "useAuth": true,
@@ -9,8 +9,8 @@
     "baseURI": "http://ldf.fi/coco",
     "URITemplate": "<BASE_URI>/letters/<LOCAL_ID>",
     "facetClass": ":Letter",
-    "defaultConstraint": "<SUBJECT> portal:sender|portal:recipient <http://ldf.fi/coco/provided/p0000000000000000187> .",
-    "frontPageImage": "main_page/runeberg.jpg",
+    "defaultConstraint": "<SUBJECT> portal:sender|portal:recipient <http://ldf.fi/coco/provided/p0000000000000000465> .",
+    "frontPageImage": "main_page/edelfelt.jpg",
     "searchMode": "faceted-search",
     "defaultActiveFacets": [
         "prefLabel"
@@ -41,7 +41,7 @@
         }
     },
     "resultClasses": {
-        "runebergedition": {
+        "edelfeltedition": {
             "paginatedResultsConfig": {
                 "tabID": 0,
                 "component": "ResultTable",

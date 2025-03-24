@@ -226,7 +226,7 @@ export default {
     actors: {
       label: 'Actors',
       facetResultsType: 'actors',
-      shortDescription: 'People or groups of people in the collection',
+      shortDescription: '',
       longDescription: `
         <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
           Use this perspective to access data related to the actors, e.g., people, groups, families, and unknowns, in the dataset.
@@ -509,7 +509,7 @@ export default {
     letters: {
       label: 'Letters',
       facetResultsType: 'letters',
-      shortDescription: 'Information about the letters in the database',
+      shortDescription: '',
       longDescription: `
       <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
         Use this perspective to access the letter data in the dataset.
@@ -740,7 +740,7 @@ export default {
     fonds: {
       label: 'Fonds and Collections',
       facetResultsType: 'fonds',
-      shortDescription: 'Information about Fonds and Collections',
+      shortDescription: '',
       longDescription: `
       <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
         Use this perspective to access the archival organizations and fonds in the dataset.
@@ -900,7 +900,7 @@ export default {
     places: {
       label: 'Places',
       facetResultsType: 'Places',
-      shortDescription: 'Related towns, cities, or countries',
+      shortDescription: '',
       longDescription: `
       <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
       Use this perspective to access the place ontology related to the letters and actors in the dataset.
@@ -1191,7 +1191,7 @@ export default {
     occupations: {
       label: 'Occupation',
       facetResultsType: 'occupation',
-      shortDescription: 'Occupations of the people in the data publications',
+      shortDescription: '',
       instancePage: {
         label: 'Proxy',
         description: `
@@ -1284,7 +1284,7 @@ export default {
     proxies: {
       label: 'Proxy',
       facetResultsType: 'proxy',
-      shortDescription: 'People or groups of people in a specific collection',
+      shortDescription: '',
       instancePage: {
         label: 'Proxy',
         description: `
@@ -1525,9 +1525,9 @@ export default {
       }
     },
     snellmanedition: {
-      label: 'Snellman',
+      label: 'J. V. Snellman',
       facetResultsType: 'letters',
-      shortDescription: 'Letters of J. V. Snellman',
+      shortDescription: '',
       longDescription: `
       <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
         Use this perspective to access the letter data in the dataset.
@@ -1808,9 +1808,9 @@ export default {
       }
     },
     topeliusedition: {
-      label: 'Topelius',
+      label: 'Zachris Topelius',
       facetResultsType: 'letters',
-      shortDescription: 'Letters of Zacharias Topelius',
+      shortDescription: '',
       longDescription: `
       <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
         Use this perspective to access the letter data in the dataset.
@@ -2039,9 +2039,9 @@ export default {
       }
     },
     lonnrotedition: {
-      label: 'Lönnrot',
+      label: 'Elias Lönnrot',
       facetResultsType: 'letters',
-      shortDescription: 'Letters of Elias Lönnrot',
+      shortDescription: '',
       longDescription: `
       <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
         Use this perspective to access the letter data in the dataset.
@@ -2269,10 +2269,10 @@ export default {
         }
       }
     },
-    runebergedition: {
-      label: 'Runeberg',
+    edelfeltedition: {
+      label: 'Albert Edelfelt',
       facetResultsType: 'letters',
-      shortDescription: 'Letters of Johan Ludvig Runeberg',
+      shortDescription: '',
       longDescription: `
       <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
         Use this perspective to access the letter data in the dataset.

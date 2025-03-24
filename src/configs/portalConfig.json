@@ -7,10 +7,10 @@
             "actors",
             "fonds",
             "places",
-            "snellmanedition",
+            "edelfeltedition",
             "lonnrotedition",
+            "snellmanedition",
             "topeliusedition",
-            "runebergedition",
             "fullTextSearch"
         ],
         "onlyInstancePages": [
