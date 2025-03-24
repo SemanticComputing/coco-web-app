@@ -12,7 +12,7 @@
     "frontPageImage": "main_page/manuscripts-452x262.jpg",
     "searchMode": "faceted-search",
     "defaultActiveFacets": [
-        "fonds", "archival_organization"
+        "fonds"
     ],
     "defaultTab": "table",
     "defaultInstancePageTab": "table",
@@ -148,15 +148,6 @@
             "expandedOnInstancePage": true
         },
         {
-            "id": "archival_organization",
-            "valueType": "object",
-            "makeLink": false,
-            "externalLink": false,
-            "sortValues": true,
-            "numberedList": false,
-            "minWidth": 120
-        },
-        {
             "id": "datasource",
             "valueType": "string",
             "makeLink": false,
@@ -224,18 +215,6 @@
         }
     ],
     "facets": {
-        "archival_organization": {
-            "containerClass": "ten",
-            "facetType": "list",
-            "predicate": ":archival_organization/:proxy_for",
-            "filterType": "uriFilter",
-            "sortBy": "instanceCount",
-            "sortDirection": "desc",
-            "pieChartButton": true,
-            "sortButton": true,
-            "hideUnknownValue": true,
-            "sortByPredicate": ":archival_organization/:proxy_for/skos:prefLabel"
-        },
         "fonds": {
             "containerClass": "ten",
             "facetType": "list",
