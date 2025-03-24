@@ -23,7 +23,7 @@ export default {
       aboutTheProject: 'About the project',
       aboutTheProjectUrl: 'https://seco.cs.aalto.fi/projects/coco/'
     },
-    searchBarPlaceHolder: 'Search all content',
+    searchBarPlaceHolder: 'Search metadata',
     searchBarPlaceHolderShort: 'Search',
     instructions: 'instructions',
     instructionsUrl: 'https://docs.google.com/document/d/e/2PACX-1vRPPYcK4VLKdh_uVbNMZ8diOe0MZhvVjisvVpDCzUn5hMU8SAKfG5QF8iwS6grYpXB41PfzDkT0tttg/pub'
