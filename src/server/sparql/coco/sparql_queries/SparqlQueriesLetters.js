@@ -39,12 +39,6 @@ UNION
   ?datasource__id skos:prefLabel ?datasource__prefLabel .
   BIND(CONCAT("/sources/page/", REPLACE(STR(?datasource__id), "^.*\\\\/(.+)", "$1")) AS ?datasource__dataProviderUrl)
 }
-UNION
-{
-  ?id :archival_organization ?archival_organization__id .
-  ?archival_organization__id a [] ; skos:prefLabel ?archival_organization__prefLabel .
-  BIND(CONCAT("/fonds/page/", REPLACE(STR(?archival_organization__id), "^.*\\\\/(.+)", "$1")) AS ?archival_organization__dataProviderUrl)
-}
 `
 
 export const letterPropertiesInstancePage = `
@@ -122,12 +116,6 @@ UNION
   BIND(CONCAT("/fonds/page/", REPLACE(STR(?fonds__id), "^.*\\\\/(.+)", "$1")) AS ?fonds__dataProviderUrl)
 }
 UNION
-{
-  ?id :archival_organization ?archival_organization__id .
-  ?archival_organization__id a [] ; skos:prefLabel ?archival_organization__prefLabel .
-  BIND(CONCAT("/fonds/page/", REPLACE(STR(?archival_organization__id), "^.*\\\\/(.+)", "$1")) AS ?archival_organization__dataProviderUrl)
-}
-UNION
 { # Metadata values
   ?id :metadata ?_metadata .
   {
@@ -170,7 +158,6 @@ SELECT *
       UNION
       {     
         VALUES (?prop ?prop_label) {
-          (:archival_location 'archival location')
           (:fonds_as_recorded 'fonds as recorded')
           (:number_of_letters 'number of letters')
           (:recipient_as_recorded 'recipient as recorded')
@@ -292,7 +279,7 @@ export const peopleRelatedTo = `
 `
 
 export const csvQueryLetters = `
-SELECT DISTINCT ?id ?label ?sender ?sender_id ?recipient ?recipient_id ?timespan ?datasource ?archival_organization ?fonds
+SELECT DISTINCT ?id ?label ?sender ?sender_id ?recipient ?recipient_id ?timespan ?datasource ?fonds
 WHERE {
 
   <FILTER>
@@ -321,10 +308,6 @@ WHERE {
   OPTIONAL 
   { 
     ?id dct:source/skos:prefLabel ?datasource 
-  }
-  OPTIONAL 
-  {
-    ?id :archival_organization [ a [] ; skos:prefLabel ?archival_organization ]
   }
 
 } ORDERBY ?label `

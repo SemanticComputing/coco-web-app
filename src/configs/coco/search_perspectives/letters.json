@@ -336,15 +336,6 @@
             "onlyOnInstancePage": false
         },
         {
-            "id": "archival_organization",
-            "valueType": "object",
-            "makeLink": false,
-            "externalLink": false,
-            "sortValues": false,
-            "numberedList": false,
-            "onlyOnInstancePage": false
-        },
-        {
             "id": "fonds",
             "valueType": "object",
             "makeLink": true,
@@ -542,19 +533,6 @@
             "sortButton": true,
             "pieChartButton": true,
             "sortByPredicate": ":digital_edition/skos:prefLabel",
-            "hideUnknownValue": true
-        },
-        "archival_organization": {
-            "containerClass": "ten",
-            "facetType": "list",
-            "filterType": "uriFilter",
-            "predicate": ":archival_organization/:proxy_for",
-            "searchField": false,
-            "sortBy": "instanceCount",
-            "sortDirection": "desc",
-            "sortButton": true,
-            "pieChartButton": true,
-            "sortByPredicate": ":archival_organization/:proxy_for/skos:prefLabel",
             "hideUnknownValue": true
         },
         "fonds": {
