@@ -18,15 +18,19 @@ export default {
   selectPerspective: 'Select a perspective to search and browse the knowledge graph:',
   mainPageImageLicence: 'Images used under license from Wikimedia Commons',
   backendErrorText: 'One of the backend services is not available at the moment. Please try again later.',
-  mainPageLinkText: "Example searches, visualizations, and linked information (UNDER CONSTRUCTION):",
+  mainPageLinkText: "Example searches, visualizations, and linked information:",
   mainPageLinks: [
+      {
+        title: 'Letters of Akseli Gallen-Kallela',
+        link: '/actors/page/p0000000000000000869/letters'
+      },
       {
         title: 'Network of letters of Elias Lönnrot',
         link: '/actors/page/p0000000000000000370/letter-network'
       },
       {
-        title: 'Letters of Akseli Gallen-Kallela',
-        link: '/actors/page/p0000000000000000869/letters'
+        title: 'Letters between Johan Ludvig and Fredrika Runeberg',
+        link: 'en/letters/faceted-search/table?page=0&constraints=%5B%7B%22facetId%22%3A%22source%22%2C%22filterType%22%3A%22uriFilter%22%2C%22value%22%3A%7B%22path%22%3A%5B36%5D%2C%22node%22%3A%7B%22id%22%3A%22http%3A%2F%2Fldf.fi%2Fcoco%2Fprovided%2Fp0000000000000002128%22%2C%22prefLabel%22%3A%22Runeberg%2C%20Fredrika%20(1807-1879)%22%2C%22instanceCount%22%3A1407%7D%7D%7D%2C%7B%22facetId%22%3A%22source%22%2C%22filterType%22%3A%22uriFilter%22%2C%22value%22%3A%7B%22path%22%3A%5B380%5D%2C%22node%22%3A%7B%22id%22%3A%22http%3A%2F%2Fldf.fi%2Fcoco%2Fprovided%2Fp0000000000000000187%22%2C%22prefLabel%22%3A%22Runeberg%2C%20Johan%20Ludvig%20(1804-1877)%22%2C%22instanceCount%22%3A484%7D%7D%7D%2C%7B%22facetId%22%3A%22target%22%2C%22filterType%22%3A%22uriFilter%22%2C%22value%22%3A%7B%22path%22%3A%5B7%5D%2C%22node%22%3A%7B%22id%22%3A%22http%3A%2F%2Fldf.fi%2Fcoco%2Fprovided%2Fp0000000000000002128%22%2C%22prefLabel%22%3A%22Runeberg%2C%20Fredrika%20(1807-1879)%22%2C%22instanceCount%22%3A41%7D%7D%7D%2C%7B%22facetId%22%3A%22target%22%2C%22filterType%22%3A%22uriFilter%22%2C%22value%22%3A%7B%22path%22%3A%5B48%5D%2C%22node%22%3A%7B%22id%22%3A%22http%3A%2F%2Fldf.fi%2Fcoco%2Fprovided%2Fp0000000000000000187%22%2C%22prefLabel%22%3A%22Runeberg%2C%20Johan%20Ludvig%20(1804-1877)%22%2C%22instanceCount%22%3A4%7D%7D%7D%5D'
       },
       {
         title: 'Top correspondences of Uno Cygnaeus',
@@ -45,8 +49,16 @@ export default {
         link: '/edelfeltedition/faceted-search/map'
       },
       {
-        title: 'Finnish Literature Society Fonds (BROKEN)',
-        link: '/fonds/faceted-search/table/page=0&constraints=%5B%7B%22facetId%22%3A%22datasource%22%2C%22filterType%22%3A%22uriFilter%22%2C%22value%22%3A%7B%22path%22%3A%5B3%5D%2C%22node%22%3A%7B%22id%22%3A%22https%3A%2F%2Fwww.finlit.fi%22%2C%22prefLabel%22%3A%22The%20Finnish%20Literature%20Society%20(SKS)%22%2C%22instanceCount%22%3A256%7D%7D%7D%5D'
+        title: 'Finnish Literature Society Fonds',
+        link: '/en/fonds/faceted-search/table?page=0&constraints=%5B%7B%22facetId%22%3A%22datasource%22%2C%22filterType%22%3A%22uriFilter%22%2C%22value%22%3A%7B%22path%22%3A%5B3%5D%2C%22node%22%3A%7B%22id%22%3A%22https%3A%2F%2Fwww.finlit.fi%22%2C%22prefLabel%22%3A%22The%20Finnish%20Literature%20Society%20(SKS)%22%2C%22instanceCount%22%3A256%7D%7D%7D%5D'
+      },
+      {
+        title: 'Correspondence networks of people related to theater world',
+        link: '/en/actors/faceted-search/network?constraints=%5B%7B%22facetId%22%3A%22occupation%22%2C%22filterType%22%3A%22uriFilter%22%2C%22value%22%3A%7B%22path%22%3A%5B29%5D%2C%22node%22%3A%7B%22id%22%3A%22http%3A%2F%2Fldf.fi%2Fcoco%2Foccupations%2FQ33999%22%2C%22prefLabel%22%3A%22actor%22%2C%22instanceCount%22%3A370%7D%7D%7D%2C%7B%22facetId%22%3A%22occupation%22%2C%22filterType%22%3A%22uriFilter%22%2C%22value%22%3A%7B%22path%22%3A%5B178%5D%2C%22node%22%3A%7B%22id%22%3A%22http%3A%2F%2Fldf.fi%2Fcoco%2Foccupations%2FQ1776724%22%2C%22prefLabel%22%3A%22theatre%20manager%22%2C%22instanceCount%22%3A53%7D%7D%7D%2C%7B%22facetId%22%3A%22occupation%22%2C%22filterType%22%3A%22uriFilter%22%2C%22value%22%3A%7B%22path%22%3A%5B74%5D%2C%22node%22%3A%7B%22id%22%3A%22http%3A%2F%2Fldf.fi%2Fcoco%2Foccupations%2FQ2259451%22%2C%22prefLabel%22%3A%22stage%20actor%22%2C%22instanceCount%22%3A158%7D%7D%7D%2C%7B%22facetId%22%3A%22occupation%22%2C%22filterType%22%3A%22uriFilter%22%2C%22value%22%3A%7B%22path%22%3A%5B474%5D%2C%22node%22%3A%7B%22id%22%3A%22http%3A%2F%2Fldf.fi%2Fcoco%2Foccupations%2FQ21169216%22%2C%22prefLabel%22%3A%22actress%22%2C%22instanceCount%22%3A8%7D%7D%7D%5D'
+      },
+      {
+        title: 'Women as records creators at the National Library of FInland',
+        link: '/en/fonds/faceted-search/table?page=0&constraints=%5B%7B%22facetId%22%3A%22creator_gender%22%2C%22filterType%22%3A%22uriFilter%22%2C%22value%22%3A%7B%22path%22%3A%5B2%5D%2C%22node%22%3A%7B%22id%22%3A%22http%3A%2F%2Fpurl.org%2Flinked-data%2Fsdmx%2F2009%2Fcode%23sex-F%22%2C%22prefLabel%22%3A%22Female%22%2C%22instanceCount%22%3A32%7D%7D%7D%2C%7B%22facetId%22%3A%22datasource%22%2C%22filterType%22%3A%22uriFilter%22%2C%22value%22%3A%7B%22path%22%3A%5B4%5D%2C%22node%22%3A%7B%22id%22%3A%22http%3A%2F%2Fldf.fi%2Fcoco%2Fsource%2Fnationallibrary%22%2C%22prefLabel%22%3A%22National%20Library%20of%20Finland%22%2C%22instanceCount%22%3A248%7D%7D%7D%5D'
       }
   ],
   mainPageDick: 'fehkufhekj',
