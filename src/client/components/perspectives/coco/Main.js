@@ -204,8 +204,16 @@ const Main = props => {
             return null
           })}
         </Grid>
-        </Box>
-
+        <hr />
+        <Typography variant={descriptionVariant} align='center' color='textPrimary'>
+            {intl.getHTML('mainPageLinkText') ? intl.getHTML('mainPageLinkText') : null}<br></br>
+            <Box>
+            {intl.get('mainPageLinks').map(b => {
+              return <Box sx={{ display: 'inline', margin: 0.5, padding: 0.2, fontSize: 14 }}><a href={b.link}>{b.title}</a></Box>
+            })}
+            </Box>
+          </Typography>
+          <hr />
           <Typography
             align='center'
             sx={theme => ({
@@ -215,6 +223,7 @@ const Main = props => {
           >
             {intl.getHTML('mainPageImageLicence')}
           </Typography>
+          </Box>
         </Box>
 
   )

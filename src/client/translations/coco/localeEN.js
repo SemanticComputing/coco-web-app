@@ -1,3 +1,5 @@
+import { constrainedMemory } from "process";
+
 export default {
   languageLabel: 'English',
   html: {
@@ -16,6 +18,38 @@ export default {
   selectPerspective: 'Select a perspective to search and browse the knowledge graph:',
   mainPageImageLicence: 'Images used under license from Wikimedia Commons',
   backendErrorText: 'One of the backend services is not available at the moment. Please try again later.',
+  mainPageLinkText: "Example searches, visualizations, and linked information (UNDER CONSTRUCTION):",
+  mainPageLinks: [
+      {
+        title: 'Network of letters of Elias Lönnrot',
+        link: '/actors/page/p0000000000000000370/letter-network'
+      },
+      {
+        title: 'Letters of Akseli Gallen-Kallela',
+        link: '/actors/page/p0000000000000000869/letters'
+      },
+      {
+        title: 'Top correspondences of Uno Cygnaeus',
+        link: '/actors/page/p1516151985531889895/top-correspondences'
+      },
+      {
+        title: 'Linked data about Ida Aalberg',
+        link: '/actors/page/p0000000000000000571/table'
+      },
+      {
+        title: 'Timeline of Helene Schjerfbeck’s letters',
+        link: '/actors/page/p0000000000000001321/letters-by-year'
+      },
+      {
+        title: 'Places mentioned in A. Edelfelt’s letters on a map',
+        link: '/edelfeltedition/faceted-search/map'
+      },
+      {
+        title: 'Finnish Literature Society Fonds (BROKEN)',
+        link: '/fonds/faceted-search/table/page=0&constraints=%5B%7B%22facetId%22%3A%22datasource%22%2C%22filterType%22%3A%22uriFilter%22%2C%22value%22%3A%7B%22path%22%3A%5B3%5D%2C%22node%22%3A%7B%22id%22%3A%22https%3A%2F%2Fwww.finlit.fi%22%2C%22prefLabel%22%3A%22The%20Finnish%20Literature%20Society%20(SKS)%22%2C%22instanceCount%22%3A256%7D%7D%7D%5D'
+      }
+  ],
+  mainPageDick: 'fehkufhekj',
   topBar: {
     feedback: 'feedback',
     info: {
