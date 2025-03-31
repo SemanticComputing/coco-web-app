@@ -285,6 +285,16 @@
             "minWidth": 200
         },
         {
+            "id": "to",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": false,
+            "sortValues": true,
+            "onlyOnInstancePage": true,
+            "numberedList": false,
+            "minWidth": 200
+        },
+        {
             "id": "mentioned_person",
             "valueType": "object",
             "makeLink": true,

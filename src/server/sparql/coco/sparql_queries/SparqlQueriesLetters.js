@@ -70,6 +70,12 @@ UNION
 }
 UNION
 {
+  ?id :was_sent_to ?to__id .
+  ?to__id skos:prefLabel ?to__prefLabel ; a [] .
+  BIND(CONCAT("/places/page/", REPLACE(STR(?to__id), "^.*\\\\/(.+)", "$1")) AS ?to__dataProviderUrl)
+}
+UNION
+{
   ?id :in_tie ?tie__id .
   ?tie__id skos:prefLabel ?tie__prefLabel .
   BIND(CONCAT("/ties/page/", REPLACE(STR(?tie__id), "^.*\\\\/(.+)", "$1")) AS ?tie__dataProviderUrl)
@@ -171,6 +177,7 @@ SELECT *
           (:source_api_url 'source api url')
           (:source_filename 'source filename')
           (:sending_place 'place of sending as recorded')
+          (:receiving_place 'place of receiving as recorded')
           (:summary 'summary')
           (:type 'type')
           (:recipient_class 'recipient class')

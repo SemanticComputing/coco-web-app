@@ -751,6 +751,12 @@ export default {
           Place from where the letter was sent.
           `
         },
+        to: {
+          label: 'Place of receiving',
+          description: `
+          Place where the letter was to.
+          `
+        },
         lettertype: {
           label: 'Type of letter',
           description: `
