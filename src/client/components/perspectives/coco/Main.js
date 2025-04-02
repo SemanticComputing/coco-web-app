@@ -7,6 +7,7 @@ import Typography from '@mui/material/Typography'
 import has from 'lodash'
 import MainCard from './MainCard'
 import { getSpacing } from '../../../helpers/helpers'
+import Button from '@mui/material/Button'
 
 /**
  * A component for generating a front page for a semantic portal.
@@ -209,7 +210,13 @@ const Main = props => {
             {intl.getHTML('mainPageLinkText') ? intl.getHTML('mainPageLinkText') : null}<br></br>
             <Box>
             {intl.get('mainPageLinks').map(b => {
-              return <Box sx={{ display: 'inline', margin: 0.5, padding: 0.2, fontSize: 14 }}><a href={b.link}>{b.title}</a></Box>
+              return <Box key={b.title} sx={{ display: 'inline-block', margin: 0.5 }}>
+                  <a href={b.link}>
+                    <Button variant='contained' color='primary'>
+                      {b.title}
+                    </Button>
+                  </a>
+                </Box>
             })}
             </Box>
           </Typography>
