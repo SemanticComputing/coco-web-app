@@ -9,7 +9,7 @@
     "baseURI": "http://ldf.fi/coco",
     "URITemplate": "<BASE_URI>/letters/<LOCAL_ID>",
     "facetClass": ":Letter",
-    "defaultConstraint": "<SUBJECT> portal:sender|portal:recipient <http://ldf.fi/coco/provided/p0000000000000000465> .",
+    "defaultConstraint": "<SUBJECT> :digital_edition <http://ldf.fi/coco/source/edelfelt> .",
     "frontPageImage": "main_page/edelfelt.jpg",
     "searchMode": "faceted-search",
     "defaultActiveFacets": [
