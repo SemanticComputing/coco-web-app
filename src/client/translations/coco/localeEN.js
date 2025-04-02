@@ -18,7 +18,7 @@ export default {
   selectPerspective: 'Select a perspective to search and browse the knowledge graph:',
   mainPageImageLicence: 'Images used under license from Wikimedia Commons',
   backendErrorText: 'One of the backend services is not available at the moment. Please try again later.',
-  mainPageLinkText: "Example searches, visualizations, and linked information:",
+  mainPageLinkText: "Try example searches, visualizations, and linked information:",
   mainPageLinks: [
       {
         title: 'Letters of Akseli Gallen-Kallela',
