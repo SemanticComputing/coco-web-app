@@ -526,6 +526,32 @@
             "sortByPredicate": ":type/skos:prefLabel",
             "hideUnknownValue": true
         },
+        "mentioned_person": {
+            "containerClass": "ten",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "predicate": ":referenced_actor/:proxy_for",
+            "searchField": true,
+            "sortBy": "instanceCount",
+            "sortByPredicate": ":referenced_actor/:proxy_for/skos:prefLabel",
+            "sortDirection": "desc",
+            "pieChartButton": true,
+            "sortButton": true,
+            "hideUnknownValue": true
+        },
+        "mentioned_place": {
+            "containerClass": "ten",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "predicate": ":referenced_place",
+            "searchField": true,
+            "sortBy": "instanceCount",
+            "sortByPredicate": ":referenced_place/skos:prefLabel",
+            "sortDirection": "desc",
+            "pieChartButton": true,
+            "sortButton": true,
+            "hideUnknownValue": true
+        },
         "digital_edition": {
             "containerClass": "six",
             "facetType": "list",
