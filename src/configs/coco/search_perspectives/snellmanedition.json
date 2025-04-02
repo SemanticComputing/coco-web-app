@@ -192,6 +192,14 @@
         }
     ],
     "facets": {
+        "content": {
+            "containerClass": "one",
+            "facetType": "text",
+            "filterType": "textFilter",
+            "sortByPredicate": "snellman:hasContent/snellman:hasText",
+            "textQueryPredicate": "snellman:hasContent",
+            "textQueryProperty": "snellman:hasText"
+        },
         "source": {
             "containerClass": "ten",
             "facetType": "list",

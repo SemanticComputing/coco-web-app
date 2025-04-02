@@ -1856,6 +1856,12 @@ export default {
           description: `
             External data source for the letter information
           `
+        },
+        content: {
+          label: 'Content',
+          description: `
+            Textual content of the letter
+          `
         }
       }
     },
