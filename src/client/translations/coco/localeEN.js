@@ -14,11 +14,11 @@ export default {
       Finnish Historical Letters on the Semantic Web 1809-1917
     `
   },
-  selectEditionPerpective: 'Search digital editions of letters of specific persons (UNDER CONSTRUCTION)',
-  selectPerspective: 'Select a perspective to search and browse the knowledge graph:',
+  selectEditionPerpective: 'Focused collection perspectives with textual features',
+  selectPerspective: 'Select a perspective to search, browse, and analyze letters using metadata',
   mainPageImageLicence: 'Images used under license from Wikimedia Commons',
   backendErrorText: 'One of the backend services is not available at the moment. Please try again later.',
-  mainPageLinkText: "Try example searches, visualizations, and linked information:",
+  mainPageLinkText: "Select example searches, visualizations, and linked information",
   mainPageLinks: [
       {
         title: 'Letters of Akseli Gallen-Kallela',
@@ -270,8 +270,8 @@ export default {
       }
     },
     actors: {
-      label: 'Actors',
-      facetResultsType: 'actors',
+      label: 'People and Organizations',
+      facetResultsType: 'People/Organizations',
       shortDescription: '',
       longDescription: `
         <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
@@ -308,7 +308,7 @@ export default {
         </ul>
       `,
       instancePage: {
-        label: 'Actor',
+        label: 'Person or Organization',
         description: `
           <h6 class="MuiTypography-root MuiTypography-h6">
             Page tabs
