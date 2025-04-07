@@ -396,12 +396,6 @@ export default {
           Floruit, e.g. time of flourishing, time of activity.
           `
         },
-        receiving_time: {
-          label: 'Time of receiving letters',
-          description: `
-          Years when letters has been sent to this actor.
-          `
-        },
         deathDateTimespan: {
           label: 'Death time',
           description: `Death time of a person. Notice that the other types of actors do not have this value.`
@@ -1432,12 +1426,6 @@ export default {
           label: 'Floruit',
           description: `
           Floruit, e.g. time of flourishing, time of activity.
-          `
-        },
-        receiving_time: {
-          label: 'Time of receiving letters',
-          description: `
-          Years when letters has been sent to this actor.
           `
         },
         deathDateTimespan: {

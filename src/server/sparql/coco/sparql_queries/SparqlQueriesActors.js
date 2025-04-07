@@ -275,10 +275,6 @@ SELECT *
     }
     UNION
     {
-      ?id :receiving_time/skos:prefLabel ?receiving_time
-    }
-    UNION
-    {
       SELECT DISTINCT ?id ?metrics__id ?metrics__dataProviderUrl ?metrics__prefLabel
       WHERE {
         ?id :has_statistic [

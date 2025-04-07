@@ -65,14 +65,6 @@
                                 "numberedList": false
                             },
                             {
-                                "id": "receiving_time",
-                                "valueType": "string",
-                                "makeLink": false,
-                                "externalLink": false,
-                                "sortValues": false,
-                                "numberedList": false
-                            },
-                            {
                                 "id": "numCorrespondences",
                                 "valueType": "string",
                                 "makeLink": false,
