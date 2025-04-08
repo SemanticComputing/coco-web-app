@@ -943,6 +943,82 @@ export default {
         }
       }
     },
+    contributors: {
+      label: 'Contributors',
+      facetResultsType: 'contributors',
+      shortDescription: '(UNDER CONSTRUCTION)',
+      longDescription: `
+      <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
+        Use this perspective to access the archival organizations and fonds in the dataset.
+      </p>
+      <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
+        See <a target="_" href="https://docs.google.com/document/d/e/2PACX-1vRPPYcK4VLKdh_uVbNMZ8diOe0MZhvVjisvVpDCzUn5hMU8SAKfG5QF8iwS6grYpXB41PfzDkT0tttg/pub">instructions</a> for using the
+        filters. The result view can be selected using the tabs:
+      </p>
+      <ul class="MuiTypography-root MuiTypography-body1">
+      <li>
+        <strong>TABLE</STRONG> view includes all archival organizations and fonds in the CoCo data. 
+        One table row is equivalent to one organization.
+      </li>
+      <li>
+        <strong>MAP</strong> is a map visualization showing the known locations of sending letters.
+      </li>
+      <li>
+        <strong>BY YEAR</strong> includes a chart showing the yearly distribution of letters in the database.
+      </li>
+      <li>
+        <strong>EXPORT</strong> the SPARQL query used to generate the result
+        table view into YASGUI query editor.
+      </li>
+    </ul>
+      `,
+      properties: {
+        uri: {
+          label: 'URI',
+          description: 'Uniform Resource Identifier'
+        },
+        prefLabel: {
+          label: 'Contributor',
+          description: 'The label of the contributing cultural heritage organization'
+        },
+        datasource: {
+          label: 'Data source',
+          description: `
+            The data source of the letter.
+          `
+        },
+        dataset_description: {
+          label: 'Dataset Description',
+          description: `
+          The description of the letter content.
+          `
+        },
+        comment: {
+          label: 'Comment',
+          description: `
+          Comments marked with the letter.
+          `
+        },
+        fonds: {
+          label: 'Fonds',
+          description: `
+            Fonds
+          `
+        },
+        image: {
+          label: 'Logo',
+          description: `
+            Possible logo of the organization.
+          `
+        },
+        letter: {
+          label: 'Letters',
+          description: `
+          Letters in this fonds.
+          `
+        }
+      }
+    },
     places: {
       label: 'Places',
       facetResultsType: 'Places',
