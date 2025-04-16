@@ -10,7 +10,7 @@ PREFIX portal: <http://ldf.fi/coco/portal/>
 PREFIX provided: <http://ldf.fi/coco/provided/>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX sch: <http://schema.org/>
+PREFIX sch: <http://schema.org/> 
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX skosxl: <http://www.w3.org/2008/05/skos-xl#>
 PREFIX spatial: <http://jena.apache.org/spatial#>
@@ -23,5 +23,6 @@ PREFIX letters: <http://ldf.fi/coco/letters/>
 PREFIX places: <http://ldf.fi/coco/places/>
 PREFIX tmp: <http://ldf.fi/coco/tmp/>
 PREFIX snellman: <http://ldf.fi/snellman/>
+PREFIX sources: <http://ldf.fi/coco/source/>
 PREFIX sns: <http://ldf.fi/schema/snellman/>
 `

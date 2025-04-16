@@ -1617,7 +1617,7 @@ export default {
         created_fonds: {
           label: 'Created Fonds',
           description: `
-            THe fonds where this actor is marked as the records creator.
+            The fonds where this actor is marked as the records creator.
           `
         },
         fonds: {

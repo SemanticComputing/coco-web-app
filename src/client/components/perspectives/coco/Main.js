@@ -14,6 +14,7 @@ import Button from '@mui/material/Button'
  */
 const Main = props => {
   const { perspectives, screenSize, layoutConfig } = props
+  const { mainPage } = layoutConfig
   const mainPerspectives = []
   const editionPerpectives = []
   perspectives.forEach(perspective => {
@@ -23,7 +24,6 @@ const Main = props => {
       mainPerspectives.push(perspective)
     }
   })
-  const { mainPage } = layoutConfig
   let headingVariant = 'h5'
   let subheadingVariant = 'body1'
   let descriptionVariant = 'body1'
@@ -134,8 +134,8 @@ const Main = props => {
         sx={theme => ({
           marginLeft: theme.spacing(1),
           marginRight: theme.spacing(1),
-          [theme.breakpoints.up(800 + getSpacing(theme, 6))]: {
-            width: 800,
+          [theme.breakpoints.up(1100 + getSpacing(theme, 6))]: {
+            width: 1100,
             marginLeft: 'auto',
             marginRight: 'auto'
           }
@@ -155,7 +155,7 @@ const Main = props => {
         </Box>
         <Grid
           container spacing={screenSize === 'sm' ? 2 : 1}
-          justifyContent={screenSize === 'xs' || screenSize === 'sm' ? 'center' : 'flex-start'}
+          justifyContent='center'
         >
           {mainPerspectives.map(perspective => {
             const hideCard = (has(perspective.hideCardOnFrontPage) && perspective.hideCardOnFrontPage)

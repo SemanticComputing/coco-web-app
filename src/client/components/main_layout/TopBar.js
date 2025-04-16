@@ -295,7 +295,7 @@ const TopBar = props => {
               }
             })}
           >
-            {perspectives.slice(0, 4).map((perspective, index) => perspective.hideTopPerspectiveButton ? null : renderDesktopTopMenuItem(perspective, index))}
+            {perspectives.slice(0, 5).map((perspective, index) => perspective.hideTopPerspectiveButton ? null : renderDesktopTopMenuItem(perspective, index))}
             <Box
               sx={theme => ({
                 marginLeft: theme.spacing(1),
@@ -303,7 +303,7 @@ const TopBar = props => {
                 borderLeft: '2px solid white'
               })}
             />
-            {perspectives.slice(4).map((perspective, index) => perspective.hideTopPerspectiveButton ? null : renderDesktopTopMenuItem(perspective, index))}
+            {perspectives.slice(5).map((perspective, index) => perspective.hideTopPerspectiveButton ? null : renderDesktopTopMenuItem(perspective, index))}
             <Box
               sx={theme => ({
                 marginLeft: theme.spacing(1),
