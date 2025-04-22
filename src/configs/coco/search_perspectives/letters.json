@@ -545,6 +545,20 @@
             "sortByPredicate": ":digital_edition/skos:prefLabel",
             "hideUnknownValue": true
         },
+        "data_provider": {
+            "containerClass": "eleven",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "predicate": ":original_data_provider",
+            "facetLabelFilter": "FILTER(LANG(?prefLabel_) = 'en')",
+            "searchField": false,
+            "sortBy": "instanceCount",
+            "sortDirection": "desc",
+            "sortButton": true,
+            "pieChartButton": true,
+            "sortByPredicate": ":original_data_provider/skos:prefLabel",
+            "hideUnknownValue": true
+        },
         "fonds": {
             "containerClass": "ten",
             "facetType": "list",
@@ -561,6 +575,7 @@
         "datasource": {
             "containerClass": "ten",
             "facetType": "list",
+            "facetLabelFilter": "FILTER(LANG(?prefLabel_) = 'en')",
             "filterType": "uriFilter",
             "predicate": "dct:source",
             "searchField": false,
