@@ -1016,6 +1016,18 @@ export default {
           description: `
           Letters in this fonds.
           `
+        },
+        location: {
+          label: 'Location',
+          description: `
+            Location of the cultural heritage organization.
+          `
+        },
+        external: {
+          label: 'Webpage',
+          description: `
+            Webpage of the cultural heritage organization.
+          `
         }
       }
     },

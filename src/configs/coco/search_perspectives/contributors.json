@@ -9,7 +9,7 @@
     "baseURI": "http://ldf.fi/coco",
     "URITemplate": "<BASE_URI>/contributors/<LOCAL_ID>",
     "facetClass": ":Source",
-    "defaultConstraint": "VALUES ?id { sources:gallenkallelamuseum } .",
+    "defaultConstraint": "FILTER EXISTS { [] :original_data_provider <SUBJECT> } ",
     "frontPageImage": "main_page/manuscripts-452x262.jpg",
     "searchMode": "faceted-search",
     "defaultActiveFacets": [ "prefLabel" ],
@@ -58,23 +58,22 @@
     },
     "properties": [
         {
-            "id": "image",
-            "valueType": "image",
-            "previewImageHeight": 160,
-            "makeLink": false,
-            "externalLink": true,
-            "sortValues": true,
-            "numberedList": false,
-            "hideHeader": false
-        },
-        {
             "id": "prefLabel",
             "valueType": "object",
             "makeLink": true,
             "externalLink": false,
             "sortValues": true,
             "numberedList": false,
-            "minWidth": 100
+            "minWidth": 250
+        },{
+            "id": "image",
+            "valueType": "image",
+            "previewImageWidth": 80,
+            "makeLink": false,
+            "externalLink": true,
+            "sortValues": true,
+            "numberedList": false,
+            "hideHeader": false
         },
         {
             "id": "dataset_description",
@@ -85,6 +84,25 @@
             "numberedList": false,
             "minWidth": 70,
             "priority": 5
+        },
+        {
+            "id": "location",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": false,
+            "numberedList": false,
+            "minWidth": 100,
+            "priority": 8
+        },
+        {
+            "id": "external",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": true,
+            "sortValues": true,
+            "numberedList": false,
+            "minWidth": 140,
+            "priority": 8
         }
     ],
     "facets": {
