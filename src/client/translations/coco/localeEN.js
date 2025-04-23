@@ -133,7 +133,7 @@ export default {
     'top-correspondences': 'top correspondences',
     'top-correspondents': 'top correspondents',
     csv: 'csv',
-    metadata: 'metadata',
+    metadata: 'source data',
     letter: 'letter',
     sentReceivedByPlace: 'timeline of letters',
     correspondenceTimeline: 'Letter Timeline',
