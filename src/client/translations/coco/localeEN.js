@@ -655,6 +655,12 @@ export default {
             Archival organization
           `
         },
+        data_provider: {
+          label: 'Data provider',
+          description: `
+            Original data provider
+          `
+        },
         digital_edition: {
           label: 'Digital Edition',
           description: `
