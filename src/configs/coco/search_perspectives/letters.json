@@ -396,6 +396,17 @@
             "expandedOnInstancePage": true
         },
         {
+            "id": "comment",
+            "valueType": "string",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": false,
+            "minWidth": 250,
+            "onlyOnInstancePage": true,
+            "expandedOnInstancePage": true
+        },
+        {
             "id": "uri",
             "valueType": "object",
             "makeLink": true,

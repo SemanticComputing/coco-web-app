@@ -141,6 +141,10 @@ UNION
     BIND(?source_url__id AS ?source_url__prefLabel)
     BIND(?source_url__id AS ?source_url__dataProviderUrl)
   }
+  UNION
+  {
+    ?_metadata rdfs:comment ?comment .
+  }
 }
 `
 
