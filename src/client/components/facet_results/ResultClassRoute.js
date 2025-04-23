@@ -3,6 +3,7 @@ import intl from 'react-intl-universal'
 import { Route, useLocation } from 'react-router-dom'
 import { has } from 'lodash'
 import { useSelector } from 'react-redux'
+import ExternalSite from './ExternalSite'
 // import LineChartSotasurmat from '../perspectives/sotasurmat/LineChartSotasurmat'
 const ResultTable = lazy(() => import('./ResultTable'))
 const InstancePageTable = lazy(() => import('../main_layout/InstancePageTable'))
@@ -486,6 +487,38 @@ const ResultClassRoute = props => {
           perspectiveConfig={perspective}
         />
       )
+      break
+    }
+    case 'ExternalSite': {
+      const properties = resultClassConfig.properties
+        ? resultClassConfig.properties
+        : getVisibleRows(perspectiveState)
+      let instanceTableProps = {
+        portalConfig,
+        perspectiveConfig: perspective,
+        layoutConfig,
+        resultClass,
+        fetchResults: props.fetchResults,
+        properties,
+        screenSize
+      }
+      if (resultClassConfig.fetchResultsWhenMounted) {
+        instanceTableProps = {
+          ...instanceTableProps,
+          fetchResultsWhenMounted: true,
+          fetching: perspectiveState.fetching,
+          data: perspectiveState.results ? perspectiveState.results[0] : null,
+          uri: perspectiveState.instanceTableData.id,
+          resultUpdateID: perspectiveState.resultUpdateID
+        }
+      } else {
+        instanceTableProps = {
+          ...instanceTableProps,
+          fetching: perspectiveState.fetching,
+          data: perspectiveState.instanceTableData
+        }
+      }
+      routeComponent = <ExternalSite {...instanceTableProps} />
       break
     }
     default:
