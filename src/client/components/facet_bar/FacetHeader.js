@@ -391,14 +391,15 @@ class FacetHeader extends React.Component {
         >
           {facetLabel}
         </Typography>
-        <Tooltip
-          title={facetDescription}
-          enterDelay={300}
-        >
-          <IconButton aria-label='description' size='large'>
-            <InfoIcon />
-          </IconButton>
-        </Tooltip>
+        {facetDescription &&
+          <Tooltip
+            title={facetDescription}
+            enterDelay={300}
+          >
+            <IconButton aria-label='description' size='large'>
+              <InfoIcon />
+            </IconButton>
+          </Tooltip>}
         {showButtons &&
           <div className={classes.facetHeaderButtons}>
             {this.renderFacetMenu()}
