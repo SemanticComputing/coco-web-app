@@ -656,9 +656,9 @@ export default {
           `
         },
         data_provider: {
-          label: 'Data provider',
+          label: 'Cultural heritage organizations',
           description: `
-            Original data provider
+            Cultural heritage organizations 
           `
         },
         digital_edition: {
