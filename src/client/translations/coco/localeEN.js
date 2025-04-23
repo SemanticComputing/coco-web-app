@@ -80,7 +80,7 @@ export default {
     activeFilters: 'Active filters:',
     removeAllFilters: 'Remove all',
     narrowDownBy: 'Narrow down by',
-    filterOptions: 'Filter options',
+    filterOptions: 'Sort',
     filterByName: 'Filter by name',
     filterByBoundingBox: 'Filter by bounding box',
     selectionOptions: 'Selection options',
