@@ -66,6 +66,7 @@ export const actorPropertiesFacetResults = `
     UNION
     {
       ?prx dct:source/skos:prefLabel ?datasource
+      FILTER (LANG(?datasource)="en")
     }
 }
 `
@@ -218,6 +219,7 @@ export const actorPropertiesInstancePage = `
     UNION
     {
       ?prx dct:source/skos:prefLabel ?datasource
+      FILTER (LANG(?datasource)="en")
     }
     UNION
     {

@@ -342,6 +342,7 @@
             "makeLink": false,
             "externalLink": false,
             "sortValues": false,
+            "minWidth": 250,
             "numberedList": false,
             "onlyOnInstancePage": false
         },
@@ -351,6 +352,7 @@
             "makeLink": true,
             "externalLink": false,
             "sortValues": false,
+            "minWidth": 250,
             "numberedList": false
         },
         {
@@ -537,12 +539,26 @@
             "facetType": "list",
             "filterType": "uriFilter",
             "predicate": ":digital_edition",
+            "facetLabelFilter": "FILTER(LANG(?prefLabel_) = 'en')",
             "searchField": false,
             "sortBy": "instanceCount",
             "sortDirection": "desc",
             "sortButton": true,
             "pieChartButton": true,
             "sortByPredicate": ":digital_edition/skos:prefLabel",
+            "hideUnknownValue": true
+        },
+        "fonds": {
+            "containerClass": "ten",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "predicate": ":fonds",
+            "searchField": true,
+            "sortBy": "instanceCount",
+            "sortDirection": "desc",
+            "sortButton": true,
+            "pieChartButton": true,
+            "sortByPredicate": ":fonds/skos:prefLabel",
             "hideUnknownValue": true
         },
         "data_provider": {
@@ -557,19 +573,6 @@
             "sortButton": true,
             "pieChartButton": true,
             "sortByPredicate": ":original_data_provider/skos:prefLabel",
-            "hideUnknownValue": true
-        },
-        "fonds": {
-            "containerClass": "ten",
-            "facetType": "list",
-            "filterType": "uriFilter",
-            "predicate": ":fonds",
-            "searchField": true,
-            "sortBy": "instanceCount",
-            "sortDirection": "desc",
-            "sortButton": true,
-            "pieChartButton": true,
-            "sortByPredicate": ":fonds/skos:prefLabel",
             "hideUnknownValue": true
         },
         "datasource": {

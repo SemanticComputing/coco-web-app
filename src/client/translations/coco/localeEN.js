@@ -662,9 +662,9 @@ export default {
           `
         },
         digital_edition: {
-          label: 'Digital Edition',
+          label: 'Digital Editions',
           description: `
-            Digital Edition
+            Digital Editions
           `
         },
         original_record: {

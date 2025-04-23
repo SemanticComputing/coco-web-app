@@ -657,7 +657,7 @@
             "externalLink": false,
             "sortValues": false,
             "numberedList": false,
-            "minWidth": 70,
+            "minWidth": 240,
             "priority": 5,
             "expandedOnInstancePage": true
         },
@@ -668,7 +668,7 @@
             "externalLink": true,
             "sortValues": true,
             "numberedList": false,
-            "minWidth": 250,
+            "minWidth": 200,
             "priority": 8,
             "onlyOnInstancePage": false,
             "expandedOnInstancePage": true
