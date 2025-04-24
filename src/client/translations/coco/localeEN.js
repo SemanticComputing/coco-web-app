@@ -237,7 +237,7 @@ export default {
     showMoreInformation: 'Click to show more information.',
     letterMigrations: {
       legendTitle: 'Arc colouring',
-      legendFrom: 'Place of sending',
+      legendFrom: 'Place: Sending',
       legendTo: 'Place of receiving',
       from: 'Place of sending:',
       to: 'Place of receiving:',
@@ -250,7 +250,7 @@ export default {
     fullTextSearch: {
       properties: {
         prefLabel: {
-          label: 'Label'
+          label: 'Title'
         },
         altLabel: {
           label: 'Alternative label'
@@ -607,7 +607,7 @@ export default {
           description: 'Uniform Resource Identifier'
         },
         prefLabel: {
-          label: 'Label',
+          label: 'Title',
           description: 'The label of the Letter'
         },
         language: {
@@ -728,13 +728,13 @@ export default {
           `
         },
         mentioned_person: {
-          label: 'Mentioned actor',
+          label: 'Mentioned actors',
           description: `
           Actors mentioned in the letter.
           `
         },
         mentioned_place: {
-          label: 'Mentioned place',
+          label: 'Mentioned places',
           description: `
           Places mentioned in the letter.
           `
@@ -746,15 +746,15 @@ export default {
           `
         },
         from: {
-          label: 'Place of sending',
+          label: 'Place: Sending',
           description: `
           Place from where the letter was sent.
           `
         },
         to: {
-          label: 'Place of receiving',
+          label: 'Place: Receiving',
           description: `
-          Place where the letter was to.
+          Place where the letter was received.
           `
         },
         lettertype: {
@@ -1184,6 +1184,12 @@ export default {
           Letters sent from this place.
           `
         },
+        to: {
+          label: 'Place: Receiving',
+          description: `
+          Place where the letter was received.
+          `
+        },
         mentioningletter: {
           label: 'Mentioned in letters',
           description: `
@@ -1313,7 +1319,7 @@ export default {
       },
       properties: {
         prefLabel: {
-          label: 'Label',
+          label: 'Title',
           description: `
             Preferable data source label.
           `
@@ -1723,7 +1729,7 @@ export default {
           description: 'Uniform Resource Identifier'
         },
         prefLabel: {
-          label: 'Label',
+          label: 'Title',
           description: 'The label of the Letter'
         },
         relatedPerson: {
@@ -1890,13 +1896,13 @@ export default {
           `
         },
         mentioned_person: {
-          label: 'Mentioned actor',
+          label: 'Mentioned actors',
           description: `
           Actors mentioned in the letter.
           `
         },
         mentioned_place: {
-          label: 'Mentioned place',
+          label: 'Mentioned places',
           description: `
           Places mentioned in the letter.
           `
@@ -1911,6 +1917,12 @@ export default {
           label: 'Place of sending (automatically)',
           description: `
           Place from where the letter was sent.
+          `
+        },
+        to: {
+          label: 'Place: Receiving',
+          description: `
+          Place where the letter was received.
           `
         },
         lettertype: {
@@ -2012,7 +2024,7 @@ export default {
           description: 'Uniform Resource Identifier'
         },
         prefLabel: {
-          label: 'Label',
+          label: 'Title',
           description: 'The label of the Letter'
         },
         language: {
@@ -2127,13 +2139,13 @@ export default {
           `
         },
         mentioned_person: {
-          label: 'Mentioned actor',
+          label: 'Mentioned actors',
           description: `
           Actors mentioned in the letter.
           `
         },
         mentioned_place: {
-          label: 'Mentioned place',
+          label: 'Mentioned places',
           description: `
           Places mentioned in the letter.
           `
@@ -2145,9 +2157,15 @@ export default {
           `
         },
         from: {
-          label: 'Place of sending',
+          label: 'Place: Sending',
           description: `
           Place from where the letter was sent.
+          `
+        },
+        to: {
+          label: 'Place: Receiving',
+          description: `
+          Place where the letter was received.
           `
         },
         lettertype: {
@@ -2243,7 +2261,7 @@ export default {
           description: 'Uniform Resource Identifier'
         },
         prefLabel: {
-          label: 'Label',
+          label: 'Title',
           description: 'The label of the Letter'
         },
         language: {
@@ -2358,13 +2376,13 @@ export default {
           `
         },
         mentioned_person: {
-          label: 'Mentioned actor',
+          label: 'Mentioned actors',
           description: `
           Actors mentioned in the letter.
           `
         },
         mentioned_place: {
-          label: 'Mentioned place',
+          label: 'Mentioned places',
           description: `
           Places mentioned in the letter.
           `
@@ -2376,9 +2394,15 @@ export default {
           `
         },
         from: {
-          label: 'Place of sending',
+          label: 'Place: Sending',
           description: `
           Place from where the letter was sent.
+          `
+        },
+        to: {
+          label: 'Place: Receiving',
+          description: `
+          Place where the letter was received.
           `
         },
         lettertype: {
@@ -2474,7 +2498,7 @@ export default {
           description: 'Uniform Resource Identifier'
         },
         prefLabel: {
-          label: 'Label',
+          label: 'Title',
           description: 'The label of the Letter'
         },
         language: {
@@ -2589,13 +2613,13 @@ export default {
           `
         },
         mentioned_person: {
-          label: 'Mentioned actor',
+          label: 'Mentioned actors',
           description: `
           Actors mentioned in the letter.
           `
         },
         mentioned_place: {
-          label: 'Mentioned place',
+          label: 'Mentioned places',
           description: `
           Places mentioned in the letter.
           `
@@ -2607,9 +2631,15 @@ export default {
           `
         },
         from: {
-          label: 'Place of sending',
+          label: 'Place: Sending',
           description: `
           Place from where the letter was sent.
+          `
+        },
+        to: {
+          label: 'Place: Receiving',
+          description: `
+          Place where the letter was received.
           `
         },
         lettertype: {

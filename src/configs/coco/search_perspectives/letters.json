@@ -519,6 +519,19 @@
             "sortButton": true,
             "hideUnknownValue": true
         },
+        "to": {
+            "containerClass": "seven",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "predicate": ":was_sent_to",
+            "searchField": true,
+            "sortBy": "instanceCount",
+            "sortByPredicate": ":was_sent_to/skos:prefLabel",
+            "sortDirection": "desc",
+            "pieChartButton": true,
+            "sortButton": true,
+            "hideUnknownValue": true
+        },
         "language": {
             "containerClass": "seven",
             "facetType": "list",
