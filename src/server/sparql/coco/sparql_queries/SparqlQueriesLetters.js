@@ -123,19 +123,7 @@ UNION
 }
 UNION
 { # Metadata values
-  ?id :metadata ?_metadata .
-  {
-    ?other__id :metadata ?_metadata ;
-    	skos:prefLabel ?other__prefLabel .
-      BIND(CONCAT("/letters/page/", REPLACE(STR(?other__id), "^.*\\\\/(.+)", "$1")) AS ?other__dataProviderUrl)
-  }
-  UNION
-  { 
-    ?_metadata foaf:page ?related__id . 
-    BIND(?related__id AS ?related__prefLabel)
-    BIND(?related__id AS ?related__dataProviderUrl)
-  }
-  UNION
+  ?id :metadata ?_metadata
   { 
     ?_metadata :source_url|:source_api_url ?source_url__id . 
     BIND(?source_url__id AS ?source_url__prefLabel)
@@ -161,9 +149,23 @@ SELECT *
     }
     UNION
     {
-    ?id :metadata ?_metadata .
+    ?id :metadata ?metadata__id .
+    BIND (?metadata__id AS ?metadata__prefLabel)
+    BIND (?metadata__id AS ?metadata__dataProviderUrl)
       {
-        ?_metadata :original_record ?original_record 
+        ?metadata__id :original_record ?original_record 
+      }
+      UNION
+      {
+        ?metadata__id foaf:page ?related__id .
+        BIND(?related__id AS ?related__prefLabel)
+        BIND(?related__id AS ?related__dataProviderUrl)
+      }
+      UNION
+      {
+        ?created_letter__id :metadata ?metadata__id ;
+          skos:prefLabel ?created_letter__prefLabel .
+          BIND(CONCAT("/letters/page/", REPLACE(STR(?created_letter__id), "^.*\\\\/(.+)", "$1")) AS ?created_letter__dataProviderUrl)
       }
       UNION
       {     
@@ -199,8 +201,7 @@ SELECT *
           (:referenced_place_as_recorded 'referenced place as recorded')
           (dct:language 'language')
         }
-      ?id :metadata ?_metadata .
-      ?_metadata ?prop ?v .
+      ?metadata__id ?prop ?v .
       BIND(CONCAT(?prop_label, ': ', STR(?v)) AS ?record_value ) 
     }
   }
@@ -215,8 +216,8 @@ SELECT *
  */
 export const topCorrespondenceFacetPageQuery = `
 SELECT DISTINCT 
-  (REPLACE(?_from__label, ' [(][0-9-]+[)]$', '') AS ?from__label)
-  (REPLACE(?_to__label, ' [(][0-9-]+[)]$', '') AS ?to__label)
+  (REPLACE(?_from__label, ' [(][fl. 0-9-]+[)]$', '') AS ?from__label)
+  (REPLACE(?_to__label, ' [(][fl. 0-9-]+[)]$', '') AS ?to__label)
 	?type
   ?year
   (xsd:date(CONCAT(STR(?year),'-01-01')) AS ?date)
@@ -231,7 +232,7 @@ WHERE {
     portal:sender/skos:prefLabel ?_from__label .
 
   VALUES ?type { "to" "from" }
-} GROUPBY ?_from__label ?_to__label ?type ?year LIMIT 100000
+} GROUPBY ?_from__label ?_to__label ?type ?year LIMIT 200000
 `
 
 export const lettersByYearQuery = `

@@ -77,6 +77,17 @@
                                 "expandedOnInstancePage": true
                             },
                             {
+                                "id": "created_letter",
+                                "valueType": "object",
+                                "makeLink": true,
+                                "externalLink": false,
+                                "sortValues": false,
+                                "numberedList": false,
+                                "minWidth": 250,
+                                "onlyOnInstancePage": true,
+                                "expandedOnInstancePage": true
+                            },
+                            {
                                 "id": "original_record",
                                 "valueType": "string",
                                 "makeLink": false,
@@ -86,7 +97,7 @@
                                 "onlyOnInstancePage": true
                             },
                             {
-                                "id": "uri",
+                                "id": "metadata",
                                 "valueType": "object",
                                 "makeLink": true,
                                 "externalLink": true,
@@ -363,17 +374,6 @@
             "sortValues": false,
             "numberedList": false,
             "onlyOnInstancePage": true
-        },
-        {
-            "id": "other",
-            "valueType": "object",
-            "makeLink": true,
-            "externalLink": false,
-            "sortValues": false,
-            "numberedList": false,
-            "minWidth": 250,
-            "onlyOnInstancePage": true,
-            "expandedOnInstancePage": true
         },
         {
             "id": "related",

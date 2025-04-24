@@ -769,11 +769,15 @@ export default {
             Textual values in the letter metadata record
           `
         },
-        other: {
+        created_letter: {
           label: 'Related letters',
           description: `
-            List of all letters having the same metadata record
+            All letters from this metadata record
           `
+        },
+        metadata: {
+          label: 'URI',
+          description: 'Uniform Resource Identifier'
         },
         related: {
           label: 'External links',
