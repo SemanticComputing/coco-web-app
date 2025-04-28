@@ -77,7 +77,7 @@ export const createPopUpContentLetterSampo = ({ data, resultClass }) => {
   }
   else if (resultClass === 'activitiesByPlace') {
     const p = document.createElement('p')
-    p.textContent = 'Actors (with number of letters):'
+    p.textContent = 'Actors (with number of sent+received letters):'
     container.appendChild(p)
     container.appendChild(createInstanceListing(data.person))
   }

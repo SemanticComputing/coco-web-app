@@ -290,7 +290,7 @@ WHERE {
   
   ?id a crm:E53_Place ; geo:lat ?lat ; geo:long ?long .
 
-  ?letter :was_sent_from ?id .
+  ?letter :was_sent_from|:was_sent_to ?id .
 
 } GROUP BY ?id ?lat ?long
 `
@@ -303,12 +303,24 @@ export const placePropertiesInfoWindow = `
 `
 
 export const peopleRelatedTo = `
-  { SELECT DISTINCT ?id ?person__id (CONCAT(?_plabel, ' (', STR(COUNT(DISTINCT ?related__id)), ')') AS ?person__prefLabel) (CONCAT("/actors/page/", REPLACE(STR(?person__id), "^.*\\\\/(.+)", "$1")) AS ?person__dataProviderUrl)
+  { SELECT DISTINCT ?id ?person__id 
+    (CONCAT(?_plabel, ' (', STR(COUNT(DISTINCT ?_sent)), '+', STR(COUNT(DISTINCT ?_received)), ')') AS ?person__prefLabel) 
+    (CONCAT("/actors/page/", REPLACE(STR(?person__id), "^.*\\\\/(.+)", "$1")) AS ?person__dataProviderUrl)
   WHERE {
       <FILTER>
 
-  ?related__id :was_sent_from ?id ; portal:sender ?person__id .
-  ?person__id skos:prefLabel ?_plabel .
+      {
+        ?related__id :was_sent_from ?id ; portal:sender ?person__id 
+        BIND (?related__id AS ?_sent)
+      }
+      UNION
+      {
+        ?related__id :was_sent_to ?id ; portal:recipient ?person__id 
+        BIND (?related__id AS ?_received)
+      }
+
+      ?person__id skos:prefLabel ?_plabel 
+
     } GROUPBY ?id ?person__id ?_plabel ORDERBY DESC(COUNT(?related__id)) ?_plabel
   }
 `
