@@ -557,11 +557,10 @@ export default {
       </p>
       <ul class="MuiTypography-root MuiTypography-body1">
       <li>
-        <strong>TABLE</STRONG> view includes all letter in
-        the CoCo data. One table row is equivalent to one letter.
+        <strong>TABLE</STRONG> view includes all letters in the data publication. One table row is equivalent to one letter.
       </li>
       <li>
-        <strong>BY YEAR</strong> includes a chart showing the yearly distribution of letters in the database.
+        <strong>BY YEAR</strong> includes a chart showing the yearly distribution of the letters.
       </li>
       <li>
         <strong>MAP</strong> includes a map showing the locations of sending the letters. 
@@ -577,8 +576,7 @@ export default {
         NB. Due to the performance issues with the huge amount of letters in the database the amount of results is limited. Notice that you can use the filters to limit the size of the result set.
       </li>
       <li>
-        <strong>CSV</strong> to download the result
-        table as a datasheet.
+        <strong>CSV</strong> to download the result table as a datasheet.
       </li>
       <li>
         <strong>SPARQL</strong> the SPARQL query used to generate the result
@@ -619,7 +617,7 @@ export default {
         language: {
           label: 'Language',
           description: `
-            The language in which a letter is written
+            The language used in the letter content.
           `
         },
         subject: {
@@ -817,7 +815,7 @@ export default {
         <strong>MAP</strong> is a map visualization showing the known locations of sending letters.
       </li>
       <li>
-        <strong>BY YEAR</strong> includes a chart showing the yearly distribution of letters in the database.
+        <strong>BY YEAR</strong> includes a chart showing the yearly distribution of the letters.
       </li>
       <li>
         <strong>EXPORT</strong> the SPARQL query used to generate the result
@@ -977,7 +975,7 @@ export default {
         <strong>MAP</strong> is a map visualization showing the known locations of sending letters.
       </li>
       <li>
-        <strong>BY YEAR</strong> includes a chart showing the yearly distribution of letters in the database.
+        <strong>BY YEAR</strong> includes a chart showing the yearly distribution of the letters.
       </li>
       <li>
         <strong>EXPORT</strong> the SPARQL query used to generate the result
@@ -1685,21 +1683,24 @@ export default {
       </p>
       <ul class="MuiTypography-root MuiTypography-body1">
       <li>
-        <strong>TABLE</STRONG> view includes all letter in
-        the CoCo data. One table row is equivalent to one letter.
+        <strong>TABLE</STRONG> view includes all letters in
+        the data publication. 
+        One table row is equivalent to one letter.
       </li>
       <li>
-        <strong>BY YEAR</strong> includes a chart showing the yearly distribution of letters in the database.
+        <strong>BY YEAR</strong> includes a chart showing the yearly distribution of the letters.
       </li>
       <li>
         <strong>MAP</strong> includes a map showing the locations of sending the letters. 
-        Clicking on a marker opens up a popup showing a list of actors have sent letters from each location.
+        The number in the place marker is the total number of letters. 
+        Clicking on a marker opens up a popup showing a list of actors who have sent or received letters in the locations. 
       </li>
       <li>
         <strong>HEATMAP</strong> includes a heatmap showing the locations of letters activities.
       </li>
       <li>
-        <strong>TOP CORRESPONDENTS</STRONG> view shows a timeline of letters and most important correspondents. The upper chart of the timeline shows the activities using a precision of one day, the lower one the yearly amounts of sent and received letters.
+        <strong>TOP CORRESPONDENTS</STRONG> view shows a timeline of letters and most important correspondents. 
+        The upper chart of the timeline shows the activities using a precision of one day, the lower one the yearly amounts of sent and received letters.
         NB. Letters having more approximate temporal information, e.g. 'sent 1860-1865' show up on the first year of that time period, e.g. '1860'.
       </li>
       <li>
@@ -1790,7 +1791,7 @@ export default {
         language: {
           label: 'Language',
           description: `
-            The language in which a letter is written
+            The language used in the letter content.
           `
         },
         subject: {
@@ -1976,12 +1977,11 @@ export default {
         filters. The result view can be selected using the tabs:
       </p>
       <ul class="MuiTypography-root MuiTypography-body1">
-      <li>
-        <strong>TABLE</STRONG> view includes all letter in
-        the CoCo data. One table row is equivalent to one letter.
+      <li> 
+        <strong>TABLE</STRONG> view includes all letters in the data publication. One table row is equivalent to one letter.
       </li>
       <li>
-        <strong>BY YEAR</strong> includes a chart showing the yearly distribution of letters in the database.
+        <strong>BY YEAR</strong> includes a chart showing the yearly distribution of the letters.
       </li>
       <li>
         <strong>MAP</strong> includes a map showing the locations of sending the letters. 
@@ -2030,7 +2030,7 @@ export default {
         language: {
           label: 'Language',
           description: `
-            The language in which a letter is written
+            The language used in the letter content.
           `
         },
         subject: {
@@ -2211,11 +2211,11 @@ export default {
       </p>
       <ul class="MuiTypography-root MuiTypography-body1">
       <li>
-        <strong>TABLE</STRONG> view includes all letter in
-        the CoCo data. One table row is equivalent to one letter.
+        <strong>TABLE</STRONG> view includes all letters in the data publication. 
+        One table row is equivalent to one letter.
       </li>
       <li>
-        <strong>BY YEAR</strong> includes a chart showing the yearly distribution of letters in the database.
+        <strong>BY YEAR</strong> includes a chart showing the yearly distribution of the letters.
       </li>
       <li>
         <strong>MAP</strong> includes a map showing the locations of sending the letters. 
@@ -2264,7 +2264,7 @@ export default {
         language: {
           label: 'Language',
           description: `
-            The language in which a letter is written
+            The language used in the letter content.
           `
         },
         subject: {
@@ -2445,11 +2445,10 @@ export default {
       </p>
       <ul class="MuiTypography-root MuiTypography-body1">
       <li>
-        <strong>TABLE</STRONG> view includes all letter in
-        the CoCo data. One table row is equivalent to one letter.
+        <strong>TABLE</STRONG> view includes all letters in the data publication. One table row is equivalent to one letter.
       </li>
       <li>
-        <strong>BY YEAR</strong> includes a chart showing the yearly distribution of letters in the database.
+        <strong>BY YEAR</strong> includes a chart showing the yearly distribution of the letters.
       </li>
       <li>
         <strong>MAP</strong> includes a map showing the locations of sending the letters. 
@@ -2498,7 +2497,7 @@ export default {
         language: {
           label: 'Language',
           description: `
-            The language in which a letter is written
+            The language used in the letter content.
           `
         },
         subject: {
