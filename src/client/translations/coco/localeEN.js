@@ -552,9 +552,6 @@ export default {
       shortDescription: '',
       longDescription: `
       <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-        Use this perspective to access the letter data in the dataset.
-      </p>
-      <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
         See <a target="_" href="https://docs.google.com/document/d/e/2PACX-1vRPPYcK4VLKdh_uVbNMZ8diOe0MZhvVjisvVpDCzUn5hMU8SAKfG5QF8iwS6grYpXB41PfzDkT0tttg/pub">instructions</a> for using the
         filters. The result view can be selected using the tabs:
       </p>
@@ -574,12 +571,21 @@ export default {
         <strong>HEATMAP</strong> includes a heatmap showing the locations of letters activities.
       </li>
       <li>
-        <strong>TOP CORRESPONDENTS</STRONG> view shows a timeline of letters and most important correspondents. The upper chart of the timeline shows the activities using a precision of one day, the lower one the yearly amounts of sent and received letters.
+        <strong>TOP CORRESPONDENTS</STRONG> view shows a timeline of letters and most important correspondents. The chart shows the activities using a precision of one year.
         NB. Letters having more approximate temporal information, e.g. 'sent 1860-1865' show up on the first year of that time period, e.g. '1860'.
+
+        NB. Due to the performance issues with the huge amount of letters in the database the amount of results is limited. Notice that you can use the filters to limit the size of the result set.
       </li>
       <li>
-        <strong>EXPORT</strong> the SPARQL query used to generate the result
+        <strong>CSV</strong> to download the result
+        table as a datasheet.
+      </li>
+      <li>
+        <strong>SPARQL</strong> the SPARQL query used to generate the result
         table view into YASGUI query editor.
+      </li>
+      <li>
+        <strong>SHARE</strong> a link to a specific tab view with faceted results.
       </li>
     </ul>
       `,
@@ -643,10 +649,7 @@ export default {
         productionTimespan: {
           label: 'Date',
           description: `
-            The date(s) when the manuscript(s) in which the Work can be found were written.
-            Multiple production dates may appear for a single manuscript,
-            when there are discrepancies between the contributing data source
-            or when the precise date is uncertain.
+            The date(s) when the letters were written.
           `
         },
         archival_organization: {
@@ -656,9 +659,9 @@ export default {
           `
         },
         data_provider: {
-          label: 'Cultural heritage organizations',
+          label: 'Cultural heritage organization',
           description: `
-            Cultural heritage organizations 
+            Cultural heritage organization
           `
         },
         digital_edition: {
@@ -1817,10 +1820,7 @@ export default {
         productionTimespan: {
           label: 'Date',
           description: `
-            The date(s) when the manuscript(s) in which the Work can be found were written.
-            Multiple production dates may appear for a single manuscript,
-            when there are discrepancies between the contributing data source
-            or when the precise date is uncertain.
+            The date(s) when the letters were written.
           `
         },
         archival_organization: {
@@ -2060,10 +2060,7 @@ export default {
         productionTimespan: {
           label: 'Date',
           description: `
-            The date(s) when the manuscript(s) in which the Work can be found were written.
-            Multiple production dates may appear for a single manuscript,
-            when there are discrepancies between the contributing data source
-            or when the precise date is uncertain.
+            The date(s) when the letters were written.
           `
         },
         archival_organization: {
@@ -2297,10 +2294,7 @@ export default {
         productionTimespan: {
           label: 'Date',
           description: `
-            The date(s) when the manuscript(s) in which the Work can be found were written.
-            Multiple production dates may appear for a single manuscript,
-            when there are discrepancies between the contributing data source
-            or when the precise date is uncertain.
+            The date(s) when the letters were written.
           `
         },
         archival_organization: {
@@ -2534,10 +2528,7 @@ export default {
         productionTimespan: {
           label: 'Date',
           description: `
-            The date(s) when the manuscript(s) in which the Work can be found were written.
-            Multiple production dates may appear for a single manuscript,
-            when there are discrepancies between the contributing data source
-            or when the precise date is uncertain.
+            The date(s) when the letters were written.
           `
         },
         archival_organization: {
