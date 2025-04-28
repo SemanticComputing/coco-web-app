@@ -109,6 +109,12 @@ UNION
 {
   ?id :type [ a [] ; skos:prefLabel ?lettertype ]
 }
+UNION 
+{
+  ?id :original_data_provider ?data_provider__id .
+  ?data_provider__id skos:prefLabel ?data_provider__prefLabel .
+  BIND(CONCAT("/sources/page/", REPLACE(STR(?data_provider__id), "^.*\\\\/(.+)", "$1")) AS ?data_provider__dataProviderUrl)
+}
 UNION
 {
   ?id dct:source ?datasource__id .
@@ -218,21 +224,38 @@ export const topCorrespondenceFacetPageQuery = `
 SELECT DISTINCT 
   (REPLACE(?_from__label, ' [(][fl. 0-9-]+[)]$', '') AS ?from__label)
   (REPLACE(?_to__label, ' [(][fl. 0-9-]+[)]$', '') AS ?to__label)
-	?type
+  ?type
   ?year
   (xsd:date(CONCAT(STR(?year),'-01-01')) AS ?date)
   (COUNT(DISTINCT ?id) AS ?count)
 WHERE {
-  ?id a :Letter .
+
+  { SELECT DISTINCT ?id WHERE {
+      { 
+        SELECT DISTINCT ?actor WHERE {
+          ?id a :Letter .
+          <FILTER>
+          
+          ?id portal:recipient|portal:sender ?actor
+        }
+        GROUPBY ?actor
+        ORDERBY DESC(COUNT(?id))
+        LIMIT 25
+      }
+      ?id portal:recipient|portal:sender ?actor
+    } LIMIT 400000
+  }
 
   <FILTER>
 
-  ?id portal:recipient/skos:prefLabel ?_to__label ;
-    :estimated_year ?year ;
-    portal:sender/skos:prefLabel ?_from__label .
+  ?id portal:recipient/skos:prefLabel ?_to__label ; 
+      :estimated_year ?year ;
+      portal:sender/skos:prefLabel ?_from__label .
 
-  VALUES ?type { "to" "from" }
-} GROUPBY ?_from__label ?_to__label ?type ?year LIMIT 200000
+  VALUES ?type { "from" "to" }
+} 
+GROUPBY ?_from__label ?_to__label ?type ?year 
+ORDERBY DESC(?count)
 `
 
 export const lettersByYearQuery = `
