@@ -811,6 +811,7 @@
             "sortButton": true,
             "pieChartButton": true,
             "sortByPredicate": "(^:proxy_for)/dct:source/skos:prefLabel",
+            "facetLabelFilter": "FILTER(LANG(?prefLabel_) = 'en')",
             "hideUnknownValue": true
         },
         "fonds": {
