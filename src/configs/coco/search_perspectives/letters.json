@@ -15,13 +15,6 @@
     "defaultTab": "table",
     "defaultInstancePageTab": "table",
     "maps": {
-        "lettersMigrations": {
-            "center": [
-                22.43,
-                10.37
-            ],
-            "zoom": 2
-        },
         "sendingPlacesHeatmap": {
             "center": [
                 65.184809,

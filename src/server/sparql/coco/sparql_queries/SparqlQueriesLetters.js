@@ -303,25 +303,26 @@ export const placePropertiesInfoWindow = `
 `
 
 export const peopleRelatedTo = `
-  { SELECT DISTINCT ?id ?person__id 
-    (CONCAT(?_plabel, ' (', STR(COUNT(DISTINCT ?_sent)), '+', STR(COUNT(DISTINCT ?_received)), ')') AS ?person__prefLabel) 
-    (CONCAT("/actors/page/", REPLACE(STR(?person__id), "^.*\\\\/(.+)", "$1")) AS ?person__dataProviderUrl)
+{ 
+  SELECT DISTINCT ?id ?person__id 
+  (CONCAT(?_plabel, ' (', STR(SUM(?_sent)), '+', STR(SUM(?_received)), ')') AS ?person__prefLabel) 
+  (CONCAT("/actors/page/", REPLACE(STR(?person__id), "^.*\\\\/(.+)", "$1")) AS ?person__dataProviderUrl)
   WHERE {
+    
       <FILTER>
-
-      {
-        ?related__id :was_sent_from ?id ; portal:sender ?person__id 
-        BIND (?related__id AS ?_sent)
+	
+      VALUES (?_prop ?_prop2 ?_sent ?_received ) { 
+        (:was_sent_from portal:sender 1 0)
+        (:was_sent_to portal:recipient 0 1)
       }
-      UNION
-      {
-        ?related__id :was_sent_to ?id ; portal:recipient ?person__id 
-        BIND (?related__id AS ?_received)
-      }
+      
+      [] ?_prop ?id ; ?_prop2 ?person__id .
 
       ?person__id skos:prefLabel ?_plabel 
+      
 
-    } GROUPBY ?id ?person__id ?_plabel ORDERBY DESC(COUNT(?related__id)) ?_plabel
+    } GROUPBY ?id ?person__id ?_plabel 
+    # ORDERBY DESC(SUM(?_sent)+SUM(?_received))
   }
 `
 
