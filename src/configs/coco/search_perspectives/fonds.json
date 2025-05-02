@@ -97,11 +97,11 @@
                 "createPopUpContent": "createPopUpContentLetterSampo"
             }
         },
-        "export": {
+        "sparql": {
             "tabID": 3,
             "component": "Export",
-            "tabPath": "export",
-            "tabIcon": "CloudDownload",
+            "tabPath": "sparql",
+            "tabIcon": "ArrowForward",
             "resultClass": "perspective1",
             "facetClass": "perspective1"
         },

@@ -164,7 +164,7 @@ export default {
     sender2: 'Sender 2',
     both: 'Both'
   },
-  exportToYasgui: 'open the result table query in yasgui sparql editor',
+  exportToYasgui: 'open the result table query in LD browser',
   openInLinkedDataBrowser: 'open in linked data browser',
   resultsAsCSV: 'download the search results as a CSV table',
   facets: {
@@ -765,7 +765,7 @@ export default {
           `
         },
         record_value: {
-          label: 'Metadata record values',
+          label: 'Extracted record data',
           description: `
             Textual values in the letter metadata record
           `
@@ -1933,7 +1933,7 @@ export default {
           `
         },
         record_value: {
-          label: 'Metadata record values',
+          label: 'Extracted record data',
           description: `
             Textual values in the letter metadata record
           `
@@ -2172,7 +2172,7 @@ export default {
           `
         },
         record_value: {
-          label: 'Metadata record values',
+          label: 'Extracted record data',
           description: `
             Textual values in the letter metadata record
           `
@@ -2406,7 +2406,7 @@ export default {
           `
         },
         record_value: {
-          label: 'Metadata record values',
+          label: 'Extracted record data',
           description: `
             Textual values in the letter metadata record
           `
@@ -2639,7 +2639,7 @@ export default {
           `
         },
         record_value: {
-          label: 'Metadata record values',
+          label: 'Extracted record data',
           description: `
             Textual values in the letter metadata record
           `

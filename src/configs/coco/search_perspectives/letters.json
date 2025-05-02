@@ -212,7 +212,7 @@
             "sparqlQuery": "csvQueryLetters",
             "filterTarget": "id"
         },
-        "export": {
+        "sparql": {
             "tabID": 6,
             "component": "Export",
             "tabPath": "sparql",
