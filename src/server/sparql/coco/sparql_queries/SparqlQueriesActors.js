@@ -339,15 +339,17 @@ SELECT *
       }
       UNION
       {
-        ?prx (^:was_authored_by)/:archival_organization [ 
+        ?prx (^:was_authored_by)/:original_data_provider [ 
           a [] ;
-          :proxy_for/skos:prefLabel ?archival_organization ]
+          skos:prefLabel ?data_provider ] .
+          FILTER (LANG(?data_provider)='en')
       }
       UNION
       {
-        ?prx (^:was_addressed_to)/:archival_organization [ 
+        ?prx (^:was_addressed_to)/:original_data_provider [ 
           a [] ; 
-          :proxy_for/skos:prefLabel ?archival_organization ]
+          skos:prefLabel ?data_provider ] .
+          FILTER (LANG(?data_provider)='en')
       }
       UNION
       { 

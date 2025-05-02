@@ -82,7 +82,7 @@
                                 "expandedOnInstancePage": true
                             },
                             {
-                                "id": "archival_organization",
+                                "id": "data_provider",
                                 "valueType": "string",
                                 "makeLink": false,
                                 "externalLink": false,

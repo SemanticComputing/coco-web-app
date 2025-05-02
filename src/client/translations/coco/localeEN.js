@@ -505,10 +505,10 @@ export default {
           List of letters which mention this actor.
           `
         },
-        archival_organization: {
-          label: 'Archival Organization',
+        data_provider: {
+          label: 'Cultural heritage organization',
           description: `
-            Archival Organizations having letter srelating to this actor.
+            Cultural heritage organization
           `
         },
         in_fonds: {
