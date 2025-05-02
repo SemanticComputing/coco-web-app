@@ -10,24 +10,10 @@ export const tiePropertiesInstancePage = `
   :num_letters ?numLetters ;
   skos:prefLabel ?prefLabel .
 { 
-  ?id :actor1 ?ego__id .
-  ?ego__id skos:prefLabel ?prefLabel1__id .
-  BIND (?prefLabel1__id as ?prefLabel1__prefLabel)
-  BIND(CONCAT("/actors/page/", REPLACE(STR(?ego__id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel1__dataProviderUrl)
-
-  BIND(?ego__id as ?ego__prefLabel)
-  BIND(?ego__id AS ?ego__dataProviderUrl)
+  ?id :actor1|:actor2 ?node__id .
+  ?node__id skos:prefLabel ?node__prefLabel 
+  BIND(CONCAT("/actors/page/", REPLACE(STR(?node__id), "^.*\\\\/(.+)", "$1")) AS ?node__dataProviderUrl)
 }
-UNION
-{
-  ?id :actor2 ?alter__id .
-  ?alter__id skos:prefLabel ?prefLabel2__id .
-  BIND (?prefLabel2__id as ?prefLabel2__prefLabel)
-  BIND(CONCAT("/actors/page/", REPLACE(STR(?alter__id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel2__dataProviderUrl)
-
-  BIND(?alter__id as ?alter__prefLabel)
-  BIND(?alter__id AS ?alter__dataProviderUrl)
-} 
 UNION
 {
   {

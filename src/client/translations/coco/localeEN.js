@@ -1241,22 +1241,8 @@ export default {
         `
       },
       properties: {
-        ego: {
-          label: 'URI 1',
-          description: 'Uniform Resource Identifier'
-        },
-        prefLabel1: {
-          label: 'Actor 1',
-          description: `
-            Preferable actor label.
-          `
-        },
-        alter: {
-          label: 'URI 2',
-          description: 'Uniform Resource Identifier'
-        },
-        prefLabel2: {
-          label: 'Actor 2',
+        node: {
+          label: 'People or Organizations',
           description: `
             Preferable actor label.
           `
@@ -1274,9 +1260,9 @@ export default {
           `
         },
         other: {
-          label: 'Related people',
+          label: 'Related people or organisations',
           description: `
-          People who have been in correspondence with both the sender and the recipient.
+          People or organisations who have been in correspondence with both the sender and the recipient.
           `
         }
       }
