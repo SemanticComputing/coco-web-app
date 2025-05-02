@@ -663,9 +663,9 @@ export default {
           `
         },
         digital_edition: {
-          label: 'Digital Editions',
+          label: 'Digital Edition',
           description: `
-            Digital Editions
+            Digital Edition
           `
         },
         original_record: {
@@ -780,10 +780,10 @@ export default {
           label: 'URI',
           description: 'Uniform Resource Identifier'
         },
-        related: {
-          label: 'External links',
+        external: {
+          label: 'External link',
           description: `
-            External links providing more information about this letter
+            External link providing more information about this letter
           `
         },
         source_url: {

@@ -90,6 +90,28 @@
                                 "onlyOnInstancePage": true
                             },
                             {
+                                "id": "external",
+                                "valueType": "object",
+                                "makeLink": true,
+                                "externalLink": true,
+                                "sortValues": true,
+                                "numberedList": false,
+                                "minWidth": 250,
+                                "onlyOnInstancePage": true,
+                                "expandedOnInstancePage": true
+                            },
+                            {
+                                "id": "source_url",
+                                "valueType": "object",
+                                "makeLink": true,
+                                "externalLink": true,
+                                "sortValues": true,
+                                "numberedList": false,
+                                "minWidth": 250,
+                                "onlyOnInstancePage": true,
+                                "expandedOnInstancePage": true
+                            },
+                            {
                                 "id": "metadata",
                                 "valueType": "object",
                                 "makeLink": true,
@@ -379,28 +401,6 @@
             "onlyOnInstancePage": true
         },
         {
-            "id": "related",
-            "valueType": "object",
-            "makeLink": true,
-            "externalLink": true,
-            "sortValues": true,
-            "numberedList": false,
-            "minWidth": 250,
-            "onlyOnInstancePage": true,
-            "expandedOnInstancePage": true
-        },
-        {
-            "id": "source_url",
-            "valueType": "object",
-            "makeLink": true,
-            "externalLink": true,
-            "sortValues": true,
-            "numberedList": false,
-            "minWidth": 250,
-            "onlyOnInstancePage": true,
-            "expandedOnInstancePage": true
-        },
-        {
             "id": "comment",
             "valueType": "string",
             "makeLink": false,
@@ -422,6 +422,34 @@
         }
     ],
     "facets": {
+        "data_provider": {
+            "containerClass": "sixteen",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "predicate": ":original_data_provider",
+            "facetLabelFilter": "FILTER(LANG(?prefLabel_) = 'en')",
+            "searchField": false,
+            "sortBy": "instanceCount",
+            "sortDirection": "desc",
+            "sortButton": true,
+            "pieChartButton": true,
+            "sortByPredicate": ":original_data_provider/skos:prefLabel",
+            "hideUnknownValue": true
+        },
+        "digital_edition": {
+            "containerClass": "six",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "predicate": ":digital_edition",
+            "facetLabelFilter": "FILTER(LANG(?prefLabel_) = 'en')",
+            "searchField": false,
+            "sortBy": "instanceCount",
+            "sortDirection": "desc",
+            "sortButton": true,
+            "pieChartButton": true,
+            "sortByPredicate": ":digital_edition/skos:prefLabel",
+            "hideUnknownValue": true
+        },
         "source": {
             "containerClass": "ten",
             "facetType": "list",
@@ -561,20 +589,6 @@
             "sortByPredicate": ":type/skos:prefLabel",
             "hideUnknownValue": true
         },
-        "digital_edition": {
-            "containerClass": "six",
-            "facetType": "list",
-            "filterType": "uriFilter",
-            "predicate": ":digital_edition",
-            "facetLabelFilter": "FILTER(LANG(?prefLabel_) = 'en')",
-            "searchField": false,
-            "sortBy": "instanceCount",
-            "sortDirection": "desc",
-            "sortButton": true,
-            "pieChartButton": true,
-            "sortByPredicate": ":digital_edition/skos:prefLabel",
-            "hideUnknownValue": true
-        },
         "fonds": {
             "containerClass": "ten",
             "facetType": "list",
@@ -586,20 +600,6 @@
             "sortButton": true,
             "pieChartButton": true,
             "sortByPredicate": ":fonds/skos:prefLabel",
-            "hideUnknownValue": true
-        },
-        "data_provider": {
-            "containerClass": "sixteen",
-            "facetType": "list",
-            "filterType": "uriFilter",
-            "predicate": ":original_data_provider",
-            "facetLabelFilter": "FILTER(LANG(?prefLabel_) = 'en')",
-            "searchField": false,
-            "sortBy": "instanceCount",
-            "sortDirection": "desc",
-            "sortButton": true,
-            "pieChartButton": true,
-            "sortByPredicate": ":original_data_provider/skos:prefLabel",
             "hideUnknownValue": true
         },
         "datasource": {

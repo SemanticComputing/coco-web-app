@@ -130,13 +130,7 @@ UNION
 UNION
 { # Metadata values
   ?id :metadata ?_metadata
-  { 
-    ?_metadata :source_url|:source_api_url ?source_url__id . 
-    BIND(?source_url__id AS ?source_url__prefLabel)
-    BIND(?source_url__id AS ?source_url__dataProviderUrl)
-  }
-  UNION
-  {
+  OPTIONAL {
     ?_metadata rdfs:comment ?comment .
   }
 }
@@ -163,9 +157,15 @@ SELECT *
       }
       UNION
       {
-        ?metadata__id foaf:page ?related__id .
-        BIND(?related__id AS ?related__prefLabel)
-        BIND(?related__id AS ?related__dataProviderUrl)
+        ?metadata__id foaf:page ?external__id .
+        BIND(?external__id AS ?external__prefLabel)
+        BIND(?external__id AS ?external__dataProviderUrl)
+      }
+      UNION
+      { 
+        ?metadata__id :source_url|:source_api_url ?source_url__id . 
+        BIND(?source_url__id AS ?source_url__prefLabel)
+        BIND(?source_url__id AS ?source_url__dataProviderUrl)
       }
       UNION
       {

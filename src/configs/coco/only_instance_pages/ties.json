@@ -178,20 +178,13 @@
   },
   "properties": [
     {
-      "id": "prefLabel1",
+      "id": "node",
       "valueType": "object",
       "makeLink": true,
       "externalLink": false,
       "sortValues": true,
-      "numberedList": false
-    },
-    {
-      "id": "prefLabel2",
-      "valueType": "object",
-      "makeLink": true,
-      "externalLink": false,
-      "sortValues": true,
-      "numberedList": false
+      "numberedList": false,
+      "expandedOnInstancePage": true
     },
     {
       "id": "numLetters",
