@@ -70,30 +70,20 @@ SELECT DISTINCT
 } GROUPBY ?id ?sender1__label ?sender2__label ?year ?type
 `
 
-//  https://api.triplydb.com/s/ILhzAxhyr
 export const tieTimelineYearsQuery = `
-SELECT DISTINCT (STR(?year) as ?category)
-    (count(distinct ?sent_letter) AS ?sender1)
-    (count(distinct ?received_letter) AS ?sender2)
-    ((?sender1 + ?sender2) as ?both)
+SELECT DISTINCT (STR(?year) as ?category) ?label 
+(count(distinct ?letter) AS ?count)
   WHERE {
   
   BIND(<ID> as ?id)
   
   ?letter :in_tie ?id ;
-          :estimated_year ?year
+          :estimated_year ?year .
+ 
+  ?id (:actor1|:actor2) [ ^portal:sender ?letter ; skos:prefLabel ?label ]
   
-  {
-    ?id :actor1/^portal:sender ?letter .
-    BIND (?letter AS ?sent_letter)
   }
-  UNION
-  {
-    ?id :actor2/^portal:sender ?letter .
-    BIND (?letter AS ?received_letter)
-  }
-  } 
-  GROUP BY ?year 
+  GROUP BY ?year ?label
   ORDER BY ?year 
 `
 

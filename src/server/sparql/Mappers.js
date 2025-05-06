@@ -37,7 +37,6 @@ export const mapCoordinates = sparqlBindings => {
 }
 
 export const mapBirthYearCount = sparqlBindings => {
-  // console.log(sparqlBindings);
   const results = sparqlBindings.map(b => {
     return {
       counted: b.counted.value,
@@ -48,7 +47,6 @@ export const mapBirthYearCount = sparqlBindings => {
 }
 
 export const mapAgeCount = sparqlBindings => {
-  // console.log(sparqlBindings);
   const results = sparqlBindings.map(b => {
     return {
       counted: b.counted.value,
@@ -59,7 +57,6 @@ export const mapAgeCount = sparqlBindings => {
 }
 
 export const mapCountGroups = sparqlBindings => {
-  // console.log(sparqlBindings);
   const results = sparqlBindings.map(b => {
     return {
       counted: b.counted.value,
@@ -646,20 +643,57 @@ export const createCorrespondenceChartData = ({ sparqlBindings, config }) => {
   }
 }
 
-export const createCorrespondenceChartDataLower = ({ sparqlBindings, config }) => {
+export const createCorrespondenceChartDataByLabel = ({ sparqlBindings, config }) => {
   const series = []
-  Object.entries(mapMultipleLineChart({ sparqlBindings, config })).forEach(([key, arr]) => {
-    // filter out empty result arrays, e.g. 'sent_letters' : []
-    if (arr && arr.length) {
-      const lastX = arr[arr.length - 1]
-      // add an extra zero to the end to show the whole last result in browser
-      arr.push([lastX[0] + 1, 0])
-      series.push({
-        name: key,
-        data: arr.map(y => [Date.UTC(y[0]), y[1]])
-      })
+  
+  const res = {}
+  sparqlBindings.forEach(row => {
+    for (const [key, obj] of Object.entries(row)) {
+      if (key=='label') {
+        res[obj.value] = []
+      }
     }
   })
+  sparqlBindings.forEach(row => {
+    res[row.label.value].push([parseInt(row.category.value), parseInt(row.count.value)])
+  })
+
+  // entire yearspan, add zeros to start and end
+  const category = sparqlBindings.map(p => parseFloat(p.category.value))
+  const allyears = {}
+  const valmax = Math.max(...category) + 2
+  for (let i = Math.min(...category)-1; i <= valmax; i++) {
+    allyears[i] = 0
+  }
+
+  const all_letters = { ...allyears }
+
+  function sortByYear(a, b) {
+    if (a[0] < b[0]) return -1;
+    if (a[0] > b[0]) return 1;
+    return 0;
+  }
+
+  for (const [key, arr] of Object.entries(res)) {
+    if (arr && arr.length) {
+      const years = { ...allyears }
+      
+      arr.forEach(obj => years[obj[0]] = obj[1])
+      arr.forEach(obj => all_letters[obj[0]] += obj[1])
+      const arr2 = Object.entries(years).map(y => [parseInt(y[0]), y[1]])
+      arr2.sort(sortByYear);
+      
+      series.push({
+        name: key,
+        data: arr2
+      })
+    }
+  }
+
+  const arr2 = Object.entries(all_letters).map(y => [parseInt(y[0]), y[1]])
+  arr2.sort(sortByYear)
+  series.push({name:'All letters', data: arr2})
+
   return series
 }
 
