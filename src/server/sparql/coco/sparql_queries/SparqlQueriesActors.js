@@ -6,9 +6,9 @@ export const actorPropertiesFacetResults = `
   BIND (?id as ?uri__prefLabel)
 
   {
-    ?id skos:prefLabel ?prefLabel__id .
-    BIND (?prefLabel__id as ?prefLabel__prefLabel)
-    BIND (CONCAT("/actors/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
+    ?id skos:prefLabel ?label__id .
+    BIND (?label__id as ?label__prefLabel)
+    BIND (CONCAT("/actors/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?label__dataProviderUrl)
   }
   UNION
   {
@@ -77,9 +77,9 @@ export const actorPropertiesInstancePage = `
   BIND (?id as ?uri__dataProviderUrl)
 
   {
-    ?id skos:prefLabel ?prefLabel__id .
-    BIND (?prefLabel__id as ?prefLabel__prefLabel)
-    BIND (CONCAT("/actors/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
+    ?id skos:prefLabel ?label__id .
+    BIND (?label__id as ?label__prefLabel)
+    BIND (CONCAT("/actors/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?label__dataProviderUrl)
   }
   UNION
   { ?id :out_degree ?numSent }
