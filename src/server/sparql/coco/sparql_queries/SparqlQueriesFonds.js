@@ -111,12 +111,25 @@ WHERE {
 export const peopleRelatedTo = `
   OPTIONAL {
     BIND (<ID> as ?id)
-    <FILTER>
-    { SELECT ?id ?related__id ?person__id (CONCAT(?_plabel, ' (', STR(COUNT(DISTINCT ?_evt)), ')') AS ?person__prefLabel) (CONCAT("/actors/page/", REPLACE(STR(?person__id), "^.*\\\\/(.+)", "$1")) AS ?person__dataProviderUrl)
+    { SELECT ?id ?person__id
+      (CONCAT(?_plabel, ' (', STR(SUM(?_sent)), '+', STR(SUM(?_received)), ')') AS ?person__prefLabel)
+      (CONCAT("/actors/page/", REPLACE(STR(?person__id), "^.*\\\\/(.+)", "$1")) AS ?person__dataProviderUrl)
       WHERE {
-    ?_evt :fonds ?related__id ; :was_sent_from ?id ; :was_authored_by ?person__id .
-    ?person__id skos:prefLabel ?_plabel .
-      } GROUPBY ?id ?related__id ?person__id ?_plabel ORDERBY DESC(COUNT(?_evt)) ?_plabel
+        
+        BIND (<ID> as ?id)
+      	<FILTER>
+          
+        VALUES (?_prop ?_prop2 ?_sent ?_received ) { 
+          (:was_sent_from portal:sender 1 0)
+          (:was_sent_to portal:recipient 0 1)
+        }
+         
+        [] :fonds ?related__id ; ?_prop ?id ; ?_prop2 ?person__id .
+    	?person__id skos:prefLabel ?_plabel .
+        
+      } 
+      GROUPBY ?id ?person__id ?_plabel 
+	    ORDERBY DESC(SUM(?_sent)+SUM(?_received))
     }
   } 
 `
