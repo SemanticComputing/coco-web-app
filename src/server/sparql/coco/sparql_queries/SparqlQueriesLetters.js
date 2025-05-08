@@ -308,7 +308,7 @@ export const peopleRelatedTo = `
   (CONCAT(?_plabel, ' (', STR(SUM(?_sent)), '+', STR(SUM(?_received)), ')') AS ?person__prefLabel) 
   (CONCAT("/actors/page/", REPLACE(STR(?person__id), "^.*\\\\/(.+)", "$1")) AS ?person__dataProviderUrl)
   WHERE {
-      BIND(<ID> as ?id)
+      BIND (<ID> as ?id)
       <FILTER>
 	
       VALUES (?_prop ?_prop2 ?_sent ?_received ) { 

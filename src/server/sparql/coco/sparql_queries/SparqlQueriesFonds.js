@@ -110,6 +110,7 @@ WHERE {
 
 export const peopleRelatedTo = `
   OPTIONAL {
+    BIND (<ID> as ?id)
     <FILTER>
     { SELECT ?id ?related__id ?person__id (CONCAT(?_plabel, ' (', STR(COUNT(DISTINCT ?_evt)), ')') AS ?person__prefLabel) (CONCAT("/actors/page/", REPLACE(STR(?person__id), "^.*\\\\/(.+)", "$1")) AS ?person__dataProviderUrl)
       WHERE {
