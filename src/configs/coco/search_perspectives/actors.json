@@ -456,7 +456,7 @@
             "hideHeader": true
         },
         {
-            "id": "prefLabel",
+            "id": "label",
             "valueType": "object",
             "makeLink": true,
             "externalLink": false,
@@ -703,6 +703,9 @@
         },
         "image": {
             "sortByPattern": "{ SELECT ?id (COALESCE(?_orderBy,'z') AS ?orderBy) WHERE { VALUES ?facetClass { <FACET_CLASS> } ?id a ?facetClass . OPTIONAL { ?id sch:image ?_orderBy }} }"
+        },
+        "label": {
+            "sortByPattern": "?id skos:prefLabel ?orderBy"
         },
         "maxScore": {
             "sortDirection": "desc"

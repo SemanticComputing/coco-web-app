@@ -354,6 +354,9 @@ export default {
           label: 'Name',
           description: 'Search actors by name. Search is based on Apache Lucene index search. In addition to simple searches, you can use wildcard matching, e.g. Finland*. You can also use the logical operators AND, OR and NOT, but then the search must be written in parentheses, e.g., like this (Jean AND Sibelius)'
         },
+        label: {
+          label: 'Name'
+        },
         gender: {
           label: 'Gender',
           description: 'The gender of a person. Notice that the other types of actors do not have this value.'
@@ -850,10 +853,10 @@ export default {
           label: 'Fonds',
           description: 'The label of the Fonds'
         },
-        datasource: {
-          label: 'Data source',
+        data_provider: {
+          label: 'Cultural heritage organization',
           description: `
-            The data source of the letter.
+            Cultural heritage organization
           `
         },
         description: {

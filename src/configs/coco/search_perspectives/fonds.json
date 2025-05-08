@@ -148,7 +148,7 @@
             "expandedOnInstancePage": true
         },
         {
-            "id": "datasource",
+            "id": "data_provider",
             "valueType": "string",
             "makeLink": false,
             "externalLink": false,
@@ -215,6 +215,19 @@
         }
     ],
     "facets": {
+        "data_provider": {
+            "containerClass": "ten",
+            "facetType": "list",
+            "predicate": ":original_data_provider",
+            "facetLabelFilter": "FILTER(LANG(?prefLabel_) = 'en')",
+            "filterType": "uriFilter",
+            "sortBy": "instanceCount",
+            "sortDirection": "desc",
+            "pieChartButton": true,
+            "sortButton": true,
+            "hideUnknownValue": true,
+            "sortByPredicate": ":original_data_provider/skos:prefLabel"
+        },
         "fonds": {
             "containerClass": "ten",
             "facetType": "list",
@@ -287,18 +300,6 @@
             "searchField": true,
             "sortButton": true,
             "sortByPredicate": "skos:prefLabel"
-        },
-        "datasource": {
-            "containerClass": "ten",
-            "facetType": "list",
-            "predicate": "dct:source",
-            "filterType": "uriFilter",
-            "sortBy": "instanceCount",
-            "sortDirection": "desc",
-            "pieChartButton": true,
-            "sortButton": true,
-            "hideUnknownValue": true,
-            "sortByPredicate": "dct:source/skos:prefLabel"
         },
         "prefLabel": {
             "sortByPattern": "{ SELECT ?id ?orderBy WHERE { VALUES ?facetClass { <FACET_CLASS> } ?id a ?facetClass ; skos:prefLabel ?orderBy }}"

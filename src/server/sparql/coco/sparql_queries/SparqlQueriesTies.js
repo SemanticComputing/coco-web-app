@@ -6,9 +6,16 @@ export const sahaModel = '"&model=coco"'
 //  TODO: add suitable letter properties, e.g. subject etc.
 //  TODO: fix node links, e.g. copy and change url in networkNodesQuery
 export const tiePropertiesInstancePage = `
-?id a :Tie ;
-  :num_letters ?numLetters ;
-  skos:prefLabel ?prefLabel .
+?id a :Tie .
+
+{
+  ?id skos:prefLabel ?prefLabel
+}
+UNION
+{
+  ?id :num_letters ?numLetters
+}
+UNION
 { 
   ?id :actor1|:actor2 ?node__id .
   ?node__id skos:prefLabel ?node__prefLabel 

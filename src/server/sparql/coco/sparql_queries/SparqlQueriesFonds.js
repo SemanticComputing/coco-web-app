@@ -5,8 +5,8 @@ export const fondsPropertiesFacetResults = `
   BIND(?id as ?uri__dataProviderUrl)
   BIND(?id as ?uri__prefLabel)
   {
-    ?id dct:source/skos:prefLabel ?datasource
-    FILTER (LANG(?datasource)="en")
+    ?id :original_data_provider/skos:prefLabel ?data_provider
+    FILTER (LANG(?data_provider)="en")
   }
   UNION
   {
@@ -32,8 +32,8 @@ export const fondsPropertiesInstancePage = `
   BIND(?id as ?uri__dataProviderUrl)
 
   {
-    ?id dct:source/skos:prefLabel ?datasource .
-    FILTER (LANG(?datasource)="<LANG>")
+    ?id dct:source/skos:prefLabel ?data_provider .
+    FILTER (LANG(?data_provider)="en")
   }
   UNION
   {
