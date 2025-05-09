@@ -1735,7 +1735,7 @@ export default {
           description: ''
         },
         relatedConcept: {
-          label: 'Related concept',
+          label: 'Keyword',
           description: ''
         },
         relatedEntity: {
