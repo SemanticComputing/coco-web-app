@@ -147,7 +147,7 @@
       "expandedOnInstancePage": true
     },
     {
-      "id": "numLetters",
+      "id": "num_letters",
       "valueType": "string",
       "makeLink": false,
       "externalLink": false,

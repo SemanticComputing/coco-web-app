@@ -57,6 +57,15 @@
                         "sparqlQuery": "actorLettersInstancePageQuery",
                         "properties": [
                             {
+                                "id": "label",
+                                "valueType": "object",
+                                "makeLink": true,
+                                "externalLink": false,
+                                "sortValues": true,
+                                "numberedList": false,
+                                "minWidth": 300
+                            },  
+                            {
                                 "id": "floruit",
                                 "valueType": "string",
                                 "makeLink": false,

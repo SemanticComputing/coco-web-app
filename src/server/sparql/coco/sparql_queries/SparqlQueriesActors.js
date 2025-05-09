@@ -256,8 +256,8 @@ SELECT *
     BIND (?id as ?uri__prefLabel)
     BIND (?id as ?uri__dataProviderUrl)
     {
-      ?id skos:prefLabel ?prefLabel__id .
-      BIND (?prefLabel__id as ?prefLabel__prefLabel)
+      ?id skos:prefLabel ?label__id .
+      BIND (?label__id as ?label__prefLabel)
     }
     UNION
     {
@@ -546,7 +546,7 @@ WHERE
 
 export const networkNodesQuery = `
   SELECT DISTINCT ?id ?prefLabel ?class ?href
-    (COALESCE(?_out, 0)+COALESCE(?_in, 0) AS ?numLetters)
+    (COALESCE(?_out, 0)+COALESCE(?_in, 0) AS ?num_letters)
   WHERE {
     VALUES ?class { :ProvidedActor }
     VALUES ?id { <ID_SET> }
@@ -562,7 +562,7 @@ export const networkNodesQuery = `
 
 export const networkNodesFacetQuery = `
  SELECT DISTINCT ?id ?prefLabel ?class ?href
- (COALESCE(?_out, 0)+COALESCE(?_in, 0) AS ?numLetters)
+ (COALESCE(?_out, 0)+COALESCE(?_in, 0) AS ?num_letters)
  WHERE {
    VALUES ?class { :ProvidedActor }
     VALUES ?id { <ID_SET> }

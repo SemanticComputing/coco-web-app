@@ -8,7 +8,7 @@ export const sourcePropertiesInstancePage = `
   }
   UNION
   {
-    SELECT ?id (COUNT(DISTINCT ?ltr) AS ?numLetters) {
+    SELECT ?id (COUNT(DISTINCT ?ltr) AS ?num_letters) {
       ?ltr :source ?id
     } GROUP BY ?id
   }

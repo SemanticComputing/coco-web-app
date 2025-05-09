@@ -13,7 +13,24 @@ export const tiePropertiesInstancePage = `
 }
 UNION
 {
-  ?id :num_letters ?numLetters
+  ?id :num_letters ?num_letters
+}
+UNION
+{ 
+  SELECT DISTINCT ?id ?node__id 
+    (CONCAT(?_label, 
+      ' [', 
+      (STR(COUNT(DISTINCT ?_sent))),
+      ']') AS ?node__prefLabel)
+    
+    (CONCAT("/actors/page/", REPLACE(STR(?node__id), "^.*\\\\/(.+)", "$1")) AS ?node__dataProviderUrl)
+    WHERE {
+  	?id :actor1|:actor2 ?node__id .
+  	?node__id skos:prefLabel ?_label 
+    OPTIONAL {
+        ?_sent :in_tie ?id ; portal:sender ?node__id
+    }
+  } GROUPBY ?id ?node__id ?_label
 }
 UNION
 { 
@@ -123,7 +140,7 @@ WHERE {
   ?source skos:prefLabel ?source__label . 
   ?target skos:prefLabel ?target__label . 
 
-  FILTER (?source!=?target) 
+  FILTER (?source!=?target)
 }
 `
 

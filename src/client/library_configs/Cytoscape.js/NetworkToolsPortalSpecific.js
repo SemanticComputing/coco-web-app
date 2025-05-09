@@ -23,7 +23,7 @@ export const preprocessLetterSampo = elements => {
   elements.edges.forEach((ele, i) => { ele.data.color = res[i] })
 
   // nodes
-  arr = elements.nodes.map(ele => Math.sqrt(ele.data.numLetters || 0))
+  arr = elements.nodes.map(ele => Math.sqrt(ele.data.num_letters || 0))
 
   // TODO: adjust node sizes e.g. https://stackoverflow.com/questions/30167117/get-the-current-index-in-sort-function
   // node size
@@ -37,6 +37,7 @@ export const preprocessLetterSampo = elements => {
 
 export const preprocessTie = elements => {
   const maxEdgeWidth = 8
+  console.log(elements)
   //  edges
   let arr = elements.edges.map(ele => ele.data.weight)
 

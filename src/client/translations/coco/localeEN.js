@@ -1247,13 +1247,14 @@ export default {
         node: {
           label: 'People or Organizations',
           description: `
-            Preferable actor label.
+            Labels of the actors in this correspondence.
+            The number in square brackets at the end of the label is the number of letters sent to the other actor in correspondence.
           `
         },
-        numLetters: {
-          label: 'Number of letters',
+        num_letters: {
+          label: 'Total number of letters',
           description: `
-            Number of letters sent between the two actors.
+            The total number of letters sent between the two actors.
           `
         },
         letter: {
@@ -1320,7 +1321,7 @@ export default {
             List of letters from this data source.
           `
         },
-        numLetters: {
+        num_letters: {
           label: 'Number of letters',
           description: `
             Number of letters from this data source.
