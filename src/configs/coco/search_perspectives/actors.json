@@ -752,7 +752,7 @@
             "hideUnknownValue": true
         },
         "gender": {
-            "containerClass": "three",
+            "containerClass": "five",
             "facetType": "list",
             "predicate": "bioc:has_gender",
             "filterType": "uriFilter",
