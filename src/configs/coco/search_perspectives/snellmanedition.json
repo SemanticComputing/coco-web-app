@@ -293,6 +293,18 @@
             "sortByPredicate": "dc:relation/skos:prefLabel",
             "hideUnknownValue": true
         },
+        "nlpKeyword": {
+            "containerClass": "seven",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "predicate": "sns:keyword",
+            "searchField": true,
+            "sortBy": "instanceCount",
+            "sortDirection": "desc",
+            "sortButton": true,
+            "pieChartButton": true,
+            "sortByPredicate": "sns:keyword/skos:prefLabel"
+        },
         "nlpPerson": {
             "containerClass": "seven",
             "facetType": "list",
@@ -304,8 +316,7 @@
             "sortDirection": "desc",
             "sortButton": true,
             "pieChartButton": true,
-            "sortByPredicate": "sns:entity_instance/^sns:instance/skos:prefLabel",
-            "hideUnknownValue": true
+            "sortByPredicate": "sns:entity_instance/^sns:instance/skos:prefLabel"
         },
         "nlpPlace": {
             "containerClass": "seven",
@@ -318,8 +329,7 @@
             "sortDirection": "desc",
             "sortButton": true,
             "pieChartButton": true,
-            "sortByPredicate": "sns:entity_instance/^sns:instance/skos:prefLabel",
-            "hideUnknownValue": true
+            "sortByPredicate": "sns:entity_instance/^sns:instance/skos:prefLabel"
         },
         "nlpLocation": {
             "containerClass": "seven",
@@ -332,8 +342,7 @@
             "sortDirection": "desc",
             "sortButton": true,
             "pieChartButton": true,
-            "sortByPredicate": "sns:entity_instance/^sns:instance/skos:prefLabel",
-            "hideUnknownValue": true
+            "sortByPredicate": "sns:entity_instance/^sns:instance/skos:prefLabel"
         },
         "nlpEvent": {
             "containerClass": "seven",
@@ -346,8 +355,7 @@
             "sortDirection": "desc",
             "sortButton": true,
             "pieChartButton": true,
-            "sortByPredicate": "sns:entity_instance/^sns:instance/skos:prefLabel",
-            "hideUnknownValue": true
+            "sortByPredicate": "sns:entity_instance/^sns:instance/skos:prefLabel"
         },
         "nlpDate": {
             "containerClass": "seven",
@@ -360,8 +368,7 @@
             "sortDirection": "desc",
             "sortButton": true,
             "pieChartButton": true,
-            "sortByPredicate": "sns:entity_instance/^sns:instance/skos:prefLabel",
-            "hideUnknownValue": true
+            "sortByPredicate": "sns:entity_instance/^sns:instance/skos:prefLabel"
         },
         "nlpOrganization": {
             "containerClass": "seven",
@@ -374,8 +381,7 @@
             "sortDirection": "desc",
             "sortButton": true,
             "pieChartButton": true,
-            "sortByPredicate": "sns:entity_instance/^sns:instance/skos:prefLabel",
-            "hideUnknownValue": true
+            "sortByPredicate": "sns:entity_instance/^sns:instance/skos:prefLabel"
         },
         "nlpArtwork": {
             "containerClass": "seven",
@@ -388,8 +394,7 @@
             "sortDirection": "desc",
             "sortButton": true,
             "pieChartButton": true,
-            "sortByPredicate": "sns:entity_instance/^sns:instance/skos:prefLabel",
-            "hideUnknownValue": true
+            "sortByPredicate": "sns:entity_instance/^sns:instance/skos:prefLabel"
         },
         "nlpEntity": {
             "containerClass": "seven",
@@ -402,8 +407,7 @@
             "sortDirection": "desc",
             "sortButton": true,
             "pieChartButton": true,
-            "sortByPredicate": "dc:relation/skos:prefLabel",
-            "hideUnknownValue": true
+            "sortByPredicate": "dc:relation/skos:prefLabel"
         },
         "prefLabel": {
             "sortByPattern": "{ SELECT ?id ?orderBy WHERE { VALUES ?facetClass { <FACET_CLASS> } ?id a ?facetClass ; skos:prefLabel ?orderBy }}"

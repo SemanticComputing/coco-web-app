@@ -1746,6 +1746,10 @@ export default {
           label: 'Mentioned entity (automatically)',
           description: ''
         },
+        nlpKeyword: {
+          label: 'Keyword (automatically)',
+          description: ''
+        },
         nlpPerson: {
           label: 'Mentioned person (automatically)',
           description: ''
