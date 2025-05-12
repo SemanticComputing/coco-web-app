@@ -122,8 +122,16 @@
                             }
                         ]
                     },
-                    "instancePageExport": {
+                    "instancePageEmbed": {
                         "tabID": 2,
+                        "component": "ExternalSite",
+                        "tabPath": "view",
+                        "tabIcon": "MailOutline",
+                        "fetchResultsWhenMounted": true,
+                        "sparqlQuery": "letterEmbedInstancePageQuery"
+                    },
+                    "instancePageExport": {
+                        "tabID": 3,
                         "component": "Export",
                         "tabPath": "export",
                         "tabIcon": "CloudDownload",

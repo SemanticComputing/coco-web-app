@@ -134,6 +134,7 @@ export default {
     'top-correspondents': 'top correspondents',
     csv: 'csv',
     metadata: 'source data',
+    view: 'digital edition view',
     letter: 'letter',
     sentReceivedByPlace: 'timeline of letters',
     correspondenceTimeline: 'Letter Timeline',
@@ -607,6 +608,11 @@ export default {
           </ul>
           <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph"></p>
         `
+      },
+      externalSite: {
+        loadingFailed: 'Embedding the content failed',
+        openInNewTab: 'Open original source directly in a new tab',
+        notAvailable: 'No external data source available'
       },
       properties: {
         uri: {

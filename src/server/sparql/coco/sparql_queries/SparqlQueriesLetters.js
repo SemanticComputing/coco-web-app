@@ -369,3 +369,16 @@ export const sendingPlacesHeatmapQuery = `
   }
 `
 
+export const letterEmbedInstancePageQuery = `
+SELECT ?id ?url 
+  WHERE { 
+  BIND (<ID> as ?id)
+  {
+    ?id :metadata ?_metadata .
+    {
+      ?_metadata foaf:website|foaf:page ?url .
+    }
+  }
+}
+`
+
