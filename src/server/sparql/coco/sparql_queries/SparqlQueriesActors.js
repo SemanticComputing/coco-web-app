@@ -87,11 +87,18 @@ export const actorPropertiesInstancePage = `
     BIND (CONCAT("/actors/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?label__dataProviderUrl)
   }
   UNION
-  { ?id :degree ?numLetters }
-  UNION
   { ?id :out_degree ?numSent }
   UNION
   { ?id :in_degree ?numReceived }
+  UNION
+  {
+    SELECT DISTINCT ?id (SUM(?_value) AS ?numLetters) WHERE
+    {
+      ?id :in_degree|:out_degree ?_value 
+    } GROUPBY ?id 
+  }
+  UNION
+  { ?id :num_correspondences ?numCorrespondences }
   UNION
   { 
     ?id :floruit ?floruitTimespan__id .

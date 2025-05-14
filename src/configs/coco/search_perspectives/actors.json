@@ -119,14 +119,6 @@
                                 "onlyOnInstancePage": true
                             },
                             {
-                                "id": "numLetters",
-                                "valueType": "integer",
-                                "makeLink": false,
-                                "externalLink": false,
-                                "sortValues": false,
-                                "numberedList": false
-                            },
-                            {
                                 "id": "numSent",
                                 "valueType": "integer",
                                 "makeLink": false,
@@ -506,7 +498,8 @@
             "externalLink": false,
             "sortValues": false,
             "numberedList": false,
-            "minWidth": 70
+            "minWidth": 70,
+            "onlyOnInstancePage": true
         },
         {
             "id": "numSent",

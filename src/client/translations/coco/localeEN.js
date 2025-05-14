@@ -460,10 +460,16 @@ export default {
             (rank - 1 = the number of people who have a higher measure value).
           `
         },
+        numLetters: {
+          label: 'Number of letters',
+          description: `
+          Total count of both sent and received letters
+          `
+        },
         numCorrespondences: {
           label: 'Number of correspondences',
           description: `
-          Number of distinct correspondences.
+          Number of distinct correspondences
           `
         },
         tie: {
