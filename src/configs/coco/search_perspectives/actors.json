@@ -75,7 +75,7 @@
                             },
                             {
                                 "id": "numCorrespondences",
-                                "valueType": "string",
+                                "valueType": "integer",
                                 "makeLink": false,
                                 "externalLink": false,
                                 "sortValues": false,
@@ -120,7 +120,7 @@
                             },
                             {
                                 "id": "numLetters",
-                                "valueType": "string",
+                                "valueType": "integer",
                                 "makeLink": false,
                                 "externalLink": false,
                                 "sortValues": false,
@@ -128,7 +128,7 @@
                             },
                             {
                                 "id": "numSent",
-                                "valueType": "string",
+                                "valueType": "integer",
                                 "makeLink": false,
                                 "externalLink": false,
                                 "sortValues": false,
@@ -747,13 +747,6 @@
         "numReceived": {
             "sortByPattern": "{ SELECT ?id (COALESCE(?_orderBy,0) AS ?orderBy) WHERE { VALUES ?facetClass { <FACET_CLASS> } ?id a ?facetClass . OPTIONAL { ?id :in_degree ?_orderBy }} }"
         },
-        "numCorrespondences": {
-            "sortDirection": "asc",
-            "sortByPattern": "{ SELECT ?id (COALESCE(?_orderBy,0) AS ?orderBy) WHERE { VALUES ?facetClass { <FACET_CLASS> } ?id a ?facetClass . OPTIONAL { ?id :num_correspondences ?_orderBy }} }"
-        },
-        "image": {
-            "sortByPattern": "{ SELECT ?id (COALESCE(?_orderBy,'z') AS ?orderBy) WHERE { VALUES ?facetClass { <FACET_CLASS> } ?id a ?facetClass . OPTIONAL { ?id sch:image ?_orderBy }} }"
-        },
         "label": {
             "sortByPattern": "?id skos:prefLabel ?orderBy"
         },
@@ -792,6 +785,15 @@
             "sortByPredicate": "portal:actor_role/skos:prefLabel",
             "hideUnknownValue": true,
             "sliceVisibilityThreshold": 0.000001
+        },
+        "numCorrespondences": {
+            "containerClass": "five",
+            "facetType": "integer",
+            "predicate": ":num_correspondences",
+            "filterType": "integerFilter",
+            "sortBy": "instanceCount",
+            "sortDirection": "desc",
+            "sortByPredicate": ":num_correspondences"
         },
         "gender": {
             "containerClass": "five",
