@@ -246,7 +246,7 @@
             "tabID": 7,
             "component": "ExportLink",
             "tabPath": "share",
-            "tabIcon": "CloudDownload",
+            "tabIcon": "IosShare",
             "resultClass": "letters",
             "facetClass": "letters"
         }
@@ -268,7 +268,7 @@
             "externalLink": false,
             "sortValues": true,
             "numberedList": false,
-            "minWidth": 200,
+            "minWidth": 250,
             "expandedOnInstancePage": true
         },
         {
@@ -278,7 +278,7 @@
             "externalLink": false,
             "sortValues": true,
             "numberedList": false,
-            "minWidth": 200,
+            "minWidth": 250,
             "expandedOnInstancePage": true
         },
         {

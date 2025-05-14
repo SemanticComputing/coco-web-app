@@ -448,7 +448,7 @@
             "tabID": 5,
             "component": "ExportLink",
             "tabPath": "share",
-            "tabIcon": "CloudDownload",
+            "tabIcon": "IosShare",
             "resultClass": "actors",
             "facetClass": "actors"
         }
@@ -759,7 +759,8 @@
             "sortBy": "instanceCount",
             "sortDirection": "desc",
             "pieChartButton": true,
-            "sortByPredicate": "bioc:has_gender/skos:prefLabel"
+            "sortByPredicate": "bioc:has_gender/skos:prefLabel",
+            "hideUnknownValue": true
         },
         "birthDateTimespan": {
             "containerClass": "four",

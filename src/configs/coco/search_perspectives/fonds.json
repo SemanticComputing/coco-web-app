@@ -109,7 +109,7 @@
             "tabID": 4,
             "component": "ExportLink",
             "tabPath": "share",
-            "tabIcon": "CloudDownload",
+            "tabIcon": "IosShare",
             "resultClass": "fonds",
             "facetClass": "fonds"
         }
