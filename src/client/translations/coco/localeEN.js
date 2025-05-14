@@ -475,9 +475,7 @@ export default {
         },
         numSent: {
           label: 'Number of sent letters',
-          description: `
-            Number of sent letters.
-          `
+          description: ``
         },
         sentletter: {
           label: 'Sent letters',
@@ -493,9 +491,7 @@ export default {
         },
         numReceived: {
           label: 'Number of received letters',
-          description: `
-            Number of received letters.
-          `
+          description: ``
         },
         receivedletter: {
           label: 'Received letters',

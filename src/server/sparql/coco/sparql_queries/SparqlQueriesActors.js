@@ -12,11 +12,16 @@ export const actorPropertiesFacetResults = `
   }
   UNION
   {
-    ?id :out_degree ?numSent
+  ?id :in_degree ?numReceived
   }
   UNION
   {
-    ?id :in_degree ?numReceived
+  ?id :out_degree ?numSent
+  }
+  # UNION { ?id :in_degree|:out_degree ?numLetters }
+  UNION
+  {
+    ?id :num_correspondences ?numCorrespondences
   }
   UNION
   { 
@@ -81,6 +86,8 @@ export const actorPropertiesInstancePage = `
     BIND (?label__id as ?label__prefLabel)
     BIND (CONCAT("/actors/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?label__dataProviderUrl)
   }
+  UNION
+  { ?id :degree ?numLetters }
   UNION
   { ?id :out_degree ?numSent }
   UNION
@@ -258,6 +265,10 @@ SELECT *
     {
       ?id skos:prefLabel ?label__id .
       BIND (?label__id as ?label__prefLabel)
+    }
+    UNION
+    {
+      ?id :degree ?numLetters
     }
     UNION
     {

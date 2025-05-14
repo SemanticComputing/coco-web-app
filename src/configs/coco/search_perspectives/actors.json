@@ -119,6 +119,14 @@
                                 "onlyOnInstancePage": true
                             },
                             {
+                                "id": "numLetters",
+                                "valueType": "string",
+                                "makeLink": false,
+                                "externalLink": false,
+                                "sortValues": false,
+                                "numberedList": false
+                            },
+                            {
                                 "id": "numSent",
                                 "valueType": "string",
                                 "makeLink": false,
@@ -151,6 +159,14 @@
                                 "sortValues": false,
                                 "numberedList": true,
                                 "expandedOnInstancePage": true
+                            },
+                            {
+                                "id": "numCorrespondences",
+                                "valueType": "string",
+                                "makeLink": true,
+                                "externalLink": false,
+                                "sortValues": false,
+                                "numberedList": false
                             },
                             {
                                 "id": "mentioningletter",
@@ -484,6 +500,15 @@
             "priority": 5
         },
         {
+            "id": "numLetters",
+            "valueType": "string",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": false,
+            "numberedList": false,
+            "minWidth": 70
+        },
+        {
             "id": "numSent",
             "valueType": "string",
             "makeLink": false,
@@ -494,6 +519,15 @@
         },
         {
             "id": "numReceived",
+            "valueType": "string",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": false,
+            "numberedList": false,
+            "minWidth": 70
+        },
+        {
+            "id": "numCorrespondences",
             "valueType": "string",
             "makeLink": false,
             "externalLink": false,
@@ -704,11 +738,18 @@
         }
     ],
     "facets": {
+        "numLetters": {
+            "sortByPattern": "{ SELECT ?id (COALESCE(?_orderBy,0) AS ?orderBy) WHERE { VALUES ?facetClass { <FACET_CLASS> } ?id a ?facetClass . OPTIONAL { ?id :in_degree|:out_degree ?_orderBy }} }"
+        },
         "numSent": {
             "sortByPattern": "{ SELECT ?id (COALESCE(?_orderBy,0) AS ?orderBy) WHERE { VALUES ?facetClass { <FACET_CLASS> } ?id a ?facetClass . OPTIONAL { ?id :out_degree ?_orderBy }} }"
         },
         "numReceived": {
             "sortByPattern": "{ SELECT ?id (COALESCE(?_orderBy,0) AS ?orderBy) WHERE { VALUES ?facetClass { <FACET_CLASS> } ?id a ?facetClass . OPTIONAL { ?id :in_degree ?_orderBy }} }"
+        },
+        "numCorrespondences": {
+            "sortDirection": "asc",
+            "sortByPattern": "{ SELECT ?id (COALESCE(?_orderBy,0) AS ?orderBy) WHERE { VALUES ?facetClass { <FACET_CLASS> } ?id a ?facetClass . OPTIONAL { ?id :num_correspondences ?_orderBy }} }"
         },
         "image": {
             "sortByPattern": "{ SELECT ?id (COALESCE(?_orderBy,'z') AS ?orderBy) WHERE { VALUES ?facetClass { <FACET_CLASS> } ?id a ?facetClass . OPTIONAL { ?id sch:image ?_orderBy }} }"
@@ -749,7 +790,8 @@
             "sortDirection": "desc",
             "pieChartButton": true,
             "sortByPredicate": "portal:actor_role/skos:prefLabel",
-            "hideUnknownValue": true
+            "hideUnknownValue": true,
+            "sliceVisibilityThreshold": 0.000001
         },
         "gender": {
             "containerClass": "five",

@@ -277,7 +277,7 @@ const createInstanceListing = instances => {
   let root
   if (Array.isArray(instances)) {
     root = document.createElement('ul')
-    instances = orderBy(instances, 'prefLabel')
+    // instances = orderBy(instances, 'prefLabel')
     instances.forEach(i => {
       const li = document.createElement('li')
       const link = document.createElement('a')

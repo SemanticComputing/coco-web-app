@@ -9,6 +9,7 @@ import {
   Star,
   Redo,
   PieChart,
+  IosShare,
   CloudDownload,
   BubbleChart,
   ShowChart,
@@ -40,6 +41,7 @@ const MuiIcon = props => {
     Redo: Redo,
     PieChart: PieChart,
     CloudDownload: CloudDownload,
+    IosShare: IosShare,
     BubbleChart: BubbleChart,
     ShowChart: ShowChart,
     FormatAlignJustify: FormatAlignJustify,
@@ -47,6 +49,7 @@ const MuiIcon = props => {
     OndemandVideo: OndemandVideo,
     KeyboardVoice: KeyboardVoice,
     Autorenew: Autorenew,
+
     Add: Add,
     PlayArrow: PlayArrow,
     MailOutline: MailOutline,
