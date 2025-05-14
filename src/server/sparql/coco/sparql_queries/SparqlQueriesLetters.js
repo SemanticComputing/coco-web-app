@@ -304,25 +304,28 @@ export const placePropertiesInfoWindow = `
 
 export const peopleRelatedTo = `
 { 
-  SELECT DISTINCT ?id ?person__id 
-  (CONCAT(?_plabel, ' (', STR(SUM(?_sent)), '+', STR(SUM(?_received)), ')') AS ?person__prefLabel) 
+  SELECT DISTINCT ?id ?person__id
+  (CONCAT(?_plabel, ' (', STR(COUNT(DISTINCT ?sent_letter)), '+', STR(COUNT(DISTINCT ?received_letter)), ')') AS ?person__prefLabel) 
   (CONCAT("/actors/page/", REPLACE(STR(?person__id), "^.*\\\\/(.+)", "$1")) AS ?person__dataProviderUrl)
   WHERE {
+
       BIND (<ID> as ?id)
       <FILTER>
-	
-      VALUES (?_prop ?_prop2 ?_sent ?_received ) { 
-        (:was_sent_from portal:sender 1 0)
-        (:was_sent_to portal:recipient 0 1)
+	    
+      { 
+        ?letter_id :was_sent_from ?id ; portal:sender ?person__id .
+        BIND (?letter_id AS ?sent_letter)
       }
+      UNION
+      { 
+        ?letter_id :was_sent_to ?id ; portal:recipient ?person__id .
+        BIND (?letter_id AS ?received_letter)
+      }
+     	
+      ?person__id skos:prefLabel ?_plabel
       
-      [] ?_prop ?id ; ?_prop2 ?person__id .
-
-      ?person__id skos:prefLabel ?_plabel 
-      
-
     } GROUPBY ?id ?person__id ?_plabel 
-    ORDERBY DESC(SUM(?_sent)+SUM(?_received))
+    ORDERBY DESC( COUNT(DISTINCT ?sent_letter)+ COUNT(DISTINCT ?received_letter))
   }
 `
 
