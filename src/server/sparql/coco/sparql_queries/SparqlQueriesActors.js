@@ -11,18 +11,13 @@ export const actorPropertiesFacetResults = `
     BIND (CONCAT("/actors/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?label__dataProviderUrl)
   }
   UNION
-  {
-  ?id :in_degree ?numReceived
-  }
+  { ?id :in_degree ?numReceived }
   UNION
-  {
-  ?id :out_degree ?numSent
-  }
-  # UNION { ?id :in_degree|:out_degree ?numLetters }
-  UNION
-  {
-    ?id :num_correspondences ?numCorrespondences
-  }
+  { ?id :out_degree ?numSent }
+  UNION 
+  { ?id :degree ?numLetters }
+  UNION 
+  {  ?id :num_correspondences ?numCorrespondences }
   UNION
   { 
     ?id :floruit ?floruitTimespan__id .
@@ -70,8 +65,8 @@ export const actorPropertiesFacetResults = `
     }
     UNION
     {
-      ?prx dct:source/skos:prefLabel ?datasource
-      FILTER (LANG(?datasource)="en")
+      ?prx :original_data_provider/skos:prefLabel ?data_provider
+      FILTER (LANG(?data_provider)="en")
     }
 }
 `
@@ -232,8 +227,8 @@ export const actorPropertiesInstancePage = `
       }
     UNION
     {
-      ?prx dct:source/skos:prefLabel ?datasource
-      FILTER (LANG(?datasource)="en")
+      ?prx :original_data_provider/skos:prefLabel ?data_provider
+      FILTER (LANG(?original_data)="en")
     }
     UNION
     {

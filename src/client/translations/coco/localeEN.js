@@ -17,7 +17,7 @@ export default {
   selectEditionPerpective: 'Focused collection perspectives with textual features',
   selectPerspective: 'Select a perspective to search, browse, and analyze letters using metadata',
   mainPageImageLicence: 'Images used under license from Wikimedia Commons',
-  backendErrorText: 'One of the backend services is not available at the moment. Please try again later.',
+  backendErrorText: 'One of the backend services is currently unavailable. Please try again later.',
   mainPageLinkText: "Select example searches, visualizations, and linked information",
   mainPageLinks: [
       {
@@ -681,9 +681,7 @@ export default {
         },
         original_record: {
           label: 'Original record',
-          description: `
-          Original record.
-          `
+          description: ``
         },
         fonds: {
           label: 'Fonds',
@@ -709,7 +707,7 @@ export default {
         source_type: {
           label: 'Sender: Type',
           description: `
-          Select the type of sender: Person, Group, Family or Unknown.
+          Select the type of sender: Person, Group, Family or Unidentified.
           `
         },
         source_gender: {
@@ -730,7 +728,7 @@ export default {
         target_type: {
           label: 'Recipient: Type',
           description: `
-          Filter the recipients by their type: Person, Group, Family or Unknown.
+          Filter the recipients by their type: Person, Group, Family or Unidentified.
           `
         },
         target_gender: {
@@ -777,9 +775,7 @@ export default {
         },
         record_value: {
           label: 'Extracted record data',
-          description: `
-            Textual values in the letter metadata record
-          `
+          description: ``
         },
         created_letter: {
           label: 'Related letters',
@@ -1868,7 +1864,7 @@ export default {
         source_type: {
           label: 'Sender: Type',
           description: `
-          Select the type of sender: Person, Group, Family or Unknown.
+          Select the type of sender: Person, Group, Family or Unidentified.
           `
         },
         source_gender: {
@@ -1889,7 +1885,7 @@ export default {
         target_type: {
           label: 'Recipient: Type',
           description: `
-          Filter the recipients by their type: Person, Group, Family or Unknown.
+          Filter the recipients by their type: Person, Group, Family or Unidentified.
           `
         },
         target_gender: {
@@ -2107,7 +2103,7 @@ export default {
         source_type: {
           label: 'Sender: Type',
           description: `
-          Select the type of sender: Person, Group, Family or Unknown.
+          Select the type of sender: Person, Group, Family or Unidentified.
           `
         },
         source_gender: {
@@ -2128,7 +2124,7 @@ export default {
         target_type: {
           label: 'Recipient: Type',
           description: `
-          Filter the recipients by their type: Person, Group, Family or Unknown.
+          Filter the recipients by their type: Person, Group, Family or Unidentified.
           `
         },
         target_gender: {
@@ -2341,7 +2337,7 @@ export default {
         source_type: {
           label: 'Sender: Type',
           description: `
-          Select the type of sender: Person, Group, Family or Unknown.
+          Select the type of sender: Person, Group, Family or Unidentified.
           `
         },
         source_gender: {
@@ -2362,7 +2358,7 @@ export default {
         target_type: {
           label: 'Recipient: Type',
           description: `
-          Filter the recipients by their type: Person, Group, Family or Unknown.
+          Filter the recipients by their type: Person, Group, Family or Unidentified.
           `
         },
         target_gender: {
@@ -2574,7 +2570,7 @@ export default {
         source_type: {
           label: 'Sender: Type',
           description: `
-          Select the type of sender: Person, Group, Family or Unknown.
+          Select the type of sender: Person, Group, Family or Unidentified.
           `
         },
         source_gender: {
@@ -2595,7 +2591,7 @@ export default {
         target_type: {
           label: 'Recipient: Type',
           description: `
-          Filter the recipients by their type: Person, Group, Family or Unknown.
+          Filter the recipients by their type: Person, Group, Family or Unidentified.
           `
         },
         target_gender: {

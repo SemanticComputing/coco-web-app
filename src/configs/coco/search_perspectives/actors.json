@@ -492,14 +492,23 @@
             "priority": 5
         },
         {
+            "id": "gender",
+            "valueType": "string",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": false,
+            "minWidth": 70,
+            "priority": 5
+        },
+        {
             "id": "numLetters",
             "valueType": "string",
             "makeLink": false,
             "externalLink": false,
             "sortValues": false,
             "numberedList": false,
-            "minWidth": 70,
-            "onlyOnInstancePage": true
+            "minWidth": 70
         },
         {
             "id": "numSent",
@@ -538,16 +547,6 @@
             "minWidth": 220,
             "onlyOnInstancePage": true,
             "expandedOnInstancePage": true
-        },
-        {
-            "id": "gender",
-            "valueType": "string",
-            "makeLink": false,
-            "externalLink": false,
-            "sortValues": true,
-            "numberedList": false,
-            "minWidth": 70,
-            "priority": 5
         },
         {
             "id": "birthDateTimespan",
@@ -687,7 +686,7 @@
             "expandedOnInstancePage": true
         },
         {
-            "id": "datasource",
+            "id": "data_provider",
             "valueType": "string",
             "makeLink": false,
             "externalLink": false,
@@ -731,9 +730,6 @@
         }
     ],
     "facets": {
-        "numLetters": {
-            "sortByPattern": "{ SELECT ?id (COALESCE(?_orderBy,0) AS ?orderBy) WHERE { VALUES ?facetClass { <FACET_CLASS> } ?id a ?facetClass . OPTIONAL { ?id :in_degree|:out_degree ?_orderBy }} }"
-        },
         "numSent": {
             "sortByPattern": "{ SELECT ?id (COALESCE(?_orderBy,0) AS ?orderBy) WHERE { VALUES ?facetClass { <FACET_CLASS> } ?id a ?facetClass . OPTIONAL { ?id :out_degree ?_orderBy }} }"
         },
@@ -778,6 +774,15 @@
             "sortByPredicate": "portal:actor_role/skos:prefLabel",
             "hideUnknownValue": true,
             "sliceVisibilityThreshold": 0.000001
+        },
+        "numLetters": {
+            "containerClass": "five",
+            "facetType": "integer",
+            "predicate": ":degree",
+            "filterType": "integerFilter",
+            "sortBy": "instanceCount",
+            "sortDirection": "desc",
+            "sortByPredicate": ":degree"
         },
         "numCorrespondences": {
             "containerClass": "five",
@@ -850,17 +855,31 @@
             "pieChartButton": true,
             "sortByPredicate": "(^:proxy_for)/bioc:has_occupation/skos:prefLabel"
         },
-        "datasource": {
+        "data_provider": {
             "containerClass": "fiveteen",
             "facetType": "list",
             "filterType": "uriFilter",
-            "predicate": "(^:proxy_for)/dct:source",
+            "predicate": "(^:proxy_for)/:original_data_provider",
             "searchField": false,
             "sortBy": "instanceCount",
             "sortDirection": "desc",
             "sortButton": true,
             "pieChartButton": true,
-            "sortByPredicate": "(^:proxy_for)/dct:source/skos:prefLabel",
+            "sortByPredicate": "(^:proxy_for)/:original_data_provider/skos:prefLabel",
+            "facetLabelFilter": "FILTER(LANG(?prefLabel_) = 'en')",
+            "hideUnknownValue": true
+        },
+        "digital_edition": {
+            "containerClass": "six",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "predicate": "(^:proxy_for)/:digital_edition",
+            "searchField": false,
+            "sortBy": "instanceCount",
+            "sortDirection": "desc",
+            "sortButton": true,
+            "pieChartButton": true,
+            "sortByPredicate": "(^:proxy_for)/:digital_edition/skos:prefLabel",
             "facetLabelFilter": "FILTER(LANG(?prefLabel_) = 'en')",
             "hideUnknownValue": true
         },
@@ -884,7 +903,7 @@
             "filterType": "uriFilter",
             "sortBy": "instanceCount",
             "sortDirection": "desc",
-            "sortByPredicate": ":foaf:page/a/skos:prefLabel"
+            "sortByPredicate": "foaf:page/a/skos:prefLabel"
         }
     }
 }
