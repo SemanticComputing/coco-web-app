@@ -782,7 +782,7 @@
             "filterType": "integerFilter",
             "sortBy": "instanceCount",
             "sortDirection": "desc",
-            "sortByPredicate": ":degree"
+            "sortByPattern": "{ SELECT ?id (COALESCE(?_orderBy,0) AS ?orderBy) WHERE { VALUES ?facetClass { <FACET_CLASS> } ?id a ?facetClass . OPTIONAL { ?id :degree ?_orderBy }} }"
         },
         "numCorrespondences": {
             "containerClass": "five",
@@ -791,7 +791,7 @@
             "filterType": "integerFilter",
             "sortBy": "instanceCount",
             "sortDirection": "desc",
-            "sortByPredicate": ":num_correspondences"
+            "sortByPattern": "{ SELECT ?id (COALESCE(?_orderBy,0) AS ?orderBy) WHERE { VALUES ?facetClass { <FACET_CLASS> } ?id a ?facetClass . OPTIONAL { ?id :num_correspondences ?_orderBy }} }"
         },
         "gender": {
             "containerClass": "five",
