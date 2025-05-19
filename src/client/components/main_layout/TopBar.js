@@ -18,6 +18,7 @@ import TopBarLanguageButton from './TopBarLanguageButton'
 import Divider from '@mui/material/Divider'
 import { has } from 'lodash'
 import secoLogo from '../../img/logos/seco-logo-48x50.png'
+import TopBarDropdownButton from './TopBarDropdownButton'
 
 /**
  * Responsive app bar with a search field, perspective links, info links and a language
@@ -42,6 +43,19 @@ const TopBar = props => {
   if (has(layoutConfig.topBar, 'showSearchField')) {
     showSearchField = layoutConfig.topBar.showSearchField
   }
+
+  const mainPerspectives = []
+  const editionPerspectives = []
+  const informationPerspectives = []
+  perspectives.forEach(perspective => {
+    if (perspective.id.includes('edition')) {
+      editionPerspectives.push(perspective)
+    } else if (perspective.id == 'contributors' || perspective.searchMode === 'dummy-internal') {
+      informationPerspectives.push(perspective)
+    } else if (perspective.id !== 'fullTextSearch') {
+      mainPerspectives.push(perspective)
+    }
+  })
 
   // https://mui.com/guides/routing/#button
   const AdapterLink = React.forwardRef((props, ref) =>
@@ -176,7 +190,11 @@ const TopBar = props => {
         open={isMobileMenuOpen}
         onClose={handleMobileMenuClose}
       >
-        {perspectives.map(perspective => perspective.hideTopPerspectiveButton ? null : renderMobileMenuItem(perspective))}
+        {mainPerspectives.map(perspective => perspective.hideTopPerspectiveButton ? null : renderMobileMenuItem(perspective))}
+        <Divider />
+        {editionPerspectives.map(perspective => perspective.hideTopPerspectiveButton ? null : renderMobileMenuItem(perspective))}
+        <Divider />
+        {informationPerspectives.map(perspective => perspective.hideTopPerspectiveButton ? null : renderMobileMenuItem(perspective))}
         <Divider />
         {renderMobileMenuItem({
           id: 'feedback',
@@ -295,7 +313,7 @@ const TopBar = props => {
               }
             })}
           >
-            {perspectives.slice(0, 5).map((perspective, index) => perspective.hideTopPerspectiveButton ? null : renderDesktopTopMenuItem(perspective, index))}
+            {mainPerspectives.map((perspective, index) => perspective.hideTopPerspectiveButton ? null : renderDesktopTopMenuItem(perspective, index))}
             <Box
               sx={theme => ({
                 marginLeft: theme.spacing(1),
@@ -303,7 +321,14 @@ const TopBar = props => {
                 borderLeft: '2px solid white'
               })}
             />
-            {perspectives.slice(5).map((perspective, index) => perspective.hideTopPerspectiveButton ? null : renderDesktopTopMenuItem(perspective, index))}
+            {editionPerspectives.length > 0 ?
+            <TopBarDropdownButton rootUrl={props.rootUrl} layoutConfig={layoutConfig} buttonLabel={intl.get(`topBar.editionPerspectives`)} 
+            dropdownItems={editionPerspectives.map(perspective => { return {
+              id: perspective.id,
+              url: getInternalLink(perspective),
+              label: intl.get(`perspectives.${perspective.id}.label`).toUpperCase()
+            }})} 
+            /> : ''}
             <Box
               sx={theme => ({
                 marginLeft: theme.spacing(1),
