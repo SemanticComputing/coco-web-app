@@ -20,9 +20,9 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down('sm')]: {
       justifyContent: 'center'
     },
-    height: 228,
+    height: props.cardHeight || 228,
     [theme.breakpoints.down('md')]: {
-      height: 170,
+      height: props.cardHeightMd || 170,
       maxWidth: 300
     },
     [props.perspective.frontPageElement === 'card']: {
@@ -75,7 +75,7 @@ const MainCard = props => {
     <Grid
       className={classes.gridItem}
       key={perspective.id}
-      item xs={12} sm={2} // optimized for four perspectives
+      item xs={12} sm={2} md={3} // optimized for four perspectives
       component={externalPerspective ? 'a' : Link}
       to={externalPerspective ? null : `${props.rootUrl}/${perspective.id}/${searchMode}`}
       container={xsScreen}

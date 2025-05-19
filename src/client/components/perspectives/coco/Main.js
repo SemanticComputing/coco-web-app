@@ -17,9 +17,12 @@ const Main = props => {
   const { mainPage } = layoutConfig
   const mainPerspectives = []
   const editionPerpectives = []
+  const informationPerspectives = []
   perspectives.forEach(perspective => {
     if (perspective.id.includes('edition')) {
       editionPerpectives.push(perspective)
+    } else if (perspective.id == 'contributors' || perspective.searchMode === 'dummy-internal') {
+      informationPerspectives.push(perspective)
     } else if (perspective.id !== 'fullTextSearch') {
       mainPerspectives.push(perspective)
     }
@@ -198,6 +201,43 @@ const Main = props => {
                   key={perspective.id}
                   perspective={perspective}
                   cardHeadingVariant='h5'
+                  cardHeight={110}
+                  cardHeightMd={110}
+                  rootUrl={props.rootUrl}
+                />
+              )
+            }
+            return null
+          })}
+        </Grid>
+        <div>
+           <hr />
+        </div>
+        <Box
+          sx={theme => ({
+            marginTop: theme.spacing(1),
+            display: 'flex',
+            justifyContent: 'center'
+          })}
+        >
+        <Typography variant={descriptionVariant} align='center' color='textPrimary'>
+            {intl.get('selectInformationPerspective')}
+          </Typography>
+          </Box>
+          <Grid
+          container spacing={screenSize === 'sm' ? 2 : 1}
+          justifyContent='center'
+        >
+          {informationPerspectives.map(perspective => {
+            const hideCard = (has(perspective.hideCardOnFrontPage) && perspective.hideCardOnFrontPage)
+            if (!hideCard) {
+              return (
+                <MainCard
+                  key={perspective.id}
+                  perspective={perspective}
+                  cardHeadingVariant='h5'
+                  cardHeight={110}
+                  cardHeightMd={110}
                   rootUrl={props.rootUrl}
                 />
               )
@@ -207,19 +247,21 @@ const Main = props => {
         </Grid>
         <hr />
         <Typography variant={descriptionVariant} align='center' color='textPrimary'>
-            {intl.getHTML('mainPageLinkText') ? intl.getHTML('mainPageLinkText') : null}<br></br>
-            <Box>
-            {intl.get('mainPageLinks').map(b => {
-              return <Box key={b.title} sx={{ display: 'inline-block', margin: 0.5 }}>
-                  <a href={b.link}>
-                    <Button variant='contained' color='primary'>
-                      {b.title}
-                    </Button>
-                  </a>
-                </Box>
-            })}
+          {intl.getHTML('mainPageLinkText') ? intl.getHTML('mainPageLinkText') : null}<br></br>
+        </Typography>
+        <Box  sx={{ textAlign: 'center' }}>
+        {intl.get('mainPageLinks').map(b => {
+          return (
+            <Box key={b.title} sx={{ display: 'inline-block', margin: 0.5 }}>
+              <a href={b.link}>
+                <Button variant='contained' color='primary'>
+                  {b.title}
+                </Button>
+              </a>
             </Box>
-          </Typography>
+          )
+        })}
+        </Box>
           <hr />
           <Typography
             align='center'

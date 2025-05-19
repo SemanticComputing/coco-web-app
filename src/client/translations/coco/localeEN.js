@@ -14,8 +14,9 @@ export default {
       Finnish Historical Letters on the Semantic Web 1809-1917
     `
   },
-  selectEditionPerpective: 'Focused collection perspectives with textual features',
+  selectEditionPerpective: 'Digital editions with textual features',
   selectPerspective: 'Select a perspective to search, browse, and analyze letters using metadata',
+  selectInformationPerspective: 'Information about the contributors and collections',
   mainPageImageLicence: 'Images used under license from Wikimedia Commons',
   backendErrorText: 'One of the backend services is currently unavailable. Please try again later.',
   mainPageLinkText: "Select example searches, visualizations, and linked information",
