@@ -77,6 +77,11 @@
                     "externalLink": true,
                     "translatedUrl": "aboutTheProjectUrl",
                     "translatedText": "aboutTheProject"
+                },
+                {
+                    "id": "statistics",
+                    "translatedText": "dataStatistics",
+                    "internalLink": "/statistics"
                 }
             ]
         },
