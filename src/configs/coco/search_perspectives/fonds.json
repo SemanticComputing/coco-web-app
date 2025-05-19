@@ -249,8 +249,8 @@
             "predicate": "portal:digital_edition",
             "sortBy": "instanceCount",
             "sortDirection": "desc",
-            "searchField": true,
-            "sortButton": true,
+            "searchField": false,
+            "sortButton": false,
             "sortByPredicate": "portal:digital_edition/skos:prefLabel"
         },
         "creator": {
@@ -273,13 +273,13 @@
             "sortBy": "instanceCount",
             "sortDirection": "desc",
             "pieChartButton": true,
-            "searchField": true,
+            "searchField": false,
             "sortButton": true,
             "sortByPredicate": "skos:prefLabel",
             "hideUnknownValue": true
         },
         "creator_occupation": {
-            "containerClass": "ten",
+            "containerClass": "eight",
             "facetType": "list",
             "predicate": "portal:occupation",
             "filterType": "uriFilter",
@@ -292,15 +292,14 @@
             "facetLabelFilter": "FILTER(LANG(?prefLabel_) = 'en')"
         },
         "creator_external": {
-            "containerClass": "ten",
+            "containerClass": "eight",
             "facetType": "list",
             "predicate": "portal:external",
             "filterType": "uriFilter",
             "sortBy": "instanceCount",
             "sortDirection": "desc",
             "pieChartButton": true,
-            "searchField": true,
-            "sortButton": true,
+            "sortButton": false,
             "sortByPredicate": "skos:prefLabel"
         },
         "prefLabel": {
