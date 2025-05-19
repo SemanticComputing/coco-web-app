@@ -99,24 +99,6 @@ export default {
     applyFacetSelection: 'apply',
     pieChart: {
       tooltip: 'Pie chart'
-    },
-    barChart: {
-      tooltip: 'Bar chart',
-      language: {
-        title: 'Language',
-        xaxisTitle: 'Language',
-        yaxisTitle: 'Manuscript count',
-        seriesTitle: 'Manuscript count'
-      }
-    },
-    lineChart: {
-      tooltip: 'Line chart',
-      productionTimespan: {
-        title: 'Manuscript production by decade',
-        xaxisTitle: 'Decade',
-        yaxisTitle: 'Manuscript count',
-        seriesTitle: 'Manuscript count'
-      }
     }
   },
   tabs: {
