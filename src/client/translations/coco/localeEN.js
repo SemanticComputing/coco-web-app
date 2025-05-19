@@ -946,7 +946,7 @@ export default {
     contributors: {
       label: 'Contributors',
       facetResultsType: 'contributors',
-      shortDescription: '(UNDER CONSTRUCTION)',
+      shortDescription: '',
       longDescription: `
       <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
         Use this perspective to access the archival organizations and fonds in the dataset.
