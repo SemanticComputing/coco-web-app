@@ -9,7 +9,7 @@ const pieChartColors = ['#a12a3c', '#0f00b5', '#81c7a4', '#ffdea6', '#ff0033', '
   '#929c65', '#b53218', '#563c5c', '#1ac2c4', '#c4c734', '#4c150a', '#912eb3', '#2a5252', '#524b00', '#bf7d7c', '#24005e',
   '#20f2ba', '#b5882f']
 
-const defaultSliceVisibilityThreshold = 0.01
+const defaultSliceVisibilityThreshold = 0.0005
 
 export const createSingleLineChartData = ({
   resultClass,
