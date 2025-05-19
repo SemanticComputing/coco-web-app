@@ -853,6 +853,7 @@
             "sortDirection": "desc",
             "sortButton": true,
             "pieChartButton": true,
+            "facetLabelFilter": "FILTER(LANG(?prefLabel_) = 'en')",
             "sortByPredicate": "(^:proxy_for)/bioc:has_occupation/skos:prefLabel"
         },
         "data_provider": {
