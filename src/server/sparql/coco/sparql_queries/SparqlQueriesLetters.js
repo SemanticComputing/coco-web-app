@@ -1,5 +1,6 @@
 export const letterProperties = `
 {
+<SUBQUERY>
   ?id skos:prefLabel ?prefLabel__id .
   BIND (?prefLabel__id as ?prefLabel__prefLabel)
   BIND(CONCAT("/letters/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
@@ -10,18 +11,21 @@ export const letterProperties = `
 }
 UNION
 {
+<SUBQUERY>
   ?id portal:sender ?source__id . 
   ?source__id skos:prefLabel ?source__prefLabel . 
   BIND(CONCAT("/actors/page/", REPLACE(STR(?source__id), "^.*\\\\/(.+)", "$1")) AS ?source__dataProviderUrl)
 }
 UNION
 {
+<SUBQUERY>
   ?id portal:recipient ?target__id . 
   ?target__id skos:prefLabel ?target__prefLabel ; a [] .
   BIND(CONCAT("/actors/page/", REPLACE(STR(?target__id), "^.*\\\\/(.+)", "$1")) AS ?target__dataProviderUrl)
 }
 UNION
 {
+<SUBQUERY>
   ?id :has_time-span ?productionTimespan__id .
   ?productionTimespan__id skos:prefLabel ?productionTimespan__prefLabel ;
     crm:P82a_begin_of_the_begin ?productionTimespan__start ;
@@ -29,12 +33,14 @@ UNION
 }
 UNION
 {
+<SUBQUERY>
   ?id :fonds ?fonds__id .
   ?fonds__id a [] ; skos:prefLabel ?fonds__prefLabel.
   BIND(CONCAT("/fonds/page/", REPLACE(STR(?fonds__id), "^.*\\\\/(.+)", "$1")) AS ?fonds__dataProviderUrl)
 }
 UNION
 {
+<SUBQUERY>
   ?id dct:source ?datasource__id .
   ?datasource__id skos:prefLabel ?datasource__prefLabel .
   BIND(CONCAT("/sources/page/", REPLACE(STR(?datasource__id), "^.*\\\\/(.+)", "$1")) AS ?datasource__dataProviderUrl)
@@ -48,86 +54,86 @@ export const letterPropertiesInstancePage = `
   BIND(STR(?id) as ?uri__prefLabel)
   BIND(?id as ?uri__dataProviderUrl)
 }
-UNION
+OPTIONAL
 {
   ?id portal:sender ?source__id .
   ?source__id skos:prefLabel ?source__prefLabel . 
   # FILTER (!REGEX(STR(?source__prefLabel), 'unknown', 'i'))
   BIND(CONCAT("/actors/page/", REPLACE(STR(?source__id), "^.*\\\\/(.+)", "$1")) AS ?source__dataProviderUrl)
 }
-UNION
+OPTIONAL
 {
   ?id :has_time-span ?productionTimespan__id .
   ?productionTimespan__id skos:prefLabel ?productionTimespan__prefLabel .
   OPTIONAL { ?productionTimespan__id crm:P82a_begin_of_the_begin ?productionTimespan__start }
   OPTIONAL { ?productionTimespan__id crm:P82b_end_of_the_end ?productionTimespan__end }
 }
-UNION
+OPTIONAL
 {
   ?id :was_sent_from ?from__id .
   ?from__id skos:prefLabel ?from__prefLabel ; a [] .
   BIND(CONCAT("/places/page/", REPLACE(STR(?from__id), "^.*\\\\/(.+)", "$1")) AS ?from__dataProviderUrl)
 }
-UNION
+OPTIONAL
 {
   ?id :was_sent_to ?to__id .
   ?to__id skos:prefLabel ?to__prefLabel ; a [] .
   BIND(CONCAT("/places/page/", REPLACE(STR(?to__id), "^.*\\\\/(.+)", "$1")) AS ?to__dataProviderUrl)
 }
-UNION
+OPTIONAL
 {
   ?id :in_tie ?tie__id .
   ?tie__id skos:prefLabel ?tie__prefLabel .
   BIND(CONCAT("/ties/page/", REPLACE(STR(?tie__id), "^.*\\\\/(.+)", "$1")) AS ?tie__dataProviderUrl)
 }
-UNION
+OPTIONAL
 {
   ?id portal:recipient ?target__id . 
   ?target__id skos:prefLabel ?target__prefLabel ;
   FILTER (!REGEX(STR(?target__prefLabel), 'unknown', 'i'))
   BIND(CONCAT("/actors/page/", REPLACE(STR(?target__id), "^.*\\\\/(.+)", "$1")) AS ?target__dataProviderUrl)
 }
-UNION 
+OPTIONAL
 {
   ?id :referenced_actor/:proxy_for ?mentioned_person__id . 
   ?mentioned_person__id skos:prefLabel ?mentioned_person__prefLabel . 
   BIND(CONCAT("/actors/page/", REPLACE(STR(?mentioned_person__id), "^.*\\\\/(.+)", "$1")) AS ?mentioned_person__dataProviderUrl)
 }
-UNION
+OPTIONAL
 {
   ?id :referenced_place ?mentioned_place__id . 
   ?mentioned_place__id skos:prefLabel ?mentioned_place__prefLabel . 
   BIND(CONCAT("/places/page/", REPLACE(STR(?mentioned_place__id), "^.*\\\\/(.+)", "$1")) AS ?mentioned_place__dataProviderUrl)
 }
-UNION
+OPTIONAL
 { 
   ?id dct:language ?language__id . 
   ?language__id a [] ; skos:prefLabel ?language__prefLabel .
   BIND (?language__id AS ?language__dataProviderUrl)
 }
-UNION
+OPTIONAL
 {
   ?id :type [ a [] ; skos:prefLabel ?lettertype ]
 }
-UNION 
+OPTIONAL
 {
   ?id :original_data_provider ?data_provider__id .
   ?data_provider__id skos:prefLabel ?data_provider__prefLabel .
   BIND(CONCAT("/sources/page/", REPLACE(STR(?data_provider__id), "^.*\\\\/(.+)", "$1")) AS ?data_provider__dataProviderUrl)
 }
-UNION
+OPTIONAL
 {
   ?id dct:source ?datasource__id .
   ?datasource__id skos:prefLabel ?datasource__prefLabel .
   BIND(CONCAT("/sources/page/", REPLACE(STR(?datasource__id), "^.*\\\\/(.+)", "$1")) AS ?datasource__dataProviderUrl)
 }
-UNION
+OPTIONAL
 {
   ?id :fonds ?fonds__id .
   ?fonds__id a [] ; skos:prefLabel ?fonds__prefLabel .
   BIND(CONCAT("/fonds/page/", REPLACE(STR(?fonds__id), "^.*\\\\/(.+)", "$1")) AS ?fonds__dataProviderUrl)
 }
-UNION
+OPTIONAL
 { # Metadata values
   ?id :metadata ?_metadata
   OPTIONAL {

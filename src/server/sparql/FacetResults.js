@@ -40,10 +40,24 @@ export const getPaginatedResults = ({
     resultMapperConfig = null,
     postprocess = null
   } = resultClassConfig.paginatedResultsConfig
+  q = q.replaceAll('<RESULT_SET_PROPERTIES>', propertiesQueryBlock)
+  q = q.replaceAll('<SUBQUERY>', `    {
+      # score and literal are used only for Jena full text index
+        SELECT DISTINCT ?id <SCORE> ?orderBy {
+        <FILTER>
+        VALUES ?facetClass { <FACET_CLASS> }
+        ?id <FACET_CLASS_PREDICATE> ?facetClass .
+        <ORDER_BY_TRIPLE>
+      }
+      <GROUP_BY>
+      <ORDER_BY>
+      <PAGE>
+    }
+    FILTER(BOUND(?id))`)
   if (constraints == null && defaultConstraint == null) {
-    q = q.replace('<FILTER>', '# no filters')
+    q = q.replaceAll('<FILTER>', '# no filters')
   } else {
-    q = q.replace('<FILTER>', generateConstraintsBlock({
+    q = q.replaceAll('<FILTER>', generateConstraintsBlock({
       backendSearchConfig,
       facetClass: resultClass, // use resultClass as facetClass
       constraints,
@@ -54,16 +68,16 @@ export const getPaginatedResults = ({
   }
 
   if (orderBy === 'maxScore') {
-    q = q.replace('<SCORE>', '(MAX(?score) AS ?maxScore) (MAX(?score) AS ?orderBy)')
-    q = q.replace('<GROUP_BY>', 'GROUP BY ?id ?maxScore ?orderBy')
+    q = q.replaceAll('<SCORE>', '(MAX(?score) AS ?maxScore) (MAX(?score) AS ?orderBy)')
+    q = q.replaceAll('<GROUP_BY>', 'GROUP BY ?id ?maxScore ?orderBy')
   } else {
-    q = q.replace('<SCORE>', '?score')
-    q = q.replace('<GROUP_BY>', '')
+    q = q.replaceAll('<SCORE>', '?score')
+    q = q.replaceAll('<GROUP_BY>', '')
   }
 
   if (orderBy == null) {
-    q = q.replace('<ORDER_BY_TRIPLE>', '')
-    q = q.replace('<ORDER_BY>', '# no sorting')
+    q = q.replaceAll('<ORDER_BY_TRIPLE>', '')
+    q = q.replaceAll('<ORDER_BY>', '# no sorting')
   }
   if (orderBy !== null) {
     let sortByPredicate
@@ -82,24 +96,24 @@ export const getPaginatedResults = ({
     } else {
       sortByPattern = `OPTIONAL { ?id ${sortByPredicate} ?orderBy }`
     }
-    q = q.replace('<ORDER_BY_TRIPLE>', sortByPattern)
-    q = q = q.replace('<ORDER_BY>', `ORDER BY (!BOUND(?orderBy)) ${sortDirection}(?orderBy)`)
+    q = q.replaceAll('<ORDER_BY_TRIPLE>', sortByPattern)
+    q = q = q.replaceAll('<ORDER_BY>', `ORDER BY (!BOUND(?orderBy)) ${sortDirection}(?orderBy)`)
   }
-  q = q.replace(/<FACET_CLASS>/g, facetClass)
+  q = q.replaceAll(/<FACET_CLASS>/g, facetClass)
   if (has(backendSearchConfig[resultClass], 'facetClassPredicate')) {
-    q = q.replace(/<FACET_CLASS_PREDICATE>/g, backendSearchConfig[resultClass].facetClassPredicate)
+    q = q.replaceAll(/<FACET_CLASS_PREDICATE>/g, backendSearchConfig[resultClass].facetClassPredicate)
   } else {
-    q = q.replace(/<FACET_CLASS_PREDICATE>/g, 'a')
+    q = q.replaceAll(/<FACET_CLASS_PREDICATE>/g, 'a')
   }
-  q = q.replace('<PAGE>', `LIMIT ${pagesize} OFFSET ${page * pagesize}`)
-  q = q.replace('<RESULT_SET_PROPERTIES>', propertiesQueryBlock)
+  q = q.replaceAll('<PAGE>', `LIMIT ${pagesize} OFFSET ${page * pagesize}`)
+  q = q.replaceAll('<RESULT_SET_PROPERTIES>', propertiesQueryBlock)
   if (langTag) {
-    q = q.replace(/<LANG>/g, langTag)
+    q = q.replaceAll(/<LANG>/g, langTag)
   }
   if (langTagSecondary) {
-    q = q.replace(/<LANG_SECONDARY>/g, langTagSecondary)
+    q = q.replaceAll(/<LANG_SECONDARY>/g, langTagSecondary)
   }
-  // console.log(endpoint.prefixes + q)
+  console.log(endpoint.prefixes + q)
   return runSelectQuery({
     query: endpoint.prefixes + q,
     endpoint: endpoint.url,
