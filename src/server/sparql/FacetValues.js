@@ -290,7 +290,7 @@ export const generateSelectedFilter = ({
   literal,
   facetConfig
 }) => {
-  const selections = literal ? `'${currentSelectionsWithoutUnknown.join(', ')}'` : `<${currentSelectionsWithoutUnknown.join('>, <')}>`
+  const selections = literal ? `'${currentSelectionsWithoutUnknown.join(' ')}'` : `<${currentSelectionsWithoutUnknown.join('> <')}>` // for IN include commas: `'${currentSelectionsWithoutUnknown.join(', ')}'` : `<${currentSelectionsWithoutUnknown.join('>, <')}>`
   return (`
           #FILTER(?id ${inverse ? 'NOT' : ''} IN ( ${selections} ))
           VALUES ?id { ${selections}  }
