@@ -75,11 +75,12 @@
                             },
                             {
                                 "id": "numCorrespondences",
-                                "valueType": "integer",
+                                "valueType": "string",
                                 "makeLink": false,
                                 "externalLink": false,
                                 "sortValues": false,
-                                "numberedList": false
+                                "numberedList": false,
+                                "minWidth": 70
                             },
                             {
                                 "id": "tie",
@@ -119,8 +120,17 @@
                                 "onlyOnInstancePage": true
                             },
                             {
+                                "id": "numLetters",
+                                "valueType": "string",
+                                "makeLink": false,
+                                "externalLink": false,
+                                "sortValues": false,
+                                "numberedList": false,
+                                "minWidth": 70
+                            },
+                            {
                                 "id": "numSent",
-                                "valueType": "integer",
+                                "valueType": "string",
                                 "makeLink": false,
                                 "externalLink": false,
                                 "sortValues": false,
@@ -153,12 +163,15 @@
                                 "expandedOnInstancePage": true
                             },
                             {
-                                "id": "numCorrespondences",
-                                "valueType": "string",
+                                "id": "knownLocation",
+                                "valueType": "object",
                                 "makeLink": true,
                                 "externalLink": false,
                                 "sortValues": false,
-                                "numberedList": false
+                                "numberedList": true,
+                                "minWidth": 220,
+                                "onlyOnInstancePage": true,
+                                "expandedOnInstancePage": true
                             },
                             {
                                 "id": "mentioningletter",
@@ -500,53 +513,6 @@
             "numberedList": false,
             "minWidth": 70,
             "priority": 5
-        },
-        {
-            "id": "numLetters",
-            "valueType": "string",
-            "makeLink": false,
-            "externalLink": false,
-            "sortValues": false,
-            "numberedList": false,
-            "minWidth": 70
-        },
-        {
-            "id": "numSent",
-            "valueType": "string",
-            "makeLink": false,
-            "externalLink": false,
-            "sortValues": false,
-            "numberedList": false,
-            "minWidth": 70
-        },
-        {
-            "id": "numReceived",
-            "valueType": "string",
-            "makeLink": false,
-            "externalLink": false,
-            "sortValues": false,
-            "numberedList": false,
-            "minWidth": 70
-        },
-        {
-            "id": "numCorrespondences",
-            "valueType": "string",
-            "makeLink": false,
-            "externalLink": false,
-            "sortValues": false,
-            "numberedList": false,
-            "minWidth": 70
-        },
-        {
-            "id": "knownLocation",
-            "valueType": "object",
-            "makeLink": true,
-            "externalLink": false,
-            "sortValues": false,
-            "numberedList": true,
-            "minWidth": 220,
-            "onlyOnInstancePage": true,
-            "expandedOnInstancePage": true
         },
         {
             "id": "birthDateTimespan",

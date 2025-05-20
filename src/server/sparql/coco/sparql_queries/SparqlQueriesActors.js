@@ -82,19 +82,6 @@ export const actorPropertiesInstancePage = `
     BIND (CONCAT("/actors/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?label__dataProviderUrl)
   }
   UNION
-  { ?id :out_degree ?numSent }
-  UNION
-  { ?id :in_degree ?numReceived }
-  UNION
-  {
-    SELECT DISTINCT ?id (SUM(?_value) AS ?numLetters) WHERE
-    {
-      ?id :in_degree|:out_degree ?_value 
-    } GROUPBY ?id 
-  }
-  UNION
-  { ?id :num_correspondences ?numCorrespondences }
-  UNION
   { 
     ?id :floruit ?floruitTimespan__id .
     ?floruitTimespan__id skos:prefLabel ?floruitTimespan__prefLabel .
@@ -144,6 +131,7 @@ export const actorPropertiesInstancePage = `
     {
       GRAPH ?g { ?prx bioc:has_occupation ?occupation__id }
       ?occupation__id skos:prefLabel ?occupation__prefLabel .
+      FILTER (LANG(?occupation__prefLabel)='en')
       BIND (CONCAT("/occupations/page/", REPLACE(STR(?occupation__id), "^.*\\\\/(.+)", "$1")) AS ?occupation__dataProviderUrl)
       
       ?g skos:altLabel ?occupation__source__prefLabel .
@@ -198,18 +186,6 @@ export const actorPropertiesInstancePage = `
     }
     UNION
     {
-      SELECT ?prx ?knownLocation__id 
-          (CONCAT(?_label, ' (', STR(COUNT(DISTINCT ?_evt)), ')') AS ?knownLocation__prefLabel)
-          (CONCAT("/places/page/", REPLACE(STR(?knownLocation__id), "^.*\\\\/(.+)", "$1")) AS ?knownLocation__dataProviderUrl)
-      WHERE {
-          ?_evt :was_authored_by ?prx ; :was_sent_from ?knownLocation__id . 
-          ?knownLocation__id a [] ; skos:prefLabel ?_label . 
-      } 
-      GROUPBY ?prx ?_label ?knownLocation__id
-      ORDERBY DESC(COUNT(DISTINCT ?_evt))
-    }
-    UNION
-    {
       GRAPH ?g { ?prx dct:description ?description__id }
       BIND (?description__id AS ?description__prefLabel)
       BIND (?description__id AS ?description__dataProviderUrl)
@@ -228,7 +204,7 @@ export const actorPropertiesInstancePage = `
     UNION
     {
       ?prx :original_data_provider/skos:prefLabel ?data_provider
-      FILTER (LANG(?original_data)="en")
+      FILTER (LANG(?data_provider)="en")
     }
     UNION
     {
@@ -264,26 +240,19 @@ SELECT *
     BIND (?id as ?uri__id)
     BIND (?id as ?uri__prefLabel)
     BIND (?id as ?uri__dataProviderUrl)
+
     {
       ?id skos:prefLabel ?label__id .
       BIND (?label__id as ?label__prefLabel)
     }
     UNION
-    {
-      ?id :degree ?numLetters
-    }
+    { ?id :out_degree ?numSent }
     UNION
-    {
-      ?id :out_degree ?numSent 
-    }
+    { ?id :in_degree ?numReceived }
     UNION
-    {
-      ?id :in_degree ?numReceived
-    }
+    { ?id :degree ?numLetters }
     UNION
-    {
-      ?id :num_correspondences ?numCorrespondences
-    }
+    { ?id :num_correspondences ?numCorrespondences }
     UNION
     {
       ?id :floruit/skos:prefLabel ?floruit
@@ -363,6 +332,18 @@ SELECT *
           a [] ; 
           skos:prefLabel ?data_provider ] .
           FILTER (LANG(?data_provider)='en')
+      }
+      UNION
+      {
+        SELECT ?prx ?knownLocation__id 
+            (CONCAT(?_label, ' (', STR(COUNT(DISTINCT ?_evt)), ')') AS ?knownLocation__prefLabel)
+            (CONCAT("/places/page/", REPLACE(STR(?knownLocation__id), "^.*\\\\/(.+)", "$1")) AS ?knownLocation__dataProviderUrl)
+        WHERE {
+            ?_evt :was_authored_by ?prx ; :was_sent_from ?knownLocation__id . 
+            ?knownLocation__id a [] ; skos:prefLabel ?_label . 
+        } 
+        GROUPBY ?prx ?_label ?knownLocation__id
+        ORDERBY DESC(COUNT(DISTINCT ?_evt))
       }
       UNION
       { 
