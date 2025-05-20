@@ -90,7 +90,7 @@ export const getFacet = async ({
     /* if this facet has previous selections (exluding <http://ldf.fi/MISSING_VALUE>),
        they need to be binded as selected */
     if (currentSelectionsWithoutUnknown.length > 0 && hasPreviousSelections) {
-      selectedBlock = generateSelectedBlock({ currentSelectionsWithoutUnknown, literal: facetConfig.literal })
+      selectedBlock = generateSelectedBlock({ currentSelectionsWithoutUnknown, literal: facetConfig.literal, facetConfig })
     }
     /* if there is previous selections in this facet AND in some other facet, we need an
         additional block for facet values that return 0 hits */
@@ -176,7 +176,7 @@ export const getFacet = async ({
     q = q.replace(/<LANG>/g, langTag)
   }
 
-  // console.log(endpoint.prefixes + q)
+  console.log(endpoint.prefixes + q)
 
   const response = await runSelectQuery({
     query: endpoint.prefixes + q,
@@ -206,12 +206,14 @@ export const getFacet = async ({
 
 const generateSelectedBlock = ({
   currentSelectionsWithoutUnknown,
-  literal
+  literal,
+  facetConfig
 }) => {
   const selectedFilter = generateSelectedFilter({
     currentSelectionsWithoutUnknown,
     inverse: false,
-    literal
+    literal,
+    facetConfig
   })
   return `
           OPTIONAL {
@@ -285,11 +287,14 @@ const getUriFilters = (constraints, facetID) => {
 export const generateSelectedFilter = ({
   currentSelectionsWithoutUnknown,
   inverse,
-  literal
+  literal,
+  facetConfig
 }) => {
   const selections = literal ? `'${currentSelectionsWithoutUnknown.join(', ')}'` : `<${currentSelectionsWithoutUnknown.join('>, <')}>`
   return (`
-          FILTER(?id ${inverse ? 'NOT' : ''} IN ( ${selections} ))
+          #FILTER(?id ${inverse ? 'NOT' : ''} IN ( ${selections} ))
+          VALUES ?id { ${selections}  }
+          ?instance ${facetConfig.predicate} ?id .
   `)
 }
 

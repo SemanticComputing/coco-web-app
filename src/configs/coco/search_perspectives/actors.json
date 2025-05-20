@@ -759,6 +759,7 @@
             "sortBy": "instanceCount",
             "sortDirection": "desc",
             "pieChartButton": true,
+            "hideUnknownValue": true,
             "sortByPredicate": "bioc:has_gender/skos:prefLabel"
         },
         "birthDateTimespan": {
