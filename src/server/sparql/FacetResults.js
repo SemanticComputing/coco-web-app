@@ -321,12 +321,12 @@ export const getByURI = ({
     postprocess = null
   } = resultClassConfig.instanceConfig
   let q = instanceQuery
-  q = q.replace('<PROPERTIES>', propertiesQueryBlock)
-  q = q.replace('<RELATED_INSTANCES>', relatedInstances)
+  q = q.replaceAll('<PROPERTIES>', propertiesQueryBlock)
+  q = q.replaceAll('<RELATED_INSTANCES>', relatedInstances)
   if (constraints == null || noFilterForRelatedInstances) {
-    q = q.replace('<FILTER>', '# no filters')
+    q = q.replaceAll('<FILTER>', '# no filters')
   } else {
-    q = q.replace('<FILTER>', generateConstraintsBlock({
+    q = q.replaceAll('<FILTER>', generateConstraintsBlock({
       backendSearchConfig,
       resultClass: resultClass,
       facetClass: facetClass,
@@ -335,12 +335,12 @@ export const getByURI = ({
       facetID: null
     }))
   }
-  q = q.replace(/<ID>/g, `<${uri}>`)
+  q = q.replaceAll(/<ID>/g, `<${uri}>`)
   if (langTag) {
-    q = q.replace(/<LANG>/g, langTag)
+    q = q.replaceAll(/<LANG>/g, langTag)
   }
   if (langTagSecondary) {
-    q = q.replace(/<LANG_SECONDARY>/g, langTagSecondary)
+    q = q.replaceAll(/<LANG_SECONDARY>/g, langTagSecondary)
   }
   // console.log(endpoint.prefixes + q)
   return runSelectQuery({
