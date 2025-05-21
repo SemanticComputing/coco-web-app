@@ -377,18 +377,7 @@
             "externalLink": false,
             "sortValues": false,
             "minWidth": 250,
-            "numberedList": false,
-            "onlyOnInstancePage": true
-        },
-        {
-            "id": "datasource",
-            "valueType": "object",
-            "makeLink": false,
-            "externalLink": false,
-            "sortValues": false,
-            "minWidth": 250,
-            "numberedList": false,
-            "onlyOnInstancePage": false
+            "numberedList": false
         },
         {
             "id": "fonds",
@@ -608,20 +597,6 @@
             "sortButton": true,
             "pieChartButton": true,
             "sortByPredicate": ":fonds/skos:prefLabel",
-            "hideUnknownValue": true
-        },
-        "datasource": {
-            "containerClass": "ten",
-            "facetType": "list",
-            "facetLabelFilter": "FILTER(LANG(?prefLabel_) = 'en')",
-            "filterType": "uriFilter",
-            "predicate": "dct:source",
-            "searchField": false,
-            "sortBy": "instanceCount",
-            "sortDirection": "desc",
-            "sortButton": true,
-            "pieChartButton": true,
-            "sortByPredicate": "dct:source/skos:prefLabel",
             "hideUnknownValue": true
         },
         "prefLabel": {
