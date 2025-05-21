@@ -103,6 +103,7 @@ SELECT DISTINCT ?id ?lat ?long
 (COUNT(DISTINCT ?event) AS ?instanceCount)
 WHERE {
   <FILTER>
+  FILTER EXISTS { ?fonds a [] }
   ?event :fonds ?fonds ; :was_sent_from ?id .
   ?id geo:lat ?lat ; geo:long ?long .
 } GROUP BY ?id ?lat ?long
@@ -145,10 +146,11 @@ export const archiveByYearQuery = `
 SELECT DISTINCT ?category (COUNT(DISTINCT ?letter) AS ?count)
 WHERE {
   <FILTER>
+  FILTER EXISTS { ?fonds a [] }
   ?letter :fonds ?fonds ; 
     a :Letter ;
-    :has_time-span/crm:P82a_begin_of_the_begin ?time_0 .
-  BIND (STR(year(?time_0)) AS ?category)
+    :estimated_year ?time_0 .
+  BIND (STR(?time_0) AS ?category)
   FILTER (BOUND(?category))
 } 
 GROUP BY ?category ORDER BY ?category
