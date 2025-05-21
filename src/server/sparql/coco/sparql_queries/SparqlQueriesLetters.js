@@ -35,9 +35,9 @@ UNION
 }
 UNION
 {
-  ?id dct:source ?datasource__id .
-  ?datasource__id skos:prefLabel ?datasource__prefLabel .
-  BIND(CONCAT("/sources/page/", REPLACE(STR(?datasource__id), "^.*\\\\/(.+)", "$1")) AS ?datasource__dataProviderUrl)
+  ?id :original_data_provider ?data_provider__id .
+  ?data_provider__id skos:prefLabel ?data_provider__prefLabel .
+  BIND(CONCAT("/sources/page/", REPLACE(STR(?data_provider__id), "^.*\\\\/(.+)", "$1")) AS ?data_provider__dataProviderUrl)
 }
 `
 
@@ -114,12 +114,6 @@ UNION
   ?id :original_data_provider ?data_provider__id .
   ?data_provider__id skos:prefLabel ?data_provider__prefLabel .
   BIND(CONCAT("/sources/page/", REPLACE(STR(?data_provider__id), "^.*\\\\/(.+)", "$1")) AS ?data_provider__dataProviderUrl)
-}
-UNION
-{
-  ?id dct:source ?datasource__id .
-  ?datasource__id skos:prefLabel ?datasource__prefLabel .
-  BIND(CONCAT("/sources/page/", REPLACE(STR(?datasource__id), "^.*\\\\/(.+)", "$1")) AS ?datasource__dataProviderUrl)
 }
 UNION
 {
@@ -356,11 +350,10 @@ WHERE {
   {
     ?id :fonds [ a [] ; skos:prefLabel ?fonds ]
   }
-  OPTIONAL 
+  OPTIONAL
   { 
     ?id dct:source/skos:prefLabel ?datasource 
   }
-
 } ORDERBY ?label `
 
 export const sendingPlacesHeatmapQuery = `
