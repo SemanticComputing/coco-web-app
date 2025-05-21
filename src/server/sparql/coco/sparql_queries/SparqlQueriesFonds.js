@@ -155,3 +155,35 @@ WHERE {
 } 
 GROUP BY ?category ORDER BY ?category
 `
+
+export const csvQueryFonds = `
+SELECT DISTINCT ?id ?label ?number_of_letters ?data_provider_id ?data_provider
+(GROUP_CONCAT(?records_creator_id; separator="|") AS ?records_creator_ids)
+(GROUP_CONCAT(?records_creator; separator="|") AS ?records_creators)
+WHERE {
+  
+  ?id a :Fonds .
+
+  <FILTER>
+
+  FILTER(BOUND(?id))
+
+  ?id skos:prefLabel ?label .
+
+  OPTIONAL {
+    ?id :number_of_letters ?number_of_letters
+  }
+  OPTIONAL {
+    ?id :original_data_provider ?data_provider_id .
+    ?data_provider_id skos:prefLabel ?data_provider .
+    FILTER (LANG(?data_provider)='en')
+  }
+  OPTIONAL {
+    ?id :records_creator/:proxy_for ?records_creator_id .
+    ?records_creator_id skos:prefLabel ?records_creator 
+  }
+} 
+GROUPBY ?id ?label ?data_provider_id ?data_provider 
+?number_of_letters
+ORDER BY DESC(?number_of_sent_letters) ?label
+`

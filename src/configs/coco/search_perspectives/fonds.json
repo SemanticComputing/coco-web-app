@@ -97,8 +97,17 @@
                 "createPopUpContent": "createPopUpContentLetterSampo"
             }
         },
-        "sparql": {
+        "csvActors": {
             "tabID": 3,
+            "component": "ExportCSV",
+            "tabPath": "csv",
+            "tabIcon": "CloudDownload",
+            "facetClass": "fonds",
+            "sparqlQuery": "csvQueryFonds",
+            "filterTarget": "id"
+        },
+        "sparql": {
+            "tabID": 4,
             "component": "Export",
             "tabPath": "sparql",
             "tabIcon": "ArrowForward",
@@ -106,7 +115,7 @@
             "facetClass": "perspective1"
         },
         "share": {
-            "tabID": 4,
+            "tabID": 5,
             "component": "ExportLink",
             "tabPath": "share",
             "tabIcon": "IosShare",
