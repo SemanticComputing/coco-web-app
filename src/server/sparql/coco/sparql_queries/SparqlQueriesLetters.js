@@ -11,7 +11,7 @@ export const letterProperties = `
 UNION
 {
   ?id portal:sender ?source__id . 
-  ?source__id skos:prefLabel ?source__prefLabel . 
+  ?source__id skos:prefLabel ?source__prefLabel .
   BIND(CONCAT("/actors/page/", REPLACE(STR(?source__id), "^.*\\\\/(.+)", "$1")) AS ?source__dataProviderUrl)
 }
 UNION
@@ -25,7 +25,7 @@ UNION
   ?id :has_time-span ?productionDate__id .
   ?productionDate__id skos:prefLabel ?productionDate__prefLabel ;
     crm:P82a_begin_of_the_begin ?productionDate__start ;
-    crm:P82b_end_of_the_end ?productionDate__end 
+    crm:P82b_end_of_the_end ?productionDate__end
 }
 UNION
 {
@@ -35,6 +35,55 @@ UNION
 }
 UNION
 {
+  ?id :original_data_provider ?data_provider__id .
+  ?data_provider__id skos:prefLabel ?data_provider__prefLabel .
+  BIND(CONCAT("/sources/page/", REPLACE(STR(?data_provider__id), "^.*\\\\/(.+)", "$1")) AS ?data_provider__dataProviderUrl)
+}
+`
+
+export const letterPropertiesQLever = `
+{
+  <SUBQUERY>
+  ?id skos:prefLabel ?prefLabel__id .
+  BIND (?prefLabel__id as ?prefLabel__prefLabel)
+  BIND(CONCAT("/letters/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
+
+  BIND(?id as ?uri__id)
+  BIND(STR(?id) as ?uri__prefLabel)
+  BIND(?id as ?uri__dataProviderUrl)
+}
+UNION
+{
+  <SUBQUERY>
+  ?id portal:sender ?source__id .
+  ?source__id skos:prefLabel ?source__prefLabel . 
+  BIND(CONCAT("/actors/page/", REPLACE(STR(?source__id), "^.*\\\\/(.+)", "$1")) AS ?source__dataProviderUrl)
+}
+UNION
+{
+  <SUBQUERY>
+  ?id portal:recipient ?target__id .
+  ?target__id skos:prefLabel ?target__prefLabel ; a [] .
+  BIND(CONCAT("/actors/page/", REPLACE(STR(?target__id), "^.*\\\\/(.+)", "$1")) AS ?target__dataProviderUrl)
+}
+UNION
+{
+  <SUBQUERY>
+  ?id :has_time-span ?productionDate__id .
+  ?productionDate__id skos:prefLabel ?productionDate__prefLabel ;
+    crm:P82a_begin_of_the_begin ?productionDate__start ;
+    crm:P82b_end_of_the_end ?productionDate__end 
+}
+UNION
+{
+  <SUBQUERY>
+  ?id :fonds ?fonds__id .
+  ?fonds__id a [] ; skos:prefLabel ?fonds__prefLabel.
+  BIND(CONCAT("/fonds/page/", REPLACE(STR(?fonds__id), "^.*\\\\/(.+)", "$1")) AS ?fonds__dataProviderUrl)
+}
+UNION
+{
+  <SUBQUERY>
   ?id :original_data_provider ?data_provider__id .
   ?data_provider__id skos:prefLabel ?data_provider__prefLabel .
   BIND(CONCAT("/sources/page/", REPLACE(STR(?data_provider__id), "^.*\\\\/(.+)", "$1")) AS ?data_provider__dataProviderUrl)
@@ -130,6 +179,108 @@ UNION
 }
 `
 
+export const letterPropertiesInstancePageQLever = `
+{
+  BIND(<ID> as ?id)
+  ?id skos:prefLabel ?prefLabel__id .
+  BIND (?prefLabel__id as ?prefLabel__prefLabel)
+  BIND(STR(?id) as ?uri__prefLabel)
+  BIND(?id as ?uri__dataProviderUrl)
+}
+UNION
+{
+  BIND(<ID> as ?id)
+  ?id portal:sender ?source__id .
+  ?source__id skos:prefLabel ?source__prefLabel . 
+  # FILTER (!REGEX(STR(?source__prefLabel), 'unknown', 'i'))
+  BIND(CONCAT("/actors/page/", REPLACE(STR(?source__id), "^.*\\\\/(.+)", "$1")) AS ?source__dataProviderUrl)
+}
+UNION
+{
+  BIND(<ID> as ?id)
+  ?id :has_time-span ?productionDate__id .
+  ?productionDate__id skos:prefLabel ?productionDate__prefLabel .
+  OPTIONAL { ?productionDate__id crm:P82a_begin_of_the_begin ?productionDate__start }
+  OPTIONAL { ?productionDate__id crm:P82b_end_of_the_end ?productionDate__end }
+}
+UNION
+{
+  BIND(<ID> as ?id)
+  ?id :was_sent_from ?from__id .
+  ?from__id skos:prefLabel ?from__prefLabel ; a [] .
+  BIND(CONCAT("/places/page/", REPLACE(STR(?from__id), "^.*\\\\/(.+)", "$1")) AS ?from__dataProviderUrl)
+}
+UNION
+{
+  ?id :was_sent_to ?to__id .
+  ?to__id skos:prefLabel ?to__prefLabel ; a [] .
+  BIND(CONCAT("/places/page/", REPLACE(STR(?to__id), "^.*\\\\/(.+)", "$1")) AS ?to__dataProviderUrl)
+}
+UNION
+{
+  BIND(<ID> as ?id)
+  ?id :in_tie ?tie__id .
+  ?tie__id skos:prefLabel ?tie__prefLabel .
+  BIND(CONCAT("/ties/page/", REPLACE(STR(?tie__id), "^.*\\\\/(.+)", "$1")) AS ?tie__dataProviderUrl)
+}
+UNION
+{
+  BIND(<ID> as ?id)
+  ?id portal:recipient ?target__id .
+  ?target__id skos:prefLabel ?target__prefLabel ;
+  FILTER (!REGEX(STR(?target__prefLabel), 'unknown', 'i'))
+  BIND(CONCAT("/actors/page/", REPLACE(STR(?target__id), "^.*\\\\/(.+)", "$1")) AS ?target__dataProviderUrl)
+}
+UNION
+{
+  BIND(<ID> as ?id)
+  ?id :referenced_actor/:proxy_for ?mentioned_person__id .
+  ?mentioned_person__id skos:prefLabel ?mentioned_person__prefLabel .
+  BIND(CONCAT("/actors/page/", REPLACE(STR(?mentioned_person__id), "^.*\\\\/(.+)", "$1")) AS ?mentioned_person__dataProviderUrl)
+}
+UNION
+{
+  BIND(<ID> as ?id)
+  ?id :referenced_place ?mentioned_place__id .
+  ?mentioned_place__id skos:prefLabel ?mentioned_place__prefLabel .
+  BIND(CONCAT("/places/page/", REPLACE(STR(?mentioned_place__id), "^.*\\\\/(.+)", "$1")) AS ?mentioned_place__dataProviderUrl)
+}
+UNION
+{
+  BIND(<ID> as ?id)
+  ?id dct:language ?language__id .
+  ?language__id a [] ; skos:prefLabel ?language__prefLabel .
+  BIND (?language__id AS ?language__dataProviderUrl)
+}
+UNION
+{
+  BIND(<ID> as ?id)
+  ?id :type [ a [] ; skos:prefLabel ?lettertype ]
+}
+UNION
+{
+  BIND(<ID> as ?id)
+  ?id :original_data_provider ?data_provider__id .
+  ?data_provider__id skos:prefLabel ?data_provider__prefLabel .
+  BIND(CONCAT("/sources/page/", REPLACE(STR(?data_provider__id), "^.*\\\\/(.+)", "$1")) AS ?data_provider__dataProviderUrl)
+}
+UNION
+{
+  BIND(<ID> as ?id)
+  ?id :fonds ?fonds__id .
+  ?fonds__id a [] ; skos:prefLabel ?fonds__prefLabel .
+  BIND(CONCAT("/fonds/page/", REPLACE(STR(?fonds__id), "^.*\\\\/(.+)", "$1")) AS ?fonds__dataProviderUrl)
+}
+UNION
+{ # Metadata values
+  BIND(<ID> as ?id)
+  ?id :metadata ?_metadata
+  OPTIONAL {
+    ?_metadata rdfs:comment ?comment .
+  }
+}
+`
+
 export const letterMetadataInstancePageQuery = `
 SELECT * 
   WHERE { 
@@ -169,6 +320,96 @@ SELECT *
       }
       UNION
       {     
+        VALUES (?prop ?prop_label) {
+          (:fonds_as_recorded 'fonds as recorded')
+          (:number_of_letters 'number of letters')
+          (:recipient_as_recorded 'recipient as recorded')
+          (:sender_as_recorded 'sender as recorded')
+          (:sending_date 'date of sending as recorded')
+          (:type_as_recorded 'type as recorded')
+          (:sender_class 'sender class')
+          (:sender_familyname 'sender familyname')
+          (:sender_firstname 'sender firstname')
+          (:sender_comment 'comment about sender')
+          (:source_api_url 'source api url')
+          (:source_filename 'source filename')
+          (:sending_place 'place of sending as recorded')
+          (:receiving_place 'place of receiving as recorded')
+          (:summary 'summary')
+          (:type 'type')
+          (:recipient_class 'recipient class')
+          (:recipient_familyname 'recipient familyname')
+          (:recipient_familyname_prev 'recipient familyname prev')
+          (:recipient_firstname 'recipient firstname')
+          (:recipient_comment 'comment about recipient')
+          (:records_creator_as_recorded 'records creator')
+          (:sender_familyname_prev 'sender familyname prev')
+          (:note 'note')
+          (rdfs:comment 'comment')
+          (:archival_organization_as_recorded 'archival organization as recorded')
+          (:series_as_recorded 'series as recorded')
+          (:referenced_actor_as_recorded 'referenced actor as recorded')
+          (:referenced_place_as_recorded 'referenced place as recorded')
+          (dct:language 'language')
+        }
+      ?metadata__id ?prop ?v .
+      BIND(CONCAT(?prop_label, ': ', STR(?v)) AS ?record_value ) 
+    }
+  }
+}
+`
+
+export const letterMetadataInstancePageQueryQLever = `
+SELECT * 
+  WHERE { 
+  BIND (<ID> as ?id)
+    BIND (?id as ?uri__id)
+    BIND (STR(?id) as ?uri__prefLabel)
+    BIND (?id as ?uri__dataProviderUrl)
+    {
+    BIND (<ID> as ?id)
+      ?id skos:prefLabel ?prefLabel__id .
+      BIND (?prefLabel__id as ?prefLabel__prefLabel)
+    }
+    UNION
+    {
+    BIND (<ID> as ?id)
+    ?id :metadata ?metadata__id .
+    BIND (?metadata__id AS ?metadata__prefLabel)
+    BIND (?metadata__id AS ?metadata__dataProviderUrl)
+      {
+    BIND (<ID> as ?id)
+    ?id :metadata ?metadata__id .
+        ?metadata__id :original_record ?original_record 
+      }
+      UNION
+      {
+      BIND (<ID> as ?id)
+      ?id :metadata ?metadata__id .
+        ?metadata__id foaf:page ?external__id .
+        BIND(?external__id AS ?external__prefLabel)
+        BIND(?external__id AS ?external__dataProviderUrl)
+      }
+      UNION
+      { 
+      BIND (<ID> as ?id)
+      ?id :metadata ?metadata__id .
+        ?metadata__id :source_url|:source_api_url ?source_url__id . 
+        BIND(?source_url__id AS ?source_url__prefLabel)
+        BIND(?source_url__id AS ?source_url__dataProviderUrl)
+      }
+      UNION
+      {
+      BIND (<ID> as ?id)
+      ?id :metadata ?metadata__id .
+        ?created_letter__id :metadata ?metadata__id ;
+          skos:prefLabel ?created_letter__prefLabel .
+          BIND(CONCAT("/letters/page/", REPLACE(STR(?created_letter__id), "^.*\\\\/(.+)", "$1")) AS ?created_letter__dataProviderUrl)
+      }
+      UNION
+      {
+      BIND (<ID> as ?id)
+      ?id :metadata ?metadata__id .
         VALUES (?prop ?prop_label) {
           (:fonds_as_recorded 'fonds as recorded')
           (:number_of_letters 'number of letters')

@@ -1,9 +1,10 @@
 {
     "id": "letters",
     "endpoint": {
-        "url": "https://ldf.fi/coco/sparql",
+        "url": "http://ldf.fi/coco-qlever/sparql",
         "useAuth": true,
-        "prefixesFile": "SparqlQueriesPrefixes.js"
+        "prefixesFile": "SparqlQueriesPrefixes.js",
+        "triplestore": "qlever"
     },
     "sparqlQueriesFile": "SparqlQueriesLetters.js",
     "baseURI": "http://ldf.fi/coco",
@@ -37,13 +38,13 @@
                 "component": "ResultTable",
                 "tabPath": "table",
                 "tabIcon": "CalendarViewDay",
-                "propertiesQueryBlock": "letterProperties",
+                "propertiesQueryBlock": "letterPropertiesQLever",
                 "pagesize": 30,
                 "sortBy": null,
                 "sortDirection": null
             },
             "instanceConfig": {
-                "propertiesQueryBlock": "letterPropertiesInstancePage",
+                "propertiesQueryBlock": "letterPropertiesInstancePageQLever",
                 "instancePageResultClasses": {
                     "instancePageTable": {
                         "tabID": 0,
@@ -57,7 +58,7 @@
                         "tabPath": "metadata",
                         "tabIcon": "FormatListBulleted",
                         "fetchResultsWhenMounted": true,
-                        "sparqlQuery": "letterMetadataInstancePageQuery",
+                        "sparqlQuery": "letterMetadataInstancePageQueryQLever",
                         "properties": [
                             {
                                 "id": "record_value",

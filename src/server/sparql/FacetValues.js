@@ -90,7 +90,7 @@ export const getFacet = async ({
     /* if this facet has previous selections (exluding <http://ldf.fi/MISSING_VALUE>),
        they need to be binded as selected */
     if (currentSelectionsWithoutUnknown.length > 0 && hasPreviousSelections) {
-      selectedBlock = generateSelectedBlock({ currentSelectionsWithoutUnknown, literal: facetConfig.literal })
+      selectedBlock = generateSelectedBlock({ currentSelectionsWithoutUnknown, literal: facetConfig.literal, facetConfig, endpoint })
     }
     /* if there is previous selections in this facet AND in some other facet, we need an
         additional block for facet values that return 0 hits */
@@ -206,12 +206,16 @@ export const getFacet = async ({
 
 const generateSelectedBlock = ({
   currentSelectionsWithoutUnknown,
-  literal
+  literal,
+  facetConfig,
+  endpoint
 }) => {
   const selectedFilter = generateSelectedFilter({
     currentSelectionsWithoutUnknown,
     inverse: false,
-    literal
+    literal,
+    facetConfig,
+    endpoint
   })
   return `
           OPTIONAL {
@@ -285,12 +289,23 @@ const getUriFilters = (constraints, facetID) => {
 export const generateSelectedFilter = ({
   currentSelectionsWithoutUnknown,
   inverse,
-  literal
+  literal,
+  facetConfig,
+  endpoint
 }) => {
-  const selections = literal ? `'${currentSelectionsWithoutUnknown.join(', ')}'` : `<${currentSelectionsWithoutUnknown.join('>, <')}>`
-  return (`
-          FILTER(?id ${inverse ? 'NOT' : ''} IN ( ${selections} ))
-  `)
+  let selections = ''
+  let filter = ''
+  if (endpoint.triplestore === "qlever") {
+    selections = literal ? `'${currentSelectionsWithoutUnknown.join(' ')}'` : `<${currentSelectionsWithoutUnknown.join('> <')}>`
+    filter = `
+          VALUES ?id { ${selections}  }
+          ?instance ${facetConfig.predicate} ?id .
+    `
+  } else {
+    selections = literal ? `'${currentSelectionsWithoutUnknown.join(', ')}'` : `<${currentSelectionsWithoutUnknown.join('>, <')}>`
+    filter = `FILTER(?id ${inverse ? 'NOT' : ''} IN ( ${selections} ))`
+  }
+  return (filter)
 }
 
 const unknownBlock = `
