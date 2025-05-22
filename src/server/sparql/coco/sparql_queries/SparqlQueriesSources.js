@@ -15,7 +15,9 @@ export const sourcePropertiesInstancePage = `
   UNION
   { 
     ?letter__id :source ?id .
-    ?letter__id skos:prefLabel ?letter__prefLabel .
-    BIND(CONCAT("/letters/page/", REPLACE(STR(?letter__id), "^.*\\\\/(.+)", "$1")) AS ?letter__dataProviderUrl)
+    ?letter__id skos:prefLabel ?letter__prefLabel ;
+      :digital_edition ?edition .
+    BIND(CONCAT(IF(?edition = <http://ldf.fi/schema/coco/not_in_editions>, "/letters/page/", "/digitaleditions/page/"), REPLACE(STR(?letter__id), "^.*\\\\/(.+)", "$1")) AS ?letter__dataProviderUrl)
+    # BIND(CONCAT("/letters/page/", REPLACE(STR(?letter__id), "^.*\\\\/(.+)", "$1")) AS ?letter__dataProviderUrl)
   }
 `

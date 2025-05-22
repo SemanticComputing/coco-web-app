@@ -117,19 +117,23 @@ WHERE {
   UNION
   {
     SELECT ?id ?from__id ?from__prefLabel 
-    	(CONCAT("/letters/page/", REPLACE(STR(?from__id), "^.*\\\\/(.+)", "$1")) AS ?from__dataProviderUrl)
+      (CONCAT(IF(?edition = <http://ldf.fi/schema/coco/not_in_editions>, "/letters/page/", "/digitaleditions/page/"), REPLACE(STR(?from__id), "^.*\\\\/(.+)", "$1")) AS ?from__dataProviderUrl)
+    	# (CONCAT("/letters/page/", REPLACE(STR(?from__id), "^.*\\\\/(.+)", "$1")) AS ?from__dataProviderUrl)
     WHERE {
 	    ?id ^:was_sent_from ?from__id .
-    	?from__id skos:prefLabel ?from__prefLabel .
+    	?from__id skos:prefLabel ?from__prefLabel ;
+        :digital_edition ?edition .
       OPTIONAL { ?from__id :has_time-span/crm:P82a_begin_of_the_begin ?_time }
-    } ORDERBY COALESCE(year(?_time), 9999)
+    } ORDER BY COALESCE(year(?_time), 9999)
   } 
   UNION
   {
     ?id ^:referenced_place ?mentioningletter__id .
           ?mentioningletter__id a :Letter ;
-            skos:prefLabel ?mentioningletter__prefLabel .
-        BIND(CONCAT("/letters/page/", REPLACE(STR(?mentioningletter__id), "^.*\\\\/(.+)", "$1")) AS ?mentioningletter__dataProviderUrl)
+          skos:prefLabel ?mentioningletter__prefLabel ;
+          :digital_edition ?edition .
+    BIND(CONCAT(IF(?edition = <http://ldf.fi/schema/coco/not_in_editions>, "/letters/page/", "/digitaleditions/page/"), REPLACE(STR(?mentioningletter__id), "^.*\\\\/(.+)", "$1")) AS ?mentioningletter__dataProviderUrl)
+    # BIND(CONCAT("/letters/page/", REPLACE(STR(?mentioningletter__id), "^.*\\\\/(.+)", "$1")) AS ?mentioningletter__dataProviderUrl)
   }
   UNION
   {

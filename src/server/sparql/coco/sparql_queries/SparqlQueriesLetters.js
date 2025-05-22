@@ -2,7 +2,10 @@ export const letterProperties = `
 {
   ?id skos:prefLabel ?prefLabel__id .
   BIND (?prefLabel__id as ?prefLabel__prefLabel)
-  BIND(CONCAT("/letters/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
+
+  ?id :digital_edition ?edition .
+  BIND(CONCAT(IF(?edition = <http://ldf.fi/schema/coco/not_in_editions>, "/letters/page/", "/digitaleditions/page/"), REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
+  # BIND(CONCAT("/letters/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
 
   BIND(?id as ?uri__id)
   BIND(STR(?id) as ?uri__prefLabel)
@@ -46,7 +49,10 @@ export const letterPropertiesQLever = `
   <SUBQUERY>
   ?id skos:prefLabel ?prefLabel__id .
   BIND (?prefLabel__id as ?prefLabel__prefLabel)
-  BIND(CONCAT("/letters/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
+
+  ?id :digital_edition ?edition .
+  BIND(CONCAT(IF(?edition = <http://ldf.fi/schema/coco/not_in_editions>, "/letters/page/", "/digitaleditions/page/"), REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
+  # BIND(CONCAT("/letters/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
 
   BIND(?id as ?uri__id)
   BIND(STR(?id) as ?uri__prefLabel)
@@ -315,8 +321,10 @@ SELECT *
       UNION
       {
         ?created_letter__id :metadata ?metadata__id ;
-          skos:prefLabel ?created_letter__prefLabel .
-          BIND(CONCAT("/letters/page/", REPLACE(STR(?created_letter__id), "^.*\\\\/(.+)", "$1")) AS ?created_letter__dataProviderUrl)
+          skos:prefLabel ?created_letter__prefLabel ;
+          :digital_edition ?edition .
+        BIND(CONCAT(IF(?edition = <http://ldf.fi/schema/coco/not_in_editions>, "/letters/page/", "/digitaleditions/page/"), REPLACE(STR(?created_letter__id), "^.*\\\\/(.+)", "$1")) AS ?created_letter__dataProviderUrl)
+        # BIND(CONCAT("/letters/page/", REPLACE(STR(?created_letter__id), "^.*\\\\/(.+)", "$1")) AS ?created_letter__dataProviderUrl)
       }
       UNION
       {     
@@ -400,11 +408,13 @@ SELECT *
       }
       UNION
       {
-      BIND (<ID> as ?id)
-      ?id :metadata ?metadata__id .
+        BIND (<ID> as ?id)
+        ?id :metadata ?metadata__id .
         ?created_letter__id :metadata ?metadata__id ;
-          skos:prefLabel ?created_letter__prefLabel .
-          BIND(CONCAT("/letters/page/", REPLACE(STR(?created_letter__id), "^.*\\\\/(.+)", "$1")) AS ?created_letter__dataProviderUrl)
+          skos:prefLabel ?created_letter__prefLabel ;
+          :digital_edition ?edition .
+        BIND(CONCAT(IF(?edition = <http://ldf.fi/schema/coco/not_in_editions>, "/letters/page/", "/digitaleditions/page/"), REPLACE(STR(?created_letter__id), "^.*\\\\/(.+)", "$1")) AS ?created_letter__dataProviderUrl)
+        # BIND(CONCAT("/letters/page/", REPLACE(STR(?created_letter__id), "^.*\\\\/(.+)", "$1")) AS ?created_letter__dataProviderUrl)
       }
       UNION
       {

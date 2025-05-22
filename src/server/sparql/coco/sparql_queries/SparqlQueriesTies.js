@@ -42,11 +42,13 @@ UNION
 {
   {
     SELECT DISTINCT ?id ?letter__id ?letter__prefLabel  
-    (CONCAT("/letters/page/", REPLACE(STR(?letter__id), "^.*\\\\/(.+)", "$1")) AS ?letter__dataProviderUrl)
+    (CONCAT(IF(?edition = <http://ldf.fi/schema/coco/not_in_editions>, "/letters/page/", "/digitaleditions/page/"), REPLACE(STR(?letter__id), "^.*\\\\/(.+)", "$1")) AS ?letter__dataProviderUrl)
+    # (CONCAT("/letters/page/", REPLACE(STR(?letter__id), "^.*\\\\/(.+)", "$1")) AS ?letter__dataProviderUrl)
     WHERE {
 
       ?letter__id :in_tie ?id ;
-                  skos:prefLabel ?letter__prefLabel . 
+                  skos:prefLabel ?letter__prefLabel ;
+                  :digital_edition ?edition .
 
       OPTIONAL { ?letter__id :has_time-span/crm:P82a_begin_of_the_begin ?letter__timespan }
 

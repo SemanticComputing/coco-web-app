@@ -85,13 +85,15 @@ export const fondsPropertiesInstancePage = `
   UNION
   {
     SELECT DISTINCT ?id ?letter__id ?letter__prefLabel 
-      (CONCAT("/letters/page/", REPLACE(STR(?letter__id), "^.*\\\\/(.+)", "$1")) AS ?letter__dataProviderUrl)
+    (CONCAT(IF(?edition = <http://ldf.fi/schema/coco/not_in_editions>, "/letters/page/", "/digitaleditions/page/"), REPLACE(STR(?letter__id), "^.*\\\\/(.+)", "$1")) AS ?letter__dataProviderUrl)
+      # (CONCAT("/letters/page/", REPLACE(STR(?letter__id), "^.*\\\\/(.+)", "$1")) AS ?letter__dataProviderUrl)
 	    # ?person__id ?person__prefLabel 
     	# (CONCAT("/actors/page/", REPLACE(STR(?person__id), "^.*\\\\/(.+)", "$1")) AS ?person__dataProviderUrl)
     WHERE {
       ?id ^:fonds ?letter__id .
       ?letter__id a :Letter ;
-            skos:prefLabel ?letter__prefLabel .
+            skos:prefLabel ?letter__prefLabel ;
+            :digital_edition ?edition .
       
       OPTIONAL { ?letter__id :has_time-span/crm:P82a_begin_of_the_begin ?time }
     } ORDER BY COALESCE(STR(?time), CONCAT("9999", ?letter__prefLabel))
