@@ -55,7 +55,7 @@ export const getPaginatedResults = ({
     }
     FILTER(BOUND(?id))`)
   if (constraints == null && defaultConstraint == null) {
-    q = q.replaceAll('<FILTER>', '# no filters')
+      q = q.replaceAll('<FILTER>', '# no filters')
   } else {
     q = q.replaceAll('<FILTER>', generateConstraintsBlock({
       backendSearchConfig,

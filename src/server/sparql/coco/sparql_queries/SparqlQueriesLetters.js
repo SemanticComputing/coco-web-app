@@ -49,6 +49,7 @@ UNION
 
 export const letterPropertiesInstancePage = `
 {
+BIND(<ID> as ?id)
   ?id skos:prefLabel ?prefLabel__id .
   BIND (?prefLabel__id as ?prefLabel__prefLabel)
   BIND(STR(?id) as ?uri__prefLabel)
@@ -258,8 +259,8 @@ WHERE {
           
           ?id portal:recipient|portal:sender ?actor
         }
-        GROUPBY ?actor
-        ORDERBY DESC(COUNT(?id))
+        GROUP BY ?actor
+        ORDER BY DESC(COUNT(?id))
         LIMIT 25
       }
       ?id portal:recipient|portal:sender ?actor
@@ -274,8 +275,8 @@ WHERE {
 
   VALUES ?type { "from" "to" }
 } 
-GROUPBY ?_from__label ?_to__label ?type ?year 
-ORDERBY DESC(?count)
+GROUP BY ?_from__label ?_to__label ?type ?year
+ORDER BY DESC(?count)
 `
 
 export const lettersByYearQuery = `

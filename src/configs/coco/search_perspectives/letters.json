@@ -1,8 +1,8 @@
 {
     "id": "letters",
     "endpoint": {
-        "url": "http://localhost:7019/",
-        "useAuth": false,
+        "url": "http://ldf.fi/coco-qlever/sparql",
+        "useAuth": true,
         "prefixesFile": "SparqlQueriesPrefixes.js"
     },
     "sparqlQueriesFile": "SparqlQueriesLetters.js",
