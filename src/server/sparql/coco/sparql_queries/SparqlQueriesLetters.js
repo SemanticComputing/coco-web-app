@@ -22,10 +22,10 @@ UNION
 }
 UNION
 {
-  ?id :has_time-span ?productionTimespan__id .
-  ?productionTimespan__id skos:prefLabel ?productionTimespan__prefLabel ;
-    crm:P82a_begin_of_the_begin ?productionTimespan__start ;
-    crm:P82b_end_of_the_end ?productionTimespan__end 
+  ?id :has_time-span ?productionDate__id .
+  ?productionDate__id skos:prefLabel ?productionDate__prefLabel ;
+    crm:P82a_begin_of_the_begin ?productionDate__start ;
+    crm:P82b_end_of_the_end ?productionDate__end 
 }
 UNION
 {
@@ -57,10 +57,10 @@ UNION
 }
 UNION
 {
-  ?id :has_time-span ?productionTimespan__id .
-  ?productionTimespan__id skos:prefLabel ?productionTimespan__prefLabel .
-  OPTIONAL { ?productionTimespan__id crm:P82a_begin_of_the_begin ?productionTimespan__start }
-  OPTIONAL { ?productionTimespan__id crm:P82b_end_of_the_end ?productionTimespan__end }
+  ?id :has_time-span ?productionDate__id .
+  ?productionDate__id skos:prefLabel ?productionDate__prefLabel .
+  OPTIONAL { ?productionDate__id crm:P82a_begin_of_the_begin ?productionDate__start }
+  OPTIONAL { ?productionDate__id crm:P82b_end_of_the_end ?productionDate__end }
 }
 UNION
 {

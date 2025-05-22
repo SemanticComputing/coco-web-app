@@ -290,7 +290,7 @@
             "expandedOnInstancePage": true
         },
         {
-            "id": "productionTimespan",
+            "id": "productionDate",
             "valueType": "object",
             "makeLink": false,
             "externalLink": false,
@@ -419,7 +419,7 @@
         }
     ],
     "facets": {
-        "data_provider": {
+        "data_provider_facet": {
             "containerClass": "sixteen",
             "facetType": "list",
             "filterType": "uriFilter",
@@ -433,7 +433,7 @@
             "sortByPredicate": ":original_data_provider/skos:prefLabel",
             "hideUnknownValue": true
         },
-        "digital_edition": {
+        "digital_edition_facet": {
             "containerClass": "six",
             "facetType": "list",
             "filterType": "uriFilter",
@@ -447,7 +447,7 @@
             "sortByPredicate": ":digital_edition/skos:prefLabel",
             "hideUnknownValue": true
         },
-        "source": {
+        "source_facet": {
             "containerClass": "ten",
             "facetType": "list",
             "filterType": "uriFilter",
@@ -484,7 +484,7 @@
             "sortButton": true,
             "hideUnknownValue": true
         },
-        "target": {
+        "target_facet": {
             "containerClass": "ten",
             "facetType": "list",
             "filterType": "uriFilter",
@@ -560,7 +560,7 @@
             "sortButton": true,
             "hideUnknownValue": true
         },
-        "language": {
+        "language_facet": {
             "containerClass": "seven",
             "facetType": "list",
             "filterType": "uriFilter",
@@ -586,7 +586,7 @@
             "sortByPredicate": ":type/skos:prefLabel",
             "hideUnknownValue": true
         },
-        "fonds": {
+        "fonds_facet": {
             "containerClass": "ten",
             "facetType": "list",
             "filterType": "uriFilter",

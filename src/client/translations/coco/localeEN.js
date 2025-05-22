@@ -16,11 +16,11 @@ export default {
     long: ' LetterSampo Finland',
     mobile: 'LetterSampo Finland',
     subheading: `
-      Finnish Historical Letters on the Semantic Web 1809-1917
+      Finnish Nineteenth-Century Letters on the Semantic Web
     `
   },
-  selectEditionPerpective: 'Digital editions with textual features',
-  selectPerspective: 'Select a perspective to search, browse, and analyze letters using metadata',
+  selectEditionPerpective: 'Digital editions',
+  selectPerspective: 'Choose a perspective to search for, browse and analyze letters using metadata',
   selectInformationPerspective: 'Information about the contributors and collections',
   mainPageImageLicence: 'Images used under license from Wikimedia Commons',
   backendErrorText: 'One of the backend services is currently unavailable. Please try again later.',
@@ -55,7 +55,7 @@ export default {
         link: '/edelfeltedition/faceted-search/map'
       },
       {
-        title: 'Finnish Literature Society Fonds',
+        title: 'The Finnish Literature Society Fonds',
         link: '/en/fonds/faceted-search/table?page=0&constraints=%5B%7B%22facetId%22%3A%22datasource%22%2C%22filterType%22%3A%22uriFilter%22%2C%22value%22%3A%7B%22path%22%3A%5B3%5D%2C%22node%22%3A%7B%22id%22%3A%22https%3A%2F%2Fwww.finlit.fi%22%2C%22prefLabel%22%3A%22The%20Finnish%20Literature%20Society%20(SKS)%22%2C%22instanceCount%22%3A256%7D%7D%7D%5D'
       },
       {
@@ -190,9 +190,7 @@ export default {
         Computationally generated data
       </h6>
       <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-        Plenty of the data is computationally generated.
-        There might be missing, erroneous, or repeting data records
-        due to the errors or inadequate amount of source data.
+        Much of the data is generated through computation. Erroneous or repetitive records may be present due to errors in the         source data or the processing.
       </p>
     `
   },
@@ -266,37 +264,40 @@ export default {
       shortDescription: '',
       longDescription: `
         <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-          Use this perspective to access data related to the actors, e.g., people, groups, families, and unknowns, in the dataset.
+         
+        From this perspective, you can search for information about the authors and recipients of the letters, the records            creators and, for certain materials, individuals mentioned in the letters themselves.
+
+        Different organisations and collections hold correspondence from the same individuals. These actors have been                 aggregated computationally, but there are still both wrongly aggregated and unaggregated actors in the data.                  Additionally, almost all letter collections contain letters from unidentified individuals, and the large number of            these is typical of mass metadata produced from letter collections.
+
+        You can browse the metadata using the filters on the left (above the results in the mobile version) or the facets. As         well as searching by name, you can limit your search by the gender or profession of the actor. Please note that               occupation information is only provided for individuals for whom additional information is available from external            data sources. The 'External data source' facet shows the proportion of actors linked to external data sources.
         </p>
         <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-          General information about the project is available at the <a href="https://seco.cs.aalto.fi/projects/coco/"  target="_blank" rel="noopener noreferrer">project blog</a>.
-        </p>
-        <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-          Use this perspective to access data related to the actors in the dataset.
           See <a target="_" href="https://docs.google.com/document/d/e/2PACX-1vRPPYcK4VLKdh_uVbNMZ8diOe0MZhvVjisvVpDCzUn5hMU8SAKfG5QF8iwS6grYpXB41PfzDkT0tttg/pub">instructions</a> for using the
-          filters. The result view can be selected using the tabs:
-        </p>
+          filters. 
+          </p>
+          The result view can be selected using the tabs:
         <ul class="MuiTypography-root MuiTypography-body1">
           <li>
-            <strong>TABLE</STRONG> view includes all actors in
-            the CoCo data. One table row is equivalent to one actors.
-            Wikidata/Wikimedia Commons is used as the image source.
-            NB. Clicking on the person name leads to a actor instance page providing more information about the actor, while clicking on the image opens the image in a larger scale.
+            The <strong>TABLE</STRONG> tab lists all the actors in the data. One row of the table contains the information                related to one actor. Selecting the name of an actor takes you to a more detailed Actor instance page. Image(s):              Wikidata/Wikimedia Commons.
           </li>
           <li>
-            <strong>MAP</strong> is a map visualization showing the known locations of activities, e.g. places of birth, sending letters, and death.
-            Places without the coordinate information are shown as a part of the place higher in the hierarchy.
+            The <strong>MAP</strong> visualises the known locations associated with the actors (birth and death places, places             where letters are sent and received). If the location does not have precise geographical coordinates, it is                   displayed as part of the next larger unit. Clicking on the place markers will open a list of people associated                with the place, with explanations.
           </li>
           <li>
-            <strong>NETWORK</strong> is a social network visualization showing the Sender-Recipient relationships.
-              Notice that the amount of people shown in the network is limited for performance reason.
-              The Sender-Recipient relationships are not available for all, so some facet setting may not show the network at all.
-              Clicking on an actor node leads to the actor's ego-centric network on an instance page.
+            The <strong>NETWORK</strong> view visualises the correspondence network of the person under consideration. Due to             the large number of actors, often only a subset of actors is selected for the network. 
           </li>
           <li>
-            <strong>EXPORT</strong> the SPARQL query used to generate the result table view into YASGUI query editor.
+            The <strong>CSV</strong> tab allows you to download the results in tabular form to your own computer.
+            </li>
+            <li>
+            From the <strong>SPARQL QUERY</strong> tab,you can follow the link to the Yasgui service and see the query used              to retrieve the results from the database.
+            </li>
+            <li>
+           The <strong>SHARE</strong> tab provides a permanent link to the search you have made. You can use it to find the search later and to refer to the material.
           </li>
         </ul>
+        <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
+          General information about the project is available at the <a href="https://seco.cs.aalto.fi/projects/coco/"  target="_blank" rel="noopener noreferrer">project blog</a>.
       `,
       instancePage: {
         label: 'Person or Organization',
@@ -306,31 +307,27 @@ export default {
           </h6>
           <ul class="MuiTypography-root MuiTypography-body1">
             <li>
-              <strong>TABLE</STRONG> view provides detailed data about this actor.
+              <strong>GENERAL INFORMATION</STRONG> page presents biographical information about the person. The information               has been enriched from external sources.
             </li>
             <li>
-              <strong>LETTERS</strong> show the available information about letters sent or received by this person.
-              NB some people may not have any letter information available.
+              The <strong>LETTERS</strong> tab allows you to view the letters sent and received by the actor in more detail.                  Please note that not all actors mentioned in the dataset will have this information available (e.g. the                       persons mentioned in the letters). 
             </li>
             <li>
-              <strong>TIMELINE OF LETTERS</strong> shows time series of the letters sent or recieved by the actor.
-              Howering or clicking on the bullets 'Sent', 'Received', or 'All' allows to hide/show e.g. only the sent or received letters.
-              The letters that are known to be sent during multiple years are spread evenly along that period.
+              The <strong>TIMELINE</strong> presents letters sent and received by the actor in question as a line graph. The              zoom tools in the top right corner allow you to view more detailed time periods on the graph. shows time series of                 the letters sent or recieved by the actor.
+            
+              The letters known to have been sent over multiple years are evenly distributed throughout that period.
             </li>
             <li>
-              <strong>TOP CORRESPONDENCE</strong> show a time series of the actor's correspondences with 10 ten other people.
-              Howering or clicking on the bullets 'to', 'from', 'Sent', 'Received', or 'All' allows to focus e.g. on only the sent or received letters.
-              The letters that are known to be sent during multiple years are spread evenly along that period.
+              <strong>TOP CORRESPONDENCE</strong> page shows the 20 largest sets of correspondence by an actor over a timeline                 . Note that the majority of correspondence only has start and end years (e.g. 1860-1895), in which case the                       letters of that correspondence are spread evenly over that time period. The zoom tools in the top right                       -hand corner allow you to view more detailed periods on the chart.
             </li>
             <li>
-              <strong>NETWORK OF LETTERS</strong> shows this actors's relations to other actors connected by the correspondence. The network shown a maximum of 60 neighbors nodes within a distance of 3 degress from the network ego.
+              <strong>NETWORK OF LETTERS</strong> visualises an actor's correspondence network. Note that the number of actors is limited: the network can contain up to 60 actors within three degrees of the network ego, the main actor.
             </li>
             <li>
-              <strong>SOCIAL SIGNATURES</strong> view has a chart showing how much the actor has been in correspondence with the most, the second most, etc, important other actor during the different periods along the total time of activity. In connections both sent and recieved letters are taken into account.
+             The <strong>SOCIAL SIGNATURES</strong> view shows the persistence of an actor's correspondence, i.e. the                         quantitative changes of the largest correspondence in different time periods over the total duration of the                   actor's correspondence. The horizontal axis indicates the extent of correspondence with the actor (1 = most                 letters) and the vertical axis the percentage. The visualisation takes into account both letters sent and                       received.
             </li>
             <li>
-              <strong>EXPORT</strong> the SPARQL query used to generate the result
-              table view into YASGUI query editor.
+              <strong>EXPORT</strong> view the SPARQL query used to generate the result table view into YASGUI query editor               and examine the letter data in the Saha editor.
             </li>
           </ul>
           <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph"></p>
@@ -339,28 +336,38 @@ export default {
       properties: {
         uri: {
           label: 'URI',
-          description: 'Uniform Resource Identifier'
+          description: 'Link to the information of the letter as linked open data'
         },
         prefLabel: {
           label: 'Name',
-          description: 'Search actors by name. Search is based on Apache Lucene index search. In addition to simple searches, you can use wildcard matching, e.g. Finland*. You can also use the logical operators AND, OR and NOT, but then the search must be written in parentheses, e.g., like this (Jean AND Sibelius)'
+          description: 'Search for actors by name. The search is based on the Apache Lucene index search. As well as simple           searches, you can use wildcard matching; for example Finland*. Logical operators (AND, OR and NOT) can also be used,          but the search must then be written in parentheses, e.g., like this (Jean AND Sibelius).'
         },
         label: {
           label: 'Name'
         },
         gender: {
           label: 'Gender',
-          description: 'The gender of a person. Notice that the other types of actors do not have this value.'
+          description: `
+          The gender of the actors has been automatically identified and there are still errors in the categorisation. 
+
+        Male: persons identified as male on the basis of their first name. If only the initial or initials of the first               name are known, the person is counted as male. This is based on a manually screened sample. 
+
+        Female: persons identified as female on the basis of their first name. 
+
+        Unknown: an actor whose gender is not identified at all (surname only; first name rare; in the source data 'unknown',            'unidentified', 'okänd', etc.). 
+
+        Not applicable: family, organisation, association, society, company, magazine or other grouping or association.
+        `
         },
         image: {
-          label: 'Image of a person',
+          label: 'Image',
           description: `
             Image source: Wikimedia Commons.
           `
         },
         type: {
           label: 'Actor type',
-          description: 'Type of the actor: person, group, family, or unknown'
+          description: 'The actors are divided into individuals, organisations, unknowns and families. Unknown actors are mainly persons whose identity has not been identified in the cataloguing process. The recipients or senders of letters from unknown actors can be accessed by clicking on the Unknown heading and, on the next instance page, a URL link showing the correspondence data as linked open data.'
         },
         maxScore: {
           label: 'Text search score',
@@ -368,11 +375,13 @@ export default {
         },
         role: {
           label: 'Actor role',
-          description: 'Role of the actor: letter sender, recipient, referenced in content, or records creator'
+          description: `The actors derived from the source data are categorised as either senders or recipients of letters, or             as records creators. One actor can have several roles. Additionally, some datasets have been machine-searched for             actors mentioned in the letters' contents. 
+          
+          If you are only interested in the metadata of the letters, please exclude the actors mentioned in the letter                    contents from the search.`
         },
         birthDateTimespan: {
           label: 'Birth time',
-          description: `Birth time of a person. Notice that the other types of actors do not have this value.`
+          description: `The date of birth of individuals that is mainly derived from external data sources, but some                      information is derived from the source data itself.`
         },
         birthPlace: {
           label: 'Place of Birth',
@@ -553,55 +562,54 @@ export default {
       </p>
       <ul class="MuiTypography-root MuiTypography-body1">
       <li>
-        <strong>TABLE</STRONG> view includes all letters in the data publication. One table row is equivalent to one letter.
+        The <strong>TABLE</STRONG> view displays the results in a list.
       </li>
       <li>
-        <strong>BY YEAR</strong> includes a chart showing the yearly distribution of the letters.
+        <strong>BY YEAR</strong> shows the annual number of letters as a line graph. The zoom tools in the top right corner           allow you to view more detailed periods on a graph.
       </li>
       <li>
-        <strong>MAP</strong> includes a map showing the locations of sending the letters. 
-        Clicking on a marker opens up a popup showing a list of actors have sent letters from each location.
+        <strong>MAP</strong> visualises the locations where letters are written or received. 
       </li>
       <li>
-        <strong>HEATMAP</strong> includes a heatmap showing the locations of letters activities.
+        <strong>HEATMAP</strong> visualises the writing and receiving locations as a heat map (the redder the colour, the more letters).
       </li>
       <li>
-        <strong>TOP CORRESPONDENTS</STRONG> view shows a timeline of letters and most important correspondents. The chart shows the activities using a precision of one year.
-        NB. Letters having more approximate temporal information, e.g. 'sent 1860-1865' show up on the first year of that time period, e.g. '1860'.
-
-        NB. Due to the performance issues with the huge amount of letters in the database the amount of results is limited. Notice that you can use the filters to limit the size of the result set.
+        <strong>TOP CORRESPONDENTS</STRONG> displays the 20 largest correspondences on a time axis. Note that most                    correspondences only have a start and end year (e.g. 1860-1895). In such cases, the letters of the correspondence in          question are distributed uniformly over the period in question.
       </li>
       <li>
-        <strong>CSV</strong> to download the result table as a datasheet.
+        The <strong>CSV</strong> tab allows you to download the results in tabular form to your own computer.
       </li>
       <li>
-        <strong>SPARQL</strong> the SPARQL query used to generate the result
-        table view into YASGUI query editor.
+       From the <strong>SPARQL</strong> query tab, you can follow the link to the Yasgui service and see the query used to retrieve the results from the database.
       </li>
       <li>
-        <strong>SHARE</strong> a link to a specific tab view with faceted results.
+        The <strong>SHARE</strong> tab provides a permanent link to the search you have made. You can use it to find the search later and to refer to the material.
       </li>
     </ul>
       `,
       instancePage: {
         label: 'Letter',
         description: `
-          <h6 class="MuiTypography-root MuiTypography-h6">
-            Page tabs
-          </h6>
-          <ul class="MuiTypography-root MuiTypography-body1">
-            <li>
-              <strong>TABLE</strong> show the available information about the letter in the database.
-            </li>
-            <li>
-              <strong>EXPORT</strong> the SPARQL query used to generate the result
-              table view into YASGUI query editor.
-            </li>
-          </ul>
-          <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph"></p>
+        <h6 class="MuiTypography-root MuiTypography-h6">
+         Page tabs
+        </h6>
+        <ul class="MuiTypography-root MuiTypography-body1">
+          <li>
+            The <strong>TABLE</strong> view displays the results in a list.
+        </li>
+        <li>
+        The <strong>SOURCE DATA</strong> tab allows you to view the original record and the data fields processed from it.            Here you will also find a link to any external data sources. 
+        </li>
+        <li>
+        On the <strong>DIGITAL EDITION</strong> tab, you can view the letter on the site of the original producer of the data.         Note: this tab only works for data published on their own websites. 
+        </li>
+        <li>
+        <strong>EXPORT</strong> view the SPARQL query used to generate the results, open the table view in the YASGUI query           editor, and examine the letter data in the Saha editor.
+      </li>
+        </ul>
         `
-      },
-      externalSite: {
+        },
+     externalSite: {
         loadingFailed: 'Embedding the content failed',
         openInNewTab: 'Open original source directly in a new tab',
         notAvailable: 'No external data source available'
@@ -609,16 +617,26 @@ export default {
       properties: {
         uri: {
           label: 'URI',
-          description: 'Uniform Resource Identifier'
+          description: `Link to the information of the letter as linked open data
+          `
         },
+        
         prefLabel: {
           label: 'Title',
-          description: 'The label of the Letter'
+          description: `The title of the individual letter
+          `
+          
+        },
+        language_facet: {
+          label: 'Language',
+          description: `
+            The writing language of the letter indicated in the source data. This information is available in about 34% of the total data (the Åbo Akademi Library collection is marked as Swedish if no other language information was available             ).
+          `
         },
         language: {
           label: 'Language',
           description: `
-            The language used in the letter content.
+            The writing language of the letter indicated in the source data.
           `
         },
         subject: {
@@ -642,13 +660,19 @@ export default {
         comment: {
           label: 'Comment',
           description: `
-          Comments marked with the letter.
+          Comment in the source data.
           `
         },
         productionTimespan: {
           label: 'Date',
           description: `
-            The date(s) when the letters were written.
+            The date of writing the letter or the beginning and end year of the correspondence. The 1840-1870 time limit gives             all correspondence that falls in those decades (including, for example, 1784-1840 and 1870-1893).
+          `
+        },
+        productionDate: {
+          label: 'Date',
+          description: `
+            The start and end year of correspondence or the timing of a single letter.
           `
         },
         archival_organization: {
@@ -657,26 +681,44 @@ export default {
             Archival organization
           `
         },
+        data_provider_facet: {
+          label: 'Cultural heritage organization',
+          description: `
+            Limit your search to the collections of a specific archive, library or museum. Without limiting, you can browse       the entire collection, but the search may be slower. 
+          `
+        },
         data_provider: {
           label: 'Cultural heritage organization',
           description: `
-            Cultural heritage organization
+            Organisation to which the letter belongs 
+          `
+        },
+        digital_edition_facet: {
+          label: 'Digital Edition',
+          description: `
+            Search for letters that have been published in one of the digital editions included in the portal. 
           `
         },
         digital_edition: {
           label: 'Digital Edition',
           description: `
-            Digital Edition
+            Digital edition of which the letter is a part 
           `
         },
         original_record: {
           label: 'Original record',
           description: ``
         },
+        fonds_facet: {
+          label: 'Fonds',
+          description: `
+            Limit your search to specific letter collections, personal archives and community archives. 
+          `
+        },
         fonds: {
           label: 'Fonds',
           description: `
-            Fonds
+            A collection or set of records to which a letter belongs. 
           `
         },
         series: {
@@ -685,82 +727,126 @@ export default {
             Series
           `
         },
+        source_facet: {
+          label: 'Sender',
+          description: `
+          Search by the name of the sender of the letter 
+          `
+        },
         source: {
           label: 'Sender',
           description: `
-          Search for a sender by name. 
-          Search is based on Apache Lucene index search. 
-          In addition to simple searches, you can use wildcard matching, e.g. Finland*. 
-          You can also use the logical operators AND, OR and NOT, but then the search must be written in parentheses, e.g., like this (Jean AND Sibelius)'
+          The name of the sender of the letter and the year of birth and death, if available. The name may be in the same                 format as in the source data or may have been retrieved from other sources.
           `
         },
         source_type: {
           label: 'Sender: Type',
           description: `
-          Select the type of sender: Person, Group, Family or Unidentified.
+          
+        The senders are divided into four types, which may overlap.
+
+        Person: a sender is one or more persons to whom the full name or only the first or surname or initials are given in           the source data.
+
+        Organisation: the sender is an organisation, association, club, company, newspaper or other group or consortium.
+
+        Unknown: an actor who is not identified at all (often 'unknown', 'unidentified', 'okänd', etc. in the source data or             the sender is missing from the source data). As a rule, unknown senders are persons.  If there is one unknown in a         group of several senders, the group is also listed as unknown.
+
+        Family: in the source data, the sender is given an attribute referring to family relations ('with family'; relatives;         children; parents).
           `
         },
         source_gender: {
           label: 'Sender: Gender',
           description: `
-          Filter the senders by their gender. NB: Group, Families, and Unknowns do not have a gender.
+          The gender of the actors has been automatically identified and there are still errors in the categorisation. 
+
+        Male: persons identified as male on the basis of their first name. If only the initial or initials of the first               name are known, the person is counted as male. This is based on a manually screened sample. 
+
+        Female: persons identified as female on the basis of their first name. 
+
+        Unknown: an actor whose gender is not identified at all (surname only; first name rare; in the source data 'unknown',            'unidentified', 'okänd', etc.). 
+
+        Female & male: letters often sent by married couples or siblings.
+
+        Not in use: family, organisation, association, society, company, magazine or other grouping or association.
+          `
+        },
+        target_facet: {
+          label: 'Recipient',
+          description: `
+          Search by the name of the recipient of the letter
           `
         },
         target: {
           label: 'Recipient',
           description: `
-          Search for a recipient by name. 
-          Search is based on Apache Lucene index search. 
-          In addition to simple searches, you can use wildcard matching, e.g. Finland*. 
-          You can also use the logical operators AND, OR and NOT, but then the search must be written in parentheses, e.g., like this (Jean AND Sibelius)'
+             The name of the recipient of the letter and the year of birth and death, if available. The name may be in the                same format as in the source data or may have been retrieved from other sources.
           `
         },
         target_type: {
           label: 'Recipient: Type',
           description: `
-          Filter the recipients by their type: Person, Group, Family or Unidentified.
+          Recipients are divided into four types, which may overlap.
+        
+        Person: the recipient is one or more persons to whom the full name or only the first or surname or initials are given         in the source data.
+        
+        Organisation: the recipient is an organisation, association, club, company, newspaper or other group or consortium.
+        
+        Unknown: an actor who is not identified at all (often 'unknown', 'unidentified', 'okänd', etc. in the source data). As         a rule, unknown recipients are persons.  If there is one unknown in a group of several recipients, the group is also          listed as unknown.
+
+        Family: in the source data, the recipient is given an attribute referring to family relations (family; parents;               'your parents & siblings').
+.
           `
         },
         target_gender: {
           label: 'Recipient: Gender',
           description: `
-          Filter the recipients by their gender.
+          The gender of the actors has been automatically identified and there are still errors in the categorisation. 
+
+        Male: persons identified as male on the basis of their first name. If only the initial or initials of the first               name are known, the person is counted as male. This is based on a manually screened sample. 
+
+        Female: persons identified as female on the basis of their first name. 
+
+        Unknown: an actor whose gender is not identified at all (surname only; first name rare; in the source data 'unknown',            'unidentified', 'okänd', etc.). 
+
+        Female & male: letters often sent by married couples or siblings.
+
+        Not in use: family, organisation, association, society, company, magazine or other grouping or association.
           `
         },
         mentioned_person: {
           label: 'Mentioned actors',
           description: `
-          Actors mentioned in the letter.
+          The (automatically identified) actors mentioned in the letter.
           `
         },
         mentioned_place: {
           label: 'Mentioned places',
           description: `
-          Places mentioned in the letter.
+          The (automatically identified) places mentioned in the letter.
           `
         },
         tie: {
           label: 'Correspondence',
           description: `
-          Correspondence of all letters between the sender and the recipient.
+          Correspondence to which a single letter belongs.
           `
         },
         from: {
           label: 'Place: Sending',
           description: `
-          Place from where the letter was sent.
+          Place indicated on the letter. This information is only present in about 2% of the total data.
           `
         },
         to: {
           label: 'Place: Receiving',
           description: `
-          Place where the letter was received.
+          The reception location indicated in the source data. This information is only present in about 0.07% of the total               data.
           `
         },
         lettertype: {
           label: 'Type of letter',
           description: `
-          The type of letter, e.g., letter, telegram, postcard, etc.
+          The list is based on the letter type ontology, which is compiled on the basis of the letter types indicated in the          source data. 
           `
         },
         record_value: {
@@ -770,7 +856,7 @@ export default {
         created_letter: {
           label: 'Related letters',
           description: `
-            All letters from this metadata record
+            All letters mentioned in the same metadata record 
           `
         },
         metadata: {
@@ -780,14 +866,12 @@ export default {
         external: {
           label: 'External link',
           description: `
-            External link providing more information about this letter
+            Link to the letter published in one of the digital editions 
           `
         },
         source_url: {
           label: 'External data source',
-          description: `
-            External data source for the letter information
-          `
+          description: ` `
         }
       }
     },
@@ -815,8 +899,7 @@ export default {
         <strong>BY YEAR</strong> includes a chart showing the yearly distribution of the letters.
       </li>
       <li>
-        <strong>EXPORT</strong> the SPARQL query used to generate the result
-        table view into YASGUI query editor.
+    <strong>EXPORT</strong> view the SPARQL query used to generate the results, open the table view in the YASGUI query           editor, and examine the letter data in the Saha editor.
       </li>
     </ul>
       `,
@@ -831,8 +914,7 @@ export default {
               <strong>TABLE</strong> show the available information about the archival organization in the database.
             </li>
             <li>
-              <strong>EXPORT</strong> the SPARQL query used to generate the result
-              table view into YASGUI query editor.
+              <strong>EXPORT</strong> view the SPARQL query used to generate the result table view into YASGUI query editor               and examine the letter data in the Saha editor.
             </li>
           </ul>
           <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph"></p>
@@ -975,8 +1057,7 @@ export default {
         <strong>BY YEAR</strong> includes a chart showing the yearly distribution of the letters.
       </li>
       <li>
-        <strong>EXPORT</strong> the SPARQL query used to generate the result
-        table view into YASGUI query editor.
+        <strong>EXPORT</strong> view the SPARQL query used to generate the result table view into YASGUI query editor and examine the letter data in the Saha editor.
       </li>
     </ul>
       `,
@@ -1065,8 +1146,7 @@ export default {
         Clicking on the place image opens a larger version of it.
       </li>
       <li>
-        <strong>EXPORT</strong> the SPARQL query used to generate the result
-        table view into YASGUI query editor.
+        <strong>EXPORT</strong> view the SPARQL query used to generate the result table view into YASGUI query editor and examine the letter data in the Saha editor.
       </li>
     </ul>
       `,
@@ -1085,8 +1165,7 @@ export default {
             Notice that also the hiearchy is considered, e.g., on the page of a country all the letters sent from places within are also included. 
           </li>
           <li>
-            <strong>EXPORT</strong> the SPARQL query used to generate the result
-            table view into YASGUI query editor.
+            <strong>EXPORT</strong> view the SPARQL query used to generate the result table view into YASGUI query editor and examine the letter data in the Saha editor.
           </li>
         </ul>
         `
@@ -1214,24 +1293,23 @@ export default {
         label: 'Correspondence',
         description: `
           <p>
-          This instance page provides detailed information about a correspondence between two actors.
+          This landing page provides a summary of information related to a specific correspondence. 
           </p>
           <h6 class="MuiTypography-root MuiTypography-h6">
             Page tabs
           </h6>
           <ul class="MuiTypography-root MuiTypography-body1">
             <li>
-              <strong>TABLE</STRONG> view includes detailed information about the correspondence between two specific actors.
+              <strong>TABLE</STRONG> view displays detailed information about the correspondence between two specific actors.
             </li>
             <li>
-              <strong>TIMELINE OF LETTERS</strong> details about all the letters sent and received between the two actors. The two timeline charts on this tab show the correspondence with precision of a single day or by years.
+              <strong>TIMELINE OF LETTERS</strong> visualises the annual volume of correspondence between correspondents as a                 line graph. The zoom tools in the top right corner allow you to view more detailed periods on the graph.
             </li>
             <li>
-              <strong>NETWORK OF LETTERS</strong> contains a network visualization showing the closest other correspondences connecting to the specific correspondence between the two actors of this page.
+              <strong>NETWORK OF LETTERS</strong> visualises the correspondence under examination and other related                           correspondences as a network. 
             </li>
             <li>
-              <strong>EXPORT</strong> the SPARQL query used to generate the result
-              table view into YASGUI query editor.
+              <strong>EXPORT</strong> view the SPARQL query used to generate the result table view into YASGUI query editor and examine the letter data in the Saha editor.
             </li>
           </ul>
           <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph"></p>
@@ -1241,14 +1319,14 @@ export default {
         node: {
           label: 'People or Organizations',
           description: `
-            Labels of the actors in this correspondence.
-            The number in square brackets at the end of the label is the number of letters sent to the other actor in correspondence.
+            Names of actors in source data or external data source.
+            The number in square brackets at the end of the label indicates the number of letters exchanged with the other                actor.
           `
         },
         num_letters: {
           label: 'Total number of letters',
           description: `
-            The total number of letters sent between the two actors.
+            Total amount of correspondence between the two actors
           `
         },
         letter: {
@@ -1260,7 +1338,7 @@ export default {
         other: {
           label: 'Related people or organisations',
           description: `
-          People or organisations who have been in correspondence with both the sender and the recipient.
+          Persons or organizations who have corresponded with both the sender and the recipient.
           `
         }
       }
@@ -1358,8 +1436,7 @@ export default {
               <strong>SOCIAL SIGNATURES</strong> view has a chart showing how much the actor has been in correspondence with the most, the second most, etc, important other actor during the different periods along the total time of activity. In connections both sent and recieved letters are taken into account.
             </li>
             <li>
-              <strong>EXPORT</strong> the SPARQL query used to generate the result
-              table view into YASGUI query editor.
+              <strong>EXPORT</strong> view the SPARQL query used to generate the result table view into YASGUI query editor and examine the letter data in the Saha editor.
             </li>
           </ul>
           <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph"></p>
@@ -1451,8 +1528,7 @@ export default {
               <strong>SOCIAL SIGNATURES</strong> view has a chart showing how much the actor has been in correspondence with the most, the second most, etc, important other actor during the different periods along the total time of activity. In connections both sent and recieved letters are taken into account.
             </li>
             <li>
-              <strong>EXPORT</strong> the SPARQL query used to generate the result
-              table view into YASGUI query editor.
+              <strong>EXPORT</strong> view the SPARQL query used to generate the result table view into YASGUI query editor and examine the letter data in the Saha editor.
             </li>
           </ul>
           <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph"></p>
@@ -1688,8 +1764,7 @@ export default {
         NB. Letters having more approximate temporal information, e.g. 'sent 1860-1865' show up on the first year of that time period, e.g. '1860'.
       </li>
       <li>
-        <strong>EXPORT</strong> the SPARQL query used to generate the result
-        table view into YASGUI query editor.
+        <strong>EXPORT</strong> view the SPARQL query used to generate the result table view into YASGUI query editor and examine the letter data in the Saha editor.
       </li>
     </ul>
       `,
@@ -1960,7 +2035,6 @@ export default {
       <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
         Use this perspective to access the Zacharias Topelius letter data, source <a target="_" href="https://topelius.sls.fi/fi/">Zacharias Topelius Skrifter</a>.
       </p>
-      
       <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
         See <a target="_" href="https://docs.google.com/document/d/e/2PACX-1vRPPYcK4VLKdh_uVbNMZ8diOe0MZhvVjisvVpDCzUn5hMU8SAKfG5QF8iwS6grYpXB41PfzDkT0tttg/pub">instructions</a> for using the
         filters. The result view can be selected using the tabs:
@@ -1984,8 +2058,7 @@ export default {
         NB. Letters having more approximate temporal information, e.g. 'sent 1860-1865' show up on the first year of that time period, e.g. '1860'.
       </li>
       <li>
-        <strong>EXPORT</strong> the SPARQL query used to generate the result
-        table view into YASGUI query editor.
+        <strong>EXPORT</strong> view the SPARQL query used to generate the result table view into YASGUI query editor and examine the letter data in the Saha editor.
       </li>
     </ul>
       `,
@@ -2657,8 +2730,6 @@ export default {
   statistics: `
   <h1 class=\"MuiTypography-root MuiTypography-h2 MuiTypography-gutterBottom\">Data Overview</h1>
 
-  <p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\"><i>The data analysis on this page is based on data from <strong>2025-05-18</strong>.<br />Some numbers may differ from the portal if the data has been updated after this date.</i></p>
-
   <p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\">The LetterSampo Finland contains metadata for over 1 million letters and 100000 actors. The data is collected from multiple data sources belonging to different cultural heritage organizations. Although the data is harmonized between different data sources, the completeness and accuracy of the data varies as this brief overview of the data demonstrates. The quality of the letter metadata depends on the availability of the information in the original letters or biographies, how the letters are digitized and linked data transformation.</p>
 
   <p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\">The table below shows the number of letters and actors in each data source. The five largest data sources contribute to over 97% of the letters in the LetterSampo Finland data. Actors can have type Person, Family or Organization. Most of the actors are letter senders and receivers. Some actors have also had the role of \"Records creator\", and in the case of Albert Edelfelt Letters and J. V. Snellman Letters actors mentioned in the letters have a \"Referenced in letter content\" role which explains the relatively high number of actors compared to the number of letters.</p>
@@ -2684,16 +2755,5 @@ export default {
   <p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\">In general, data sources have a quite big proportion of the actors unique to the source. For the Finnish National Gallery and larger data sources, over 70% of the actors are unique. There are a lot of actors who are associated with one or two letters and appear only in one source, whereas people who are associated with many letters are more likely shared between data sources. Especially letters the actor has sent might have ended up in different data sources. Figure below shows how actors are shared between data sources.</p>
 
   <img src=${fig_shared_actors} style=\"max-width:100%\" alt=\"Shared actors between data sources.\">
-  `,
-  exportLink: {
-    viewLabel: "Tab",
-    viewInstructions: "Choose the tab in which the query will open",
-    fieldLabel: "Generated link (read-only)",
-    infoBody: "You can share the query you made by using the link below. The link is generated based on what you have selected for different facets and will open the search view of this perspective with those choices on the selected tab. You can change the opened tab to any of the supported ones using the dropdown menu below. If you make additional choices while on this page, the link will be automatically updated to include those.",
-    warningTitle: "Generated link might be too long for some browsers",
-    warningBody: "The current length of the generated link is more than 2,000 characters. Browsers have different limits for the maximum lengths of links they can handle. <strong>This link might not work on all browsers</strong> — you can reduce the length of the link by deselecting some facet options.",
-    errorTitle: "Generated link is too long",
-    errorBody: "The current length of the generated link is more than 15,800 characters. <strong>The server will refuse to handle requests that go over certain length limits</strong> — you can reduce the length of the link by deselecting some facet options.",
-    copyLinkToClipboard: "Copy link to clipboard"
-  }
+  `
 }
