@@ -10,7 +10,7 @@
     "URITemplate": "<BASE_URI>/letters/<LOCAL_ID>",
     "facetClass": ":Letter",
     "defaultConstraint": "<SUBJECT> :digital_edition <http://ldf.fi/coco/source/edelfelt> .",
-    "frontPageImage": "main_page/edelfelt.jpg",
+    "frontPageImage": "main_page/edelfelt-cropped.jpg",
     "searchMode": "faceted-search",
     "defaultActiveFacets": [
         "prefLabel"

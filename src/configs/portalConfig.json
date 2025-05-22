@@ -19,7 +19,8 @@
             "proxies",
             "metrics",
             "sources",
-            "ties"
+            "ties",
+            "digitaleditions"
         ]
     },
     "localeConfig": {

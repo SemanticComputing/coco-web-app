@@ -10,7 +10,7 @@
     "URITemplate": "<BASE_URI>/letters/<LOCAL_ID>",
     "facetClass": "snellman:Document",
     "defaultConstraint": "VALUES ?snellmanType { snellman:13218 snellman:13238 } . \n <SUBJECT> dc:type ?snellmanType .",
-    "frontPageImage": "main_page/snellman.jpg",
+    "frontPageImage": "main_page/snellman-cropped.jpg",
     "searchMode": "faceted-search",
     "defaultActiveFacets": [
         "prefLabel"

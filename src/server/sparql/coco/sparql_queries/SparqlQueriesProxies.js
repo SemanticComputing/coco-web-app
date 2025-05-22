@@ -71,8 +71,10 @@ export const proxyPropertiesInstancePage = `
     WHERE {
       ?sentletter__id :was_authored_by ?id ;
           a :Letter ;
-          skos:prefLabel ?sentletter__prefLabel .
-      BIND (CONCAT("/letters/page/", REPLACE(STR(?sentletter__id), "^.*\\\\/(.+)", "$1")) AS ?sentletter__dataProviderUrl)
+          skos:prefLabel ?sentletter__prefLabel ;
+          :digital_edition ?edition .
+      BIND(CONCAT(IF(?edition = <http://ldf.fi/schema/coco/not_in_editions>, "/letters/page/", "/digitaleditions/page/"), REPLACE(STR(?sentletter__id), "^.*\\\\/(.+)", "$1")) AS ?sentletter__dataProviderUrl)
+      # BIND(CONCAT("/letters/page/", REPLACE(STR(?sentletter__id), "^.*\\\\/(.+)", "$1")) AS ?sentletter__dataProviderUrl)
       OPTIONAL { ?sentletter__id :has_time-span/crm:P82a_begin_of_the_begin ?time }
     } ORDER BY COALESCE(STR(?time), CONCAT("9999", ?sentletter__prefLabel))
   }
@@ -96,8 +98,10 @@ export const proxyPropertiesInstancePage = `
     WHERE {
       ?mentioningletter__id :referenced_actor ?id ;
         a :Letter ;
-        skos:prefLabel ?mentioningletter__prefLabel .
-      BIND (CONCAT("/letters/page/", REPLACE(STR(?mentioningletter__id), "^.*\\\\/(.+)", "$1")) AS ?mentioningletter__dataProviderUrl)
+        skos:prefLabel ?mentioningletter__prefLabel ;
+        :digital_edition ?edition .
+      BIND(CONCAT(IF(?edition = <http://ldf.fi/schema/coco/not_in_editions>, "/letters/page/", "/digitaleditions/page/"), REPLACE(STR(?mentioningletter__id), "^.*\\\\/(.+)", "$1")) AS ?mentioningletter__dataProviderUrl)
+      # BIND(CONCAT("/letters/page/", REPLACE(STR(?mentioningletter__id), "^.*\\\\/(.+)", "$1")) AS ?mentioningletter__dataProviderUrl)
       OPTIONAL { ?mentioningletter__id :has_time-span/crm:P82a_begin_of_the_begin ?time }
     } ORDER BY COALESCE(STR(?time), CONCAT("9999", ?mentioningletter__prefLabel))
   }
@@ -106,8 +110,10 @@ export const proxyPropertiesInstancePage = `
     WHERE {
     ?receivedletter__id :was_addressed_to ?id ;
       a :Letter ;
-      skos:prefLabel ?receivedletter__prefLabel .
-    BIND (CONCAT("/letters/page/", REPLACE(STR(?receivedletter__id), "^.*\\\\/(.+)", "$1")) AS ?receivedletter__dataProviderUrl)
+      skos:prefLabel ?receivedletter__prefLabel ;
+      :digital_edition ?edition .
+    BIND(CONCAT(IF(?edition = <http://ldf.fi/schema/coco/not_in_editions>, "/letters/page/", "/digitaleditions/page/"), REPLACE(STR(?receivedletter__id), "^.*\\\\/(.+)", "$1")) AS ?receivedletter__dataProviderUrl)
+    # BIND(CONCAT("/letters/page/", REPLACE(STR(?receivedletter__id), "^.*\\\\/(.+)", "$1")) AS ?receivedletter__dataProviderUrl)
     OPTIONAL { ?receivedletter__id :has_time-span/crm:P82a_begin_of_the_begin ?time }
     } ORDER BY COALESCE(STR(?time), CONCAT("9999", ?receivedletter__prefLabel))
   }

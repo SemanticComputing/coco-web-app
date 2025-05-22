@@ -2727,6 +2727,208 @@ export default {
         }
       }
     },
+    digitaleditions: {
+      label: 'Digital editions',
+      facetResultsType: 'digital editions',
+      shortDescription: '',
+      longDescription: ``,
+      instancePage: {
+        label: 'Letter',
+        description: `
+          <h6 class="MuiTypography-root MuiTypography-h6">
+          Page tabs
+          </h6>
+          <ul class="MuiTypography-root MuiTypography-body1">
+            <li>
+              The <strong>TABLE</strong> view displays the results in a list.
+            </li>
+            <li>
+              The <strong>SOURCE DATA</strong> tab allows you to view the original record and the data fields processed from it.            Here you will also find a link to any external data sources. 
+            </li>
+            <li>
+              On the <strong>DIGITAL EDITION</strong> tab, you can view the letter on the site of the original producer of the data.         Note: this tab only works for data published on their own websites. 
+            </li>
+            <li>
+              <strong>EXPORT</strong> view the SPARQL query used to generate the results, open the table view in the YASGUI query           editor, and examine the letter data in the Saha editor.
+            </li>
+          </ul>
+        `
+      },
+      externalSite: {
+        loadingFailed: 'Embedding the content failed',
+        openInNewTab: 'Open original source directly in a new tab',
+        notAvailable: 'No external data source available'
+      },
+      properties: {
+        uri: {
+          label: 'URI',
+          description: `
+            Link to the information of the letter as linked open data
+          `
+        },
+        
+        prefLabel: {
+          label: 'Title',
+          description: `
+            The title of the individual letter
+          `    
+        },
+        language_facet: {
+          label: 'Language',
+          description: `
+            The writing language of the letter indicated in the source data. This information is available in about 34% of the total data (the Åbo Akademi Library collection is marked as Swedish if no other language information was available             ).
+          `
+        },
+        language: {
+          label: 'Language',
+          description: `
+            The writing language of the letter indicated in the source data.
+          `
+        },
+        subject: {
+          label: 'Subject',
+          description: `
+            The subject of the letter.
+          `
+        },
+        datasource: {
+          label: 'Data source',
+          description: `
+            The data source of the letter.
+          `
+        },
+        description: {
+          label: 'Description',
+          description: `
+            The description of the letter content.
+          `
+        },
+        comment: {
+          label: 'Comment',
+          description: `
+            Comment in the source data.
+          `
+        },
+        productionTimespan: {
+          label: 'Date',
+          description: `
+            The date of writing the letter or the beginning and end year of the correspondence. The 1840-1870 time limit gives             all correspondence that falls in those decades (including, for example, 1784-1840 and 1870-1893).
+          `
+        },
+        productionDate: {
+          label: 'Date',
+          description: `
+            The start and end year of correspondence or the timing of a single letter.
+          `
+        },
+        archival_organization: {
+          label: 'Archival organization',
+          description: `
+            Archival organization
+          `
+        },
+        data_provider: {
+          label: 'Cultural heritage organization',
+          description: `
+            Organisation to which the letter belongs 
+          `
+        },
+        digital_edition: {
+          label: 'Digital Edition',
+          description: `
+            Digital edition of which the letter is a part 
+          `
+        },
+        original_record: {
+          label: 'Original record',
+          description: ``
+        },
+        fonds: {
+          label: 'Fonds',
+          description: `
+            A collection or set of records to which a letter belongs. 
+          `
+        },
+        series: {
+          label: 'Series',
+          description: `
+            Series
+          `
+        },
+        source: {
+          label: 'Sender',
+          description: `
+          The name of the sender of the letter and the year of birth and death, if available. The name may be in the same                 format as in the source data or may have been retrieved from other sources.
+          `
+        },
+        target: {
+          label: 'Recipient',
+          description: `
+             The name of the recipient of the letter and the year of birth and death, if available. The name may be in the                same format as in the source data or may have been retrieved from other sources.
+          `
+        },
+        mentioned_person: {
+          label: 'Mentioned actors',
+          description: `
+          The (automatically identified) actors mentioned in the letter.
+          `
+        },
+        mentioned_place: {
+          label: 'Mentioned places',
+          description: `
+          The (automatically identified) places mentioned in the letter.
+          `
+        },
+        tie: {
+          label: 'Correspondence',
+          description: `
+          Correspondence to which a single letter belongs.
+          `
+        },
+        from: {
+          label: 'Place: Sending',
+          description: `
+          Place indicated on the letter. This information is only present in about 2% of the total data.
+          `
+        },
+        to: {
+          label: 'Place: Receiving',
+          description: `
+          The reception location indicated in the source data. This information is only present in about 0.07% of the total               data.
+          `
+        },
+        lettertype: {
+          label: 'Type of letter',
+          description: `
+          The list is based on the letter type ontology, which is compiled on the basis of the letter types indicated in the          source data. 
+          `
+        },
+        record_value: {
+          label: 'Extracted record data',
+          description: ``
+        },
+        created_letter: {
+          label: 'Related letters',
+          description: `
+            All letters mentioned in the same metadata record 
+          `
+        },
+        metadata: {
+          label: 'URI',
+          description: 'Uniform Resource Identifier'
+        },
+        external: {
+          label: 'External link',
+          description: `
+            Link to the letter published in one of the digital editions 
+          `
+        },
+        source_url: {
+          label: 'External data source',
+          description: ` `
+        }
+      }
+    }
   },
   statistics: `
   <h1 class=\"MuiTypography-root MuiTypography-h2 MuiTypography-gutterBottom\">Data Overview</h1>

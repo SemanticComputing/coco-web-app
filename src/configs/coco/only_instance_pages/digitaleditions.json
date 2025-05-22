@@ -1,0 +1,284 @@
+{
+    "id": "digitaleditions",
+    "endpoint": {
+        "url": "http://ldf.fi/coco-qlever/sparql",
+        "useAuth": true,
+        "prefixesFile": "SparqlQueriesPrefixes.js",
+        "triplestore": "qlever"
+    },
+    "sparqlQueriesFile": "SparqlQueriesLetters.js",
+    "baseURI": "http://ldf.fi/coco",
+    "URITemplate": "<BASE_URI>/letters/<LOCAL_ID>",
+    "facetClass": ":Letter",
+    "defaultInstancePageTab": "table",
+    "resultClasses": {
+        "digitaleditions": {
+            "paginatedResultsConfig": {
+                "tabID": 0,
+                "component": "ResultTable",
+                "tabPath": "table",
+                "tabIcon": "CalendarViewDay",
+                "propertiesQueryBlock": "letterPropertiesQLever",
+                "pagesize": 30,
+                "sortBy": null,
+                "sortDirection": null
+            },
+            "instanceConfig": {
+                "propertiesQueryBlock": "letterPropertiesInstancePageQLever",
+                "instancePageResultClasses": {
+                    "instancePageTable": {
+                        "tabID": 0,
+                        "component": "InstancePageTable",
+                        "tabPath": "table",
+                        "tabIcon": "MailOutline"
+                    },
+                    "actorInstancePageLetters": {
+                        "tabID": 1,
+                        "component": "InstancePageTable",
+                        "tabPath": "metadata",
+                        "tabIcon": "FormatListBulleted",
+                        "fetchResultsWhenMounted": true,
+                        "sparqlQuery": "letterMetadataInstancePageQueryQLever",
+                        "properties": [
+                            {
+                                "id": "record_value",
+                                "valueType": "string",
+                                "makeLink": false,
+                                "externalLink": false,
+                                "sortValues": true,
+                                "numberedList": false,
+                                "onlyOnInstancePage": true,
+                                "expandedOnInstancePage": true
+                            },
+                            {
+                                "id": "created_letter",
+                                "valueType": "object",
+                                "makeLink": true,
+                                "externalLink": false,
+                                "sortValues": false,
+                                "numberedList": false,
+                                "minWidth": 250,
+                                "onlyOnInstancePage": true,
+                                "expandedOnInstancePage": true
+                            },
+                            {
+                                "id": "original_record",
+                                "valueType": "string",
+                                "makeLink": false,
+                                "externalLink": false,
+                                "sortValues": false,
+                                "numberedList": false,
+                                "onlyOnInstancePage": true
+                            },
+                            {
+                                "id": "external",
+                                "valueType": "object",
+                                "makeLink": true,
+                                "externalLink": true,
+                                "sortValues": true,
+                                "numberedList": false,
+                                "minWidth": 250,
+                                "onlyOnInstancePage": true,
+                                "expandedOnInstancePage": true
+                            },
+                            {
+                                "id": "source_url",
+                                "valueType": "object",
+                                "makeLink": true,
+                                "externalLink": true,
+                                "sortValues": true,
+                                "numberedList": false,
+                                "minWidth": 250,
+                                "onlyOnInstancePage": true,
+                                "expandedOnInstancePage": true
+                            },
+                            {
+                                "id": "metadata",
+                                "valueType": "object",
+                                "makeLink": true,
+                                "externalLink": true,
+                                "sortValues": true,
+                                "numberedList": false,
+                                "onlyOnInstancePage": true
+                            }
+                        ]
+                    },
+                    "instancePageEmbed": {
+                        "tabID": 2,
+                        "component": "ExternalSite",
+                        "tabPath": "view",
+                        "tabIcon": "MailOutline",
+                        "fetchResultsWhenMounted": true,
+                        "sparqlQuery": "letterEmbedInstancePageQuery"
+                    },
+                    "instancePageExport": {
+                        "tabID": 3,
+                        "component": "Export",
+                        "tabPath": "export",
+                        "tabIcon": "CloudDownload",
+                        "pageType": "instancePage"
+                    }
+                }
+            }
+        }
+    },
+    "properties": [
+        {
+            "id": "prefLabel",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": false,
+            "sortValues": false,
+            "numberedList": false,
+            "minWidth": 250
+        },
+        {
+            "id": "source",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": false,
+            "minWidth": 250,
+            "expandedOnInstancePage": true
+        },
+        {
+            "id": "target",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": false,
+            "minWidth": 250,
+            "expandedOnInstancePage": true
+        },
+        {
+            "id": "productionDate",
+            "valueType": "object",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": false,
+            "minWidth": 100
+        },
+        {
+            "id": "tie",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": false,
+            "sortValues": false,
+            "numberedList": true,
+            "onlyOnInstancePage": true,
+            "expandedOnInstancePage": true
+        },
+        {
+            "id": "from",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": false,
+            "sortValues": true,
+            "onlyOnInstancePage": true,
+            "numberedList": false,
+            "minWidth": 200
+        },
+        {
+            "id": "to",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": false,
+            "sortValues": true,
+            "onlyOnInstancePage": true,
+            "numberedList": false,
+            "minWidth": 200
+        },
+        {
+            "id": "mentioned_person",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": false,
+            "sortValues": false,
+            "numberedList": true,
+            "onlyOnInstancePage": true,
+            "expandedOnInstancePage": true
+        },
+        {
+            "id": "mentioned_place",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": false,
+            "sortValues": false,
+            "numberedList": true,
+            "onlyOnInstancePage": true,
+            "expandedOnInstancePage": true
+        },
+        {
+            "id": "language",
+            "valueType": "object",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": false,
+            "minWidth": 150,
+            "onlyOnInstancePage": true,
+            "expandedOnInstancePage": true
+        },
+        {
+            "id": "lettertype",
+            "valueType": "string",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": false,
+            "minWidth": 150,
+            "onlyOnInstancePage": true,
+            "expandedOnInstancePage": true
+        },
+        {
+            "id": "data_provider",
+            "valueType": "object",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": false,
+            "minWidth": 250,
+            "numberedList": false
+        },
+        {
+            "id": "fonds",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": false,
+            "sortValues": false,
+            "minWidth": 250,
+            "numberedList": false
+        },
+        {
+            "id": "series",
+            "valueType": "string",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": false,
+            "numberedList": false,
+            "onlyOnInstancePage": true
+        },
+        {
+            "id": "comment",
+            "valueType": "string",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": false,
+            "minWidth": 250,
+            "onlyOnInstancePage": true,
+            "expandedOnInstancePage": true
+        },
+        {
+            "id": "uri",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": true,
+            "sortValues": true,
+            "numberedList": false,
+            "onlyOnInstancePage": true
+        }
+    ]
+}
