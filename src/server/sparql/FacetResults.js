@@ -6,6 +6,7 @@ import { generateConstraintsBlock } from './Filters'
 import {
   countQuery,
   facetResultSetQuery,
+  facetResultSetQueryQLever,
   instanceQuery
 } from './SparqlQueriesGeneral'
 
@@ -21,7 +22,6 @@ export const getPaginatedResults = ({
   dynamicLangTag,
 }) => {
   let orderBy = sortBy
-  let q = facetResultSetQuery
   const perspectiveConfig = backendSearchConfig[resultClass]
   const {
     endpoint,
@@ -31,6 +31,12 @@ export const getPaginatedResults = ({
     defaultConstraint = null,
     langTagSecondary = null
   } = perspectiveConfig
+  let q
+  if (endpoint.triplestore === 'qlever') {
+    q = facetResultSetQueryQLever
+  } else {
+    q = facetResultSetQuery
+  }
   const langTag = enableDynamicLanguageChange ? dynamicLangTag : perspectiveConfig.langTag || null
   const resultClassConfig = perspectiveConfig.resultClasses[resultClass]
   const {
@@ -42,7 +48,8 @@ export const getPaginatedResults = ({
   } = resultClassConfig.paginatedResultsConfig
   q = q.replaceAll('<RESULT_SET_PROPERTIES>', propertiesQueryBlock)
   if (endpoint.triplestore === 'qlever') {
-    q = q.replaceAll('<SUBQUERY>', `    {
+    q = q.replaceAll('<SUBQUERY>', `
+      {
       # score and literal are used only for Jena full text index
         SELECT DISTINCT ?id <SCORE> ?orderBy {
         <FILTER>
