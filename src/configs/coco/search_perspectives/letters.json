@@ -601,6 +601,21 @@
         },
         "prefLabel": {
             "sortByPattern": "{ SELECT ?id ?orderBy WHERE { VALUES ?facetClass { <FACET_CLASS> } ?id a ?facetClass ; skos:prefLabel ?orderBy }}"
+        },
+        "source": {
+            "sortByPattern": "{ SELECT ?id ?orderBy WHERE { VALUES ?facetClass { <FACET_CLASS> } ?id a ?facetClass ; portal:sender/skos:prefLabel ?orderBy }}"
+        },
+        "target": {
+            "sortByPattern": "{ SELECT ?id ?orderBy WHERE { VALUES ?facetClass { <FACET_CLASS> } ?id a ?facetClass ; portal:recipient/skos:prefLabel ?orderBy }}"
+        },
+        "data_provider": {
+            "sortByPattern": "{ SELECT ?id ?orderBy WHERE { VALUES ?facetClass { <FACET_CLASS> } ?id a ?facetClass ; :original_data_provider/skos:prefLabel ?orderBy }}"
+        },
+        "fonds": {
+            "sortByPattern": "{ SELECT ?id ?orderBy WHERE { VALUES ?facetClass { <FACET_CLASS> } ?id a ?facetClass ; :fonds/skos:prefLabel ?orderBy }}"
+        },
+        "productionDate": {
+            "sortByPattern": "{ SELECT ?id ?orderBy WHERE { VALUES ?facetClass { <FACET_CLASS> } ?id a ?facetClass ; :has_time-span/crm:P82a_begin_of_the_begin ?orderBy }}"
         }
     }
 }
