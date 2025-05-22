@@ -5,6 +5,7 @@ import Box from '@mui/material/Box'
 import aaltoLogo from '../../../img/logos/Aalto_SCI_EN_13_BLACK_2_cropped.png'
 import hyLogo from '../../../img/logos/university-of-helsinki-logo-transparent-black.png'
 import heldigLogo from '../../../img/logos/heldig-logo-transparent-black.png'
+import sksLogo from '../../../img/logos/sks-logo.png'
 
 /**
  * A component for creating a footer. The logos are imported inside this component.
@@ -98,6 +99,29 @@ const Footer = props => {
           component='img'
           src={heldigLogo}
           alt='Helsinki Centre for Digital Humanities logo'
+          sx={{
+            height: '100%'
+          }}
+        />
+      </Box>
+      <Box
+        component='a'
+        href='https://www.finlit.fi/en/'
+        target='_blank'
+        rel='noopener noreferrer'
+        sx={theme => ({
+          width: 118,
+          height: 30,
+          [theme.breakpoints.up(props.layoutConfig.reducedHeightBreakpoint)]: {
+            width: 130,
+            height: 33
+          }
+        })}
+      >
+        <Box
+          component='img'
+          src={sksLogo}
+          alt='Finnish Literature Society logo'
           sx={{
             height: '100%'
           }}
