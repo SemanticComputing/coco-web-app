@@ -4,6 +4,8 @@ import withStyles from '@mui/styles/withStyles';
 import Button from '@mui/material/Button'
 import Paper from '@mui/material/Paper'
 import { stateToUrl } from '../../helpers/helpers'
+import { Alert } from '@mui/material'
+import intl from 'react-intl-universal'
 
 const apiUrl = process.env.API_URL
 
@@ -14,7 +16,8 @@ const styles = theme => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    borderTop: '1px solid rgba(224, 224, 224, 1);'
+    borderTop: '1px solid rgba(224, 224, 224, 1);',
+    flexDirection: 'column'
   },
   link: {
     textDecoration: 'none'
@@ -24,6 +27,11 @@ const styles = theme => ({
   },
   rightIcon: {
     marginLeft: theme.spacing(1)
+  },
+  alert: {
+    margin: theme.spacing(1),
+    width: '75%',
+    boxSizing: 'border-box'
   }
 })
 
@@ -66,9 +74,11 @@ class ExportCSV extends React.Component {
 
   render = () => {
     const { classes } = this.props
+    const alertText = intl.getHTML(`perspectives.${this.props.facetClass}.csvDisclaimer`)
 
     return (
       <Paper square className={classes.root}>
+        {alertText ? <Alert severity='info' className={classes.alert}>{alertText}</Alert> : ''}
         <a
           className={classes.link}
           href={this.state.downloadLink}

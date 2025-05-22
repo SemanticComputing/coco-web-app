@@ -614,6 +614,7 @@ export default {
         openInNewTab: 'Open original source directly in a new tab',
         notAvailable: 'No external data source available'
       },
+      csvDisclaimer: 'The exported results for the CSV file are <strong>limited to the first 50,000 rows returned by the endpoint</strong>. If your current selections in the perspective lead to more than 50,000 instances in the results (current number of results is shown at the top of the left-hand side menu), some data will be missing in the exported CSV file. The encoding of the results in the CSV file is UTF-8.',
       properties: {
         uri: {
           label: 'URI',
