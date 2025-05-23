@@ -71,7 +71,7 @@
             "externalAboutPage": true,
             "reducedHeight": 56,
             "defaultHeight": 76,
-            "mobileMenuBreakpoint": 1360,
+            "mobileMenuBreakpoint": 1460,
             "infoDropdown": [
                 {
                     "id": "aboutTheProject",
