@@ -8,8 +8,8 @@ import fig_shared_actors from '../../img/data_figures/shared_actors.png'
 export default {
   languageLabel: 'English',
   html: {
-    title: 'LetterSampo Finland (1809 - 1917)',
-    description: 'CoCo can be used for analysing epistolary data in different data repositories in different countries, or for aggegated international datasets, such as Republic of Letters Data.'
+    title: 'LetterSampo Finland',
+    description: 'This is a dataset and semantic portal which aggregates nineteenth-century epistolary metadata from major Finnish cultural heritage organisations. The dataset comprises information on over 1,200,000 letters and over 100,000 individuals and organisations. The data is available as linked open data.'
   },
   appTitle: {
     short: '',
@@ -265,11 +265,14 @@ export default {
       longDescription: `
         <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
          
-        From this perspective, you can search for information about the authors and recipients of the letters, the records            creators and, for certain materials, individuals mentioned in the letters themselves.
+        From this perspective, you can search for information about the authors and recipients of the letters, the records            creators and, for certain materials, individuals mentioned in the letters themselves.<br>
 
-        Different organisations and collections hold correspondence from the same individuals. These actors have been                 aggregated computationally, but there are still both wrongly aggregated and unaggregated actors in the data.                  Additionally, almost all letter collections contain letters from unidentified individuals, and the large number of            these is typical of mass metadata produced from letter collections.
+        Different organisations and collections hold correspondence from the same individuals. These actors have been                 aggregated computationally, but there are still both wrongly aggregated and unaggregated actors in the data.                  Additionally, almost all letter collections contain letters from unidentified individuals, and the large number of            these is typical of mass metadata produced from letter collections.<br>
 
-        You can browse the metadata using the filters on the left (above the results in the mobile version) or the facets. As         well as searching by name, you can limit your search by the gender or profession of the actor. Please note that               occupation information is only provided for individuals for whom additional information is available from external            data sources. The 'External data source' facet shows the proportion of actors linked to external data sources.
+        You can browse the metadata using the filters on the left (above the results in the mobile version) or the facets. As         well as searching by name, you can limit your search by the gender or profession of the actor. Please note that               occupation information is only provided for individuals for whom additional information is available from external            data sources. The 'External data source' facet shows the proportion of actors linked to external data sources.<br>
+        
+        Much of the data is generated through computation. Erroneous or repetitive records may be present due to errors in             the source data or the processing.<br>
+        
         </p>
         <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
           See <a target="_" href="https://docs.google.com/document/d/e/2PACX-1vRPPYcK4VLKdh_uVbNMZ8diOe0MZhvVjisvVpDCzUn5hMU8SAKfG5QF8iwS6grYpXB41PfzDkT0tttg/pub">instructions</a> for using the
@@ -367,7 +370,7 @@ export default {
         },
         type: {
           label: 'Actor type',
-          description: 'The actors are divided into individuals, organisations, unknowns and families. Unknown actors are mainly persons whose identity has not been identified in the cataloguing process. The recipients or senders of letters from unknown actors can be accessed by clicking on the Unknown heading and, on the next instance page, a URL link showing the correspondence data as linked open data.'
+          description: 'The actors are divided into individuals, organisations, unindentified and families. Unidentified actors are mainly persons whose identity has not been identified in the cataloguing process. The recipients or senders of letters from unknown actors can be accessed by clicking on the Unknown heading and, on the next instance page, a URL link showing the correspondence data as linked open data.'
         },
         maxScore: {
           label: 'Text search score',
@@ -385,57 +388,56 @@ export default {
         },
         birthPlace: {
           label: 'Place of Birth',
-          description: `Place of Birth. Notice that the other types of actors do not have this value.`
+          description: `Place of birth of the persons concerned. The information is derived from external data sources. The               superscript indicates the data sources from which the information was obtained.`
         },
         floruitTimespan: {
           label: 'Floruit',
           description: `
-          Floruit, e.g. time of flourishing, time of activity.
+          Starting and ending years of correspondence (abbreviation fl.) 
           `
         },
         floruit: {
           label: 'Floruit',
           description: `
-          Floruit, e.g. time of flourishing, time of activity.
+          Starting and ending years of correspondence (abbreviation fl.)
           `
         },
         deathDateTimespan: {
           label: 'Death time',
-          description: `Death time of a person. Notice that the other types of actors do not have this value.`
+          description: `The date of death of individuals that is mainly derived from external data sources, but some                      information is derived from the source data itself.`
         },
         deathPlace: {
           label: 'Place of Death',
-          description: `Place of Death. Notice that the other types of actors do not have this value.`
+          description: `Place of death of the persons concerned. The information is derived from external data sources. The               superscript indicates the data sources from which the information was obtained.`
         },
         altLabel: {
           label: 'Alternative names',
-          description: `Alternative names of the actor.`
+          description: `Name variants in source data and external data sources. A superscript indicates the source from which the information was obtained.`
         },
         description: {
           label: 'Description',
-          description: `Short description of the actor. The descriptions might be in different languages.`
+          description: `Information obtained from comments provided by digital editions included in the data. The language of the descriptions varies. A superscript indicates the source from which the information was obtained`
         },
         occupation: {
           label: 'Occupation',
-          description: `Occupation of a person. Notice that the other types of actors do not have this value.`
+          description: `Occupational data is only provided for actors for whom information is available in external sources               (Wikidata, Biografiasampo, Akatemiasampo, etc.). A single actor may have several occupations. Please note, however             , that the visualisation shows the occupational coverage of the whole dataset and the co-occurrence of occupations             , not the number of actors associated with an occupation.`
         },
         external: {
           label: 'External databases',
           description: `
-            Links to External databases.
+            An external source of information that has been used to enrich the actor information in the dataset. The 'unknown'             group contains all actors for whom no information is available from external data sources.
           `
         },
         relative: {
           label: 'Relatives',
           description: `Family relatives of a person. 
-          Notice that this data has been extracted from external databased like BiographySampo, AcademySampo and Wikidata. 
-          Only relations between people in the CoCo data are shown, so there might be missing relations or errors.`
+          
+          Data retrieved from external data sources like BiographySampo, AcademySampo and Wikidata, and only for                          relations included in the dataset.`
         },
         acquaintance: {
           label: 'Personal relations',
           description: `Personal relations to other people. 
-          Notice that this data has been extracted from external databased like BiographySampo, AcademySampo, Wikidata, and ULAN.
-          Only relations between people in the CoCo data are shown, so there might be missing relations or errors.`
+          Data retrieved from external data sources like BiographySampo, AcademySampo, Wikidata, and ULAN, and only for                   relations included in the dataset.`
         },
         rel: {
           label: 'Related actors',
@@ -446,17 +448,13 @@ export default {
         similar: {
           label: 'Actors with similar names',
           description: `
-            Actors with names that are close to the name of the current actor. 
-            
-            NB: Linking the letter metadata to the actors is an automatic process and there might appear errors in the actor recognition.
+            A list of actors with a similar name but not automatically grouped into one or more actors. Linking the                       letter metadata to the actors is an automatic process, so errors in actor recognition may occur.
           `
         },
         metrics: {
           label: 'Network metrics',
           description: `
-            Network metrics, e.g. centrality measures of the actor in the letter network. 
-            Each line has the label of the measure, its value, and the rank at the end in the parenthesis. 
-            (rank - 1 = the number of people who have a higher measure value).
+            The degree of centrality of the actor in the letter network. Each row corresponds to one centrality metric and                shows the centrality of the actor and, in brackets, their position in the overall network (# = number of actors               with higher centrality).
           `
         },
         numLetters: {
@@ -468,14 +466,13 @@ export default {
         numCorrespondences: {
           label: 'Number of correspondences',
           description: `
-          Number of distinct correspondences
+         This indicates how many actors the actor in question has been in contact with.
           `
         },
         tie: {
           label: 'Correspondence',
           description: `
-            Other actors who have been in correspondence with this actor. 
-            The number of mutually sent letters is in parenthesis at end of the label.
+            The number in brackets indicates the total number of letters exchanged between persons or organisations
           `
         },
         numSent: {
@@ -491,7 +488,7 @@ export default {
         digital_edition: {
           label: 'Digital Edition',
           description: `
-            Digital Edition
+            Search for actors mentioned in digital editions
           `
         },
         numReceived: {
@@ -513,8 +510,16 @@ export default {
         data_provider: {
           label: 'Cultural heritage organization',
           description: `
-            Cultural heritage organization
+            The organization holding the correspondence of the actor.
           `
+        },
+        data_provider_facet: {
+          label: 'Cultural heritage organization',
+          description: `
+            Limit your search to the collections of a specific archive, library or museum. 
+          `
+          
+          
         },
         in_fonds: {
           label: 'Fonds',
@@ -534,7 +539,7 @@ export default {
         fonds: {
           label: 'Fonds',
           description: `
-            Fonds containing letters sent by this actor.
+            All letter collections in the dataset .
           `
         },
         datasource: {
@@ -557,6 +562,15 @@ export default {
       shortDescription: '',
       longDescription: `
       <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
+      
+      This perspective provides an overview of the correspondence deposited in the collections and the volume of correspondence. If you are interested in a particular actor, you should start with the Persons and Organisations perspective. <br>
+
+        The Letters perspective can sometimes be slow, especially if you open several facets at once for searching. If you see         the message "Error. One of the backend services is currently unavailable. Please try again later", you should leave the search open and refresh the page.<br>
+        
+        You can browse metadata using the filters or facets on the left (above the results in the mobile version). For example         , selecting a list of recipients or senders from the facets will list collections in order of size. You can also limit             your search to collections from different organisations or by different attributes, such as the gender of the             letter writer or sender or the language of the letters. Please note that only a small proportion of the material          contains information about, for example, the language of the letters or where they were written.<br>
+        
+            Much of the data is generated through computation. Erroneous or repetitive records may be present due to errors in             the source data or the processing.<br>
+
         See <a target="_" href="https://docs.google.com/document/d/e/2PACX-1vRPPYcK4VLKdh_uVbNMZ8diOe0MZhvVjisvVpDCzUn5hMU8SAKfG5QF8iwS6grYpXB41PfzDkT0tttg/pub">instructions</a> for using the
         filters. The result view can be selected using the tabs:
       </p>
@@ -768,7 +782,7 @@ export default {
 
         Female & male: letters often sent by married couples or siblings.
 
-        Not in use: family, organisation, association, society, company, magazine or other grouping or association.
+        Not applicable: family, organisation, association, society, company, magazine or other grouping or association.
           `
         },
         target_facet: {
@@ -811,7 +825,7 @@ export default {
 
         Female & male: letters often sent by married couples or siblings.
 
-        Not in use: family, organisation, association, society, company, magazine or other grouping or association.
+        Not applicable: family, organisation, association, society, company, magazine or other grouping or association.
           `
         },
         mentioned_person: {
@@ -862,7 +876,7 @@ export default {
         },
         metadata: {
           label: 'URI',
-          description: 'Uniform Resource Identifier'
+          description: 'Link to the information of the letter as linked open data'
         },
         external: {
           label: 'External link',
@@ -882,7 +896,13 @@ export default {
       shortDescription: '',
       longDescription: `
       <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-        Use this perspective to access the archival organizations and fonds in the dataset.
+      
+      This perspective enables you to browse the portal's material organised by organization and letter collection. You can also view information about the records creators, such as their gender distribution across the whole dataset and by organization.<br>
+        
+        You can browse metadata using the filters or facets on the left (above the results in the mobile version).<br>
+            
+            Much of the data is generated through computation. Erroneous or repetitive records may be present due to errors in             the source data or the processing.<br>
+        
       </p>
       <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
         See <a target="_" href="https://docs.google.com/document/d/e/2PACX-1vRPPYcK4VLKdh_uVbNMZ8diOe0MZhvVjisvVpDCzUn5hMU8SAKfG5QF8iwS6grYpXB41PfzDkT0tttg/pub">instructions</a> for using the
@@ -890,17 +910,22 @@ export default {
       </p>
       <ul class="MuiTypography-root MuiTypography-body1">
       <li>
-        <strong>TABLE</STRONG> view includes all archival organizations and fonds in the CoCo data. 
-        One table row is equivalent to one organization.
+       The <strong>TABLE</STRONG> provides a list of all the letter collections. Each row represents one collection. Selecting the name of a collection displays more detailed information about it.
       </li>
       <li>
-        <strong>MAP</strong> is a map visualization showing the known locations of sending letters.
+        The <strong>BY YEAR</strong> tab displays the annual number of letters held in collections in the form of a line graph. Please note that not all letters in the dataset are attached to a collection. Use the zoom tools in the top right corner to view more detailed periods on the graph.
       </li>
       <li>
-        <strong>BY YEAR</strong> includes a chart showing the yearly distribution of the letters.
+        <strong>MAP</strong> visualises the locations (places of sending and receiving) of letters attached to collections.
       </li>
       <li>
-    <strong>EXPORT</strong> view the SPARQL query used to generate the results, open the table view in the YASGUI query           editor, and examine the letter data in the Saha editor.
+        The <strong>CSV</strong> tab allows you to download the results in tabular form to your own computer.
+      </li>
+      <li>
+       From the <strong>SPARQL</strong> query tab, you can follow the link to the Yasgui service and see the query used to retrieve the results from the database.
+      </li>
+      <li>
+        The <strong>SHARE</strong> tab provides a permanent link to the search you have made. You can use it to find the search later and to refer to the material.
       </li>
     </ul>
       `,
@@ -912,10 +937,10 @@ export default {
           </h6>
           <ul class="MuiTypography-root MuiTypography-body1">
             <li>
-              <strong>TABLE</strong> show the available information about the archival organization in the database.
+              The <strong>TABLE</strong> view displays the results in a list.
             </li>
             <li>
-              <strong>EXPORT</strong> view the SPARQL query used to generate the result table view into YASGUI query editor               and examine the letter data in the Saha editor.
+              <strong>EXPORT</strong> view the SPARQL query used to generate the results, open the table view in the YASGUI query editor, and examine the letter data in the Saha editor.
             </li>
           </ul>
           <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph"></p>
@@ -924,17 +949,25 @@ export default {
       properties: {
         uri: {
           label: 'URI',
-          description: 'Uniform Resource Identifier'
+          description: 'Link to the information of fonds and collections as linked open data'
         },
         prefLabel: {
           label: 'Fonds',
           description: 'The label of the Fonds'
         },
+        data_provider_facet: {
+          label: 'Cultural heritage organization',
+          description: `
+            Limit your search to the collections of a specific archive, library or museum. 
+          `
+          
+        },
         data_provider: {
           label: 'Cultural heritage organization',
           description: `
-            Cultural heritage organization
+            Organization holding the letter collection
           `
+          
         },
         description: {
           label: 'Description',
@@ -951,7 +984,7 @@ export default {
         fonds: {
           label: 'Fonds',
           description: `
-            Fonds
+            List of letter collections included in the dataset
           `
         },
         archival_organization: {
@@ -981,7 +1014,7 @@ export default {
         creator: {
           label: 'Records creator',
           description: `
-            Records creator of the fonds.
+            List of records creators mentioned in the source data. The number in brackets indicates the number of collections             in which the actor in question is a records creator.
           `
         },
         creator_type: {
@@ -993,19 +1026,29 @@ export default {
         creator_gender: {
           label: 'Records creator, gender',
           description: `
-            Gender of the records creator.
+            The gender of the actors has been automatically identified and there are still errors in the categorisation. 
+
+        Male: persons identified as male on the basis of their first name. If only the initial or initials of the first name      are known, the person is counted as male. This is based on a manually screened sample. 
+
+        Female: persons identified as female on the basis of their first name. 
+
+        Unknown: an actor whose gender is not identified at all (surname only; first name rare; in the source data 'unknown',         'unidentified', 'okänd', etc.). 
+
+        Female & male: for example married couples or siblings.
+
+        Not applicable: family, organisation, association, society, company, magazine or other grouping or association.
           `
         },
         creator_occupation: {
           label: 'Records creator, occupation',
           description: `
-            Occupation of the records creator.
+            Occupational data is only provided for actors for whom information is available in external sources                           (Wikidata, Biografiasampo, Akatemiasampo, etc.). A single actor may have several occupations. Please note, however             , that the visualisation shows the occupational coverage of the whole dataset and the co-occurrence of occupations             , not the number of actors associated with an occupation.
           `
         },
         creator_external: {
           label: 'Records creator, external database',
           description: `
-            Records creators in  external databases.
+            An external source of information that has been used to enrich the actor information in the dataset. The 'unknown'         group contains all actors for whom no information is available from external data sources.
           `
         },
         related: {
@@ -1040,32 +1083,15 @@ export default {
       shortDescription: '',
       longDescription: `
       <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-        Use this perspective to access the archival organizations and fonds in the dataset.
+      In this view, you will find a summary of the organizations that have provided descriptive information on correspondence         .<br>         
+      
+      In the Dataset Description document, you will find a description of the organization's collection profile and their             letter collections, written by each organization itself. It also includes information produced by                             researchers at Aalto University and the University of Helsinki on the formats in which the material was obtained and              how it was processed and transformed into linked open data.
       </p>
-      <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-        See <a target="_" href="https://docs.google.com/document/d/e/2PACX-1vRPPYcK4VLKdh_uVbNMZ8diOe0MZhvVjisvVpDCzUn5hMU8SAKfG5QF8iwS6grYpXB41PfzDkT0tttg/pub">instructions</a> for using the
-        filters. The result view can be selected using the tabs:
-      </p>
-      <ul class="MuiTypography-root MuiTypography-body1">
-      <li>
-        <strong>TABLE</STRONG> view includes all archival organizations and fonds in the CoCo data. 
-        One table row is equivalent to one organization.
-      </li>
-      <li>
-        <strong>MAP</strong> is a map visualization showing the known locations of sending letters.
-      </li>
-      <li>
-        <strong>BY YEAR</strong> includes a chart showing the yearly distribution of the letters.
-      </li>
-      <li>
-        <strong>EXPORT</strong> view the SPARQL query used to generate the result table view into YASGUI query editor and examine the letter data in the Saha editor.
-      </li>
-    </ul>
       `,
       properties: {
         uri: {
           label: 'URI',
-          description: 'Uniform Resource Identifier'
+          description: 'Link to the information of the contributor as linked open data'
         },
         prefLabel: {
           label: 'Contributor',
@@ -1126,14 +1152,14 @@ export default {
       facetResultsType: 'Places',
       shortDescription: '',
       longDescription: `
+      
       <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-      Use this perspective to access the place ontology related to the letters and actors in the dataset.
-      Places in the CoCo data consists of countries, counties, towns, villages, and town neighborhoods,
-      as well as individual buildings, e.g. schools, churches, hospitals etc.
-      The data (labels, coordinates, hierarchy) is converted from data sources like Wikidata and YSO.
-      </br>
-      Notice that this perspective view only the places with sent letters or referenced in the letter contents.
-      In addition to that there are places required to, e.g., build the geographical hiearchy.
+      This view allows you to view the geographic information in the data. The data are based on place ontology, which                includes countries, provinces, counties, towns, districts and villages, but also buildings such as churches, hospitals         and schools.<br>
+      The data (titles, coordinates, geographical hierarchy) are based on external sources such as WikipediA anD YSO.<br> 
+      
+      Please note that the data concern only a small part of the total data in the LetterSampo and include the places where           letters were sent and, in some rare cases, received, and, in the case of digital editions, the places                     mentioned in the letters. The data also include places required for the construction of a geographical hierarchy.<br>
+      
+      Much of the data is generated through computation. Erroneous or repetitive records may be present due to errors in             the source data or the processing.<br>
     </p>
     <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
       See <a target="_" href="https://docs.google.com/document/d/e/2PACX-1vRPPYcK4VLKdh_uVbNMZ8diOe0MZhvVjisvVpDCzUn5hMU8SAKfG5QF8iwS6grYpXB41PfzDkT0tttg/pub">instructions</a> for using the
@@ -1141,13 +1167,16 @@ export default {
     </p>
     <ul class="MuiTypography-root MuiTypography-body1">
       <li>
-        <strong>TABLE</STRONG> view includes all places in
-        the CoCo data. One table row is equivalent to one place.
-        Clicking on the place name opens a instance page providing more information about the chosen place. 
-        Clicking on the place image opens a larger version of it.
+        The <strong>TABLE</STRONG> lists all the locations of the data. One row of the table contains the geographical                information related to a place and the total number of "correspondence events" (number of letters sent and mentions of             that place in the letters) that took place there. Selecting a place takes you to a more detailed instance page for             that place.
+      </li>
+     <li>
+        The <strong>CSV</strong> tab allows you to download the results in tabular form to your own computer.
       </li>
       <li>
-        <strong>EXPORT</strong> view the SPARQL query used to generate the result table view into YASGUI query editor and examine the letter data in the Saha editor.
+       From the <strong>SPARQL</strong> query tab, you can follow the link to the Yasgui service and see the query used to retrieve the results from the database.
+      </li>
+      <li>
+        The <strong>SHARE</strong> tab provides a permanent link to the search you have made. You can use it to find the search later and to refer to the material.
       </li>
     </ul>
       `,
@@ -1174,7 +1203,7 @@ export default {
       properties: {
         uri: {
           label: 'URI',
-          description: 'Uniform Resource Identifier'
+          description: 'Link to the information of the place as linked open data'
         },
         prefLabel: {
           label: 'Name',
@@ -1301,7 +1330,7 @@ export default {
           </h6>
           <ul class="MuiTypography-root MuiTypography-body1">
             <li>
-              <strong>TABLE</STRONG> view displays detailed information about the correspondence between two specific actors.
+              The <strong>TABLE</STRONG> view displays detailed information about the correspondence between two specific actors.
             </li>
             <li>
               <strong>TIMELINE OF LETTERS</strong> visualises the annual volume of correspondence between correspondents as a                 line graph. The zoom tools in the top right corner allow you to view more detailed periods on the graph.
