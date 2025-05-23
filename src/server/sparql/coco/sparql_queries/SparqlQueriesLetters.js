@@ -575,7 +575,13 @@ export const peopleRelatedTo = `
 `
 
 export const csvQueryLetters = `
-  SELECT DISTINCT ?id ?label ?sender ?sender_id ?recipient ?recipient_id ?timespan ?datasource ?fonds
+  SELECT DISTINCT ?id ?label  
+  (GROUP_CONCAT(?sender_id; separator="|") AS ?sender_ids)
+  (GROUP_CONCAT(?sender; separator="|") AS ?senders)
+  (GROUP_CONCAT(?recipient_id; separator="|") AS ?recipient_ids)
+  (GROUP_CONCAT(?recipient; separator="|") AS ?recipients)
+  (GROUP_CONCAT(?timespan; separator="|") AS ?timespans)
+  ?datasource ?fonds
   WHERE {
     <FILTER>
 
@@ -602,9 +608,11 @@ export const csvQueryLetters = `
     }
     OPTIONAL
     { 
-      ?id dct:source/skos:prefLabel ?datasource 
+      ?id dct:source/skos:prefLabel ?datasource .
+      FILTER(LANG(?datasource)='en')
     }
   }
+  GROUP BY ?id ?label ?datasource ?fonds
   # ORDER BY ?label
   LIMIT 50000`
 
