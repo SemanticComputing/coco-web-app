@@ -79,7 +79,7 @@ export default {
     searchBarPlaceHolder: 'Search metadata',
     searchBarPlaceHolderShort: 'Search',
     instructions: 'instructions',
-    instructionsUrl: 'https://docs.google.com/document/d/e/2PACX-1vRPPYcK4VLKdh_uVbNMZ8diOe0MZhvVjisvVpDCzUn5hMU8SAKfG5QF8iwS6grYpXB41PfzDkT0tttg/pub',
+    instructionsUrl: 'https://docs.google.com/document/d/e/2PACX-1vSe9eS4HrlH3iHZtXEFVoKAzUEYiURdLwWQUad3wBprr2fGrI3P2eiH5S2gOu1XvZlCXJ_HY0b_mttW/pub',
     editionPerspectives: 'Digital editions'
 
   },
@@ -275,7 +275,7 @@ export default {
         
         </p>
         <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-          See <a target="_" href="https://docs.google.com/document/d/e/2PACX-1vRPPYcK4VLKdh_uVbNMZ8diOe0MZhvVjisvVpDCzUn5hMU8SAKfG5QF8iwS6grYpXB41PfzDkT0tttg/pub">instructions</a> for using the
+          See <a target="_" href="https://docs.google.com/document/d/e/2PACX-1vSe9eS4HrlH3iHZtXEFVoKAzUEYiURdLwWQUad3wBprr2fGrI3P2eiH5S2gOu1XvZlCXJ_HY0b_mttW/pub">instructions</a> for using the
           filters. 
           </p>
           The result view can be selected using the tabs:
@@ -571,7 +571,7 @@ export default {
         
             Much of the data is generated through computation. Erroneous or repetitive records may be present due to errors in             the source data or the processing.<br>
 
-        See <a target="_" href="https://docs.google.com/document/d/e/2PACX-1vRPPYcK4VLKdh_uVbNMZ8diOe0MZhvVjisvVpDCzUn5hMU8SAKfG5QF8iwS6grYpXB41PfzDkT0tttg/pub">instructions</a> for using the
+        See <a target="_" href="https://docs.google.com/document/d/e/2PACX-1vSe9eS4HrlH3iHZtXEFVoKAzUEYiURdLwWQUad3wBprr2fGrI3P2eiH5S2gOu1XvZlCXJ_HY0b_mttW/pub">instructions</a> for using the
         filters. The result view can be selected using the tabs:
       </p>
       <ul class="MuiTypography-root MuiTypography-body1">
@@ -905,7 +905,7 @@ export default {
         
       </p>
       <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-        See <a target="_" href="https://docs.google.com/document/d/e/2PACX-1vRPPYcK4VLKdh_uVbNMZ8diOe0MZhvVjisvVpDCzUn5hMU8SAKfG5QF8iwS6grYpXB41PfzDkT0tttg/pub">instructions</a> for using the
+        See <a target="_" href="https://docs.google.com/document/d/e/2PACX-1vSe9eS4HrlH3iHZtXEFVoKAzUEYiURdLwWQUad3wBprr2fGrI3P2eiH5S2gOu1XvZlCXJ_HY0b_mttW/pub">instructions</a> for using the
         filters. The result view can be selected using the tabs:
       </p>
       <ul class="MuiTypography-root MuiTypography-body1">
@@ -1162,7 +1162,7 @@ export default {
       Much of the data is generated through computation. Erroneous or repetitive records may be present due to errors in             the source data or the processing.<br>
     </p>
     <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-      See <a target="_" href="https://docs.google.com/document/d/e/2PACX-1vRPPYcK4VLKdh_uVbNMZ8diOe0MZhvVjisvVpDCzUn5hMU8SAKfG5QF8iwS6grYpXB41PfzDkT0tttg/pub">instructions</a> for using the
+      See <a target="_" href="https://docs.google.com/document/d/e/2PACX-1vSe9eS4HrlH3iHZtXEFVoKAzUEYiURdLwWQUad3wBprr2fGrI3P2eiH5S2gOu1XvZlCXJ_HY0b_mttW/pub">instructions</a> for using the
       filters. The result view can be selected using the tabs:
     </p>
     <ul class="MuiTypography-root MuiTypography-body1">
@@ -1768,7 +1768,7 @@ export default {
         Use this perspective to access the J. V. Snellman letter data, source <a target="_" href="https://snellman.kootutteokset.fi/">J. V. Snellman - kootut teokset</a>.
       </p>
       <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-        See <a target="_" href="https://docs.google.com/document/d/e/2PACX-1vRPPYcK4VLKdh_uVbNMZ8diOe0MZhvVjisvVpDCzUn5hMU8SAKfG5QF8iwS6grYpXB41PfzDkT0tttg/pub">instructions</a> for using the
+        See <a target="_" href="https://docs.google.com/document/d/e/2PACX-1vSe9eS4HrlH3iHZtXEFVoKAzUEYiURdLwWQUad3wBprr2fGrI3P2eiH5S2gOu1XvZlCXJ_HY0b_mttW/pub">instructions</a> for using the
         filters. The result view can be selected using the tabs:
       </p>
       <ul class="MuiTypography-root MuiTypography-body1">
@@ -2066,7 +2066,7 @@ export default {
         Use this perspective to access the Zacharias Topelius letter data, source <a target="_" href="https://topelius.sls.fi/fi/">Zacharias Topelius Skrifter</a>.
       </p>
       <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-        See <a target="_" href="https://docs.google.com/document/d/e/2PACX-1vRPPYcK4VLKdh_uVbNMZ8diOe0MZhvVjisvVpDCzUn5hMU8SAKfG5QF8iwS6grYpXB41PfzDkT0tttg/pub">instructions</a> for using the
+        See <a target="_" href="https://docs.google.com/document/d/e/2PACX-1vSe9eS4HrlH3iHZtXEFVoKAzUEYiURdLwWQUad3wBprr2fGrI3P2eiH5S2gOu1XvZlCXJ_HY0b_mttW/pub">instructions</a> for using the
         filters. The result view can be selected using the tabs:
       </p>
       <ul class="MuiTypography-root MuiTypography-body1">
@@ -2298,7 +2298,7 @@ export default {
         Use this perspective to access the Elias Lönnrot letter data, source <a target="_" href="http://lonnrot.finlit.fi/omeka/">Elias Lönnrotin kirjeenvaihto</a>.
       </p>
       <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-        See <a target="_" href="https://docs.google.com/document/d/e/2PACX-1vRPPYcK4VLKdh_uVbNMZ8diOe0MZhvVjisvVpDCzUn5hMU8SAKfG5QF8iwS6grYpXB41PfzDkT0tttg/pub">instructions</a> for using the
+        See <a target="_" href="https://docs.google.com/document/d/e/2PACX-1vSe9eS4HrlH3iHZtXEFVoKAzUEYiURdLwWQUad3wBprr2fGrI3P2eiH5S2gOu1XvZlCXJ_HY0b_mttW/pub">instructions</a> for using the
         filters. The result view can be selected using the tabs:
       </p>
       <ul class="MuiTypography-root MuiTypography-body1">
@@ -2532,7 +2532,7 @@ export default {
         Use this perspective to access the Albert Edelfelt letter data, source <a target="_" href="https://edelfelt.fi/">Albert Edelfelts brev</a>.
       </p>
       <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-        See <a target="_" href="https://docs.google.com/document/d/e/2PACX-1vRPPYcK4VLKdh_uVbNMZ8diOe0MZhvVjisvVpDCzUn5hMU8SAKfG5QF8iwS6grYpXB41PfzDkT0tttg/pub">instructions</a> for using the
+        See <a target="_" href="https://docs.google.com/document/d/e/2PACX-1vSe9eS4HrlH3iHZtXEFVoKAzUEYiURdLwWQUad3wBprr2fGrI3P2eiH5S2gOu1XvZlCXJ_HY0b_mttW/pub">instructions</a> for using the
         filters. The result view can be selected using the tabs:
       </p>
       <ul class="MuiTypography-root MuiTypography-body1">
