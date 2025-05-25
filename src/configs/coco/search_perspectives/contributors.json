@@ -76,14 +76,14 @@
             "hideHeader": false
         },
         {
-            "id": "dataset_description",
-            "valueType": "string",
-            "makeLink": false,
-            "externalLink": false,
-            "sortValues": false,
+            "id": "external",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": true,
+            "sortValues": true,
             "numberedList": false,
-            "minWidth": 70,
-            "priority": 5
+            "minWidth": 140,
+            "priority": 8
         },
         {
             "id": "location",
@@ -95,14 +95,14 @@
             "priority": 8
         },
         {
-            "id": "external",
-            "valueType": "object",
-            "makeLink": true,
-            "externalLink": true,
-            "sortValues": true,
+            "id": "dataset_description",
+            "valueType": "string",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": false,
             "numberedList": false,
-            "minWidth": 140,
-            "priority": 8
+            "minWidth": 70,
+            "priority": 5
         }
     ],
     "facets": {
