@@ -35,12 +35,12 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(1.5),
     boxSizing: 'border-box',
     color: '#fff',
-    background: `linear-gradient( rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4) ), url(${props.perspective.frontPageImage})`,
+    background: `linear-gradient( rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15) ), url(${props.perspective.frontPageImage})`,
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     '&:hover': {
-      background: `linear-gradient( rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8) ), url(${props.perspective.frontPageImage})`,
+      background: `linear-gradient( rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6) ), url(${props.perspective.frontPageImage})`,
       backgroundRepeat: 'no-repeat',
       backgroundSize: 'cover',
       backgroundPosition: 'center'
@@ -88,7 +88,7 @@ const MainCard = props => {
             gutterBottom
             variant={cardHeadingVariant}
             component='h2'
-            sx={{ color: '#fff' }}
+            sx={{ color: '#fff', textShadow: 'rgb(0, 0, 0) 0 0 5px' }}
           >
             {intl.get(`perspectives.${perspective.id}.label`)}
           </Typography>
