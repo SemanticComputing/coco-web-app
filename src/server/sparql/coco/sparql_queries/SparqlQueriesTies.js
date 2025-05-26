@@ -30,7 +30,7 @@ UNION
     OPTIONAL {
         ?_sent :in_tie ?id ; portal:sender ?node__id
     }
-  } GROUPBY ?id ?node__id ?_label
+  } GROUP BY ?id ?node__id ?_label
 }
 UNION
 { 
@@ -93,7 +93,7 @@ SELECT DISTINCT
     ?id :actor2 [ ^portal:sender ?letter ; skos:prefLabel ?sender2__label ]
     BIND ("sender2" AS ?type)
   }
-} GROUPBY ?id ?sender1__label ?sender2__label ?year ?type
+} GROUP BY ?id ?sender1__label ?sender2__label ?year ?type
 `
 
 export const tieTimelineYearsQuery = `

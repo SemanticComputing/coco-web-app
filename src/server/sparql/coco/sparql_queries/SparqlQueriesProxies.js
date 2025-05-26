@@ -44,7 +44,7 @@ export const proxyPropertiesInstancePage = `
     WHERE {
       ?_letter :was_authored_by ?id ; a :Letter 
     }
-    GROUPBY ?id
+    GROUP BY ?id
   }
   UNION
   {
@@ -52,7 +52,7 @@ export const proxyPropertiesInstancePage = `
     WHERE { 
       ?_letter :was_addressed_to ?id ; a :Letter .
     } 
-    GROUPBY ?id 
+    GROUP BY ?id 
   }
   UNION 
   { ?id tmp:marked_as_recipient ?label_in_letter }
@@ -91,7 +91,7 @@ export const proxyPropertiesInstancePage = `
             :has_time-span [ crm:P82a_begin_of_the_begin ?_start ; crm:P82b_end_of_the_end ?_end ]
             BIND (year(?_start) AS ?year0)
             BIND (year(?_end) AS ?year1)
-    } GROUPBY ?id 
+    } GROUP BY ?id 
   }
   UNION
   { SELECT DISTINCT ?id ?mentioningletter__id ?mentioningletter__prefLabel ?mentioningletter__dataProviderUrl
