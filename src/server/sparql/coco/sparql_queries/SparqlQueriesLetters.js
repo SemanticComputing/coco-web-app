@@ -569,8 +569,8 @@ export const peopleRelatedTo = `
      	
       ?person__id skos:prefLabel ?_plabel
       
-    } GROUPBY ?id ?person__id ?_plabel 
-    ORDERBY DESC( COUNT(DISTINCT ?sent_letter)+ COUNT(DISTINCT ?received_letter))
+    } GROUP BY ?id ?person__id ?_plabel
+    ORDER BY DESC( COUNT(DISTINCT ?sent_letter)+ COUNT(DISTINCT ?received_letter))
   }
 `
 
