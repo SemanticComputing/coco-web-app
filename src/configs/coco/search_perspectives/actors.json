@@ -9,7 +9,7 @@
     "baseURI": "http://ldf.fi/coco",
     "URITemplate": "<BASE_URI>/provided/<LOCAL_ID>",
     "facetClass": ":ProvidedActor",
-    "frontPageImage": "main_page/people2-452x262.jpg",
+    "frontPageImage": "main_page/people_kirjesampo.jpg",
     "searchMode": "faceted-search",
     "defaultActiveFacets": [
         "prefLabel", "role"

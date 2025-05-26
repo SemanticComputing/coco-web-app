@@ -10,7 +10,7 @@
     "URITemplate": "<BASE_URI>/places/<LOCAL_ID>",
     "facetClass": "crm:E53_Place",
     "defaultConstraint": "FILTER EXISTS { <SUBJECT> :number_of_events [] }",
-    "frontPageImage": "main_page/places2-452x262.jpg",
+    "frontPageImage": "main_page/places_kirjesampo.jpg",
     "searchMode": "faceted-search",
     "defaultActiveFacets": [
         "prefLabel"

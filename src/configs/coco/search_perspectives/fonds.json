@@ -9,7 +9,7 @@
     "baseURI": "http://ldf.fi/coco",
     "URITemplate": "<BASE_URI>/fonds/<LOCAL_ID>",
     "facetClass": ":Fonds",
-    "frontPageImage": "main_page/manuscripts-452x262.jpg",
+    "frontPageImage": "main_page/fonds_kirjesampo.jpg",
     "searchMode": "faceted-search",
     "defaultActiveFacets": [
         "fonds"
