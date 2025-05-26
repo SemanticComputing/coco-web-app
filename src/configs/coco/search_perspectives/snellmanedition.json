@@ -324,25 +324,12 @@
             "facetType": "list",
             "filterType": "uriFilter",
             "predicate": "sns:entity_instance/^sns:instance",
-            "facetValueFilter": "?id owl:sameAs ?anySameAs . \n ?id sns:entity_category sns:Place .",
+            "facetValueFilter": "VALUES ?placeClass { sns:Place sns:Location } . \n ?id owl:sameAs ?anySameAs . \n ?id sns:entity_category ?placeClass .",
             "searchField": true,
             "sortBy": "instanceCount",
             "sortDirection": "desc",
             "sortButton": true,
             "barChartButton": true,
-            "sortByPredicate": "sns:entity_instance/^sns:instance/skos:prefLabel"
-        },
-        "nlpLocation": {
-            "containerClass": "seven",
-            "facetType": "list",
-            "filterType": "uriFilter",
-            "predicate": "sns:entity_instance/^sns:instance",
-            "facetValueFilter": "?id owl:sameAs ?anySameAs . \n ?id sns:entity_category sns:Location .",
-            "searchField": true,
-            "sortBy": "instanceCount",
-            "sortDirection": "desc",
-            "sortButton": true,
-            "pieChartButton": true,
             "sortByPredicate": "sns:entity_instance/^sns:instance/skos:prefLabel"
         },
         "nlpEvent": {
