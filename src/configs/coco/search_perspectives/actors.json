@@ -725,7 +725,7 @@
             "filterType": "uriFilter",
             "sortBy": "instanceCount",
             "sortDirection": "desc",
-            "pieChartButton": true,
+            "barChartButton": true,
             "sortByPredicate": "portal:portal_class/skos:prefLabel",
             "hideUnknownValue": true
         },
@@ -736,7 +736,7 @@
             "filterType": "uriFilter",
             "sortBy": "instanceCount",
             "sortDirection": "desc",
-            "pieChartButton": true,
+            "barChartButton": true,
             "sortByPredicate": "portal:actor_role/skos:prefLabel",
             "hideUnknownValue": true,
             "sliceVisibilityThreshold": 0.000001
@@ -766,7 +766,7 @@
             "filterType": "uriFilter",
             "sortBy": "instanceCount",
             "sortDirection": "desc",
-            "pieChartButton": true,
+            "barChartButton": true,
             "sortByPredicate": "bioc:has_gender/skos:prefLabel",
             "hideUnknownValue": true
         },
@@ -818,7 +818,7 @@
             "sortBy": "instanceCount",
             "sortDirection": "desc",
             "sortButton": true,
-            "pieChartButton": true,
+            "barChartButton": true,
             "facetLabelFilter": "FILTER(LANG(?prefLabel_) = 'en')",
             "sortByPredicate": "(^:proxy_for)/bioc:has_occupation/skos:prefLabel"
         },
@@ -831,7 +831,7 @@
             "sortBy": "instanceCount",
             "sortDirection": "desc",
             "sortButton": true,
-            "pieChartButton": true,
+            "barChartButton": true,
             "sortByPredicate": "(^:proxy_for)/:original_data_provider/skos:prefLabel",
             "facetLabelFilter": "FILTER(LANG(?prefLabel_) = 'en')",
             "hideUnknownValue": true
@@ -845,7 +845,7 @@
             "sortBy": "instanceCount",
             "sortDirection": "desc",
             "sortButton": true,
-            "pieChartButton": true,
+            "barChartButton": true,
             "sortByPredicate": "(^:proxy_for)/:digital_edition/skos:prefLabel",
             "facetLabelFilter": "FILTER(LANG(?prefLabel_) = 'en')",
             "hideUnknownValue": true
@@ -859,7 +859,7 @@
             "sortBy": "instanceCount",
             "sortDirection": "desc",
             "sortButton": true,
-            "pieChartButton": true,
+            "barChartButton": true,
             "sortByPredicate": "portal:fonds/skos:prefLabel",
             "hideUnknownValue": true
         },

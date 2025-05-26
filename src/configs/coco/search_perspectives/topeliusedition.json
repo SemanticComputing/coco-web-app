@@ -409,7 +409,7 @@
             "sortBy": "instanceCount",
             "sortByPredicate": "portal:sender/skos:prefLabel",
             "sortDirection": "desc",
-            "pieChartButton": true,
+            "barChartButton": true,
             "sortButton": true,
             "hideUnknownValue": true
         },
@@ -421,7 +421,7 @@
             "sortBy": "instanceCount",
             "sortByPredicate": "portal:sender_type/skos:prefLabel",
             "sortDirection": "desc",
-            "pieChartButton": true,
+            "barChartButton": true,
             "sortButton": true,
             "hideUnknownValue": true
         },
@@ -433,7 +433,7 @@
             "sortBy": "instanceCount",
             "sortByPredicate": "portal:sender_gender/skos:prefLabel",
             "sortDirection": "desc",
-            "pieChartButton": true,
+            "barChartButton": true,
             "sortButton": true,
             "hideUnknownValue": true
         },
@@ -446,7 +446,7 @@
             "sortBy": "instanceCount",
             "sortByPredicate": "portal:recipient/skos:prefLabel",
             "sortDirection": "desc",
-            "pieChartButton": true,
+            "barChartButton": true,
             "sortButton": true,
             "hideUnknownValue": true
         },
@@ -458,7 +458,7 @@
             "sortBy": "instanceCount",
             "sortByPredicate": "portal:recipient_type/skos:prefLabel",
             "sortDirection": "desc",
-            "pieChartButton": true,
+            "barChartButton": true,
             "sortButton": true,
             "hideUnknownValue": true
         },
@@ -470,7 +470,7 @@
             "sortBy": "instanceCount",
             "sortByPredicate": "portal:recipient_gender/skos:prefLabel",
             "sortDirection": "desc",
-            "pieChartButton": true,
+            "barChartButton": true,
             "sortButton": true,
             "hideUnknownValue": true
         },
@@ -496,7 +496,7 @@
             "sortBy": "instanceCount",
             "sortByPredicate": ":was_sent_from/skos:prefLabel",
             "sortDirection": "desc",
-            "pieChartButton": true,
+            "barChartButton": true,
             "sortButton": true,
             "hideUnknownValue": true
         },
@@ -509,7 +509,7 @@
             "sortBy": "instanceCount",
             "sortDirection": "desc",
             "sortButton": true,
-            "pieChartButton": true,
+            "barChartButton": true,
             "sortByPredicate": "dct:language/skos:prefLabel",
             "hideUnknownValue": true
         },
@@ -535,7 +535,7 @@
             "sortBy": "instanceCount",
             "sortDirection": "desc",
             "sortButton": true,
-            "pieChartButton": true,
+            "barChartButton": true,
             "sortByPredicate": ":digital_edition/skos:prefLabel",
             "hideUnknownValue": true
         },
@@ -561,7 +561,7 @@
             "sortBy": "instanceCount",
             "sortDirection": "desc",
             "sortButton": true,
-            "pieChartButton": true,
+            "barChartButton": true,
             "sortByPredicate": ":archival_organization/:proxy_for/skos:prefLabel",
             "hideUnknownValue": true
         },
@@ -574,7 +574,7 @@
             "sortBy": "instanceCount",
             "sortDirection": "desc",
             "sortButton": true,
-            "pieChartButton": true,
+            "barChartButton": true,
             "sortByPredicate": ":fonds/skos:prefLabel",
             "hideUnknownValue": true
         },

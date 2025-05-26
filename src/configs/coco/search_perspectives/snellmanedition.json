@@ -209,7 +209,7 @@
             "sortBy": "instanceCount",
             "sortByPredicate": "dc:creator/skos:prefLabel",
             "sortDirection": "desc",
-            "pieChartButton": true,
+            "barChartButton": true,
             "sortButton": true,
             "hideUnknownValue": true
         },
@@ -222,7 +222,7 @@
             "sortBy": "instanceCount",
             "sortByPredicate": "snellman:letterReceiver/skos:prefLabel",
             "sortDirection": "desc",
-            "pieChartButton": true,
+            "barChartButton": true,
             "sortButton": true,
             "hideUnknownValue": true
         },
@@ -235,7 +235,7 @@
             "sortBy": "instanceCount",
             "sortByPredicate": "snellman:writtenIn/skos:prefLabel",
             "sortDirection": "desc",
-            "pieChartButton": true,
+            "barChartButton": true,
             "sortButton": true,
             "hideUnknownValue": false
         },
@@ -248,7 +248,7 @@
             "sortBy": "instanceCount",
             "sortDirection": "desc",
             "sortButton": true,
-            "pieChartButton": true,
+            "barChartButton": true,
             "sortByPredicate": "dc:type/skos:prefLabel",
             "hideUnknownValue": false
         },
@@ -262,7 +262,7 @@
             "facetValueFilter": "?id a foaf:Person .",
             "sortDirection": "desc",
             "sortButton": true,
-            "pieChartButton": true,
+            "barChartButton": true,
             "sortByPredicate": "dc:relation/skos:prefLabel",
             "hideUnknownValue": true
         },
@@ -276,7 +276,7 @@
             "facetValueFilter": "?id a snellman:Place .",
             "sortDirection": "desc",
             "sortButton": true,
-            "pieChartButton": true,
+            "barChartButton": true,
             "sortByPredicate": "dc:relation/skos:prefLabel",
             "hideUnknownValue": true
         },
@@ -290,7 +290,7 @@
             "facetValueFilter": "?id a snellman:AbstractConcept .",
             "sortDirection": "desc",
             "sortButton": true,
-            "pieChartButton": true,
+            "barChartButton": true,
             "sortByPredicate": "dc:relation/skos:prefLabel",
             "hideUnknownValue": true
         },
@@ -303,7 +303,7 @@
             "sortBy": "instanceCount",
             "sortDirection": "desc",
             "sortButton": true,
-            "pieChartButton": true,
+            "barChartButton": true,
             "sortByPredicate": "sns:keyword/skos:prefLabel"
         },
         "nlpPerson": {
@@ -316,7 +316,7 @@
             "sortBy": "instanceCount",
             "sortDirection": "desc",
             "sortButton": true,
-            "pieChartButton": true,
+            "barChartButton": true,
             "sortByPredicate": "sns:entity_instance/^sns:instance/skos:prefLabel"
         },
         "nlpPlace": {
@@ -329,7 +329,7 @@
             "sortBy": "instanceCount",
             "sortDirection": "desc",
             "sortButton": true,
-            "pieChartButton": true,
+            "barChartButton": true,
             "sortByPredicate": "sns:entity_instance/^sns:instance/skos:prefLabel"
         },
         "nlpLocation": {
@@ -355,7 +355,7 @@
             "sortBy": "instanceCount",
             "sortDirection": "desc",
             "sortButton": true,
-            "pieChartButton": true,
+            "barChartButton": true,
             "sortByPredicate": "sns:entity_instance/^sns:instance/skos:prefLabel"
         },
         "nlpDate": {
@@ -368,7 +368,7 @@
             "sortBy": "instanceCount",
             "sortDirection": "desc",
             "sortButton": true,
-            "pieChartButton": true,
+            "barChartButton": true,
             "sortByPredicate": "sns:entity_instance/^sns:instance/skos:prefLabel"
         },
         "nlpOrganization": {
@@ -381,7 +381,7 @@
             "sortBy": "instanceCount",
             "sortDirection": "desc",
             "sortButton": true,
-            "pieChartButton": true,
+            "barChartButton": true,
             "sortByPredicate": "sns:entity_instance/^sns:instance/skos:prefLabel"
         },
         "nlpArtwork": {
@@ -394,7 +394,7 @@
             "sortBy": "instanceCount",
             "sortDirection": "desc",
             "sortButton": true,
-            "pieChartButton": true,
+            "barChartButton": true,
             "sortByPredicate": "sns:entity_instance/^sns:instance/skos:prefLabel"
         },
         "nlpEntity": {
@@ -407,7 +407,7 @@
             "sortBy": "instanceCount",
             "sortDirection": "desc",
             "sortButton": true,
-            "pieChartButton": true,
+            "barChartButton": true,
             "sortByPredicate": "dc:relation/skos:prefLabel"
         },
         "prefLabel": {
