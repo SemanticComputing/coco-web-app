@@ -14,7 +14,7 @@ export default {
   appTitle: {
     short: '',
     long: ' LetterSampo Finland',
-    mobile: 'LetterSampo Finland',
+    mobile: '',
     subheading: `
       Finnish Nineteenth-Century Letters on the Semantic Web
     `
