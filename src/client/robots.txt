@@ -1,2 +1,12 @@
 User-agent: *
-Disallow: /
+Disallow: /letters/page/*
+Disallow: /actors/page/*
+Disallow: /occupations/page/*
+Disallow: /ties/page/*
+Disallow: /proxies/page/*
+Disallow: /metrics/page/*
+Disallow: /lonnrotedition/page/*
+Disallow: /snellmanedition/page/*
+Disallow: /edelfeltedition/page/*
+Disallow: /topeliusedition/page/*
+Disallow: /fonds/page/*
