@@ -515,6 +515,33 @@
             "priority": 5
         },
         {
+            "id": "numLetters",
+            "valueType": "string",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": false,
+            "numberedList": false,
+            "minWidth": 70
+        },
+        {
+            "id": "numSent",
+            "valueType": "string",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": false,
+            "numberedList": false,
+            "minWidth": 70
+        },
+        {
+            "id": "numReceived",
+            "valueType": "string",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": false,
+            "numberedList": false,
+            "minWidth": 70
+        },
+        {
             "id": "birthDateTimespan",
             "valueType": "object",
             "makeLink": false,

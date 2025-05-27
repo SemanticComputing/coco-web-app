@@ -82,6 +82,12 @@ export const actorPropertiesInstancePage = `
     BIND (CONCAT("/actors/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?label__dataProviderUrl)
   }
   UNION
+  { ?id :in_degree ?numReceived }
+  UNION
+  { ?id :out_degree ?numSent }
+  UNION
+  { ?id :degree ?numLetters }
+  UNION
   { 
     ?id :floruit ?floruitTimespan__id .
     ?floruitTimespan__id skos:prefLabel ?floruitTimespan__prefLabel .
