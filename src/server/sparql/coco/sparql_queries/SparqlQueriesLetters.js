@@ -533,9 +533,8 @@ SELECT DISTINCT ?id ?lat ?long
 WHERE {
   <FILTER>
   
-  ?id a crm:E53_Place ; geo:lat ?lat ; geo:long ?long .
-
   ?letter :was_sent_from|:was_sent_to ?id .
+  ?id a crm:E53_Place ; geo:lat ?lat ; geo:long ?long .
 
 } GROUP BY ?id ?lat ?long
 `

@@ -66,8 +66,8 @@ export const fondsPropertiesInstancePage = `
       ?_evt :fonds ?id ; portal:sender ?sender__id .
       ?sender__id skos:prefLabel ?_label ; a [] .
   	}
-    GROUPBY ?id ?sender__id ?_label
-    ORDERBY DESC(COUNT(DISTINCT ?_evt))
+    GROUP BY ?id ?sender__id ?_label
+    ORDER BY DESC(COUNT(DISTINCT ?_evt))
   }
   UNION
   {
@@ -79,8 +79,8 @@ export const fondsPropertiesInstancePage = `
         portal:recipient ?recipient__id .  
       ?recipient__id skos:prefLabel ?_label ; a [] .
   	}
-    GROUPBY ?id ?recipient__id ?_label
-    ORDERBY DESC(COUNT(DISTINCT ?_evt))
+    GROUP BY ?id ?recipient__id ?_label
+    ORDER BY DESC(COUNT(DISTINCT ?_evt))
   }  
   UNION
   {
@@ -131,8 +131,8 @@ export const peopleRelatedTo = `
     	?person__id skos:prefLabel ?_plabel .
         
       } 
-      GROUPBY ?id ?person__id ?_plabel 
-	    ORDERBY DESC(SUM(?_sent)+SUM(?_received))
+      GROUP BY ?id ?person__id ?_plabel 
+	    ORDER BY DESC(SUM(?_sent)+SUM(?_received))
     }
   } 
 `
@@ -185,7 +185,7 @@ WHERE {
     ?records_creator_id skos:prefLabel ?records_creator 
   }
 } 
-GROUPBY ?id ?label ?data_provider_id ?data_provider 
+GROUP BY ?id ?label ?data_provider_id ?data_provider 
 ?number_of_letters
 ORDER BY DESC(?number_of_sent_letters) ?label
 `

@@ -129,7 +129,7 @@ class MuiVirtualizedTable extends React.PureComponent {
   render () {
     const { classes, columns, rowHeight, headerHeight, sortDirection, ...tableProps } = this.props
     return (
-      <AutoSizer>
+      <AutoSizer style={{ minHeight: '75cqh' }}>
         {({ height, width }) => (
           <Table
             height={height}
@@ -188,7 +188,8 @@ const VirtualizedTable = withStyles(styles)(MuiVirtualizedTable)
 
 const rootStyle = {
   height: 'calc(100% - 58px)',
-  fontFamily: 'Roboto'
+  fontFamily: 'Roboto',
+  overflowX: 'scroll'
 }
 
 const tableContainer = {

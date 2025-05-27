@@ -82,6 +82,12 @@ export const actorPropertiesInstancePage = `
     BIND (CONCAT("/actors/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?label__dataProviderUrl)
   }
   UNION
+  { ?id :in_degree ?numReceived }
+  UNION
+  { ?id :out_degree ?numSent }
+  UNION
+  { ?id :degree ?numLetters }
+  UNION
   { 
     ?id :floruit ?floruitTimespan__id .
     ?floruitTimespan__id skos:prefLabel ?floruitTimespan__prefLabel .
@@ -310,8 +316,8 @@ SELECT *
             BIND (CONCAT(' (', str(?_org), ') ') AS ?_org2)
           }
         }
-        GROUPBY ?prx ?_label ?in_fonds__id
-        ORDERBY DESC(COUNT(DISTINCT ?_evt))
+        GROUP BY ?prx ?_label ?in_fonds__id
+        ORDER BY DESC(COUNT(DISTINCT ?_evt))
       }
       UNION
       {
@@ -342,8 +348,8 @@ SELECT *
             ?_evt :was_authored_by ?prx ; :was_sent_from ?knownLocation__id . 
             ?knownLocation__id a [] ; skos:prefLabel ?_label . 
         } 
-        GROUPBY ?prx ?_label ?knownLocation__id
-        ORDERBY DESC(COUNT(DISTINCT ?_evt))
+        GROUP BY ?prx ?_label ?knownLocation__id
+        ORDER BY DESC(COUNT(DISTINCT ?_evt))
       }
       UNION
       { 
@@ -624,7 +630,7 @@ WHERE
     BIND (year(?death_end) AS ?death)
   }
   FILTER (!bound(?death) || (bound(?death) && ?year<=?death))
-} GROUPBY ?id ?source__label ?target__label ?year ?type
+} GROUP BY ?id ?source__label ?target__label ?year ?type
 `
 
 export const sentReceivedQuery = `
@@ -748,7 +754,7 @@ WHERE {
     ?proxy :deathDate/skos:prefLabel ?death
   }
 } 
-GROUPBY ?id ?label ?type ?gender
+GROUP BY ?id ?label ?type ?gender
   ?prefix ?family_name ?given_name
   ?number_of_sent_letters ?number_of_received_letters ?floruit 
 ORDER BY DESC(?number_of_sent_letters) ?label `

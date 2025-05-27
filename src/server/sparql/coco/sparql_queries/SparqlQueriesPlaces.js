@@ -146,7 +146,7 @@ WHERE {
       ?related__id skos:prefLabel ?_label .
     }
     
-    GROUPBY ?id ?related__id ?_label
+    GROUP BY ?id ?related__id ?_label
     ORDER BY DESC(COUNT(DISTINCT ?_sent)) ?_label
   }
   UNION
