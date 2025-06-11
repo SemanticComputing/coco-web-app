@@ -849,7 +849,7 @@
             "facetLabelFilter": "FILTER(LANG(?prefLabel_) = 'en')",
             "sortByPredicate": "(^:proxy_for)/bioc:has_occupation/skos:prefLabel"
         },
-        "data_provider": {
+        "data_provider_facet": {
             "containerClass": "fiveteen",
             "facetType": "list",
             "filterType": "uriFilter",
