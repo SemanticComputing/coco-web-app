@@ -32,6 +32,12 @@
                 "label": "English",
                 "filename": "localeEN",
                 "format": "js"
+            },
+            {
+                "id": "fi",
+                "label": "Finnish",
+                "filename": "localeFI",
+                "format": "js"
             }
         ]
     },
@@ -65,7 +71,7 @@
             "logoImageHeight": 64,
             "logoImageReducedHeight": 44,
             "logoTextTransform": "none",
-            "showLanguageButton": false,
+            "showLanguageButton": true,
             "feedbackLink": "https://link.webropolsurveys.com/S/21E30E313885D6AF",
             "externalInstructions": true,
             "externalAboutPage": true,
