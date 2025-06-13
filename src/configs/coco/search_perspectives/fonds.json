@@ -244,7 +244,6 @@
             "filterType": "uriFilter",
             "sortBy": "instanceCount",
             "sortDirection": "desc",
-            "barChartButton": true,
             "searchField": true,
             "sortButton": true,
             "sortByPredicate": ":self_link/skos:prefLabel"

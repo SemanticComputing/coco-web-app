@@ -886,7 +886,6 @@
             "sortBy": "instanceCount",
             "sortDirection": "desc",
             "sortButton": true,
-            "barChartButton": true,
             "sortByPredicate": "portal:fonds/skos:prefLabel",
             "hideUnknownValue": true
         },
