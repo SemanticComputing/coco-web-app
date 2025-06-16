@@ -12,6 +12,7 @@
     "defaultConstraint": "VALUES ?snellmanType { snellman:13218 snellman:13238 } . \n <SUBJECT> dc:type ?snellmanType .",
     "frontPageImage": "main_page/snellman-cropped.jpg",
     "searchMode": "faceted-search",
+    "enableDynamicLanguageChange": true,
     "defaultActiveFacets": [
         "prefLabel"
     ],
@@ -240,7 +241,7 @@
             "hideUnknownValue": false
         },
         "lettertype": {
-            "containerClass": "seven",
+            "containerClass": "four",
             "facetType": "list",
             "filterType": "uriFilter",
             "predicate": "dc:type",

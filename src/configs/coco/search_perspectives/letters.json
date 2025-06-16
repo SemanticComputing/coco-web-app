@@ -578,7 +578,7 @@
             "sortDirection": "desc",
             "sortButton": true,
             "barChartButton": true,
-            "facetLabelFilter": "FILTER(LANG(?prefLabel_) = '<LANG>')",
+            "facetLabelFilter": "FILTER(LANG(?prefLabel_)='<LANG>')",
             "sortByPredicate": ":type/skos:prefLabel",
             "hideUnknownValue": true
         },

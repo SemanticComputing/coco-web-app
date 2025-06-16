@@ -156,13 +156,15 @@ UNION
 }
 UNION
 { 
-  ?id dct:language ?language__id . 
+  ?id dct:language ?language__id .
   ?language__id a [] ; skos:prefLabel ?language__prefLabel .
+  FILTER (LANG(?language__prefLabel)='<LANG>')
   BIND (?language__id AS ?language__dataProviderUrl)
 }
 UNION
 {
   ?id :type [ a [] ; skos:prefLabel ?lettertype ]
+  FILTER (LANG(?lettertype)='<LANG>')
 }
 UNION 
 {
@@ -255,13 +257,15 @@ UNION
 {
   BIND(<ID> as ?id)
   ?id dct:language ?language__id .
-  ?language__id a [] ; skos:prefLabel ?language__prefLabel .
+  ?language__id a [] ; skos:prefLabel ?language__prefLabel
+  FILTER (LANG(?language__prefLabel)='<LANG>')
   BIND (?language__id AS ?language__dataProviderUrl)
 }
 UNION
 {
   BIND(<ID> as ?id)
   ?id :type [ a [] ; skos:prefLabel ?lettertype ]
+  FILTER (LANG(?lettertype)='<LANG>')
 }
 UNION
 {

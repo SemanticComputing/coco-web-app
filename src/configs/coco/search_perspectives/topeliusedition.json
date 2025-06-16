@@ -12,6 +12,7 @@
     "defaultConstraint": "<SUBJECT> :digital_edition <http://ldf.fi/coco/source/topelius>  .",
     "frontPageImage": "main_page/topelius-cropped.jpg",
     "searchMode": "faceted-search",
+    "enableDynamicLanguageChange": true,
     "defaultActiveFacets": [
         "prefLabel"
     ],
@@ -501,7 +502,7 @@
             "hideUnknownValue": true
         },
         "language": {
-            "containerClass": "seven",
+            "containerClass": "two",
             "facetType": "list",
             "filterType": "uriFilter",
             "predicate": "dct:language",
@@ -510,11 +511,12 @@
             "sortDirection": "desc",
             "sortButton": true,
             "barChartButton": true,
+            "facetLabelFilter": "FILTER(LANG(?prefLabel_)='<LANG>')",
             "sortByPredicate": "dct:language/skos:prefLabel",
             "hideUnknownValue": true
         },
         "lettertype": {
-            "containerClass": "seven",
+            "containerClass": "six",
             "facetType": "list",
             "filterType": "uriFilter",
             "predicate": ":type",
@@ -524,6 +526,7 @@
             "sortButton": true,
             "pieChartButton": true,
             "sortByPredicate": ":type/skos:prefLabel",
+            "facetLabelFilter": "FILTER(LANG(?prefLabel_)='<LANG>')",
             "hideUnknownValue": true
         },
         "digital_edition": {

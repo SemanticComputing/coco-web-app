@@ -12,6 +12,7 @@
     "defaultConstraint": "<SUBJECT> :digital_edition <http://ldf.fi/coco/source/edelfelt> .",
     "frontPageImage": "main_page/edelfelt-cropped.jpg",
     "searchMode": "faceted-search",
+    "enableDynamicLanguageChange": true,
     "defaultActiveFacets": [
         "prefLabel"
     ],
@@ -501,7 +502,7 @@
             "hideUnknownValue": true
         },
         "language": {
-            "containerClass": "seven",
+            "containerClass": "two",
             "facetType": "list",
             "filterType": "uriFilter",
             "predicate": "dct:language",
@@ -511,19 +512,7 @@
             "sortButton": true,
             "pieChartButton": true,
             "sortByPredicate": "dct:language/skos:prefLabel",
-            "hideUnknownValue": true
-        },
-        "lettertype": {
-            "containerClass": "seven",
-            "facetType": "list",
-            "filterType": "uriFilter",
-            "predicate": ":type",
-            "searchField": false,
-            "sortBy": "instanceCount",
-            "sortDirection": "desc",
-            "sortButton": true,
-            "barChartButton": true,
-            "sortByPredicate": ":type/skos:prefLabel",
+            "facetLabelFilter": "FILTER(LANG(?prefLabel_)='<LANG>')",
             "hideUnknownValue": true
         },
         "mentioned_person": {

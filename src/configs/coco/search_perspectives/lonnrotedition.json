@@ -12,6 +12,7 @@
     "defaultConstraint": "<SUBJECT> :digital_edition <http://ldf.fi/coco/source/sks-el>  .",
     "frontPageImage": "main_page/lonnrot-cropped.jpg",
     "searchMode": "faceted-search",
+    "enableDynamicLanguageChange": true,
     "defaultActiveFacets": [
         "prefLabel"
     ],
@@ -511,10 +512,11 @@
             "sortButton": true,
             "barChartButton": true,
             "sortByPredicate": "dct:language/skos:prefLabel",
+            "facetLabelFilter": "FILTER(LANG(?prefLabel_)='<LANG>')",
             "hideUnknownValue": true
         },
         "lettertype": {
-            "containerClass": "seven",
+            "containerClass": "four",
             "facetType": "list",
             "filterType": "uriFilter",
             "predicate": ":type",
@@ -524,6 +526,7 @@
             "sortButton": true,
             "barChartButton": true,
             "sortByPredicate": ":type/skos:prefLabel",
+            "facetLabelFilter": "FILTER(LANG(?prefLabel_)='<LANG>')",
             "hideUnknownValue": true
         },
         "digital_edition": {
