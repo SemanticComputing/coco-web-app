@@ -11,6 +11,7 @@
     "facetClass": ":ProvidedActor",
     "frontPageImage": "main_page/people_kirjesampo.jpg",
     "searchMode": "faceted-search",
+    "enableDynamicLanguageChange": true,
     "defaultActiveFacets": [
         "prefLabel", "role"
     ],
@@ -846,7 +847,7 @@
             "sortDirection": "desc",
             "sortButton": true,
             "barChartButton": true,
-            "facetLabelFilter": "FILTER(LANG(?prefLabel_) = 'en')",
+            "facetLabelFilter": "FILTER(LANG(?prefLabel_)='<LANG>')",
             "sortByPredicate": "(^:proxy_for)/bioc:has_occupation/skos:prefLabel"
         },
         "data_provider_facet": {
