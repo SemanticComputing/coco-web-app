@@ -12,6 +12,7 @@
     "facetClass": ":Letter",
     "frontPageImage": "main_page/works-452x262.jpg",
     "searchMode": "faceted-search",
+    "enableDynamicLanguageChange": true,
     "defaultActiveFacets": [],
     "defaultTab": "table",
     "defaultInstancePageTab": "table",
@@ -563,6 +564,7 @@
             "sortDirection": "desc",
             "sortButton": true,
             "barChartButton": true,
+            "facetLabelFilter": "FILTER(LANG(?prefLabel_) = '<LANG>')",
             "sortByPredicate": "dct:language/skos:prefLabel",
             "hideUnknownValue": true
         },
@@ -576,6 +578,7 @@
             "sortDirection": "desc",
             "sortButton": true,
             "barChartButton": true,
+            "facetLabelFilter": "FILTER(LANG(?prefLabel_) = '<LANG>')",
             "sortByPredicate": ":type/skos:prefLabel",
             "hideUnknownValue": true
         },

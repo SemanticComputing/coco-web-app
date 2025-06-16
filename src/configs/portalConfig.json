@@ -44,6 +44,7 @@
     "sitemapConfig": {
         "baseUrl": "",
         "langPrimary": "en",
+        "langSecondary": "fi",
         "outputDir": "./src/server/sitemap_generator",
         "sitemapUrl": "",
         "sitemapInstancePageQuery": "sitemapInstancePageQuery"
