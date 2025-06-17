@@ -159,8 +159,8 @@ export const actorPropertiesInstancePage = `
     {
       GRAPH ?g { ?prx :was_born_in_location ?birthPlace__id }
       ?birthPlace__id skos:prefLabel ?birthPlace__prefLabel .
+      FILTER (LANG(?birthPlace__prefLabel) = '<LANG>')
       BIND (CONCAT("/places/page/", REPLACE(STR(?birthPlace__id), "^.*\\\\/(.+)", "$1")) AS ?birthPlace__dataProviderUrl)
-      FILTER (LANG(?birthPlace__prefLabel) = 'fi')
       
       ?g skos:altLabel ?birthPlace__source__prefLabel .
       BIND (?prx AS ?birthPlace__source__id)
@@ -182,7 +182,7 @@ export const actorPropertiesInstancePage = `
     {
       GRAPH ?g { ?prx :died_at_location ?deathPlace__id }
       ?deathPlace__id skos:prefLabel ?deathPlace__prefLabel .
-      FILTER (LANG(?deathPlace__prefLabel) = 'fi')
+      FILTER (LANG(?deathPlace__prefLabel) = '<LANG>')
       BIND (CONCAT("/places/page/", REPLACE(STR(?deathPlace__id), "^.*\\\\/(.+)", "$1")) AS ?deathPlace__dataProviderUrl)
       
       ?g skos:altLabel ?deathPlace__source__prefLabel .

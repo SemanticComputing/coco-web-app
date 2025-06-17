@@ -12,6 +12,7 @@
     "defaultConstraint": "FILTER EXISTS { <SUBJECT> :number_of_events [] }",
     "frontPageImage": "main_page/places_kirjesampo.jpg",
     "searchMode": "faceted-search",
+    "enableDynamicLanguageChange": true,
     "defaultActiveFacets": [
         "prefLabel"
     ],
@@ -178,7 +179,8 @@
             "makeLink": true,
             "externalLink": false,
             "sortValues": true,
-            "numberedList": false
+            "numberedList": false,
+            "expandedOnInstancePage": true
         },
         {
             "id": "altLabel",

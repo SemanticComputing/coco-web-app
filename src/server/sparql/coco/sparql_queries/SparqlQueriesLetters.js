@@ -146,14 +146,15 @@ UNION
 }
 UNION 
 {
-  ?id :referenced_actor/:proxy_for ?mentioned_person__id . 
+  ?id :referenced_actor/:proxy_for ?mentioned_person__id .
   ?mentioned_person__id skos:prefLabel ?mentioned_person__prefLabel . 
   BIND(CONCAT("/actors/page/", REPLACE(STR(?mentioned_person__id), "^.*\\\\/(.+)", "$1")) AS ?mentioned_person__dataProviderUrl)
 }
 UNION
 {
-  ?id :referenced_place ?mentioned_place__id . 
-  ?mentioned_place__id skos:prefLabel ?mentioned_place__prefLabel . 
+  ?id :referenced_place ?mentioned_place__id .
+  ?mentioned_place__id skos:prefLabel ?mentioned_place__prefLabel
+  FILTER (LANG(?mentioned_place__prefLabel)='<LANG>')
   BIND(CONCAT("/places/page/", REPLACE(STR(?mentioned_place__id), "^.*\\\\/(.+)", "$1")) AS ?mentioned_place__dataProviderUrl)
 }
 UNION

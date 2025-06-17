@@ -4,20 +4,26 @@ export const placePropertiesFacetResults = `
   BIND(?id as ?uri__id)
   BIND(?id as ?uri__prefLabel)
   BIND(?id as ?uri__dataProviderUrl)
-  ?id skos:prefLabel ?prefLabel__id .
-  BIND (?prefLabel__id as ?prefLabel__prefLabel)
-  BIND(CONCAT("/${perspectiveID}/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
-
+  
+  {
+    ?id skos:prefLabel ?prefLabel__id .
+    FILTER (LANG(?prefLabel__id)='<LANG>')
+    BIND (?prefLabel__id as ?prefLabel__prefLabel)
+    BIND(CONCAT("/${perspectiveID}/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
+  }
+  UNiON
   {
     ?id skos:broader ?broader__id .
     FILTER (?broader__id != ?id)
     ?broader__id skos:prefLabel ?broader__prefLabel .
+    FILTER (LANG(?broader__prefLabel)='<LANG>')
     BIND(CONCAT("/${perspectiveID}/page/", REPLACE(STR(?broader__id), "^.*\\\\/(.+)", "$1")) AS ?broader__dataProviderUrl)
   }
   UNION
   {
     ?id :country ?country__id .
     ?country__id skos:prefLabel ?country__prefLabel .
+    FILTER (LANG(?country__prefLabel)='<LANG>')
     BIND(CONCAT("/places/page/", REPLACE(STR(?country__id), "^.*\\\\/(.+)", "$1")) AS ?country__dataProviderUrl)
   }
   UNION
@@ -39,6 +45,7 @@ export const placePropertiesInstancePage = `
   BIND(?id as ?uri__dataProviderUrl)
   {
     ?id skos:prefLabel ?prefLabel__id .
+    FILTER (LANG(?prefLabel__id)='<LANG>')
     BIND (?prefLabel__id as ?prefLabel__prefLabel)
   }
   UNION
@@ -52,26 +59,29 @@ export const placePropertiesInstancePage = `
     ?id skos:broader ?broader__id .
     FILTER (?broader__id != ?id)
     ?broader__id skos:prefLabel ?broader__prefLabel .
+    FILTER (LANG(?broader__prefLabel)='<LANG>')
     BIND(CONCAT("/${perspectiveID}/page/", REPLACE(STR(?broader__id), "^.*\\\\/(.+)", "$1")) AS ?broader__dataProviderUrl)
   }
   UNION
   {
       ?id :country ?country__id .
       ?country__id skos:prefLabel ?country__prefLabel .
+      FILTER (LANG(?country__prefLabel)='<LANG>')
       BIND(CONCAT("/places/page/", REPLACE(STR(?country__id), "^.*\\\\/(.+)", "$1")) AS ?country__dataProviderUrl)
   }
   UNION
-  { SELECT 
-      ?id 
-      ?narrower__id 
+  { 
+    SELECT 
+      ?id ?narrower__id 
       (CONCAT(?_label, IF(BOUND(?_num),CONCAT(" (",STR(?_num),")"), "")) AS ?narrower__prefLabel)
       (CONCAT("/places/page/", REPLACE(STR(?narrower__id), "^.*\\\\/(.+)", "$1")) AS ?narrower__dataProviderUrl)
-    WHERE {
-    ?narrower__id skos:broader ?id ;
-      skos:prefLabel ?_label .
-    FILTER (?narrower__id != ?id)
+    WHERE
+    {
+      ?narrower__id skos:broader ?id ; skos:prefLabel ?_label .
+      FILTER (?narrower__id != ?id && LANG(?_label)='<LANG>')
       OPTIONAL { ?narrower__id :number_of_events ?_num }
-    } ORDER BY DESC(COALESCE(?_num)) ?_label 
+    } 
+    ORDER BY DESC(COALESCE(?_num)) ?_label 
   }
   UNION
   { ?id owl:sameAs ?external__id .
@@ -81,8 +91,13 @@ export const placePropertiesInstancePage = `
     BIND(?external__id AS ?external__dataProviderUrl)
   }
   UNION
-  { ?id skos:altLabel ?altLabel .
-    # FILTER (STR(?prefLabel__prefLabel) != STR(?altLabel)) 
+  {
+    ?id skos:prefLabel ?altLabel 
+    FILTER (LANG(?altLabel)!='<LANG>')
+  }
+  UNION
+  {
+    ?id skos:altLabel ?altLabel .
   }
   UNION
   {

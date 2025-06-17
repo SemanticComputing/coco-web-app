@@ -496,6 +496,7 @@
             "searchField": true,
             "sortBy": "instanceCount",
             "sortByPredicate": ":was_sent_from/skos:prefLabel",
+            "facetLabelFilter": "FILTER(LANG(?prefLabel_) = '<LANG>')",
             "sortDirection": "desc",
             "barChartButton": true,
             "sortButton": true,
@@ -530,7 +531,7 @@
             "hideUnknownValue": true
         },
         "digital_edition": {
-            "containerClass": "six",
+            "containerClass": "two",
             "facetType": "list",
             "filterType": "uriFilter",
             "predicate": ":digital_edition",
@@ -540,32 +541,21 @@
             "sortButton": true,
             "barChartButton": true,
             "sortByPredicate": ":digital_edition/skos:prefLabel",
+            "facetLabelFilter": "FILTER(LANG(?prefLabel_) = '<LANG>')",
             "hideUnknownValue": true
         },
         "datasource": {
-            "containerClass": "ten",
+            "containerClass": "two",
             "facetType": "list",
             "filterType": "uriFilter",
-            "predicate": "dct:source",
+            "predicate": ":original_data_provider",
             "searchField": false,
             "sortBy": "instanceCount",
             "sortDirection": "desc",
             "sortButton": true,
             "pieChartButton": true,
-            "sortByPredicate": "dct:source/skos:prefLabel",
-            "hideUnknownValue": true
-        },
-        "archival_organization": {
-            "containerClass": "ten",
-            "facetType": "list",
-            "filterType": "uriFilter",
-            "predicate": ":archival_organization/:proxy_for",
-            "searchField": false,
-            "sortBy": "instanceCount",
-            "sortDirection": "desc",
-            "sortButton": true,
-            "barChartButton": true,
-            "sortByPredicate": ":archival_organization/:proxy_for/skos:prefLabel",
+            "sortByPredicate": ":original_data_provider/skos:prefLabel",
+            "facetLabelFilter": "FILTER(LANG(?prefLabel_) = '<LANG>')",
             "hideUnknownValue": true
         },
         "fonds": {
