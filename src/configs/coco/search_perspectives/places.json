@@ -273,6 +273,7 @@
             "sortDirection": "desc",
             "searchField": true,
             "sortButton": true,
+            "facetLabelFilter": "FILTER(LANG(?prefLabel_) = '<LANG>')",
             "sortByPredicate": ":country/skos:prefLabel"
         },
         "broader": {
@@ -284,6 +285,7 @@
             "sortDirection": "desc",
             "searchField": true,
             "sortButton": true,
+            "facetLabelFilter": "FILTER(LANG(?prefLabel_) = '<LANG>')",
             "sortByPredicate": "skos:broader/skos:prefLabel"
         },
         "number_of_events": {
