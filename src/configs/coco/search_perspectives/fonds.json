@@ -11,6 +11,7 @@
     "facetClass": ":Fonds",
     "frontPageImage": "main_page/fonds_kirjesampo.jpg",
     "searchMode": "faceted-search",
+    "enableDynamicLanguageChange": true,
     "defaultActiveFacets": [
         "fonds"
     ],
@@ -228,7 +229,7 @@
             "containerClass": "ten",
             "facetType": "list",
             "predicate": ":original_data_provider",
-            "facetLabelFilter": "FILTER(LANG(?prefLabel_) = 'en')",
+            "facetLabelFilter": "FILTER(LANG(?prefLabel_) = '<LANG>')",
             "filterType": "uriFilter",
             "sortBy": "instanceCount",
             "sortDirection": "desc",

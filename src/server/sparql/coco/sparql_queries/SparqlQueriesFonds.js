@@ -6,11 +6,11 @@ export const fondsPropertiesFacetResults = `
   BIND(?id as ?uri__prefLabel)
   {
     ?id :original_data_provider/skos:prefLabel ?data_provider
-    FILTER (LANG(?data_provider)="en")
+    FILTER (LANG(?data_provider)="<LANG>")
   }
   UNION
   {
-    ?id skos:prefLabel ?prefLabel__id .
+    ?id skos:prefLabel ?prefLabel__id
     BIND (?prefLabel__id as ?prefLabel__prefLabel)
     BIND (CONCAT("/${perspectiveID}/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
   }
@@ -32,8 +32,8 @@ export const fondsPropertiesInstancePage = `
   BIND(?id as ?uri__dataProviderUrl)
 
   {
-    ?id dct:source/skos:prefLabel ?data_provider .
-    FILTER (LANG(?data_provider)="en")
+    ?id :original_data_provider/skos:prefLabel ?data_provider .
+    FILTER (LANG(?data_provider)="<LANG>")
   }
   UNION
   {

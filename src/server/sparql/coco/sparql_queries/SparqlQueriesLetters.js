@@ -584,10 +584,10 @@ export const peopleRelatedTo = `
 `
 
 export const csvQueryLetters = `
-  SELECT DISTINCT ?id ?label  
-  (GROUP_CONCAT(?sender_id; separator="|") AS ?sender_ids)
+  SELECT DISTINCT ?id ?label 
+  (GROUP_CONCAT(STR(?sender_id); separator="|") AS ?sender_ids)
   (GROUP_CONCAT(?sender; separator="|") AS ?senders)
-  (GROUP_CONCAT(?recipient_id; separator="|") AS ?recipient_ids)
+  (GROUP_CONCAT(STR(?recipient_id); separator="|") AS ?recipient_ids)
   (GROUP_CONCAT(?recipient; separator="|") AS ?recipients)
   (GROUP_CONCAT(?timespan; separator="|") AS ?timespans)
   ?datasource ?fonds
@@ -617,7 +617,7 @@ export const csvQueryLetters = `
     }
     OPTIONAL
     { 
-      ?id dct:source/skos:prefLabel ?datasource .
+      ?id :original_data_provider/skos:prefLabel ?datasource .
       FILTER(LANG(?datasource)='en')
     }
   }
