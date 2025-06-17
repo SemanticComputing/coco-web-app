@@ -19,7 +19,7 @@ export default {
       1800-luvun suomalaisia kirjekokoelmia semanttisessa webissä
     `
   },
-  selectEditionPerpective: 'Digitaaliset editiot',
+  selectEditionPerpective: 'Digitaaliset editiot (in English)',
   selectPerspective: 'Valitse näkymä kirjemetadatan hakua ja tutkimista varten: ',
   selectInformationPerspective: 'Tietoa aineistojen luovuttajista ja heidän kokoelmistaan',
   mainPageImageLicence: 'Kuvia käytetään Wikimedia Commonsin lisenssillä',
@@ -69,95 +69,95 @@ export default {
   ],
   mainPageDick: 'fehkufhekj',
   topBar: {
-    feedback: 'feedback',
+    feedback: 'Palaute',
     info: {
       info: 'Info',
-      aboutTheProject: 'About the project',
+      aboutTheProject: 'Tietoa projektista',
       aboutTheProjectUrl: 'https://seco.cs.aalto.fi/projects/coco/',
-      dataStatistics: 'Data overview / statistics'
+      dataStatistics: 'Yleiskatsaus aineistoon / tilastotietoa'
     },
-    searchBarPlaceHolder: 'Search metadata',
+    searchBarPlaceHolder: 'Hae aineistosta',
     searchBarPlaceHolderShort: 'Search',
-    instructions: 'instructions',
+    instructions: 'ohjeet',
     instructionsUrl: 'https://docs.google.com/document/d/e/2PACX-1vSe9eS4HrlH3iHZtXEFVoKAzUEYiURdLwWQUad3wBprr2fGrI3P2eiH5S2gOu1XvZlCXJ_HY0b_mttW/pub',
     editionPerspectives: 'Digital editions'
 
   },
   facetBar: {
-    results: 'Results',
-    activeFilters: 'Active filters:',
-    removeAllFilters: 'Remove all',
-    narrowDownBy: 'Narrow down by',
-    filterOptions: 'Sort',
-    filterByName: 'Filter by name',
+    results: 'Tulokset',
+    activeFilters: 'Valitut filtterit:',
+    removeAllFilters: 'Poisto kaikki',
+    narrowDownBy: 'Rajaa hakua',
+    filterOptions: 'Järjestämisen valinnat',
+    filterByName: 'Hae nimen perusteella',
     filterByBoundingBox: 'Filter by bounding box',
     selectionOptions: 'Selection options',
     selectAlsoSubconcepts: 'Automatically select all subconcepts',
     doNotSelectSubconcepts: 'Do not select subconcepts',
-    sortingOptions: 'Sorting options',
-    sortAlphabetically: 'Sort alphabetically',
-    sortByNumberOfSearchResults: 'Sort by number of search results',
-    useDisjunction: 'Use logical OR between selections',
-    useConjuction: 'Use logical AND between selections',
-    minYear: 'Min year',
-    maxYear: 'Max year',
+    sortingOptions: 'Järjestämisen valinnat',
+    sortAlphabetically: 'Järjestä aakkosten mukaan',
+    sortByNumberOfSearchResults: 'Järjestä tulosten määrän mukaan',
+    useDisjunction: 'Käytä loogista OR-toimintoa valintojen välillä',
+    useConjuction: 'Käytä loogista AND-toimintoa valintojen välillä',
+    minYear: 'Min vuosi',
+    maxYear: 'Max vuosi',
     min: 'Min',
     max: 'Max',
-    facetSearchFieldPlaceholder: 'Search...',
+    facetSearchFieldPlaceholder: 'Hae...',
     applyFacetSelection: 'apply',
     pieChart: {
-      tooltip: 'Pie chart'
+      tooltip: 'Piirakkakaavio'
     }
   },
   tabs: {
-    table: 'table',
-    map: 'map',
+    table: 'taulukko',
+    map: 'kartta',
     migrations: 'migrations',
-    network: 'network',
+    network: 'verkosto',
     export: 'export',
-    'by-year': 'by year',
-    'letters-by-year': 'timeline of letters',
-    'by-period': 'by period',
-    'letter-network': 'network of letters',
-    'social-signatures': 'social signatures',
-    'top-correspondences': 'top correspondences',
-    'top-correspondents': 'top correspondents',
+    'by-year': 'aikajana',
+    'letters-by-year': 'kirjeet aikajanalla',
+    'by-period': 'aikakauden mukaan',
+    'letter-network': 'kirjeiden verkosto',
+    'social-signatures': 'kirjeenvaihtojen jatkuvuus ',
+    'top-correspondences': 'laajimmat kirjeenvaihdot',
+    'top-correspondents': 'laajimmat kirjeenvaihdot',
     csv: 'csv',
-    metadata: 'source data',
-    view: 'digital edition view',
-    letter: 'letter',
-    sentReceivedByPlace: 'timeline of letters',
-    correspondenceTimeline: 'Letter Timeline',
-    sentReceivedByTie: 'Timeline',
-    tieNetwork: 'Network',
-    letters: 'letters',
-    'letters-and-actors': 'letters and actors',
-    heatmap: 'heatmap',
-    statistics: 'statistics',
-    download: 'download',
+    metadata: 'metadata',
+    view: 'digitaalinen editio',
+    letter: 'kirje',
+    sentReceivedByPlace: 'aikajana',
+    correspondenceTimeline: 'aikajana',
+    sentReceivedByTie: 'aikajana',
+    tieNetwork: 'verkosto',
+    letters: 'kirjeet',
+    'letters-and-actors': 'kirjeet ja toimijat',
+    heatmap: 'lämpokartta',
+    statistics: 'tilastot',
+    download: 'lataa',
     sparql: 'sparql',
-    share: 'share'
+    share: 'jaa'
   },
   table: {
-    rowsPerPage: 'Rows per page',
+    rowsPerPage: 'Riviä sivulla',
     of: 'of'
   },
   lineChart: {
     productionCount: 'Production',
     transferCount: 'Transfer of custody',
     observationCount: 'Observation',
-    sentCount: 'Sent',
-    receivedCount: 'Received',
-    allCount: 'All',
-    average: 'Average',
-    sender: 'Sender',
-    sender1: 'Sender 1',
-    sender2: 'Sender 2',
-    both: 'Both'
+    sentCount: 'Lähetetyt',
+    receivedCount: 'Vastaanotetut',
+    allCount: 'Kaikki',
+    average: 'Keskimäärin',
+    sender: 'Lähettäjä',
+    sender1: 'Lähettäjä 1',
+    sender2: 'Lähettäjä 2',
+    both: 'Molemmat'
   },
-  exportToYasgui: 'open the result table query in LD browser',
-  openInLinkedDataBrowser: 'open in linked data browser',
-  resultsAsCSV: 'download the search results as a CSV table',
+  exportToYasgui: 'Avaa tuloskysely Yasgui-editorissa',
+  openInLinkedDataBrowser: 'Avaa linkitetty data Saha-editorissa',
+  resultsAsCSV: 'Lataa tulokset CSV-tiedostona',
   facets: {
     dateFacet: {
       invalidDate: 'Epäkelpo päivämäärä.',
@@ -235,7 +235,7 @@ export default {
     fullTextSearch: {
       properties: {
         prefLabel: {
-          label: 'Title'
+          label: 'Nimeke'
         },
         altLabel: {
           label: 'Alternative label'
