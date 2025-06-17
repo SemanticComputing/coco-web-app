@@ -121,12 +121,14 @@ UNION
 {
   ?id :was_sent_from ?from__id .
   ?from__id skos:prefLabel ?from__prefLabel ; a [] .
+  FILTER (LANG(?from__prefLabel)='<LANG>')
   BIND(CONCAT("/places/page/", REPLACE(STR(?from__id), "^.*\\\\/(.+)", "$1")) AS ?from__dataProviderUrl)
 }
 UNION
 {
   ?id :was_sent_to ?to__id .
   ?to__id skos:prefLabel ?to__prefLabel ; a [] .
+  FILTER (LANG(?to__prefLabel)='<LANG>')
   BIND(CONCAT("/places/page/", REPLACE(STR(?to__id), "^.*\\\\/(.+)", "$1")) AS ?to__dataProviderUrl)
 }
 UNION
@@ -216,12 +218,14 @@ UNION
   BIND(<ID> as ?id)
   ?id :was_sent_from ?from__id .
   ?from__id skos:prefLabel ?from__prefLabel ; a [] .
+  FILTER (LANG(?from__prefLabel)='<LANG>')
   BIND(CONCAT("/places/page/", REPLACE(STR(?from__id), "^.*\\\\/(.+)", "$1")) AS ?from__dataProviderUrl)
 }
 UNION
 {
   ?id :was_sent_to ?to__id .
   ?to__id skos:prefLabel ?to__prefLabel ; a [] .
+  FILTER (LANG(?to__prefLabel)='<LANG>')
   BIND(CONCAT("/places/page/", REPLACE(STR(?to__id), "^.*\\\\/(.+)", "$1")) AS ?to__dataProviderUrl)
 }
 UNION
@@ -545,6 +549,7 @@ WHERE {
 
 export const placePropertiesInfoWindow = `
   OPTIONAL { ?id skos:prefLabel ?_label }
+  FILTER (LANG(?_label)='<LANG>')
   BIND(COALESCE(?_label, "<place>") AS ?prefLabel__id)
   BIND(?prefLabel__id AS ?prefLabel__prefLabel)
   BIND(CONCAT("/places/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)

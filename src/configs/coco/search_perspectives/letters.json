@@ -539,6 +539,7 @@
             "sortDirection": "desc",
             "barChartButton": true,
             "sortButton": true,
+            "facetLabelFilter": "FILTER(LANG(?prefLabel_) = '<LANG>')",
             "hideUnknownValue": true
         },
         "to": {
@@ -552,6 +553,7 @@
             "sortDirection": "desc",
             "barChartButton": true,
             "sortButton": true,
+            "facetLabelFilter": "FILTER(LANG(?prefLabel_) = '<LANG>')",
             "hideUnknownValue": true
         },
         "language_facet": {
