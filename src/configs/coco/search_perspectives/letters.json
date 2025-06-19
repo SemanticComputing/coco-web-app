@@ -463,6 +463,7 @@
             "sortByPredicate": "portal:sender_type/skos:prefLabel",
             "sortDirection": "desc",
             "barChartButton": true,
+            "facetLabelFilter": "FILTER(LANG(?prefLabel_) = '<LANG>')",
             "sortButton": true,
             "hideUnknownValue": true
         },
@@ -475,6 +476,7 @@
             "sortByPredicate": "portal:sender_gender/skos:prefLabel",
             "sortDirection": "desc",
             "barChartButton": true,
+            "facetLabelFilter": "FILTER(LANG(?prefLabel_) = '<LANG>')",
             "sortButton": true,
             "hideUnknownValue": true
         },
@@ -500,6 +502,7 @@
             "sortByPredicate": "portal:recipient_type/skos:prefLabel",
             "sortDirection": "desc",
             "barChartButton": true,
+            "facetLabelFilter": "FILTER(LANG(?prefLabel_) = '<LANG>')",
             "sortButton": true,
             "hideUnknownValue": true
         },
@@ -512,6 +515,7 @@
             "sortByPredicate": "portal:recipient_gender/skos:prefLabel",
             "sortDirection": "desc",
             "barChartButton": true,
+            "facetLabelFilter": "FILTER(LANG(?prefLabel_) = '<LANG>')",
             "sortButton": true,
             "hideUnknownValue": true
         },
@@ -594,6 +598,7 @@
             "sortDirection": "desc",
             "sortButton": true,
             "barChartButton": true,
+            "facetLabelFilter": "FILTER(!LANG(?prefLabel_))",
             "sortByPredicate": ":fonds/skos:prefLabel",
             "hideUnknownValue": true
         },
