@@ -285,6 +285,7 @@
             "searchField": false,
             "sortButton": true,
             "sortByPredicate": "skos:prefLabel",
+            "facetLabelFilter": "FILTER(LANG(?prefLabel_) = '<LANG>')",
             "hideUnknownValue": true
         },
         "creator_occupation": {
@@ -298,7 +299,7 @@
             "searchField": true,
             "sortButton": true,
             "sortByPredicate": "skos:prefLabel",
-            "facetLabelFilter": "FILTER(LANG(?prefLabel_) = 'en')"
+            "facetLabelFilter": "FILTER(LANG(?prefLabel_) = '<LANG>')"
         },
         "creator_external": {
             "containerClass": "eight",
@@ -309,6 +310,7 @@
             "sortDirection": "desc",
             "barChartButton": true,
             "sortButton": false,
+            "facetLabelFilter": "FILTER(LANG(?prefLabel_) = '<LANG>')",
             "sortByPredicate": "skos:prefLabel"
         },
         "prefLabel": {

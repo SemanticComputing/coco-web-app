@@ -28,10 +28,14 @@ export const actorPropertiesFacetResults = `
   UNION
   {
     ?id bioc:has_gender/skos:prefLabel ?gender
+    FILTER (LANG(?gender) = '<LANG>')
   }
   UNION
     { ?id foaf:page ?external__id . 
-      OPTIONAL { ?external__id a/skos:prefLabel ?external__classlabel }
+      OPTIONAL { 
+        ?external__id a/skos:prefLabel ?external__classlabel 
+        FILTER (LANG(?external__classlabel) = '<LANG>')
+      }
       OPTIONAL { ?external__id skos:prefLabel ?external__label }
       BIND (COALESCE(?external__label, ?external__classlabel, ?external__id) AS ?external__prefLabel)
       BIND (?external__id AS ?external__dataProviderUrl)
@@ -40,7 +44,8 @@ export const actorPropertiesFacetResults = `
   {
     ?prx :proxy_for ?id .
     {
-      ?prx a/skos:prefLabel ?type
+      ?prx a/skos:prefLabel ?type 
+      FILTER (LANG(?type)="<LANG>")
     }
     UNION
     {
@@ -95,7 +100,9 @@ export const actorPropertiesInstancePage = `
     OPTIONAL { ?floruitTimespan__id crm:P82b_end_of_the_end ?floruitTimespan__end }
   }
   UNION
-  { ?id bioc:has_gender/skos:prefLabel ?gender }
+  { ?id bioc:has_gender/skos:prefLabel ?gender .
+    FILTER (LANG(?gender) = '<LANG>')
+  }
   UNION
   { 
     ?id foaf:page ?external__id . 
@@ -122,7 +129,10 @@ export const actorPropertiesInstancePage = `
   UNION
   { 
     ?prx :proxy_for ?id .
-    { ?prx a/skos:prefLabel ?type }
+    { 
+      ?prx a/skos:prefLabel ?type .
+      FILTER (LANG(?type)="<LANG>")
+    }
     UNION 
     { 
       GRAPH ?g { ?prx skos:prefLabel ?altLabel__id }
@@ -210,7 +220,7 @@ export const actorPropertiesInstancePage = `
     UNION
     {
       ?prx :original_data_provider/skos:prefLabel ?data_provider
-      FILTER (LANG(?data_provider)="en")
+      FILTER (LANG(?data_provider)="<LANG>")
     }
     UNION
     {
@@ -330,14 +340,14 @@ SELECT *
         ?prx (^:was_authored_by)/:original_data_provider [ 
           a [] ;
           skos:prefLabel ?data_provider ] .
-          FILTER (LANG(?data_provider)='en')
+          FILTER (LANG(?data_provider)='<LANG>')
       }
       UNION
       {
         ?prx (^:was_addressed_to)/:original_data_provider [ 
           a [] ; 
           skos:prefLabel ?data_provider ] .
-          FILTER (LANG(?data_provider)='en')
+          FILTER (LANG(?data_provider)='<LANG>')
       }
       UNION
       {
@@ -347,6 +357,7 @@ SELECT *
         WHERE {
             ?_evt :was_authored_by ?prx ; :was_sent_from ?knownLocation__id . 
             ?knownLocation__id a [] ; skos:prefLabel ?_label . 
+            FILTER (LANG(?_label)="<LANG>")
         } 
         GROUP BY ?prx ?_label ?knownLocation__id
         ORDER BY DESC(COUNT(DISTINCT ?_evt))
@@ -465,7 +476,10 @@ export const peopleRelatedTo = `
 `
 
 export const placePropertiesInfoWindow = `
-  OPTIONAL { ?id skos:prefLabel ?_label }
+  OPTIONAL { 
+    ?id skos:prefLabel ?_label . 
+    FILTER (LANG(?_label)="<LANG>")
+  }
   BIND (COALESCE(?_label, "<place>") AS ?prefLabel__id)
   BIND (?prefLabel__id AS ?prefLabel__prefLabel)
   BIND (CONCAT("/places/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
