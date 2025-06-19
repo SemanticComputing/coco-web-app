@@ -252,7 +252,6 @@
         "digital_edition": {
             "containerClass": "six",
             "facetType": "list",
-            "facetLabelFilter": "FILTER(LANG(?prefLabel_) = 'en')",
             "filterType": "uriFilter",
             "barChartButton": true,
             "predicate": "portal:digital_edition",
@@ -260,6 +259,7 @@
             "sortDirection": "desc",
             "searchField": false,
             "sortButton": false,
+            "facetLabelFilter": "FILTER(LANG(?prefLabel_) = '<LANG>')",
             "sortByPredicate": "portal:digital_edition/skos:prefLabel"
         },
         "creator": {
