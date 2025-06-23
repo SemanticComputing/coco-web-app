@@ -7,9 +7,9 @@ export const contributorPropertiesFacetResults = `
 
   {
     ?id skos:prefLabel ?prefLabel__id .
-    FILTER (LANG(?prefLabel__id) = 'en')
+    FILTER (LANG(?prefLabel__id) = '<LANG>')
     BIND (?prefLabel__id AS ?prefLabel__prefLabel)
-    BIND (CONCAT('/en/letters/faceted-search/table?page=0&constraints=[{"facetId":"data_provider_facet","filterType":"uriFilter","value":{"path":[14],"node":{"id":"', STR(?id),'","prefLabel":"', STR(?prefLabel__id), '"}}}]') AS ?prefLabel__dataProviderUrl)  } 
+    BIND (CONCAT('/<LANG>/letters/faceted-search/table?page=0&constraints=[{"facetId":"data_provider_facet","filterType":"uriFilter","value":{"path":[14],"node":{"id":"', STR(?id),'","prefLabel":"', STR(?prefLabel__id), '"}}}]') AS ?prefLabel__dataProviderUrl)  } 
   UNION
   {
     ?id sch:image ?image__id ;

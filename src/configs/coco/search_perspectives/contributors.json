@@ -12,6 +12,7 @@
     "defaultConstraint": "FILTER EXISTS { [] :original_data_provider <SUBJECT> } ",
     "frontPageImage": "main_page/manuscripts-452x262.jpg",
     "searchMode": "faceted-search",
+    "enableDynamicLanguageChange": true,
     "defaultActiveFacets": [ "prefLabel" ],
     "defaultTab": "table",
     "defaultInstancePageTab": "table",
