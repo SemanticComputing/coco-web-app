@@ -598,7 +598,7 @@
             "sortDirection": "desc",
             "sortButton": true,
             "barChartButton": true,
-            "facetLabelFilter": "FILTER(!LANG(?prefLabel_))",
+            "facetLabelFilter": "FILTER(LANG(?prefLabel_)='<LANG>')",
             "sortByPredicate": ":fonds/skos:prefLabel",
             "hideUnknownValue": true
         },

@@ -247,7 +247,8 @@
             "sortDirection": "desc",
             "searchField": true,
             "sortButton": true,
-            "sortByPredicate": ":self_link/skos:prefLabel"
+            "sortByPredicate": ":self_link/skos:prefLabel",
+            "facetLabelFilter": "FILTER(LANG(?prefLabel_) = '<LANG>')"
         },
         "digital_edition": {
             "containerClass": "six",
