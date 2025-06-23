@@ -227,7 +227,7 @@ export const actorPropertiesInstancePage = `
       GRAPH ?g {
         ?prx bioc:has_family_relation [ bioc:inheres_in/:proxy_for ?relative__id ; skos:prefLabel ?relative__prefLabel ]
       }
-      FILTER (LANG(?relative__prefLabel)='en')
+      FILTER (LANG(?relative__prefLabel)='<LANG>')
       BIND (CONCAT("/actors/page/", REPLACE(STR(?relative__id), "^.*\\\\/(.+)", "$1")) AS ?relative__dataProviderUrl)
       
       ?g skos:altLabel ?relative__source__prefLabel 
