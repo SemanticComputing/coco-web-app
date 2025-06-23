@@ -86,7 +86,7 @@ export default {
   facetBar: {
     results: 'Tulokset',
     activeFilters: 'Valitut filtterit:',
-    removeAllFilters: 'Poisto kaikki',
+    removeAllFilters: 'Poista kaikki',
     narrowDownBy: 'Rajaa hakua',
     filterOptions: 'Järjestämisen valinnat',
     filterByName: 'Hae nimen perusteella',
