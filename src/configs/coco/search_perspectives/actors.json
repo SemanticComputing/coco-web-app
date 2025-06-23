@@ -891,6 +891,7 @@
             "sortDirection": "desc",
             "sortButton": true,
             "sortByPredicate": "portal:fonds/skos:prefLabel",
+            "facetLabelFilter": "FILTER(LANG(?prefLabel_) = '<LANG>')",
             "hideUnknownValue": true
         },
         "external": {

@@ -71,7 +71,7 @@ export const actorPropertiesFacetResults = `
     UNION
     {
       ?prx :original_data_provider/skos:prefLabel ?data_provider
-      FILTER (LANG(?data_provider)="en")
+      FILTER (LANG(?data_provider)="<LANG>")
     }
 }
 `
@@ -147,7 +147,7 @@ export const actorPropertiesInstancePage = `
     {
       GRAPH ?g { ?prx bioc:has_occupation ?occupation__id }
       ?occupation__id skos:prefLabel ?occupation__prefLabel .
-      FILTER (LANG(?occupation__prefLabel)='en')
+      FILTER (LANG(?occupation__prefLabel)='<LANG>')
       BIND (CONCAT("/occupations/page/", REPLACE(STR(?occupation__id), "^.*\\\\/(.+)", "$1")) AS ?occupation__dataProviderUrl)
       
       ?g skos:altLabel ?occupation__source__prefLabel .
@@ -304,7 +304,7 @@ SELECT *
     	?prx :proxy_for ?id
       {
         SELECT DISTINCT ?prx ?in_fonds__id
-      (CONCAT(?_label, ' (', STR(COUNT(DISTINCT ?_evt)), '+', STR(COUNT(DISTINCT ?_evt2)), ')') AS ?in_fonds__prefLabel)
+          (CONCAT(?_label, ' (', STR(COUNT(DISTINCT ?_evt)), '+', STR(COUNT(DISTINCT ?_evt2)), ')') AS ?in_fonds__prefLabel)
           (CONCAT("/fonds/page/", REPLACE(STR(?in_fonds__id), "^.*\\\\/(.+)", "$1")) AS ?in_fonds__dataProviderUrl)
         WHERE {
           {
@@ -313,18 +313,15 @@ SELECT *
           }
           UNION
           {
-            ?_evt2 :was_addressed_to ?prx ; 
+            ?_evt2 :was_addressed_to ?prx ;
               :fonds ?in_fonds__id
           }
           UNION
           {
-            ?in_fonds__id :archival_organization ?prx ; a :Fonds .
+            ?in_fonds__id :archival_organization ?prx ; a :Fonds
           }
-          ?in_fonds__id skos:prefLabel ?_label ;
-            a [] .
-          OPTIONAL { ?in_fonds__id :archival_organization/:proxy_for/skos:prefLabel ?_org . 
-            BIND (CONCAT(' (', str(?_org), ') ') AS ?_org2)
-          }
+          ?in_fonds__id skos:prefLabel ?_label ; a []
+          FILTER (LANG(?_label)='<LANG>')
         }
         GROUP BY ?prx ?_label ?in_fonds__id
         ORDER BY DESC(COUNT(DISTINCT ?_evt))
@@ -332,14 +329,15 @@ SELECT *
       UNION
       {
         ?created_fonds__id :records_creator ?prx ;
-                          skos:prefLabel ?created_fonds__prefLabel .
+                          skos:prefLabel ?created_fonds__prefLabel
+        FILTER (LANG(?created_fonds__prefLabel)='<LANG>')
         BIND (CONCAT("/fonds/page/", REPLACE(STR(?created_fonds__id), "^.*\\\\/(.+)", "$1")) AS ?created_fonds__dataProviderUrl)
       }
       UNION
       {
         ?prx (^:was_authored_by)/:original_data_provider [ 
           a [] ;
-          skos:prefLabel ?data_provider ] .
+          skos:prefLabel ?data_provider ]
           FILTER (LANG(?data_provider)='<LANG>')
       }
       UNION

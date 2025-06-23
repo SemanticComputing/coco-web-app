@@ -11,6 +11,7 @@ export const fondsPropertiesFacetResults = `
   UNION
   {
     ?id skos:prefLabel ?prefLabel__id
+    FILTER (LANG(?prefLabel__id)="<LANG>")
     BIND (?prefLabel__id as ?prefLabel__prefLabel)
     BIND (CONCAT("/${perspectiveID}/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
   }
@@ -38,6 +39,7 @@ export const fondsPropertiesInstancePage = `
   UNION
   {
     ?id skos:prefLabel ?prefLabel__id .
+    FILTER (LANG(?prefLabel__id)="<LANG>")
     BIND (?prefLabel__id as ?prefLabel__prefLabel)
     BIND(CONCAT("/${perspectiveID}/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
   }
@@ -178,7 +180,7 @@ WHERE {
   OPTIONAL {
     ?id :original_data_provider ?data_provider_id .
     ?data_provider_id skos:prefLabel ?data_provider .
-    FILTER (LANG(?data_provider)='en')
+    FILTER (LANG(?data_provider)='<LANG>')
   }
   OPTIONAL {
     ?id :records_creator/:proxy_for ?records_creator_id .
