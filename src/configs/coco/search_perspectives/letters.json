@@ -92,17 +92,6 @@
                                 "onlyOnInstancePage": true
                             },
                             {
-                                "id": "external",
-                                "valueType": "object",
-                                "makeLink": true,
-                                "externalLink": true,
-                                "sortValues": true,
-                                "numberedList": false,
-                                "minWidth": 250,
-                                "onlyOnInstancePage": true,
-                                "expandedOnInstancePage": true
-                            },
-                            {
                                 "id": "source_url",
                                 "valueType": "object",
                                 "makeLink": true,
@@ -401,6 +390,15 @@
             "minWidth": 250,
             "onlyOnInstancePage": true,
             "expandedOnInstancePage": true
+        },
+        {
+            "id": "external",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": true,
+            "sortValues": true,
+            "numberedList": false,
+            "onlyOnInstancePage": true
         },
         {
             "id": "uri",

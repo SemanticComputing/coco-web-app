@@ -293,6 +293,11 @@ UNION
   OPTIONAL {
     ?_metadata rdfs:comment ?comment .
   }
+  OPTIONAL {
+    ?_metadata foaf:page ?external__id .
+    BIND(?external__id AS ?external__prefLabel)
+    BIND(?external__id AS ?external__dataProviderUrl)
+  }
 }
 `
 
@@ -314,12 +319,6 @@ SELECT *
     BIND (?metadata__id AS ?metadata__dataProviderUrl)
       {
         ?metadata__id :original_record ?original_record 
-      }
-      UNION
-      {
-        ?metadata__id foaf:page ?external__id .
-        BIND(?external__id AS ?external__prefLabel)
-        BIND(?external__id AS ?external__dataProviderUrl)
       }
       UNION
       { 
@@ -398,14 +397,6 @@ SELECT *
     BIND (<ID> as ?id)
     ?id :metadata ?metadata__id .
         ?metadata__id :original_record ?original_record 
-      }
-      UNION
-      {
-      BIND (<ID> as ?id)
-      ?id :metadata ?metadata__id .
-        ?metadata__id foaf:page ?external__id .
-        BIND(?external__id AS ?external__prefLabel)
-        BIND(?external__id AS ?external__dataProviderUrl)
       }
       UNION
       { 
@@ -641,7 +632,7 @@ SELECT ?id ?url
   {
     ?id :metadata ?_metadata .
     {
-      ?_metadata foaf:website|foaf:page ?url .
+      ?_metadata foaf:page ?url .
     }
   }
 }
