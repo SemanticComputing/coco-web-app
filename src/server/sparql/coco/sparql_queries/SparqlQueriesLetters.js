@@ -3,8 +3,8 @@ export const letterProperties = `
   ?id skos:prefLabel ?prefLabel__id .
   BIND (?prefLabel__id as ?prefLabel__prefLabel)
 
-  ?id :digital_edition ?edition .
-  BIND(CONCAT(IF(?edition = <http://ldf.fi/schema/coco/not_in_editions>, "/letters/page/", "/digitaleditions/page/"), REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
+  OPTIONAL { ?id :metadata/foaf:page ?_external }
+  BIND(CONCAT(IF(BOUND(?_external), "/digitaleditions/page/", "/letters/page/"), REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
   # BIND(CONCAT("/letters/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
 
   BIND(?id as ?uri__id)
@@ -50,9 +50,8 @@ export const letterPropertiesQLever = `
   ?id skos:prefLabel ?prefLabel__id .
   BIND (?prefLabel__id as ?prefLabel__prefLabel)
 
-  ?id :digital_edition ?edition .
-  BIND(CONCAT(IF(?edition = <http://ldf.fi/schema/coco/not_in_editions>, "/letters/page/", "/digitaleditions/page/"), REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
-  # BIND(CONCAT("/letters/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
+  OPTIONAL { ?id :metadata/foaf:page ?_external }
+  BIND(CONCAT(IF(BOUND(?_external), "/digitaleditions/page/", "/letters/page/"), REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
 
   BIND(?id as ?uri__id)
   BIND(STR(?id) as ?uri__prefLabel)
@@ -411,9 +410,10 @@ SELECT *
         BIND (<ID> as ?id)
         ?id :metadata ?metadata__id .
         ?created_letter__id :metadata ?metadata__id ;
-          skos:prefLabel ?created_letter__prefLabel ;
-          :digital_edition ?edition .
-        BIND(CONCAT(IF(?edition = <http://ldf.fi/schema/coco/not_in_editions>, "/letters/page/", "/digitaleditions/page/"), REPLACE(STR(?created_letter__id), "^.*\\\\/(.+)", "$1")) AS ?created_letter__dataProviderUrl)
+          skos:prefLabel ?created_letter__prefLabel .
+        
+        OPTIONAL { ?metadata__id foaf:page ?_external }
+        BIND (CONCAT(IF(BOUND(?_external), "/digitaleditions/page/", "/letters/page/"), REPLACE(STR(?created_letter__id), "^.*\\\\/(.+)", "$1")) AS ?created_letter__dataProviderUrl)
         # BIND(CONCAT("/letters/page/", REPLACE(STR(?created_letter__id), "^.*\\\\/(.+)", "$1")) AS ?created_letter__dataProviderUrl)
       }
       UNION
