@@ -355,6 +355,12 @@ export default {
         Tuntematon: toimija jonka sukupuolta ei ole tunnistettu lainkaan (pelkkä sukunimi; etunimi harvinainen; lähtödatassa “tuntematon”, “tunnistamaton”, “okänd” jne.) 
         `
         },
+        known_location: {
+          label: 'Paikkakunta',
+          description: `
+            Toimijoiden synnyin- tai kuolinpaikat sekä kirjeiden lähetys- ja vastaanottopaikat.
+          `
+        },
         image: {
           label: 'Kuva',
           description: `

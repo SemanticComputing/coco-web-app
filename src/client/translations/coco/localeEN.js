@@ -362,6 +362,12 @@ export default {
         Not applicable: family, organisation, association, society, company, magazine or other grouping or association.
         `
         },
+        known_location: {
+          label: 'Known location',
+          description: `
+            Places of birth, death, sending, or receiving letters.
+          `
+        },
         image: {
           label: 'Image',
           description: `

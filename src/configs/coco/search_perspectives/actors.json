@@ -754,6 +754,7 @@
             "sortBy": "instanceCount",
             "sortDirection": "desc",
             "barChartButton": true,
+            "sortButton": true,
             "facetLabelFilter": "FILTER(LANG(?prefLabel_)='<LANG>')",
             "sortByPredicate": "portal:portal_class/skos:prefLabel",
             "hideUnknownValue": true
@@ -766,6 +767,7 @@
             "sortBy": "instanceCount",
             "sortDirection": "desc",
             "barChartButton": true,
+            "sortButton": true,
             "facetLabelFilter": "FILTER(LANG(?prefLabel_)='<LANG>')",
             "sortByPredicate": "portal:actor_role/skos:prefLabel",
             "hideUnknownValue": true,
@@ -797,6 +799,7 @@
             "sortBy": "instanceCount",
             "sortDirection": "desc",
             "barChartButton": true,
+            "sortButton": true,
             "facetLabelFilter": "FILTER(LANG(?prefLabel_)='<LANG>')",
             "sortByPredicate": "bioc:has_gender/skos:prefLabel",
             "hideUnknownValue": true
@@ -839,6 +842,19 @@
             "sortByAscPredicate": "(^:proxy_for)/:deathDate/crm:P82a_begin_of_the_begin",
             "sortByDescPredicate": "(^:proxy_for)/:deathDate/crm:P82b_end_of_the_end",
             "startProperty": "crm:P82a_begin_of_the_begin"
+        },
+        "known_location": {
+            "containerClass": "seven",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "predicate": "portal:known_location",
+            "searchField": true,
+            "sortBy": "instanceCount",
+            "sortDirection": "desc",
+            "sortButton": true,
+            "barChartButton": true,
+            "facetLabelFilter": "FILTER(LANG(?prefLabel_)='<LANG>')",
+            "sortByPredicate": "portal:known_location/skos:prefLabel"
         },
         "occupation": {
             "containerClass": "seven",
