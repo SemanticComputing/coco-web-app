@@ -323,41 +323,6 @@
             "expandedOnInstancePage": true
         },
         {
-            "id": "datasource",
-            "valueType": "object",
-            "makeLink": false,
-            "externalLink": false,
-            "sortValues": false,
-            "numberedList": false,
-            "onlyOnInstancePage": false
-        },
-        {
-            "id": "archival_organization",
-            "valueType": "object",
-            "makeLink": false,
-            "externalLink": false,
-            "sortValues": false,
-            "numberedList": false,
-            "onlyOnInstancePage": false
-        },
-        {
-            "id": "fonds",
-            "valueType": "object",
-            "makeLink": true,
-            "externalLink": false,
-            "sortValues": false,
-            "numberedList": false
-        },
-        {
-            "id": "series",
-            "valueType": "string",
-            "makeLink": false,
-            "externalLink": false,
-            "sortValues": false,
-            "numberedList": false,
-            "onlyOnInstancePage": true
-        },
-        {
             "id": "other",
             "valueType": "object",
             "makeLink": true,
