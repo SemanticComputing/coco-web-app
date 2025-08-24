@@ -1365,6 +1365,12 @@ export default {
             Total amount of correspondence between the two actors
           `
         },
+        floruit: {
+          label: 'Floruit',
+          description: `
+          Starting and ending years of correspondence
+          `
+        },
         letter: {
           label: 'List of letters',
           description: `

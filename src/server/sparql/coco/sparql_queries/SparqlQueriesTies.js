@@ -66,6 +66,17 @@ UNION
   ?other__id skos:prefLabel ?other__prefLabel .
   BIND(CONCAT("/actors/page/", REPLACE(STR(?other__id), "^.*\\\\/(.+)", "$1")) AS ?other__dataProviderUrl)
 }
+UNION
+{
+  SELECT DISTINCT ?id (CONCAT(STR(YEAR(MIN(?time0))), "-", STR(YEAR(MAX(?time1)))) AS ?floruit) 
+  WHERE {
+    [] :in_tie ?id ;
+        :has_time-span [
+          crm:P82a_begin_of_the_begin ?time0 ;
+          crm:P82b_end_of_the_end ?time1
+      ]
+  } GROUP BY ?id 
+}
 `
 
 export const tieTimelineQuery = `
