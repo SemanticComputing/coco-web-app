@@ -352,13 +352,16 @@ export default {
           label: 'Gender',
           description: `
           The gender of the actors has been automatically identified and there are still errors in the categorisation. 
-
+        
         Male: persons identified as male on the basis of their first name. If only the initial or initials of the first               name are known, the person is counted as male. This is based on a manually screened sample. 
-
+        
+      
         Female: persons identified as female on the basis of their first name. 
-
+      
+     
         Unknown: an actor whose gender is not identified at all (surname only; first name rare; in the source data 'unknown',            'unidentified', 'okänd', etc.). 
-
+     
+     
         Not applicable: family, organisation, association, society, company, magazine or other grouping or association.
         `
         },
@@ -537,15 +540,15 @@ export default {
           `
         },
         created_fonds: {
-          label: 'Created Fonds',
+          label: 'Records creator',
           description: `
-            THe fonds where this actor is marked as the records creator.
+            The fonds where this actor is marked as the records creator.
           `
         },
         fonds: {
           label: 'Fonds',
           description: `
-            All letter collections in the dataset .
+            A list of all letter collections in the dataset. The number in the brackets indicates the number of actors connected to a specific              fonds (as recipients, senders or records creators).
           `
         },
         datasource: {
@@ -575,11 +578,14 @@ export default {
         
         You can browse metadata using the filters or facets on the left (above the results in the mobile version). For example         , selecting a list of recipients or senders from the facets will list collections in order of size. You can also limit             your search to collections from different organisations or by different attributes, such as the gender of the             letter writer or sender or the language of the letters. Please note that only a small proportion of the material          contains information about, for example, the language of the letters or where they were written.<br>
         
-            Much of the data is generated through computation. Erroneous or repetitive records may be present due to errors in             the source data or the processing.<br>
+            Much of the data is generated through computation. Erroneous or repetitive records may be present due to errors in the source data or the processing.<br>
+            </p>
 
-        See <a target="_" href="https://docs.google.com/document/d/e/2PACX-1vSe9eS4HrlH3iHZtXEFVoKAzUEYiURdLwWQUad3wBprr2fGrI3P2eiH5S2gOu1XvZlCXJ_HY0b_mttW/pub">instructions</a> for using the
-        filters. The result view can be selected using the tabs:
-      </p>
+         <p> See <a target="_" href="https://docs.google.com/document/d/e/2PACX-1vSe9eS4HrlH3iHZtXEFVoKAzUEYiURdLwWQUad3wBprr2fGrI3P2eiH5S2gOu1XvZlCXJ_HY0b_mttW/pub">instructions</a> for using the
+        filters. 
+         </p>
+        The result view can be selected using the tabs:
+     
       <ul class="MuiTypography-root MuiTypography-body1">
       <li>
         The <strong>TABLE</STRONG> view displays the results in a list.
@@ -887,7 +893,7 @@ export default {
         external: {
           label: 'External link',
           description: `
-            Link to the letter published in one of the digital editions 
+            Link to the published letter  
           `
         },
         source_url: {
@@ -1328,9 +1334,6 @@ export default {
       instancePage: {
         label: 'Correspondence',
         description: `
-          <p>
-          This landing page provides a summary of information related to a specific correspondence. 
-          </p>
           <h6 class="MuiTypography-root MuiTypography-h6">
             Page tabs
           </h6>

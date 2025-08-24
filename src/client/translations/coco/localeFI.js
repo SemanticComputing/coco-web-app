@@ -578,7 +578,7 @@ export default {
         <strong>LÄMPÖKARTTA</strong> visualisoi kirjoittamis- ja vastaanottopaikkoja lämpökarttana (mitä punaisempi väri, sen enemmän kirjeitä).
       </li>
       <li>
-        <strong>LAAJIMMAT KIRJEENVAIHDOT> näyttää 20 suurinta aineistokokonaisuutta aikajanalla. Huomaa, että pääosassa kirjeenvaihdoista on vain alkamis- ja                   loppumisvuodet (esimerkiksi 1860-1895). Näissä tapauksissa kyseisen kirjeenvaihdon kirjeet on jaettu tasaisesti kyseiselle aikavälille. 
+        <strong>LAAJIMMAT KIRJEENVAIHDOT</strong> näyttää 20 suurinta aineistokokonaisuutta aikajanalla. Huomaa, että pääosassa kirjeenvaihdoista on vain alkamis- ja  loppumisvuodet (esimerkiksi 1860-1895). Näissä tapauksissa kyseisen kirjeenvaihdon kirjeet on jaettu tasaisesti kyseiselle aikavälille. 
       </li>
       <li>
         <strong>CSV</strong>-välilehdeltä voit ladata tuloksia taulukkomuodossa omalle koneellesi.
@@ -853,7 +853,7 @@ export default {
         external: {
           label: 'Ulkoinen linkki',
           description: `
-            Linkki digitaalisessa editiossa julkaistuun kirjeeseen  
+            Linkki julkaistuun kirjeeseen  
           `
         },
         source_url: {
