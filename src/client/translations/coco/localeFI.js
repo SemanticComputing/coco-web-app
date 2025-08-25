@@ -1306,9 +1306,15 @@ export default {
           `
         },
         num_letters: {
-          label: 'Kirjeiden kokonaismäärän',
+          label: 'Kirjeiden kokonaismäärä',
           description: `
             Toimijoiden välisen kirjeenvaihdon kokonaismäärä
+          `
+        },
+        floruit: {
+          label: 'Kirjeenvaihdon aika',
+          description: `
+          Kirjeenvaihdon alkamis- ja loppumisvuodet
           `
         },
         letter: {
