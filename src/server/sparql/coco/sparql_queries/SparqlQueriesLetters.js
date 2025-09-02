@@ -172,6 +172,7 @@ UNION
 {
   ?id :original_data_provider ?data_provider__id .
   ?data_provider__id skos:prefLabel ?data_provider__prefLabel .
+  FILTER (LANG(?data_provider__prefLabel)='<LANG>')
   BIND(CONCAT("/sources/page/", REPLACE(STR(?data_provider__id), "^.*\\\\/(.+)", "$1")) AS ?data_provider__dataProviderUrl)
 }
 UNION
@@ -276,6 +277,7 @@ UNION
   BIND(<ID> as ?id)
   ?id :original_data_provider ?data_provider__id .
   ?data_provider__id skos:prefLabel ?data_provider__prefLabel .
+  FILTER (LANG(?data_provider__prefLabel)='<LANG>')
   BIND(CONCAT("/sources/page/", REPLACE(STR(?data_provider__id), "^.*\\\\/(.+)", "$1")) AS ?data_provider__dataProviderUrl)
 }
 UNION
